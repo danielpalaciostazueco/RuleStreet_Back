@@ -1,0 +1,26 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RuleStreet.Models;
+
+public class Multa
+{
+    [Key]
+    public int IdMulta { get; set; }
+
+
+    [ForeignKey("Policia")]
+    public int IdPolicia { get; set; }
+    public Policia Policia { get; set; }
+
+    public DateTime Fecha { get; set; }
+    public DateTime Hora { get; set; } // Considera usar un solo campo DateTime si Fecha y Hora siempre van juntas
+    public decimal Precio { get; set; }
+    public string ArticuloPenal { get; set; }
+    public string Descripcion { get; set; }
+    public bool Pagada { get; set; }
+
+    public int IdCiudadano { get; set; }
+
+}
