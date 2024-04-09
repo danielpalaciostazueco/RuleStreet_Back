@@ -25,7 +25,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Ciudadano> Get(int id)
+        public ActionResult<CiudadanoDTO> Get(int id)
         {
             try
             {
@@ -46,17 +46,17 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult<Ciudadano> Create(Ciudadano Ciudadano)
+        public ActionResult<CiudadanoDTO> Create(CiudadanoPostDTO ciudadanoPostDTO)
         {
             try
             {
-                if (_CiudadanoService.Get(Ciudadano.IdCiudadano) != null)
+                if (_CiudadanoService.Get(ciudadanoPostDTO.IdCiudadano) != null)
                 {
-                    return BadRequest($"Ciudadano con ID {Ciudadano.IdCiudadano} ya existe.");
+                    return BadRequest($"Ciudadano con ID {ciudadanoPostDTO.IdCiudadano} ya existe.");
                 }
 
-                _CiudadanoService.Add(Ciudadano);
-                return CreatedAtAction(nameof(Create), new { id = Ciudadano.IdCiudadano }, Ciudadano);
+                _CiudadanoService.Add(ciudadanoPostDTO);
+                return CreatedAtAction(nameof(Create), new { id = ciudadanoPostDTO.IdCiudadano }, ciudadanoPostDTO);
             }
             catch (Exception ex)
             {
@@ -66,11 +66,11 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Ciudadano Ciudadano)
+        public IActionResult Update(int id, CiudadanoPostDTO ciudadanoPostDTO)
         {
             try
             {
-                if (id != Ciudadano.IdCiudadano)
+                if (id != ciudadanoPostDTO.IdCiudadano)
                 {
                     return BadRequest();
                 }
@@ -81,7 +81,7 @@ namespace RuleStreet.Api.Controllers
                     return NotFound();
                 }
 
-                _CiudadanoService.Update(Ciudadano);
+                _CiudadanoService.Update(ciudadanoPostDTO);
                 return NoContent();
             }
             catch (Exception ex)

@@ -30,7 +30,7 @@ namespace RuleStreet.Business
                 throw;
             }
         }
-        public Ciudadano? Get(int id)
+        public CiudadanoDTO? Get(int id)
         {
             try
             {
@@ -44,12 +44,11 @@ namespace RuleStreet.Business
 
         }
 
-
-        public void Update(Ciudadano ciudadano)
+        public void Update(CiudadanoPostDTO ciudadanoPostDTO)
         {
             try
             {
-                _ciudadanoRepository.Update(ciudadano);
+                _ciudadanoRepository.Update(ciudadanoPostDTO);
             }
             catch (Exception ex)
             {
@@ -59,21 +58,19 @@ namespace RuleStreet.Business
             }
         }
 
-
-
-        public void Add(Ciudadano ciudadano)
+        public void Add(CiudadanoPostDTO ciudadanoPostDTO)
         {
             try
             {
-                _ciudadanoRepository.Add(ciudadano);
+                _ciudadanoRepository.Add(ciudadanoPostDTO);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error añadiendo la ciudadano");
                 throw;
             }
-
         }
+        
         public void Delete(int id)
         {
             try
@@ -87,7 +84,5 @@ namespace RuleStreet.Business
             }
 
         }
-
-
     }
 }

@@ -6,9 +6,9 @@ namespace RuleStreet.Business
     public interface ICiudadanoRepository
     {
         List<CiudadanoDTO> GetAll();
-        Ciudadano? Get(int id);
-        void Add(Ciudadano ciudadano);
+        CiudadanoDTO? Get(int id);
+        void Add(CiudadanoPostDTO ciudadanoPostDTO);
         void Delete(int id);
-        void Update(Ciudadano ciudadano);
+        void Update(CiudadanoPostDTO ciudadanoPostDTO);
     }
 }
