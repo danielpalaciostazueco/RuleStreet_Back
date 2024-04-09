@@ -10,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
-// Obtén la cadena de conexión de tu archivo de configuración (appsettings.json u otro)
-var keyString = "ServerDB_Docker";
+var isRunningInDocker = Environment.GetEnvironmentVariable("DOCKER_CONTAINER") == "true";
+var keyString = isRunningInDocker ? "ServerDB_Docker" : "ServerDB";
 var connectionString = builder.Configuration.GetConnectionString(keyString);
 
 // Configuración de los servicios para la aplicación

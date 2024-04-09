@@ -13,9 +13,9 @@ Connect to database and run manually the script of init-db.sql
 docker commit & docker push
 
 ## Migraciones: 
-dotnet ef migrations add InitialCreate -p ./Data/UrbanTheater.Data.csproj -s ./Api/UrbanTheater.Api.csproj 
-dotnet ef database update  -p ./Data/UrbanTheater.Data.csproj -s ./Api/UrbanTheater.Api.csproj
-dotnet ef database drop  -p ./Data/UrbanTheater.Data.csproj -s ./Api/UrbanTheater.Api.csproj
+dotnet ef migrations add InitialCreate -p ./Data/RuleStreet.Data.csproj -s ./Api/RuleStreet.Api.csproj 
+dotnet ef database update -p ./Data/RuleStreet.Data.csproj -s ./Api/RuleStreet.Api.csproj
+dotnet ef database drop -p ./Data/RuleStreet.Data.csproj -s ./Api/RuleStreet.Api.csproj
 
 ## Instalar
 dotnet tool install --global dotnet-ef --version 7.0
