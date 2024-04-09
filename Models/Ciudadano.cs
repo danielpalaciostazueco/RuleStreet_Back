@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace RuleStreet.Models;
+using System.Collections.Generic;
 public class Ciudadano
 {
     [Key]
@@ -18,5 +19,6 @@ public class Ciudadano
     public bool? IsPoli { get; set; }
     public bool? IsBusquedaYCaptura { get; set; }
     public bool? IsPeligroso { get; set; }
-    public List<Multa>? Multas { get; set; }
+    public virtual List<Multa>? Multas { get; set; }
+    public virtual List<Vehiculo>? Vehiculos { get; set; }
 }

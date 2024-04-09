@@ -13,12 +13,14 @@ namespace RuleStreet.Data
         public DbSet<Policia> Policia { get; set; }
         public DbSet<Multa> Multa { get; set; }
         public DbSet<CodigoPenal> CodigoPenal { get; set; }
+        public DbSet<Vehiculo> Vehiculo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
-
+            modelBuilder.Entity<Vehiculo>()
+                .HasOne(v => v.Ciudadano) 
+                .WithMany(c => c.Vehiculos) 
+                .HasForeignKey(v => v.IdCiudadano); 
 
             modelBuilder.Entity<Ciudadano>().HasData(
                 new Ciudadano
