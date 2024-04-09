@@ -9,10 +9,10 @@ public class Policia
     public int IdPolicia { get; set; }
 
     [ForeignKey("Ciudadano")]
-    public int IdCiudadano { get; set; }
+    public int? IdCiudadano { get; set; }
 
-    public string Rango { get; set; }
-    public string NumeroPlaca { get; set; }
-    public virtual Ciudadano Ciudadano { get; set; }
+    public string? Rango { get; set; }
+    public string? NumeroPlaca { get; set; }
+    public virtual Ciudadano? Ciudadano { get; set; }
 }
 

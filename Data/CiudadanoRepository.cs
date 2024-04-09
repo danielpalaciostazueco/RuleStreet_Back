@@ -23,9 +23,8 @@ namespace RuleStreet.Data
 
         public List<CiudadanoDTO> GetAll()
         {
-            // Obtener todos los ciudadanos y sus multas
             var ciudadanos = _context.Ciudadano
-                .Include(c => c.Multas) // Asume que tienes una propiedad de navegación en Ciudadano para Multas
+                .Include(c => c.Multas) 
                 .Select(c => new CiudadanoDTO
                 {
                     IdCiudadano = c.IdCiudadano,

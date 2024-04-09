@@ -12,15 +12,15 @@ public class Multa
 
     [ForeignKey("Policia")]
     public int IdPolicia { get; set; }
-    public Policia Policia { get; set; }
+    public Policia? Policia { get; set; }
 
-    public DateTime Fecha { get; set; }
-    public DateTime Hora { get; set; } // Considera usar un solo campo DateTime si Fecha y Hora siempre van juntas
-    public decimal Precio { get; set; }
-    public string ArticuloPenal { get; set; }
-    public string Descripcion { get; set; }
-    public bool Pagada { get; set; }
+    public DateTime? Fecha { get; set; }
+    public DateTime? Hora { get; set; }
+    public decimal? Precio { get; set; }
+    public string? ArticuloPenal { get; set; }
+    public string? Descripcion { get; set; }
+    public bool? Pagada { get; set; }
 
-    public int IdCiudadano { get; set; }
+    public int? IdCiudadano { get; set; }
 
 }
