@@ -34,9 +34,19 @@ namespace RuleStreet.Data
             return codigoPenal;
         }
 
-        public CodigoPenalDTO? Get(int id)
+        public CodigoPenal? Get(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _context.CodigoPenal
+                .AsNoTracking()
+                .FirstOrDefault(CodigoPenal => CodigoPenal.IdCodigoPenal == id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo Ciudadano por id.");
+                throw;
+            }
         }
 
         public void Add(CodigoPenalDTO codigoPenalDTO)
@@ -46,7 +56,17 @@ namespace RuleStreet.Data
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var codigoPenal = _context.CodigoPenal.FirstOrDefault(CodigoPenal => CodigoPenal.IdCodigoPenal == id);
+                _context.CodigoPenal.Remove(codigoPenal);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al eliminar el articulo con ID {id}.");
+                throw;
+            }
         }
 
         public void Update(CodigoPenalDTO codigoPenalDTO)

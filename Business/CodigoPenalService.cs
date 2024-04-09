@@ -29,15 +29,31 @@ namespace RuleStreet.Business
             }
         }
 
-        public CodigoPenalDTO? Get(int id)
+        public CodigoPenal? Get(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _codigoPenalRepository.Get(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo la ciudadano por id");
+                throw;
+            }
         }
 
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _codigoPenalRepository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al eliminar el articulo con ID {id}.");
+                throw;
+            }
         }
 
         public void Update(CodigoPenalDTO codigoPenalDTO)

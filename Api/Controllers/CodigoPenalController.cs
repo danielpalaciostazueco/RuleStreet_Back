@@ -34,6 +34,52 @@ namespace RuleStreet.Api.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<CodigoPenal> Get(int id)
+        {
+            try
+            {
+                _logger.LogInformation($"Buscando articulo con ID: {id}");
+                var codigoPenal = _codigoPenalService.Get(id);
 
+                if (codigoPenal == null)
+                {
+                    _logger.LogWarning($"Codigo con ID: {id} no encontrada.");
+                    return NotFound();
+                }
+
+                return codigoPenal;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error obteniendo el codigo con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al obtener el codigo.");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _logger.LogInformation($"Eliminando articulo con ID: {id}");
+                var codigoPenal = _codigoPenalService.Get(id);
+
+                if (codigoPenal is null)
+                {
+                    _logger.LogWarning($"No se puede eliminar: Articulo con ID: {id} no encontrada.");
+                    return NotFound();
+                }
+
+                _codigoPenalService.Delete(id);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error obteniendo al eliminar el articulo con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al eliminar el articulo.");
+            }
+        }
     }
 }
