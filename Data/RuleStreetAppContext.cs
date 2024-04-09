@@ -12,9 +12,14 @@ namespace RuleStreet.Data
         public DbSet<Ciudadano> Ciudadano { get; set; }
         public DbSet<Policia> Policia { get; set; }
         public DbSet<Multa> Multa { get; set; }
+        public DbSet<CodigoPenal> CodigoPenal { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+
+
             modelBuilder.Entity<Ciudadano>().HasData(
                 new Ciudadano
                 {
@@ -49,6 +54,13 @@ namespace RuleStreet.Data
                     IsPeligroso = false
                 }
            );
+
+            modelBuilder.Entity<CodigoPenal>().HasData(
+                new CodigoPenal { IdCodigoPenal = 1, Articulo = "Art. 1.1", Descripcion = "Uso excesivo del claxón", Precio = 500, Sentencia = "0 meses" },
+                new CodigoPenal { IdCodigoPenal = 2, Articulo = "Art. 1.2", Descripcion = "Giro indebido", Precio = 300, Sentencia = "0 meses" },
+                new CodigoPenal { IdCodigoPenal = 3, Articulo = "Art. 1.3", Descripcion = "Circular en sentido contrario", Precio = 700, Sentencia = "0 meses" }
+             );
+
         }
     }
 }

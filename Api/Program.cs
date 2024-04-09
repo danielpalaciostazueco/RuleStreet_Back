@@ -39,6 +39,8 @@ builder.Services.AddScoped<IPoliciaRepository, PoliciaRepository>();
 builder.Services.AddScoped<MultaService>();
 builder.Services.AddScoped<IMultaRepository, MultaRepository>();
 
+builder.Services.AddScoped<CodigoPenalService>();
+builder.Services.AddScoped<ICodigoPenalRepository, CodigoPenalRepository>();
 
 builder.Services.AddCors(options =>
 {

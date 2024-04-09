@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240409150521_InitialCreate")]
+    [Migration("20240409160556_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,46 +34,39 @@ namespace RuleStreet.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCiudadano"));
 
                     b.Property<string>("Apellidos")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dni")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FechaNacimiento")
+                    b.Property<DateTime?>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Genero")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsBusquedaYCaptura")
+                    b.Property<bool?>("IsBusquedaYCaptura")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsPeligroso")
+                    b.Property<bool?>("IsPeligroso")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsPoli")
+                    b.Property<bool?>("IsPoli")
                         .HasColumnType("bit");
 
                     b.Property<string>("Nacionalidad")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumeroCuentaBancaria")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NumeroTelefono")
+                    b.Property<int?>("NumeroTelefono")
                         .HasColumnType("int");
 
                     b.HasKey("IdCiudadano");
@@ -115,6 +108,57 @@ namespace RuleStreet.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.CodigoPenal", b =>
+                {
+                    b.Property<int>("IdCodigoPenal")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCodigoPenal"));
+
+                    b.Property<string>("Articulo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Precio")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Sentencia")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdCodigoPenal");
+
+                    b.ToTable("CodigoPenal");
+
+                    b.HasData(
+                        new
+                        {
+                            IdCodigoPenal = 1,
+                            Articulo = "Art. 1.1",
+                            Descripcion = "Uso excesivo del claxón",
+                            Precio = 500m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 2,
+                            Articulo = "Art. 1.2",
+                            Descripcion = "Giro indebido",
+                            Precio = 300m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 3,
+                            Articulo = "Art. 1.3",
+                            Descripcion = "Circular en sentido contrario",
+                            Precio = 700m,
+                            Sentencia = "0 meses"
+                        });
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
                 {
                     b.Property<int>("IdMulta")
@@ -124,32 +168,30 @@ namespace RuleStreet.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMulta"));
 
                     b.Property<string>("ArticuloPenal")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CiudadanoIdCiudadano")
                         .HasColumnType("int");
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Hora")
+                    b.Property<DateTime?>("Hora")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdCiudadano")
+                    b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
 
                     b.Property<int>("IdPolicia")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Pagada")
+                    b.Property<bool?>("Pagada")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("Precio")
+                    b.Property<decimal?>("Precio")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("IdMulta");
@@ -169,15 +211,13 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPolicia"));
 
-                    b.Property<int>("IdCiudadano")
+                    b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
 
                     b.Property<string>("NumeroPlaca")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rango")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdPolicia");
@@ -206,9 +246,7 @@ namespace RuleStreet.Data.Migrations
                 {
                     b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
                         .WithMany()
-                        .HasForeignKey("IdCiudadano")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdCiudadano");
 
                     b.Navigation("Ciudadano");
                 });

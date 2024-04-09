@@ -19,22 +19,38 @@ namespace RuleStreet.Data.Migrations
                 {
                     IdCiudadano = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Dni = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Genero = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nacionalidad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NumeroTelefono = table.Column<int>(type: "int", nullable: false),
-                    NumeroCuentaBancaria = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsPoli = table.Column<bool>(type: "bit", nullable: false),
-                    IsBusquedaYCaptura = table.Column<bool>(type: "bit", nullable: false),
-                    IsPeligroso = table.Column<bool>(type: "bit", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Dni = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Genero = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nacionalidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumeroTelefono = table.Column<int>(type: "int", nullable: true),
+                    NumeroCuentaBancaria = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsPoli = table.Column<bool>(type: "bit", nullable: true),
+                    IsBusquedaYCaptura = table.Column<bool>(type: "bit", nullable: true),
+                    IsPeligroso = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ciudadano", x => x.IdCiudadano);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CodigoPenal",
+                columns: table => new
+                {
+                    IdCodigoPenal = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Articulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Sentencia = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CodigoPenal", x => x.IdCodigoPenal);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,9 +59,9 @@ namespace RuleStreet.Data.Migrations
                 {
                     IdPolicia = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdCiudadano = table.Column<int>(type: "int", nullable: false),
-                    Rango = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
+                    Rango = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -54,8 +70,7 @@ namespace RuleStreet.Data.Migrations
                         name: "FK_Policia_Ciudadano_IdCiudadano",
                         column: x => x.IdCiudadano,
                         principalTable: "Ciudadano",
-                        principalColumn: "IdCiudadano",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdCiudadano");
                 });
 
             migrationBuilder.CreateTable(
@@ -65,13 +80,13 @@ namespace RuleStreet.Data.Migrations
                     IdMulta = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdPolicia = table.Column<int>(type: "int", nullable: false),
-                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Hora = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ArticuloPenal = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pagada = table.Column<bool>(type: "bit", nullable: false),
-                    IdCiudadano = table.Column<int>(type: "int", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Hora = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ArticuloPenal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Pagada = table.Column<bool>(type: "bit", nullable: true),
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
                     CiudadanoIdCiudadano = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -99,6 +114,16 @@ namespace RuleStreet.Data.Migrations
                     { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", false, false, false, "Española", "Maria", "ES987654321", 987654321 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "CodigoPenal",
+                columns: new[] { "IdCodigoPenal", "Articulo", "Descripcion", "Precio", "Sentencia" },
+                values: new object[,]
+                {
+                    { 1, "Art. 1.1", "Uso excesivo del claxón", 500m, "0 meses" },
+                    { 2, "Art. 1.2", "Giro indebido", 300m, "0 meses" },
+                    { 3, "Art. 1.3", "Circular en sentido contrario", 700m, "0 meses" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Multa_CiudadanoIdCiudadano",
                 table: "Multa",
@@ -118,6 +143,9 @@ namespace RuleStreet.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CodigoPenal");
+
             migrationBuilder.DropTable(
                 name: "Multa");
 
