@@ -65,14 +65,8 @@ namespace RuleStreet.Business
         {
             try
             {
-                var Vehiculo = new Vehiculo(){
-                    IdVehiculo = vehiculo.IdVehiculo,
-                    IdCiudadano = vehiculo.IdCiudadano,
-                    Marca = vehiculo.Marca,
-                    Modelo = vehiculo.Modelo,
-                    Color = vehiculo.Color,
-                };
-                _vehiculoRepository.Add(Vehiculo);
+               
+                _vehiculoRepository.Add(vehiculo);
             }
             catch (Exception ex)
             {

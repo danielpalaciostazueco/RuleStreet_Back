@@ -46,11 +46,18 @@ namespace RuleStreet.Data
         }
 
 
-        public void Add(Vehiculo vehiculo)
+        public void Add(VehiculoPostDTO vehiculo)
         {
             try
             {
-                _context.Vehiculo.Add(vehiculo);
+                 var Vehiculo = new Vehiculo(){
+                    IdVehiculo = vehiculo.IdVehiculo,
+                    IdCiudadano = vehiculo.IdCiudadano,
+                    Marca = vehiculo.Marca,
+                    Modelo = vehiculo.Modelo,
+                    Color = vehiculo.Color,
+                };
+                _context.Vehiculo.Add(Vehiculo);
                 _context.SaveChanges();
             }
             catch (Exception ex)
