@@ -416,9 +416,6 @@ namespace RuleStreet.Data.Migrations
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("Hora")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
 
@@ -464,6 +461,36 @@ namespace RuleStreet.Data.Migrations
                     b.ToTable("Policia");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Vehiculo", b =>
+                {
+                    b.Property<int>("IdVehiculo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdVehiculo"));
+
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IdCiudadano")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Marca")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Matricula")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Modelo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdVehiculo");
+
+                    b.HasIndex("IdCiudadano");
+
+                    b.ToTable("Vehiculo");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
                 {
                     b.HasOne("RuleStreet.Models.Ciudadano", null)
@@ -488,9 +515,20 @@ namespace RuleStreet.Data.Migrations
                     b.Navigation("Ciudadano");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Vehiculo", b =>
+                {
+                    b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
+                        .WithMany("Vehiculos")
+                        .HasForeignKey("IdCiudadano");
+
+                    b.Navigation("Ciudadano");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
                 {
                     b.Navigation("Multas");
+
+                    b.Navigation("Vehiculos");
                 });
 #pragma warning restore 612, 618
         }

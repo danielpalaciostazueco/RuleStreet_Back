@@ -9,5 +9,6 @@ namespace RuleStreet.Business
         Policia? Get(int id);
         void Update(Policia policia);
         void Delete(int id);
+        void Add(PoliciaPostDTO policia);
     }
 }

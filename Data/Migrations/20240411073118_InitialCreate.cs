@@ -74,6 +74,28 @@ namespace RuleStreet.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Vehiculo",
+                columns: table => new
+                {
+                    IdVehiculo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Matricula = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vehiculo", x => x.IdVehiculo);
+                    table.ForeignKey(
+                        name: "FK_Vehiculo_Ciudadano_IdCiudadano",
+                        column: x => x.IdCiudadano,
+                        principalTable: "Ciudadano",
+                        principalColumn: "IdCiudadano");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Multa",
                 columns: table => new
                 {
@@ -81,7 +103,6 @@ namespace RuleStreet.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdPolicia = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Hora = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     ArticuloPenal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -168,6 +189,11 @@ namespace RuleStreet.Data.Migrations
                 name: "IX_Policia_IdCiudadano",
                 table: "Policia",
                 column: "IdCiudadano");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vehiculo_IdCiudadano",
+                table: "Vehiculo",
+                column: "IdCiudadano");
         }
 
         /// <inheritdoc />
@@ -178,6 +204,9 @@ namespace RuleStreet.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Multa");
+
+            migrationBuilder.DropTable(
+                name: "Vehiculo");
 
             migrationBuilder.DropTable(
                 name: "Policia");

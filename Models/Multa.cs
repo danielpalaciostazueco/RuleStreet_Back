@@ -15,7 +15,7 @@ public class Multa
     public Policia? Policia { get; set; }
 
     public DateTime? Fecha { get; set; }
-    public DateTime? Hora { get; set; }
+
     public decimal? Precio { get; set; }
     public string? ArticuloPenal { get; set; }
     public string? Descripcion { get; set; }

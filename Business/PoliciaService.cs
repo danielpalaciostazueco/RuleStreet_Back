@@ -61,11 +61,18 @@ namespace RuleStreet.Business
 
 
 
-        public void Add(Policia policia)
+        public void Add(PoliciaPostDTO policia)
         {
+
+            var Policia = new Policia(){
+                IdPolicia = (int)policia.IdPolicia,
+                IdCiudadano = (int)policia.IdCiudadano,
+                Rango = policia.Rango,
+                NumeroPlaca = policia.NumeroPlaca
+            };
             try
             {
-                _policiaRepository.Add(policia);
+                _policiaRepository.Add(Policia);
             }
             catch (Exception ex)
             {

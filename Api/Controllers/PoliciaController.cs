@@ -46,11 +46,12 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult<Policia> Create(Policia Policia)
+        public ActionResult<PoliciaPostDTO> Create(PoliciaPostDTO Policia)
         {
             try
             {
-                if (_PoliciaService.Get(Policia.IdPolicia) != null)
+               
+                if (_PoliciaService.Get((int)Policia.IdPolicia) != null)
                 {
                     return BadRequest($"Policia con ID {Policia.IdPolicia} ya existe.");
                 }
