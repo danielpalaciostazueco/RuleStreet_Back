@@ -407,9 +407,6 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("ArticuloPenal")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CiudadanoIdCiudadano")
-                        .HasColumnType("int");
-
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
@@ -428,11 +425,14 @@ namespace RuleStreet.Data.Migrations
                     b.Property<decimal?>("Precio")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("ciudadanoIdCiudadano")
+                        .HasColumnType("int");
+
                     b.HasKey("IdMulta");
 
-                    b.HasIndex("CiudadanoIdCiudadano");
-
                     b.HasIndex("IdPolicia");
+
+                    b.HasIndex("ciudadanoIdCiudadano");
 
                     b.ToTable("Multa");
                 });
@@ -493,17 +493,19 @@ namespace RuleStreet.Data.Migrations
 
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
                 {
-                    b.HasOne("RuleStreet.Models.Ciudadano", null)
-                        .WithMany("Multas")
-                        .HasForeignKey("CiudadanoIdCiudadano");
-
                     b.HasOne("RuleStreet.Models.Policia", "Policia")
                         .WithMany()
                         .HasForeignKey("IdPolicia")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
+                        .WithMany("Multas")
+                        .HasForeignKey("ciudadanoIdCiudadano");
+
                     b.Navigation("Policia");
+
+                    b.Navigation("ciudadano");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Policia", b =>

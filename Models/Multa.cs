@@ -21,6 +21,8 @@ public class Multa
     public string? Descripcion { get; set; }
     public bool? Pagada { get; set; }
 
+    [ForeignKey("Ciudadano")]
     public int? IdCiudadano { get; set; }
+    public Ciudadano? ciudadano { get; set; }
 
 }

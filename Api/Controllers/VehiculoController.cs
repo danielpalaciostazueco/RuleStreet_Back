@@ -19,13 +19,13 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Vehiculo>> GetAll()
+        public ActionResult<List<VehiculoDTO>> GetAll()
         {
             return _VehiculoService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Vehiculo> Get(int id)
+        public ActionResult<VehiculoDTO> Get(int id)
         {
             try
             {

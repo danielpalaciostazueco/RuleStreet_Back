@@ -6,7 +6,7 @@ namespace RuleStreet.Business
     public interface IPoliciaService
     {
         List<PoliciaDTO> GetAll();
-        Policia? Get(int id);
+        PoliciaDTO? Get(int id);
         void Update(Policia policia);
         void Delete(int id);
         void Add(PoliciaPostDTO policia);

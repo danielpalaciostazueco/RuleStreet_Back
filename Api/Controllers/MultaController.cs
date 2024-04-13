@@ -46,7 +46,7 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult<Multa> Create(Multa multa)
+        public ActionResult<MultaDTO> Create(MultaDTO multa)
         {
             try
             {

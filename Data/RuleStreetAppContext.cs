@@ -18,9 +18,16 @@ namespace RuleStreet.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Vehiculo>()
-                .HasOne(v => v.Ciudadano) 
-                .WithMany(c => c.Vehiculos) 
-                .HasForeignKey(v => v.IdCiudadano); 
+                .HasOne(v => v.Ciudadano)
+                .WithMany(c => c.Vehiculos)
+                .HasForeignKey(v => v.IdCiudadano);
+
+            modelBuilder.Entity<Multa>()
+                .HasOne(v => v.ciudadano)
+                .WithMany(c => c.Multas)
+                .HasForeignKey(v => v.IdCiudadano);
+
+
 
             modelBuilder.Entity<Ciudadano>().HasData(
                 new Ciudadano

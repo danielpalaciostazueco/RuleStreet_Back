@@ -61,11 +61,22 @@ namespace RuleStreet.Business
 
 
 
-        public void Add(Multa multa)
+        public void Add(MultaDTO multa)
         {
             try
             {
-                _multaRepository.Add(multa);
+                var Multa = new Multa
+                {
+                    IdMulta = multa.IdMulta,
+                    IdPolicia = (int)multa.IdPolicia,
+                    Fecha = multa.Fecha,
+                    Precio = multa.Precio,
+                    ArticuloPenal = multa.ArticuloPenal,
+                    Descripcion = multa.Descripcion,
+                    Pagada = multa.Pagada,
+                    IdCiudadano = multa.IdCiudadano
+                };
+                _multaRepository.Add(Multa);
             }
             catch (Exception ex)
             {

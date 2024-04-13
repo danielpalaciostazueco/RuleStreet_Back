@@ -25,7 +25,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Policia> Get(int id)
+        public ActionResult<PoliciaDTO> Get(int id)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace RuleStreet.Api.Controllers
         {
             try
             {
-               
+
                 if (_PoliciaService.Get((int)Policia.IdPolicia) != null)
                 {
                     return BadRequest($"Policia con ID {Policia.IdPolicia} ya existe.");

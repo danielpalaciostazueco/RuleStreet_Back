@@ -22,26 +22,81 @@ namespace RuleStreet.Data
             _logger = logger;
         }
 
-        public List<Vehiculo> GetAll()
+        public List<VehiculoDTO> GetAll()
         {
+            var vehiculos = _context.Vehiculo
+                .Include(v => v.Ciudadano)
+                .Select(v => new VehiculoDTO
+                {
+                    IdVehiculo = v.IdVehiculo,
+                    Matricula = v.Matricula,
+                    Marca = v.Marca,
+                    Modelo = v.Modelo,
+                    Color = v.Color,
+                    IdCiudadano = v.IdCiudadano,
+                    Ciudadano = new CiudadanoDTO
+                    {
+                        IdCiudadano = v.Ciudadano.IdCiudadano,
+                        Nombre = v.Ciudadano.Nombre,
+                        Apellidos = v.Ciudadano.Apellidos,
+                        Dni = v.Ciudadano.Dni,
+                        Genero = v.Ciudadano.Genero,
+                        Nacionalidad = v.Ciudadano.Nacionalidad,
+                        FechaNacimiento = v.Ciudadano.FechaNacimiento,
+                        Direccion = v.Ciudadano.Direccion,
+                        NumeroTelefono = v.Ciudadano.NumeroTelefono,
+                        NumeroCuentaBancaria = v.Ciudadano.NumeroCuentaBancaria,
+                        IsPoli = v.Ciudadano.IsPoli,
+                        IsBusquedaYCaptura = v.Ciudadano.IsBusquedaYCaptura,
+                        IsPeligroso = v.Ciudadano.IsPeligroso
+                    }
+                })
+                .ToList();
 
-            return _context.Vehiculo.ToList();
-
-
-
+            return vehiculos;
         }
 
-        public Vehiculo Get(int id)
+        public VehiculoDTO Get(int id)
         {
             try
             {
-                return _context.Vehiculo.AsNoTracking().FirstOrDefault(Vehiculo => Vehiculo.IdVehiculo == id);
+                var vehiculo = _context.Vehiculo
+                    .AsNoTracking()
+                    .Where(v => v.IdVehiculo == id)
+                    .Include(v => v.Ciudadano)
+                    .Select(v => new VehiculoDTO
+                    {
+                        IdVehiculo = v.IdVehiculo,
+                        Matricula = v.Matricula,
+                        Marca = v.Marca,
+                        Modelo = v.Modelo,
+                        Color = v.Color,
+                        IdCiudadano = v.IdCiudadano,
+                        Ciudadano = new CiudadanoDTO
+                        {
+                            IdCiudadano = v.Ciudadano.IdCiudadano,
+                            Nombre = v.Ciudadano.Nombre,
+                            Apellidos = v.Ciudadano.Apellidos,
+                            Dni = v.Ciudadano.Dni,
+                            Genero = v.Ciudadano.Genero,
+                            Nacionalidad = v.Ciudadano.Nacionalidad,
+                            FechaNacimiento = v.Ciudadano.FechaNacimiento,
+                            Direccion = v.Ciudadano.Direccion,
+                            NumeroTelefono = v.Ciudadano.NumeroTelefono,
+                            NumeroCuentaBancaria = v.Ciudadano.NumeroCuentaBancaria,
+                            IsPoli = v.Ciudadano.IsPoli,
+                            IsBusquedaYCaptura = v.Ciudadano.IsBusquedaYCaptura,
+                            IsPeligroso = v.Ciudadano.IsPeligroso
+                        }
+                    })
+                    .FirstOrDefault();
+
+                return vehiculo;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error obteniendo el vehiculo por id.");
+                _logger.LogError(ex, "Error al obtener el vehiculo.");
                 throw;
-
             }
         }
 
@@ -50,9 +105,11 @@ namespace RuleStreet.Data
         {
             try
             {
-                 var Vehiculo = new Vehiculo(){
+                var Vehiculo = new Vehiculo()
+                {
                     IdVehiculo = vehiculo.IdVehiculo,
                     IdCiudadano = vehiculo.IdCiudadano,
+                    Matricula = vehiculo.Matricula,
                     Marca = vehiculo.Marca,
                     Modelo = vehiculo.Modelo,
                     Color = vehiculo.Color,

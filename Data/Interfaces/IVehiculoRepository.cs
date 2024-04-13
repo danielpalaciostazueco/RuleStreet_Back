@@ -5,8 +5,8 @@ namespace RuleStreet.Business
 {
     public interface IVehiculoRepository
     {
-        List<Vehiculo> GetAll();
-        Vehiculo? Get(int id);
+        List<VehiculoDTO> GetAll();
+        VehiculoDTO? Get(int id);
         void Add(VehiculoPostDTO vehiculo);
         void Update(Vehiculo vehiculo);
         void Delete(int id);

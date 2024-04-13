@@ -18,4 +18,5 @@ public class CiudadanoDTO
     public bool? IsBusquedaYCaptura { get; set; }
     public bool? IsPeligroso { get; set; }
     public List<MultaDTO>? Multas { get; set; }
+    public List<VehiculoDTO>? Vehiculos { get; set; }
 }

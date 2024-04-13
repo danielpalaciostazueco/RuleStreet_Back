@@ -108,14 +108,14 @@ namespace RuleStreet.Data.Migrations
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pagada = table.Column<bool>(type: "bit", nullable: true),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true),
-                    CiudadanoIdCiudadano = table.Column<int>(type: "int", nullable: true)
+                    ciudadanoIdCiudadano = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Multa", x => x.IdMulta);
                     table.ForeignKey(
-                        name: "FK_Multa_Ciudadano_CiudadanoIdCiudadano",
-                        column: x => x.CiudadanoIdCiudadano,
+                        name: "FK_Multa_Ciudadano_ciudadanoIdCiudadano",
+                        column: x => x.ciudadanoIdCiudadano,
                         principalTable: "Ciudadano",
                         principalColumn: "IdCiudadano");
                     table.ForeignKey(
@@ -176,9 +176,9 @@ namespace RuleStreet.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Multa_CiudadanoIdCiudadano",
+                name: "IX_Multa_ciudadanoIdCiudadano",
                 table: "Multa",
-                column: "CiudadanoIdCiudadano");
+                column: "ciudadanoIdCiudadano");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Multa_IdPolicia",

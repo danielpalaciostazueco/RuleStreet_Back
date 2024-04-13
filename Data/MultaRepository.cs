@@ -20,30 +20,31 @@ namespace RuleStreet.Data
             _context = context;
             _logger = logger;
         }
-
         public List<Multa> GetAll()
         {
-
-            return _context.Multa.ToList();
-
-
-
+            return _context.Multa
+                .Include(m => m.Policia)
+                    .ThenInclude(p => p.Ciudadano)
+                .Include(m => m.ciudadano)
+                .ToList();
         }
 
         public Multa Get(int id)
         {
             try
             {
-                return _context.Multa.AsNoTracking().FirstOrDefault(Multa => Multa.IdMulta == id);
+                return _context.Multa
+                    .Include(m => m.Policia)
+                    .Include(m => m.ciudadano)
+                    .AsNoTracking()
+                    .FirstOrDefault(Multa => Multa.IdMulta == id);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error obteniendo la multa por id.");
                 throw;
-
             }
         }
-
 
         public void Add(Multa multa)
         {

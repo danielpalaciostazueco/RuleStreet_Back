@@ -30,7 +30,7 @@ namespace RuleStreet.Business
                 throw;
             }
         }
-        public Policia? Get(int id)
+        public PoliciaDTO? Get(int id)
         {
             try
             {
@@ -64,7 +64,8 @@ namespace RuleStreet.Business
         public void Add(PoliciaPostDTO policia)
         {
 
-            var Policia = new Policia(){
+            var Policia = new Policia()
+            {
                 IdPolicia = (int)policia.IdPolicia,
                 IdCiudadano = (int)policia.IdCiudadano,
                 Rango = policia.Rango,

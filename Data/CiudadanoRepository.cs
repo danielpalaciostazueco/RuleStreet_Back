@@ -20,11 +20,12 @@ namespace RuleStreet.Data
             _context = context;
             _logger = logger;
         }
-
         public List<CiudadanoDTO> GetAll()
         {
             var ciudadanos = _context.Ciudadano
                 .Include(c => c.Multas)
+                    .ThenInclude(m => m.Policia)
+                .Include(c => c.Vehiculos)
                 .Select(c => new CiudadanoDTO
                 {
                     IdCiudadano = c.IdCiudadano,
@@ -43,19 +44,31 @@ namespace RuleStreet.Data
                     Multas = c.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
-                        IdPolicia = m.IdPolicia,
+                        IdPolicia = m.Policia.IdPolicia,
                         Fecha = m.Fecha,
                         Precio = m.Precio,
                         ArticuloPenal = m.ArticuloPenal,
                         Descripcion = m.Descripcion,
                         Pagada = m.Pagada,
                         IdCiudadano = m.IdCiudadano
+                    }).ToList(),
+                    Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
+                    {
+                        IdVehiculo = v.IdVehiculo,
+                        Matricula = v.Matricula,
+                        Marca = v.Marca,
+                        Modelo = v.Modelo,
+                        Color = v.Color,
+                        IdCiudadano = v.IdCiudadano
                     }).ToList()
                 })
                 .ToList();
 
             return ciudadanos;
         }
+
+
+
 
         public CiudadanoDTO Get(int id)
         {
@@ -64,6 +77,7 @@ namespace RuleStreet.Data
                 var ciudadano = _context.Ciudadano
                     .Where(c => c.IdCiudadano == id)
                     .Include(c => c.Multas)
+                    .Include(c => c.Vehiculos)
                     .Select(c => new CiudadanoDTO
                     {
                         IdCiudadano = c.IdCiudadano,
@@ -89,6 +103,15 @@ namespace RuleStreet.Data
                             Descripcion = m.Descripcion,
                             Pagada = m.Pagada,
                             IdCiudadano = m.IdCiudadano
+                        }).ToList(),
+                        Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
+                        {
+                            IdVehiculo = v.IdVehiculo,
+                            IdCiudadano = v.IdCiudadano,
+                            Matricula = v.Matricula,
+                            Marca = v.Marca,
+                            Modelo = v.Modelo,
+                            Color = v.Color
                         }).ToList()
                     })
                     .AsNoTracking()
@@ -102,6 +125,7 @@ namespace RuleStreet.Data
                 throw;
             }
         }
+
 
         public void Add(CiudadanoPostDTO ciudadanoPostDTO)
         {

@@ -9,5 +9,6 @@ namespace RuleStreet.Business
         Multa? Get(int id);
         void Update(Multa multa);
         void Delete(int id);
+        void Add(MultaDTO multa);
     }
 }

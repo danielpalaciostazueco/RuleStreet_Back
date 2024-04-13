@@ -17,7 +17,7 @@ namespace RuleStreet.Business
             _logger = logger;
         }
 
-        public List<Vehiculo> GetAll()
+        public List<VehiculoDTO> GetAll()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace RuleStreet.Business
                 throw;
             }
         }
-        public Vehiculo? Get(int id)
+        public VehiculoDTO? Get(int id)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace RuleStreet.Business
         {
             try
             {
-               
+
                 _vehiculoRepository.Add(vehiculo);
             }
             catch (Exception ex)
