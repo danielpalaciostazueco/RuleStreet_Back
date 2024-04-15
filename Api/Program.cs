@@ -51,6 +51,9 @@ builder.Services.AddScoped<ICodigoPenalRepository, CodigoPenalRepository>();
 builder.Services.AddScoped<VehiculoService>();
 builder.Services.AddScoped<IVehiculoRepository, VehiculoRepository>();
 
+builder.Services.AddScoped<AuditoriaService>();
+builder.Services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy",

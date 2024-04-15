@@ -22,6 +22,36 @@ namespace RuleStreet.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("RuleStreet.Models.Auditoria", b =>
+                {
+                    b.Property<int>("IdAuditoria")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAuditoria"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("IdPolicia")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("policiaIdPolicia")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdAuditoria");
+
+                    b.HasIndex("policiaIdPolicia");
+
+                    b.ToTable("Auditoria");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
                 {
                     b.Property<int>("IdCiudadano")
@@ -425,14 +455,11 @@ namespace RuleStreet.Data.Migrations
                     b.Property<decimal?>("Precio")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("ciudadanoIdCiudadano")
-                        .HasColumnType("int");
-
                     b.HasKey("IdMulta");
 
-                    b.HasIndex("IdPolicia");
+                    b.HasIndex("IdCiudadano");
 
-                    b.HasIndex("ciudadanoIdCiudadano");
+                    b.HasIndex("IdPolicia");
 
                     b.ToTable("Multa");
                 });
@@ -491,17 +518,26 @@ namespace RuleStreet.Data.Migrations
                     b.ToTable("Vehiculo");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Auditoria", b =>
+                {
+                    b.HasOne("RuleStreet.Models.Policia", "policia")
+                        .WithMany()
+                        .HasForeignKey("policiaIdPolicia");
+
+                    b.Navigation("policia");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
                 {
+                    b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
+                        .WithMany("Multas")
+                        .HasForeignKey("IdCiudadano");
+
                     b.HasOne("RuleStreet.Models.Policia", "Policia")
                         .WithMany()
                         .HasForeignKey("IdPolicia")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
-                        .WithMany("Multas")
-                        .HasForeignKey("ciudadanoIdCiudadano");
 
                     b.Navigation("Policia");
 

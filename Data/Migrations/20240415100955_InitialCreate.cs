@@ -96,6 +96,28 @@ namespace RuleStreet.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Auditoria",
+                columns: table => new
+                {
+                    IdAuditoria = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdPolicia = table.Column<int>(type: "int", nullable: true),
+                    policiaIdPolicia = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Auditoria", x => x.IdAuditoria);
+                    table.ForeignKey(
+                        name: "FK_Auditoria_Policia_policiaIdPolicia",
+                        column: x => x.policiaIdPolicia,
+                        principalTable: "Policia",
+                        principalColumn: "IdPolicia");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Multa",
                 columns: table => new
                 {
@@ -107,15 +129,14 @@ namespace RuleStreet.Data.Migrations
                     ArticuloPenal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pagada = table.Column<bool>(type: "bit", nullable: true),
-                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
-                    ciudadanoIdCiudadano = table.Column<int>(type: "int", nullable: true)
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Multa", x => x.IdMulta);
                     table.ForeignKey(
-                        name: "FK_Multa_Ciudadano_ciudadanoIdCiudadano",
-                        column: x => x.ciudadanoIdCiudadano,
+                        name: "FK_Multa_Ciudadano_IdCiudadano",
+                        column: x => x.IdCiudadano,
                         principalTable: "Ciudadano",
                         principalColumn: "IdCiudadano");
                     table.ForeignKey(
@@ -176,9 +197,14 @@ namespace RuleStreet.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Multa_ciudadanoIdCiudadano",
+                name: "IX_Auditoria_policiaIdPolicia",
+                table: "Auditoria",
+                column: "policiaIdPolicia");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Multa_IdCiudadano",
                 table: "Multa",
-                column: "ciudadanoIdCiudadano");
+                column: "IdCiudadano");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Multa_IdPolicia",
@@ -199,6 +225,9 @@ namespace RuleStreet.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Auditoria");
+
             migrationBuilder.DropTable(
                 name: "CodigoPenal");
 
