@@ -15,7 +15,7 @@ namespace RuleStreet.Data
         public DbSet<CodigoPenal> CodigoPenal { get; set; }
         public DbSet<Vehiculo> Vehiculo { get; set; }
         public DbSet<Auditoria> Auditoria { get; set; }
-
+        public DbSet<Permiso> Permiso { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Vehiculo>()
