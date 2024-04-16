@@ -64,7 +64,7 @@ namespace RuleStreet.Data
                     IsPeligroso = false
                 }
            );
-
+        
             modelBuilder.Entity<CodigoPenal>().HasData(
                 new CodigoPenal { IdCodigoPenal = 1, Articulo = "Art. 1.1", Descripcion = "Uso excesivo del claxón", Precio = 500, Sentencia = "0 meses" },
                 new CodigoPenal { IdCodigoPenal = 2, Articulo = "Art. 1.2", Descripcion = "Giro indebido", Precio = 300, Sentencia = "0 meses" },

@@ -5,8 +5,8 @@ namespace RuleStreet.Business
 {
     public interface IAuditoriaRepository
     {
-        List<Auditoria> GetAll();
-        Auditoria? Get(int id);
+        List<AuditoriaDTO> GetAll();
+        AuditoriaDTO? Get(int id);
         void Add(Auditoria auditoria);
         void Delete(int id);
         void Update(Auditoria auditoria);

@@ -20,27 +20,48 @@ namespace RuleStreet.Data
             _context = context;
             _logger = logger;
         }
-        public List<Auditoria> GetAll()
+public List<AuditoriaDTO> GetAll()
+{
+    var auditorias = _context.Auditoria
+        .Include(m => m.policia)
+        .Select(c => new AuditoriaDTO
         {
-            return _context.Auditoria
-                .Include(m => m.policia)
-                .ToList();
-        }
+            IdAuditoria = c.IdAuditoria,
+            Titulo = c.Titulo,
+            Descripcion = c.Descripcion,
+            Fecha = c.Fecha,
+            IdPolicia = c.IdPolicia,
+            policia = c.policia 
+        }).ToList();
 
-        public Auditoria Get(int id)
+    return auditorias;
+}
+        public AuditoriaDTO Get(int id)
         {
-            try
+            var auditoria = _context.Auditoria
+                .Include(m => m.policia)
+                .FirstOrDefault(c => c.IdAuditoria == id);
+
+            if (auditoria == null)
             {
-                return _context.Auditoria
-                    .Include(m => m.policia)
-                    .AsNoTracking()
-                    .FirstOrDefault(Auditoria => Auditoria.IdAuditoria == id);
+                return null;
             }
-            catch (Exception ex)
+
+            return new AuditoriaDTO
             {
-                _logger.LogError(ex, "Error obteniendo la auditoria por id.");
-                throw;
-            }
+                IdAuditoria = auditoria.IdAuditoria,
+                Titulo = auditoria.Titulo,
+                Descripcion = auditoria.Descripcion,
+                Fecha = auditoria.Fecha,
+                IdPolicia = auditoria.IdPolicia,
+                policia =  new Policia()
+                {
+                    IdPolicia = auditoria.policia.IdPolicia,
+                    IdCiudadano = auditoria.policia.IdCiudadano,
+                    Rango = auditoria.policia.Rango,
+                    NumeroPlaca = auditoria.policia.NumeroPlaca,
+                }
+            };
         }
 
         public void Add(Auditoria auditoria)

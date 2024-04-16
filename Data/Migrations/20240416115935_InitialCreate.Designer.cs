@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240415100955_InitialCreate")]
+    [Migration("20240416115935_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -8,14 +8,17 @@ namespace RuleStreet.Business
     public class AuditoriaService : IAuditoriaService
     {
         private readonly IAuditoriaRepository _auditoriaRepository;
+        private readonly IPoliciaRepository _policeRepository;
         private readonly ILogger<AuditoriaService> _logger;
 
-        public AuditoriaService(IAuditoriaRepository auditoriaRepository, ILogger<AuditoriaService> logger)
+        public AuditoriaService(IAuditoriaRepository auditoriaRepository, ILogger<AuditoriaService> logger, IPoliciaRepository policeRepository)
         {
             _auditoriaRepository = auditoriaRepository;
             _logger = logger;
+            _policeRepository = policeRepository;
         }
-        public List<Auditoria> GetAll()
+       
+        public List<AuditoriaDTO> GetAll()
         {
             try
             {
@@ -29,7 +32,7 @@ namespace RuleStreet.Business
             }
         }
 
-        public Auditoria? Get(int id)
+        public AuditoriaDTO? Get(int id)
         {
             try
             {
@@ -56,11 +59,27 @@ namespace RuleStreet.Business
             }
         }
 
-        public void Add(Auditoria auditoria)
+        public void Add(AuditoriaPostDTO auditoria)
         {
             try
             {
-                _auditoriaRepository.Add(auditoria);
+                var policia = _policeRepository.Get((int)auditoria.IdPolicia);
+                var Auditoria = new Auditoria(){
+                    IdAuditoria = auditoria.IdAuditoria,
+                    Titulo = auditoria.Titulo,
+                    Fecha = auditoria.Fecha,
+                    Descripcion = auditoria.Descripcion,
+                    IdPolicia = auditoria.IdPolicia,
+                    policia = new Policia(){
+                       
+                        IdPolicia = policia.IdPolicia,
+                        IdCiudadano = policia.IdCiudadano,
+                        Rango = policia.Rango,
+                        NumeroPlaca = policia.NumeroPlaca
+                    }
+                };
+
+                _auditoriaRepository.Add(Auditoria);
             }
             catch (Exception ex)
             {

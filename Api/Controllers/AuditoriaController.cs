@@ -19,13 +19,13 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Auditoria>> GetAll()
+        public ActionResult<List<AuditoriaDTO>> GetAll()
         {
             return _AuditoriaService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Auditoria> Get(int id)
+        public ActionResult<AuditoriaDTO> Get(int id)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult<Auditoria> Create(Auditoria auditoria)
+        public ActionResult<AuditoriaPostDTO> Create(AuditoriaPostDTO auditoria)
         {
             try
             {
