@@ -59,8 +59,30 @@ namespace RuleStreet.Business
             }
         }
 
+        public void Delete(int id)
+        {
+            try
+            {
+                _permisoRepository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error eliminando el permiso por id");
+                throw;
+            }
+        }
 
-
-
+        public void Add(Permiso permiso)
+        {
+            try
+            {
+                _permisoRepository.Add(permiso);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error añadiendo el permiso");
+                throw;
+            }
+        }
     }
 }

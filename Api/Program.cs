@@ -57,6 +57,14 @@ builder.Services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
 builder.Services.AddScoped<PermisoService>();
 builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
 
+builder.Services.AddScoped<DenunciaService>();
+builder.Services.AddScoped<IDenunciaRepository, DenunciaRepository>();
+
+
+builder.Services.AddScoped<NotaService>();
+builder.Services.AddScoped<INotaRepository, NotaRepository>();
+
+
 
 
 builder.Services.AddCors(options =>

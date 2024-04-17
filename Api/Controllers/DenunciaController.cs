@@ -8,34 +8,34 @@ namespace RuleStreet.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AuditoriaController : ControllerBase
+    public class DenunciaController : ControllerBase
     {
-        private readonly AuditoriaService _AuditoriaService;
+        private readonly DenunciaService _DenunciaService;
 
 
-        public AuditoriaController(AuditoriaService AuditoriaService)
+        public DenunciaController(DenunciaService DenunciaService)
         {
-            _AuditoriaService = AuditoriaService;
+            _DenunciaService = DenunciaService;
         }
 
         [HttpGet]
-        public ActionResult<List<AuditoriaDTO>> GetAll()
+        public ActionResult<List<Denuncia>> GetAll()
         {
-            return _AuditoriaService.GetAll();
+            return _DenunciaService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<AuditoriaDTO> Get(int id)
+        public ActionResult<Denuncia> Get(int id)
         {
             try
             {
-                var Auditoria = _AuditoriaService.Get(id);
-                if (Auditoria == null)
+                var Denuncia = _DenunciaService.Get(id);
+                if (Denuncia == null)
                 {
                     return NotFound();
                 }
 
-                return Auditoria;
+                return Denuncia;
             }
             catch (Exception ex)
             {
@@ -46,47 +46,47 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult<AuditoriaPostDTO> Create(AuditoriaPostDTO auditoria)
+        public ActionResult<DenunciaPostDTO> Create(DenunciaPostDTO denuncia)
         {
             try
             {
-                if (_AuditoriaService.Get(auditoria.IdAuditoria) != null)
+                if (_DenunciaService.Get(denuncia.IdDenuncia) != null)
                 {
-                    return BadRequest($"Ciudadano con ID {auditoria.IdAuditoria} ya existe.");
+                    return BadRequest($"La Denuncia{denuncia.IdDenuncia} ya existe.");
                 }
 
-                _AuditoriaService.Add(auditoria);
-                return CreatedAtAction(nameof(Create), new { id = auditoria.IdAuditoria }, auditoria);
+                _DenunciaService.Add(denuncia);
+                return Ok();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al obtener todas las auditorias");
-                return StatusCode(ex.HResult, ex.Message);
+                Log.Error(ex, "Error al crear la multa");
+                return StatusCode(500, "Error interno del servidor");
             }
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Auditoria auditoria)
+        public IActionResult Update(int id, Denuncia denuncia)
         {
             try
             {
-                if (id != auditoria.IdAuditoria)
+                if (id != denuncia.IdDenuncia)
                 {
                     return BadRequest();
                 }
 
-                var existingAuditoria = _AuditoriaService.Get(id);
-                if (existingAuditoria == null)
+                var existingDenuncia = _DenunciaService.Get(id);
+                if (existingDenuncia == null)
                 {
                     return NotFound();
                 }
 
-                _AuditoriaService.Update(auditoria);
+                _DenunciaService.Update(denuncia);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al modificar la auditoria por id");
+                Log.Error(ex, "Error al modificar la Denuncia por id");
                 return StatusCode(500, "Error interno del servidor");
             }
         }
@@ -96,18 +96,18 @@ namespace RuleStreet.Api.Controllers
         {
             try
             {
-                var Auditoria = _AuditoriaService.Get(id);
-                if (Auditoria == null)
+                var Denuncia = _DenunciaService.Get(id);
+                if (Denuncia == null)
                 {
                     return NotFound();
                 }
 
-                _AuditoriaService.Delete(id);
+                _DenunciaService.Delete(id);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al eliminar la auditoria por id");
+                Log.Error(ex, "Error al eliminar la Denuncia por id");
                 return StatusCode(500, "Error interno del servidor");
             }
         }

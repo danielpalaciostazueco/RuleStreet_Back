@@ -8,34 +8,34 @@ namespace RuleStreet.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AuditoriaController : ControllerBase
+    public class NotaController : ControllerBase
     {
-        private readonly AuditoriaService _AuditoriaService;
+        private readonly NotaService _NotaService;
 
 
-        public AuditoriaController(AuditoriaService AuditoriaService)
+        public NotaController(NotaService NotaService)
         {
-            _AuditoriaService = AuditoriaService;
+            _NotaService = NotaService;
         }
 
         [HttpGet]
-        public ActionResult<List<AuditoriaDTO>> GetAll()
+        public ActionResult<List<Nota>> GetAll()
         {
-            return _AuditoriaService.GetAll();
+            return _NotaService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<AuditoriaDTO> Get(int id)
+        public ActionResult<Nota> Get(int id)
         {
             try
             {
-                var Auditoria = _AuditoriaService.Get(id);
-                if (Auditoria == null)
+                var Nota = _NotaService.Get(id);
+                if (Nota == null)
                 {
                     return NotFound();
                 }
 
-                return Auditoria;
+                return Nota;
             }
             catch (Exception ex)
             {
@@ -46,47 +46,47 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult<AuditoriaPostDTO> Create(AuditoriaPostDTO auditoria)
+        public ActionResult<NotaPostDTO> Create(NotaPostDTO Nota)
         {
             try
             {
-                if (_AuditoriaService.Get(auditoria.IdAuditoria) != null)
+                if (_NotaService.Get(Nota.IdNota) != null)
                 {
-                    return BadRequest($"Ciudadano con ID {auditoria.IdAuditoria} ya existe.");
+                    return BadRequest($"La Nota{Nota.IdNota} ya existe.");
                 }
 
-                _AuditoriaService.Add(auditoria);
-                return CreatedAtAction(nameof(Create), new { id = auditoria.IdAuditoria }, auditoria);
+                _NotaService.Add(Nota);
+                return Ok();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al obtener todas las auditorias");
-                return StatusCode(ex.HResult, ex.Message);
+                Log.Error(ex, "Error al crear la nota");
+                return StatusCode(500, "Error interno del servidor");
             }
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Auditoria auditoria)
+        public IActionResult Update(int id, Nota Nota)
         {
             try
             {
-                if (id != auditoria.IdAuditoria)
+                if (id != Nota.IdNota)
                 {
                     return BadRequest();
                 }
 
-                var existingAuditoria = _AuditoriaService.Get(id);
-                if (existingAuditoria == null)
+                var existingNota = _NotaService.Get(id);
+                if (existingNota == null)
                 {
                     return NotFound();
                 }
 
-                _AuditoriaService.Update(auditoria);
+                _NotaService.Update(Nota);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al modificar la auditoria por id");
+                Log.Error(ex, "Error al modificar la Nota por id");
                 return StatusCode(500, "Error interno del servidor");
             }
         }
@@ -96,18 +96,18 @@ namespace RuleStreet.Api.Controllers
         {
             try
             {
-                var Auditoria = _AuditoriaService.Get(id);
-                if (Auditoria == null)
+                var Nota = _NotaService.Get(id);
+                if (Nota == null)
                 {
                     return NotFound();
                 }
 
-                _AuditoriaService.Delete(id);
+                _NotaService.Delete(id);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al eliminar la auditoria por id");
+                Log.Error(ex, "Error al eliminar la Nota por id");
                 return StatusCode(500, "Error interno del servidor");
             }
         }

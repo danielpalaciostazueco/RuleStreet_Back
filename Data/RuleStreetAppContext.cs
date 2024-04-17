@@ -16,6 +16,11 @@ namespace RuleStreet.Data
         public DbSet<Vehiculo> Vehiculo { get; set; }
         public DbSet<Auditoria> Auditoria { get; set; }
         public DbSet<Permiso> Permiso { get; set; }
+        public DbSet<Rango> Rango { get; set; }
+        public DbSet<Denuncia> Denuncia { get; set; }
+        public DbSet<Nota> Nota { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Vehiculo>()
@@ -27,6 +32,35 @@ namespace RuleStreet.Data
                 .HasOne(v => v.ciudadano)
                 .WithMany(c => c.Multas)
                 .HasForeignKey(v => v.IdCiudadano);
+
+            modelBuilder.Entity<Auditoria>()
+                .HasOne(a => a.policia)
+                .WithMany()
+                .HasForeignKey(a => a.IdPolicia);
+
+            modelBuilder.Entity<Denuncia>(entity =>
+            {
+                entity.HasKey(d => d.IdDenuncia);
+                entity.HasOne(d => d.Policia)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdPolicia);
+                entity.HasOne(d => d.Ciudadano)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdCiudadano);
+
+            });
+
+            modelBuilder.Entity<Nota>(entity =>
+            {
+                entity.HasKey(d => d.IdNota);
+                entity.HasOne(d => d.policia)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdPolicia);
+                entity.HasOne(d => d.ciudadano)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdCiudadano);
+
+            });
 
 
 
@@ -64,7 +98,7 @@ namespace RuleStreet.Data
                     IsPeligroso = false
                 }
            );
-        
+
             modelBuilder.Entity<CodigoPenal>().HasData(
                 new CodigoPenal { IdCodigoPenal = 1, Articulo = "Art. 1.1", Descripcion = "Uso excesivo del claxón", Precio = 500, Sentencia = "0 meses" },
                 new CodigoPenal { IdCodigoPenal = 2, Articulo = "Art. 1.2", Descripcion = "Giro indebido", Precio = 300, Sentencia = "0 meses" },

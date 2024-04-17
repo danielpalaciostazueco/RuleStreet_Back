@@ -9,6 +9,10 @@ namespace RuleStreet.Business
         Permiso? Get(int id);
         void Update(Permiso permiso);
 
-    
+        void Add(Permiso permiso);
+
+        void Delete(int id);
+
+
     }
 }

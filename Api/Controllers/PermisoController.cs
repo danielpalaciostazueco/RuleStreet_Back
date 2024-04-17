@@ -3,6 +3,7 @@ using RuleStreet.Models;
 using RuleStreet.Business;
 using System.Collections.Generic;
 using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace RuleStreet.Api.Controllers
 {
@@ -71,8 +72,31 @@ namespace RuleStreet.Api.Controllers
                 return StatusCode(500, "Error interno del servidor");
             }
         }
-        
 
-    
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var Permiso = _PermisoService.Get(id);
+
+                if (Permiso is null)
+
+                {
+                    return NotFound();
+                }
+
+                _PermisoService.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Error obteniendo al eliminar el articulo con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al eliminar el articulo.");
+            }
+        }
+
+
+
     }
 }

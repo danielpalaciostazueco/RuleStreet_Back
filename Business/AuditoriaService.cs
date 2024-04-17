@@ -11,13 +11,12 @@ namespace RuleStreet.Business
         private readonly IPoliciaRepository _policeRepository;
         private readonly ILogger<AuditoriaService> _logger;
 
-        public AuditoriaService(IAuditoriaRepository auditoriaRepository, ILogger<AuditoriaService> logger, IPoliciaRepository policeRepository)
+        public AuditoriaService(IAuditoriaRepository auditoriaRepository, ILogger<AuditoriaService> logger)
         {
             _auditoriaRepository = auditoriaRepository;
             _logger = logger;
-            _policeRepository = policeRepository;
         }
-       
+
         public List<AuditoriaDTO> GetAll()
         {
             try
@@ -63,28 +62,22 @@ namespace RuleStreet.Business
         {
             try
             {
-                var policia = _policeRepository.Get((int)auditoria.IdPolicia);
-                var Auditoria = new Auditoria(){
+                var Auditoria = new Auditoria()
+                {
                     IdAuditoria = auditoria.IdAuditoria,
                     Titulo = auditoria.Titulo,
                     Fecha = auditoria.Fecha,
                     Descripcion = auditoria.Descripcion,
                     IdPolicia = auditoria.IdPolicia,
-                    policia = new Policia(){
-                       
-                        IdPolicia = policia.IdPolicia,
-                        IdCiudadano = policia.IdCiudadano,
-                        Rango = policia.Rango,
-                        NumeroPlaca = policia.NumeroPlaca
-                    }
+
                 };
 
                 _auditoriaRepository.Add(Auditoria);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error añadiendo la auditoria");
-                throw;
+                _logger.LogError(ex, "Error añadiendo la auditoria.");
+                throw ex;
             }
         }
         public void Update(Auditoria auditoria)

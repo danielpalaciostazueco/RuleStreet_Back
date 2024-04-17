@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using RuleStreet.Data;
-using RuleStreet.Business;
+
 
 namespace RuleStreet.Data
 {
@@ -20,22 +20,30 @@ namespace RuleStreet.Data
             _context = context;
             _logger = logger;
         }
-public List<AuditoriaDTO> GetAll()
-{
-    var auditorias = _context.Auditoria
-        .Include(m => m.policia)
-        .Select(c => new AuditoriaDTO
+        public List<AuditoriaDTO> GetAll()
         {
-            IdAuditoria = c.IdAuditoria,
-            Titulo = c.Titulo,
-            Descripcion = c.Descripcion,
-            Fecha = c.Fecha,
-            IdPolicia = c.IdPolicia,
-            policia = c.policia 
-        }).ToList();
+            var auditorias = _context.Auditoria
+                .Include(a => a.policia)
+                .ThenInclude(p => p.Ciudadano)
+                .Select(a => new AuditoriaDTO
+                {
+                    IdAuditoria = a.IdAuditoria,
+                    Titulo = a.Titulo,
+                    Descripcion = a.Descripcion,
+                    Fecha = a.Fecha,
+                    IdPolicia = a.IdPolicia,
+                    policia = a.policia != null ? new Policia    
+                    {
+                        IdPolicia = a.policia.IdPolicia,
+                        IdCiudadano = a.policia.IdCiudadano,
+                        Rango = a.policia.Rango,
+                        NumeroPlaca = a.policia.NumeroPlaca,
 
-    return auditorias;
-}
+                    } : null
+                }).ToList();
+
+            return auditorias;
+        }
         public AuditoriaDTO Get(int id)
         {
             var auditoria = _context.Auditoria
@@ -54,7 +62,7 @@ public List<AuditoriaDTO> GetAll()
                 Descripcion = auditoria.Descripcion,
                 Fecha = auditoria.Fecha,
                 IdPolicia = auditoria.IdPolicia,
-                policia =  new Policia()
+                policia = new Policia()
                 {
                     IdPolicia = auditoria.policia.IdPolicia,
                     IdCiudadano = auditoria.policia.IdCiudadano,
@@ -74,7 +82,7 @@ public List<AuditoriaDTO> GetAll()
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al añadir la auditoria.");
-                throw;
+                throw ex;
             }
         }
 
