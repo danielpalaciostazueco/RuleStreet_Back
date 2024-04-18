@@ -127,25 +127,11 @@ namespace RuleStreet.Data
         }
 
 
-        public void Add(CiudadanoPostDTO ciudadanoPostDTO)
+        public void Add(Ciudadano ciudadano)
         {
             try
             {
-                var ciudadano = new Ciudadano
-                {
-                    Nombre = ciudadanoPostDTO.Nombre,
-                    Apellidos = ciudadanoPostDTO.Apellidos,
-                    Dni = ciudadanoPostDTO.Dni,
-                    Genero = ciudadanoPostDTO.Genero,
-                    Nacionalidad = ciudadanoPostDTO.Nacionalidad,
-                    FechaNacimiento = ciudadanoPostDTO.FechaNacimiento,
-                    Direccion = ciudadanoPostDTO.Direccion,
-                    NumeroTelefono = ciudadanoPostDTO.NumeroTelefono,
-                    NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria,
-                    IsPoli = ciudadanoPostDTO.IsPoli,
-                    IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
-                    IsPeligroso = ciudadanoPostDTO.IsPeligroso,
-                };
+                
 
                 _context.Ciudadano.Add(ciudadano);
                 _context.SaveChanges();
@@ -157,27 +143,13 @@ namespace RuleStreet.Data
             }
         }
 
-        public void Update(CiudadanoPostDTO ciudadanoPostDTO)
+        public void Update(Ciudadano ciudadanoPostDTO)
         {
             try
             {
-                var ciudadano = _context.Ciudadano.FirstOrDefault(c => c.IdCiudadano == ciudadanoPostDTO.IdCiudadano);
-                if (ciudadano != null)
-                {
-                    ciudadano.Nombre = ciudadanoPostDTO.Nombre;
-                    ciudadano.Apellidos = ciudadanoPostDTO.Apellidos;
-                    ciudadano.Dni = ciudadanoPostDTO.Dni;
-                    ciudadano.Genero = ciudadanoPostDTO.Genero;
-                    ciudadano.Nacionalidad = ciudadanoPostDTO.Nacionalidad;
-                    ciudadano.FechaNacimiento = ciudadanoPostDTO.FechaNacimiento;
-                    ciudadano.Direccion = ciudadanoPostDTO.Direccion;
-                    ciudadano.NumeroTelefono = ciudadanoPostDTO.NumeroTelefono;
-                    ciudadano.NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria;
-                    ciudadano.IsPoli = ciudadanoPostDTO.IsPoli;
-                    ciudadano.IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura;
-                    ciudadano.IsPeligroso = ciudadanoPostDTO.IsPeligroso;
+                    _context.Ciudadano.Update(ciudadanoPostDTO);
                     _context.SaveChanges();
-                }
+                
             }
             catch (Exception ex)
             {

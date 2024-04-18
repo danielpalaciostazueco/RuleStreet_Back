@@ -7,8 +7,8 @@ namespace RuleStreet.Data
     {
         List<CiudadanoDTO> GetAll();
         CiudadanoDTO? Get(int id);
-        void Add(CiudadanoPostDTO ciudadanoPostDTO);
+        void Add(Ciudadano ciudadano);
         void Delete(int id);
-        void Update(CiudadanoPostDTO ciudadanoPostDTO);
+        void Update(Ciudadano ciudadano);
     }
 }

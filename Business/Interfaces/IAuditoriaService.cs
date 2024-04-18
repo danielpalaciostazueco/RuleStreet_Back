@@ -8,7 +8,7 @@ namespace RuleStreet.Business
         List<AuditoriaDTO> GetAll();
         AuditoriaDTO? Get(int id);
         void Add(AuditoriaPostDTO auditoria);
-        void Update(Auditoria auditoria);
+        void Update(AuditoriaPostDTO auditoria);
         void Delete(int id);
     }
 }

@@ -80,11 +80,21 @@ namespace RuleStreet.Business
                 throw ex;
             }
         }
-        public void Update(Auditoria auditoria)
+        public void Update(AuditoriaPostDTO auditoria)
         {
             try
             {
-                _auditoriaRepository.Update(auditoria);
+                 var Auditoria = new Auditoria()
+                {
+                    IdAuditoria = auditoria.IdAuditoria,
+                    Titulo = auditoria.Titulo,
+                    Fecha = auditoria.Fecha,
+                    Descripcion = auditoria.Descripcion,
+                    IdPolicia = auditoria.IdPolicia,
+
+                };
+
+                _auditoriaRepository.Update(Auditoria);
             }
             catch (Exception ex)
             {

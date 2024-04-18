@@ -45,11 +45,18 @@ namespace RuleStreet.Business
         }
 
 
-        public void Update(Policia policia)
+        public void Update(PoliciaPostDTO policia)
         {
             try
             {
-                _policiaRepository.Update(policia);
+                   var Policia = new Policia()
+            {
+                IdPolicia = (int)policia.IdPolicia,
+                IdCiudadano = (int)policia.IdCiudadano,
+                Rango = policia.Rango,
+                NumeroPlaca = policia.NumeroPlaca
+            };
+                _policiaRepository.Update(Policia);
             }
             catch (Exception ex)
             {

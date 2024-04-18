@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240416115935_InitialCreate")]
+    [Migration("20240418082527_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -45,12 +45,9 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("policiaIdPolicia")
-                        .HasColumnType("int");
-
                     b.HasKey("IdAuditoria");
 
-                    b.HasIndex("policiaIdPolicia");
+                    b.HasIndex("IdPolicia");
 
                     b.ToTable("Auditoria");
                 });
@@ -429,6 +426,38 @@ namespace RuleStreet.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Denuncia", b =>
+                {
+                    b.Property<int>("IdDenuncia")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDenuncia"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("IdCiudadano")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdPolicia")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdDenuncia");
+
+                    b.HasIndex("IdCiudadano");
+
+                    b.HasIndex("IdPolicia");
+
+                    b.ToTable("Denuncia");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
                 {
                     b.Property<int>("IdMulta")
@@ -467,6 +496,57 @@ namespace RuleStreet.Data.Migrations
                     b.ToTable("Multa");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Nota", b =>
+                {
+                    b.Property<int>("IdNota")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdNota"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("IdCiudadano")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdPolicia")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdNota");
+
+                    b.HasIndex("IdCiudadano");
+
+                    b.HasIndex("IdPolicia");
+
+                    b.ToTable("Nota");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Permiso", b =>
+                {
+                    b.Property<int>("IdPermiso")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPermiso"));
+
+                    b.Property<int?>("IdRango")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdPermiso");
+
+                    b.ToTable("Permiso");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Policia", b =>
                 {
                     b.Property<int>("IdPolicia")
@@ -489,6 +569,36 @@ namespace RuleStreet.Data.Migrations
                     b.HasIndex("IdCiudadano");
 
                     b.ToTable("Policia");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Rango", b =>
+                {
+                    b.Property<int>("IdRango")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRango"));
+
+                    b.Property<int?>("IdPolicia")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Salario")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("isLocal")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("policiaIdPolicia")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdRango");
+
+                    b.HasIndex("policiaIdPolicia");
+
+                    b.ToTable("Rango");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Vehiculo", b =>
@@ -525,9 +635,24 @@ namespace RuleStreet.Data.Migrations
                 {
                     b.HasOne("RuleStreet.Models.Policia", "policia")
                         .WithMany()
-                        .HasForeignKey("policiaIdPolicia");
+                        .HasForeignKey("IdPolicia");
 
                     b.Navigation("policia");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Denuncia", b =>
+                {
+                    b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
+                        .WithMany()
+                        .HasForeignKey("IdCiudadano");
+
+                    b.HasOne("RuleStreet.Models.Policia", "Policia")
+                        .WithMany()
+                        .HasForeignKey("IdPolicia");
+
+                    b.Navigation("Ciudadano");
+
+                    b.Navigation("Policia");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
@@ -547,6 +672,21 @@ namespace RuleStreet.Data.Migrations
                     b.Navigation("ciudadano");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Nota", b =>
+                {
+                    b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
+                        .WithMany()
+                        .HasForeignKey("IdCiudadano");
+
+                    b.HasOne("RuleStreet.Models.Policia", "policia")
+                        .WithMany()
+                        .HasForeignKey("IdPolicia");
+
+                    b.Navigation("ciudadano");
+
+                    b.Navigation("policia");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Policia", b =>
                 {
                     b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
@@ -554,6 +694,15 @@ namespace RuleStreet.Data.Migrations
                         .HasForeignKey("IdCiudadano");
 
                     b.Navigation("Ciudadano");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Rango", b =>
+                {
+                    b.HasOne("RuleStreet.Models.Policia", "policia")
+                        .WithMany()
+                        .HasForeignKey("policiaIdPolicia");
+
+                    b.Navigation("policia");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Vehiculo", b =>

@@ -7,7 +7,7 @@ namespace RuleStreet.Business
     {
         List<Nota> GetAll();
         Nota? Get(int id);
-        void Update(Nota nota);
+        void Update(NotaPostDTO nota);
         void Delete(int id);
         void Add(NotaPostDTO nota);
     }

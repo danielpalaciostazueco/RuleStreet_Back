@@ -7,7 +7,7 @@ namespace RuleStreet.Data
     {
         List<VehiculoDTO> GetAll();
         VehiculoDTO? Get(int id);
-        void Add(VehiculoPostDTO vehiculo);
+        void Add(Vehiculo vehiculo);
         void Update(Vehiculo vehiculo);
         void Delete(int id);
     }

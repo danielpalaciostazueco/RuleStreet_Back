@@ -45,11 +45,20 @@ namespace RuleStreet.Business
         }
 
 
-        public void Update(Vehiculo vehiculo)
+        public void Update(VehiculoPostDTO vehiculo)
         {
             try
             {
-                _vehiculoRepository.Update(vehiculo);
+                 var Vehiculo = new Vehiculo()
+                {
+                    IdVehiculo = vehiculo.IdVehiculo,
+                    IdCiudadano = vehiculo.IdCiudadano,
+                    Matricula = vehiculo.Matricula,
+                    Marca = vehiculo.Marca,
+                    Modelo = vehiculo.Modelo,
+                    Color = vehiculo.Color,
+                };
+                _vehiculoRepository.Update(Vehiculo);
             }
             catch (Exception ex)
             {
@@ -65,8 +74,18 @@ namespace RuleStreet.Business
         {
             try
             {
+                
+                var Vehiculo = new Vehiculo()
+                {
+                    IdVehiculo = vehiculo.IdVehiculo,
+                    IdCiudadano = vehiculo.IdCiudadano,
+                    Matricula = vehiculo.Matricula,
+                    Marca = vehiculo.Marca,
+                    Modelo = vehiculo.Modelo,
+                    Color = vehiculo.Color,
+                };
 
-                _vehiculoRepository.Add(vehiculo);
+                _vehiculoRepository.Add(Vehiculo);
             }
             catch (Exception ex)
             {

@@ -80,11 +80,20 @@ namespace RuleStreet.Business
                 throw ex;
             }
         }
-        public void Update(Denuncia denuncia)
+        public void Update(DenunciaPostDTO denuncia)
         {
             try
             {
-                _DenunciaRepository.Update(denuncia);
+                var Denuncia = new Denuncia
+                {
+                    IdDenuncia = denuncia.IdDenuncia,
+                    Titulo = denuncia.Titulo,
+                    Descripcion = denuncia.Descripcion,
+                    Fecha = denuncia.Fecha,
+                    IdPolicia = denuncia.IdPolicia,
+                    IdCiudadano = denuncia.IdCiudadano
+                };
+                _DenunciaRepository.Update(Denuncia);
             }
             catch (Exception ex)
             {

@@ -45,11 +45,19 @@ namespace RuleStreet.Business
         }
 
 
-        public void Update(Nota nota)
+        public void Update(NotaPostDTO nota)
         {
             try
             {
-                _notaRepository.Update(nota);
+                 var Nota = new Nota
+                {
+                    Titulo = nota.Titulo,
+                    Descripcion = nota.Descripcion,
+                    Fecha = nota.Fecha,
+                    IdPolicia = nota.IdPolicia,
+                    IdCiudadano = nota.IdCiudadano
+                };
+                _notaRepository.Update(Nota);
             }
             catch (Exception ex)
             {

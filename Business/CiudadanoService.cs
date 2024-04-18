@@ -48,7 +48,24 @@ namespace RuleStreet.Business
         {
             try
             {
-                _ciudadanoRepository.Update(ciudadanoPostDTO);
+               var ciudadano = new Ciudadano
+                {
+                    IdCiudadano = ciudadanoPostDTO.IdCiudadano,
+                    Nombre = ciudadanoPostDTO.Nombre,
+                    Apellidos = ciudadanoPostDTO.Apellidos,
+                    Dni = ciudadanoPostDTO.Dni,
+                    Genero = ciudadanoPostDTO.Genero,
+                    Nacionalidad = ciudadanoPostDTO.Nacionalidad,
+                    FechaNacimiento = ciudadanoPostDTO.FechaNacimiento,
+                    Direccion = ciudadanoPostDTO.Direccion,
+                    NumeroTelefono = ciudadanoPostDTO.NumeroTelefono,
+                    NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria,
+                    IsPoli = ciudadanoPostDTO.IsPoli,
+                    IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
+                    IsPeligroso = ciudadanoPostDTO.IsPeligroso,
+                };
+                
+                _ciudadanoRepository.Update(ciudadano);
             }
             catch (Exception ex)
             {
@@ -62,7 +79,22 @@ namespace RuleStreet.Business
         {
             try
             {
-                _ciudadanoRepository.Add(ciudadanoPostDTO);
+                var ciudadano = new Ciudadano
+                {
+                    Nombre = ciudadanoPostDTO.Nombre,
+                    Apellidos = ciudadanoPostDTO.Apellidos,
+                    Dni = ciudadanoPostDTO.Dni,
+                    Genero = ciudadanoPostDTO.Genero,
+                    Nacionalidad = ciudadanoPostDTO.Nacionalidad,
+                    FechaNacimiento = ciudadanoPostDTO.FechaNacimiento,
+                    Direccion = ciudadanoPostDTO.Direccion,
+                    NumeroTelefono = ciudadanoPostDTO.NumeroTelefono,
+                    NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria,
+                    IsPoli = ciudadanoPostDTO.IsPoli,
+                    IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
+                    IsPeligroso = ciudadanoPostDTO.IsPeligroso,
+                };
+                _ciudadanoRepository.Add(ciudadano);
             }
             catch (Exception ex)
             {
