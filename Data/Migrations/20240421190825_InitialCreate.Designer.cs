@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240418082527_InitialCreate")]
+    [Migration("20240421190825_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -423,6 +423,446 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Obstrucción a la justicia",
                             Precio = 2500m,
                             Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 34,
+                            Articulo = "Art. 3.1",
+                            Descripcion = "Posesion de estupefacientes (marihuana) 210/unidad (a partir de 2 unidades)",
+                            Precio = 210m,
+                            Sentencia = "7 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 35,
+                            Articulo = "Art. 3.2",
+                            Descripcion = "Consumo de marihuana en vía pública",
+                            Precio = 350m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 36,
+                            Articulo = "Art. 3.3",
+                            Descripcion = "Posesion de estupefacientes (Cocaína/Mentafetamina) 650/unidad (a partir de 2 unidades)",
+                            Precio = 650m,
+                            Sentencia = "7 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 37,
+                            Articulo = "Art. 3.4",
+                            Descripcion = "Se considera trafico de drogas a cualquier individuo o grupo de personas que se vean vendiendo estupefacientes en flagante delito. Multa de 450 por cada delito flagante de venta de cocaina. Se requisara todo el dinero que lleve el sujeto.",
+                            Precio = 450m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 38,
+                            Articulo = "Art. 3.5",
+                            Descripcion = "Se considera trafico de drogas a cualquier individuo o grupo de personas que se vean vendiendo estupefacientes en flagante delito. Multa de 650 por cada delito flagante de venta de meta. Se requisara todo el dinero que lleve el sujeto.",
+                            Precio = 650m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 39,
+                            Articulo = "Art. 4.1",
+                            Descripcion = "Queda totalmente prohibida por parte de los civiles portar una pistolera como atuendo de modo decorativo",
+                            Precio = 1500m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 40,
+                            Articulo = "Art. 4.2",
+                            Descripcion = "Posesion de arma blanca: son considerados como tal, aquellas armas de filo cortante. Armas blancas susceptibles de ser usadas como arma ilegal: Cuchillo, Bate de beisbol, Palo de golf, Botella rota, Navaja, Machete",
+                            Precio = 2500m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 41,
+                            Articulo = "Art. 4.3",
+                            Descripcion = "Portar pistola de baja calibre (arma de fuego)",
+                            Precio = 10000m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 42,
+                            Articulo = "Art. 4.4",
+                            Descripcion = "Portar armas automaticas de baja calibre/medio",
+                            Precio = 24000m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 43,
+                            Articulo = "Art. 4.5",
+                            Descripcion = "Portar armas automaticas de alto calibre",
+                            Precio = 40000m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 44,
+                            Articulo = "Art. 4.6",
+                            Descripcion = "Trafico de armas",
+                            Precio = 30000m,
+                            Sentencia = "25 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 45,
+                            Articulo = "Art. 4.7",
+                            Descripcion = "Atentado terrorista",
+                            Precio = 100000m,
+                            Sentencia = "250 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 46,
+                            Articulo = "Art. 4.8",
+                            Descripcion = "Atentar contra la vida o integridad fisica de varios personas y/o funcionarios publicos mediante la organizacion armada de varios individuos",
+                            Precio = 100000m,
+                            Sentencia = "350 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 47,
+                            Articulo = "Art. 5.1",
+                            Descripcion = "Agresion a otro individuo",
+                            Precio = 3000m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 48,
+                            Articulo = "Art. 5.2",
+                            Descripcion = "Intento de agresion a civil",
+                            Precio = 1500m,
+                            Sentencia = "5 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 49,
+                            Articulo = "Art. 5.3",
+                            Descripcion = "Intento de secuestro",
+                            Precio = 2400m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 50,
+                            Articulo = "Art. 5.4",
+                            Descripcion = "Secuestro a un individuo",
+                            Precio = 3500m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 51,
+                            Articulo = "Art. 5.5",
+                            Descripcion = "Intento de homicidio a un civil sin el uso de armas",
+                            Precio = 4000m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 52,
+                            Articulo = "Art. 5.6",
+                            Descripcion = "Intento de homicidio a un civil con uso de armas de cualquier indole",
+                            Precio = 6000m,
+                            Sentencia = "20 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 53,
+                            Articulo = "Art. 5.7",
+                            Descripcion = "Intento de homicidio a multiples sin el uso de armas",
+                            Precio = 5000m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 54,
+                            Articulo = "Art. 5.8",
+                            Descripcion = "Intento de homicidio a multiples civiles con uso de armas de cualquier indole",
+                            Precio = 7500m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 55,
+                            Articulo = "Art. 6.1",
+                            Descripcion = "Amenazas, desobedencia e insultos: Tras la primera amision de la orden de un funcionario de policia, se le podra acumular al reo el monta econonico despues del primer aviso por cada falta de respeto o desacato.",
+                            Precio = 300m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 56,
+                            Articulo = "Art. 6.2",
+                            Descripcion = "Insultar a un funcionario publico.",
+                            Precio = 1700m,
+                            Sentencia = "5 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 57,
+                            Articulo = "Art. 6.3",
+                            Descripcion = "Agresión o amenaza de muerte a un funcionario.",
+                            Precio = 3400m,
+                            Sentencia = "5 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 58,
+                            Articulo = "Art. 6.4",
+                            Descripcion = "Desacato",
+                            Precio = 2000m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 59,
+                            Articulo = "Art. 6.5",
+                            Descripcion = "Huir de la justicia",
+                            Precio = 1500m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 60,
+                            Articulo = "Art. 6.6",
+                            Descripcion = "Usurpacion de funciones publicas",
+                            Precio = 10000m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 61,
+                            Articulo = "Art. 6.7",
+                            Descripcion = "Falso testimonio",
+                            Precio = 2000m,
+                            Sentencia = "5 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 62,
+                            Articulo = "Art. 6.8",
+                            Descripcion = "Usurpacion de funcionarios publicos",
+                            Precio = 10000m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 63,
+                            Articulo = "Art. 6.9",
+                            Descripcion = "Secuestro a un funcionario",
+                            Precio = 8000m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 64,
+                            Articulo = "Art. 6.10",
+                            Descripcion = "Amenazar a un funcionario publico a mano armada",
+                            Precio = 3500m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 65,
+                            Articulo = "Art. 6.11",
+                            Descripcion = "Intento de homicidio a un funcionario publico",
+                            Precio = 5500m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 66,
+                            Articulo = "Art. 6.12",
+                            Descripcion = "Homicidio a un funcionario",
+                            Precio = 9000m,
+                            Sentencia = "20 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 67,
+                            Articulo = "Art. 6.13",
+                            Descripcion = "Homicidio a diferentes funcionarios",
+                            Precio = 12500m,
+                            Sentencia = "50 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 68,
+                            Articulo = "Art. 6.14",
+                            Descripcion = "Robo de secretos del estado",
+                            Precio = 0m,
+                            Sentencia = "5000 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 69,
+                            Articulo = "Art. 6.15",
+                            Descripcion = "Sera acusado de denuncia falsa aquel que registre una denucia ante el cuerpo policial a sabiendas de su falsedad",
+                            Precio = 2500m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 70,
+                            Articulo = "Art. 6.16",
+                            Descripcion = "Actos de corrupcion por parte de un agente",
+                            Precio = 0m,
+                            Sentencia = "5000 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 71,
+                            Articulo = "Art. 7.1",
+                            Descripcion = "Robo de vehiculo",
+                            Precio = 2000m,
+                            Sentencia = "6 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 72,
+                            Articulo = "Art. 7.2",
+                            Descripcion = "Robo con intimidacion a un civil",
+                            Precio = 3400m,
+                            Sentencia = "8 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 73,
+                            Articulo = "Art. 7.3",
+                            Descripcion = "Robo con violencia a un civil",
+                            Precio = 2600m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 74,
+                            Articulo = "Art. 7.4",
+                            Descripcion = "Hurto menor",
+                            Precio = 1500m,
+                            Sentencia = "5 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 75,
+                            Articulo = "Art. 7.5",
+                            Descripcion = "Robar pertenencias que se hallen en el interior de un vehiculo de via urbana o propiedad privada",
+                            Precio = 2150m,
+                            Sentencia = "7 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 76,
+                            Articulo = "Art. 8.1",
+                            Descripcion = "Celebracion de manifestaciones en lugares de transito publico sin haber sido autorizados",
+                            Precio = 1000m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 77,
+                            Articulo = "Art. 8.2",
+                            Descripcion = "Cometer actos de vandalismo",
+                            Precio = 1500m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 78,
+                            Articulo = "Art. 8.3",
+                            Descripcion = "Hurto de un civil sin importar las posesiones robadas",
+                            Precio = 3500m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 79,
+                            Articulo = "Art. 8.4",
+                            Descripcion = "Obstaculizar el desempeño y desarrollo de las funciones publicas y servicios de emergencia",
+                            Precio = 2300m,
+                            Sentencia = "0 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 80,
+                            Articulo = "Art. 8.5",
+                            Descripcion = "Negarse a disolver una reunion o manifestacion tras haber sido previamente advertido por un funcionario publico",
+                            Precio = 1600m,
+                            Sentencia = "5 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 81,
+                            Articulo = "Art. 8.6",
+                            Descripcion = "Negarse a identificarse o aportar datos falsos que dificulten la accion policial",
+                            Precio = 1500m,
+                            Sentencia = "5 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 82,
+                            Articulo = "Art. 8.7",
+                            Descripcion = "Amenazar a un funcionario publico a mano armada",
+                            Precio = 3500m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 83,
+                            Articulo = "Art. 8.8",
+                            Descripcion = "Exhibicionismo: El que realice actos de exhibicionismo delante de personas causandoles un perjuicio",
+                            Precio = 5500m,
+                            Sentencia = "10 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 84,
+                            Articulo = "Art. 8.9",
+                            Descripcion = "Sera acusado de extorsion aquel que, con intencion de beneficiarse, obligue a otro con violencia o intimidacion a realizar un acto que le perjudique economicamente",
+                            Precio = 3000m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 85,
+                            Articulo = "Art. 8.10",
+                            Descripcion = "Sera acusado de injuria aquel que diga de manera publica hechos falsos que humillen a otra persona",
+                            Precio = 1200m,
+                            Sentencia = "7 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 86,
+                            Articulo = "Art. 8.11",
+                            Descripcion = "Violacion de la intimidad aquel que acceda a cualquier tipo de propiedad o dispositivo de otro, sea digital o analogico. El articulo excluye a los funcionarios publicos por desempeño de sus labores de investigacion",
+                            Precio = 2400m,
+                            Sentencia = "7 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 87,
+                            Articulo = "Art. 8.12",
+                            Descripcion = "Sera acusado de tortura aquel que realice actos degradantes, ofensivos, dañinos o de similar a una persona",
+                            Precio = 5600m,
+                            Sentencia = "15 meses"
+                        },
+                        new
+                        {
+                            IdCodigoPenal = 88,
+                            Articulo = "Art. 8.13",
+                            Descripcion = "Negarse a la identificacion ante un funcionario publico",
+                            Precio = 1500m,
+                            Sentencia = "0 meses"
                         });
                 });
 
