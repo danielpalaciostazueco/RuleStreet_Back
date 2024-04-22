@@ -72,6 +72,9 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Genero")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("IdUsuario")
+                        .HasColumnType("int");
+
                     b.Property<bool?>("IsBusquedaYCaptura")
                         .HasColumnType("bit");
 
@@ -1038,6 +1041,46 @@ namespace RuleStreet.Data.Migrations
                     b.ToTable("Rango");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Usuario", b =>
+                {
+                    b.Property<int>("IdUsuario")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuario"));
+
+                    b.Property<string>("Contrasena")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IdCiudadano")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdPolicia")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsPolicia")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreUsuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("policiaIdPolicia")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdUsuario");
+
+                    b.HasIndex("IdCiudadano")
+                        .IsUnique()
+                        .HasFilter("[IdCiudadano] IS NOT NULL");
+
+                    b.HasIndex("policiaIdPolicia");
+
+                    b.ToTable("Usuario");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Vehiculo", b =>
                 {
                     b.Property<int>("IdVehiculo")
@@ -1070,11 +1113,11 @@ namespace RuleStreet.Data.Migrations
 
             modelBuilder.Entity("RuleStreet.Models.Auditoria", b =>
                 {
-                    b.HasOne("RuleStreet.Models.Policia", "policia")
+                    b.HasOne("RuleStreet.Models.Policia", "Policia")
                         .WithMany()
                         .HasForeignKey("IdPolicia");
 
-                    b.Navigation("policia");
+                    b.Navigation("Policia");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Denuncia", b =>
@@ -1094,7 +1137,7 @@ namespace RuleStreet.Data.Migrations
 
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
                 {
-                    b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
+                    b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
                         .WithMany("Multas")
                         .HasForeignKey("IdCiudadano");
 
@@ -1104,9 +1147,9 @@ namespace RuleStreet.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Policia");
+                    b.Navigation("Ciudadano");
 
-                    b.Navigation("ciudadano");
+                    b.Navigation("Policia");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Nota", b =>
@@ -1142,6 +1185,21 @@ namespace RuleStreet.Data.Migrations
                     b.Navigation("policia");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Usuario", b =>
+                {
+                    b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
+                        .WithOne("Usuario")
+                        .HasForeignKey("RuleStreet.Models.Usuario", "IdCiudadano");
+
+                    b.HasOne("RuleStreet.Models.Policia", "policia")
+                        .WithMany()
+                        .HasForeignKey("policiaIdPolicia");
+
+                    b.Navigation("Ciudadano");
+
+                    b.Navigation("policia");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Vehiculo", b =>
                 {
                     b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
@@ -1154,6 +1212,8 @@ namespace RuleStreet.Data.Migrations
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
                 {
                     b.Navigation("Multas");
+
+                    b.Navigation("Usuario");
 
                     b.Navigation("Vehiculos");
                 });

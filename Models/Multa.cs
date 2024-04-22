@@ -23,6 +23,6 @@ public class Multa
 
     [ForeignKey("Ciudadano")]
     public int? IdCiudadano { get; set; }
-    public Ciudadano? ciudadano { get; set; }
+    public Ciudadano? Ciudadano { get; set; }
 
 }

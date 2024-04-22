@@ -23,7 +23,7 @@ namespace RuleStreet.Data
         public List<AuditoriaDTO> GetAll()
         {
             var auditorias = _context.Auditoria
-                .Include(a => a.policia)
+                .Include(a => a.Policia)
                 .ThenInclude(p => p.Ciudadano)
                 .Select(a => new AuditoriaDTO
                 {
@@ -32,12 +32,12 @@ namespace RuleStreet.Data
                     Descripcion = a.Descripcion,
                     Fecha = a.Fecha,
                     IdPolicia = a.IdPolicia,
-                    policia = a.policia != null ? new Policia    
+                    policia = a.Policia != null ? new Policia    
                     {
-                        IdPolicia = a.policia.IdPolicia,
-                        IdCiudadano = a.policia.IdCiudadano,
-                        Rango = a.policia.Rango,
-                        NumeroPlaca = a.policia.NumeroPlaca,
+                        IdPolicia = a.Policia.IdPolicia,
+                        IdCiudadano = a.Policia.IdCiudadano,
+                        Rango = a.Policia.Rango,
+                        NumeroPlaca = a.Policia.NumeroPlaca,
 
                     } : null
                 }).ToList();
@@ -47,7 +47,7 @@ namespace RuleStreet.Data
         public AuditoriaDTO Get(int id)
         {
             var auditoria = _context.Auditoria
-                .Include(m => m.policia)
+                .Include(m => m.Policia)
                 .FirstOrDefault(c => c.IdAuditoria == id);
 
             if (auditoria == null)
@@ -64,10 +64,10 @@ namespace RuleStreet.Data
                 IdPolicia = auditoria.IdPolicia,
                 policia = new Policia()
                 {
-                    IdPolicia = auditoria.policia.IdPolicia,
-                    IdCiudadano = auditoria.policia.IdCiudadano,
-                    Rango = auditoria.policia.Rango,
-                    NumeroPlaca = auditoria.policia.NumeroPlaca,
+                    IdPolicia = auditoria.Policia.IdPolicia,
+                    IdCiudadano = auditoria.Policia.IdCiudadano,
+                    Rango = auditoria.Policia.Rango,
+                    NumeroPlaca = auditoria.Policia.NumeroPlaca,
                 }
             };
         }

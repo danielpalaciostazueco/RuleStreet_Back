@@ -19,6 +19,7 @@ namespace RuleStreet.Data
         public DbSet<Rango> Rango { get; set; }
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<Nota> Nota { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,12 +30,12 @@ namespace RuleStreet.Data
                 .HasForeignKey(v => v.IdCiudadano);
 
             modelBuilder.Entity<Multa>()
-                .HasOne(v => v.ciudadano)
+                .HasOne(v => v.Ciudadano)
                 .WithMany(c => c.Multas)
                 .HasForeignKey(v => v.IdCiudadano);
 
             modelBuilder.Entity<Auditoria>()
-                .HasOne(a => a.policia)
+                .HasOne(a => a.Policia)
                 .WithMany()
                 .HasForeignKey(a => a.IdPolicia);
 
@@ -59,10 +60,12 @@ namespace RuleStreet.Data
                 entity.HasOne(d => d.ciudadano)
                     .WithMany()
                     .HasForeignKey(d => d.IdCiudadano);
-
             });
 
-
+            modelBuilder.Entity<Usuario>()
+                .HasOne(u => u.Ciudadano)
+                .WithOne(c => c.Usuario)
+                .HasForeignKey<Usuario>(u => u.IdCiudadano);
 
             modelBuilder.Entity<Ciudadano>().HasData(
                 new Ciudadano
@@ -178,7 +181,7 @@ namespace RuleStreet.Data
                 new CodigoPenal { IdCodigoPenal = 76, Articulo = "Art. 8.1", Descripcion = "Celebracion de manifestaciones en lugares de transito publico sin haber sido autorizados", Precio = 1000, Sentencia = "0 meses" },
                 new CodigoPenal { IdCodigoPenal = 77, Articulo = "Art. 8.2", Descripcion = "Cometer actos de vandalismo", Precio = 1500, Sentencia = "0 meses" },
                 new CodigoPenal { IdCodigoPenal = 78, Articulo = "Art. 8.3", Descripcion = "Hurto de un civil sin importar las posesiones robadas", Precio = 3500, Sentencia = "10 meses" },
-                new CodigoPenal { IdCodigoPenal = 79, Articulo = "Art. 8.4", Descripcion = "Obstaculizar el desempeño y desarrollo de las funciones publicas y servicios de emergencia", Precio = 2300, Sentencia = "0 meses"},
+                new CodigoPenal { IdCodigoPenal = 79, Articulo = "Art. 8.4", Descripcion = "Obstaculizar el desempeño y desarrollo de las funciones publicas y servicios de emergencia", Precio = 2300, Sentencia = "0 meses" },
                 new CodigoPenal { IdCodigoPenal = 80, Articulo = "Art. 8.5", Descripcion = "Negarse a disolver una reunion o manifestacion tras haber sido previamente advertido por un funcionario publico", Precio = 1600, Sentencia = "5 meses" },
                 new CodigoPenal { IdCodigoPenal = 81, Articulo = "Art. 8.6", Descripcion = "Negarse a identificarse o aportar datos falsos que dificulten la accion policial", Precio = 1500, Sentencia = "5 meses" },
                 new CodigoPenal { IdCodigoPenal = 82, Articulo = "Art. 8.7", Descripcion = "Amenazar a un funcionario publico a mano armada", Precio = 3500, Sentencia = "10 meses" },

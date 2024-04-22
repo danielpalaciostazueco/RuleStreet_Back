@@ -14,9 +14,11 @@ public class Usuario
 
     [ForeignKey("Ciudadano")]
     public int? IdCiudadano { get; set; }
-    public Ciudadano? ciudadano { get; set; }
+    public Ciudadano? Ciudadano { get; set; }
 
     public string? Nombre {get; set;}
 
+    public string? NombreUsuario {get; set;}
     public string? Contrasena {get; set;} 
+    public bool? IsPolicia {get; set;}
 }

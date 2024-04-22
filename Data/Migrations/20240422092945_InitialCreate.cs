@@ -30,7 +30,8 @@ namespace RuleStreet.Data.Migrations
                     NumeroCuentaBancaria = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsPoli = table.Column<bool>(type: "bit", nullable: true),
                     IsBusquedaYCaptura = table.Column<bool>(type: "bit", nullable: true),
-                    IsPeligroso = table.Column<bool>(type: "bit", nullable: true)
+                    IsPeligroso = table.Column<bool>(type: "bit", nullable: true),
+                    IdUsuario = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -236,13 +237,42 @@ namespace RuleStreet.Data.Migrations
                         principalColumn: "IdPolicia");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Usuario",
+                columns: table => new
+                {
+                    IdUsuario = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdPolicia = table.Column<int>(type: "int", nullable: true),
+                    policiaIdPolicia = table.Column<int>(type: "int", nullable: true),
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsPolicia = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuario", x => x.IdUsuario);
+                    table.ForeignKey(
+                        name: "FK_Usuario_Ciudadano_IdCiudadano",
+                        column: x => x.IdCiudadano,
+                        principalTable: "Ciudadano",
+                        principalColumn: "IdCiudadano");
+                    table.ForeignKey(
+                        name: "FK_Usuario_Policia_policiaIdPolicia",
+                        column: x => x.policiaIdPolicia,
+                        principalTable: "Policia",
+                        principalColumn: "IdPolicia");
+                });
+
             migrationBuilder.InsertData(
                 table: "Ciudadano",
-                columns: new[] { "IdCiudadano", "Apellidos", "Direccion", "Dni", "FechaNacimiento", "Genero", "IsBusquedaYCaptura", "IsPeligroso", "IsPoli", "Nacionalidad", "Nombre", "NumeroCuentaBancaria", "NumeroTelefono" },
+                columns: new[] { "IdCiudadano", "Apellidos", "Direccion", "Dni", "FechaNacimiento", "Genero", "IdUsuario", "IsBusquedaYCaptura", "IsPeligroso", "IsPoli", "Nacionalidad", "Nombre", "NumeroCuentaBancaria", "NumeroTelefono" },
                 values: new object[,]
                 {
-                    { 1, "Perez", "Calle Falsa 123", "12345678", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", false, false, false, "Español", "Juan", "ES123456789", 123456789 },
-                    { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", false, false, false, "Española", "Maria", "ES987654321", 987654321 }
+                    { 1, "Perez", "Calle Falsa 123", "12345678", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, false, false, false, "Español", "Juan", "ES123456789", 123456789 },
+                    { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, false, false, false, "Española", "Maria", "ES987654321", 987654321 }
                 });
 
             migrationBuilder.InsertData(
@@ -386,6 +416,18 @@ namespace RuleStreet.Data.Migrations
                 column: "policiaIdPolicia");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Usuario_IdCiudadano",
+                table: "Usuario",
+                column: "IdCiudadano",
+                unique: true,
+                filter: "[IdCiudadano] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuario_policiaIdPolicia",
+                table: "Usuario",
+                column: "policiaIdPolicia");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vehiculo_IdCiudadano",
                 table: "Vehiculo",
                 column: "IdCiudadano");
@@ -414,6 +456,9 @@ namespace RuleStreet.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Rango");
+
+            migrationBuilder.DropTable(
+                name: "Usuario");
 
             migrationBuilder.DropTable(
                 name: "Vehiculo");
