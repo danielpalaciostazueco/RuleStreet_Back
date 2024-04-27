@@ -10,5 +10,7 @@ namespace RuleStreet.Data
         void Add(Ciudadano ciudadano);
         void Delete(int id);
         void Update(Ciudadano ciudadano);
+
+        CiudadanoDTO? GetByName(string name);
     }
 }

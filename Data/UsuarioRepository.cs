@@ -29,6 +29,12 @@ namespace RuleStreet.Data
             return _context.Usuario.AsNoTracking()
             .FirstOrDefault(usuario => usuario.IdUsuario == id);
         }
+        public Usuario? GetByName(string nombre, string nombreUsuario, string contrasena)
+        {
+            return _context.Usuario.AsNoTracking()
+            .FirstOrDefault(usuario => usuario.Nombre == nombre && usuario.NombreUsuario == nombreUsuario && usuario.Contrasena == contrasena);
+        }
+
 
         public void Add(Usuario usuario)
         {
@@ -49,7 +55,7 @@ namespace RuleStreet.Data
 
         public void Update(Usuario usuario)
         {
-             _context.Usuario.Update(usuario);
+            _context.Usuario.Update(usuario);
             _context.SaveChanges();
         }
     }

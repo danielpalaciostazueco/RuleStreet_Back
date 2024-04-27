@@ -35,12 +35,13 @@ namespace RuleStreet.Business
                     if (ciudadano == null)
                     {
                         _logger.LogError($"No se encontró ningún ciudadano con el ID: {usuario.IdCiudadano}");
-                        continue; 
+                        continue;
                     }
 
                     usuarioDTOs.Add(new UsuarioDTO
                     {
                         IdUsuario = usuario.IdUsuario,
+                        IdCiudadano = usuario.IdCiudadano,
                         Nombre = usuario.Nombre,
                         NombreUsuario = usuario.NombreUsuario,
                         IsPolicia = ciudadano.IsPoli,
@@ -58,13 +59,23 @@ namespace RuleStreet.Business
             }
         }
 
-        public Usuario? Get(int id)
+        public UsuarioDTO? Get(int id)
         {
             _logger.LogInformation($"Buscando usuario con ID: {id}");
             try
             {
                 _logger.LogInformation($"Usuario con ID: {id} encontrado.");
-                return _usuarioRepository.Get(id);
+                var usuario = _usuarioRepository.Get(id);
+
+                var usuarioDTO = new UsuarioDTO
+                {
+                    IdUsuario = usuario.IdUsuario,
+                    IdCiudadano = usuario.IdCiudadano,
+                    Nombre = usuario.Nombre,
+                    NombreUsuario = usuario.NombreUsuario,
+                    Contrasena = usuario.Contrasena
+                };
+                return usuarioDTO;
             }
             catch (Exception ex)
             {
@@ -73,12 +84,47 @@ namespace RuleStreet.Business
             }
         }
 
+        public UsuarioDTO? GetByName(string nombre, string nombreUsuario, string contrasena)
+        {
+            _logger.LogInformation($"Buscando usuario con nombre: {nombreUsuario}");
+            try
+            {
+                _logger.LogInformation($"Usuario con nombre: {nombreUsuario} encontrado.");
+                var usuario = _usuarioRepository.GetByName(nombre, nombreUsuario, contrasena);
+                if (usuario != null)
+                {
+                    var ciudadano = _ciudadanoRepository.Get((int)usuario.IdCiudadano);
+                    var usuarioDTO = new UsuarioDTO
+                    {
+                        IdUsuario = usuario.IdUsuario,
+                        IdCiudadano = usuario.IdCiudadano,
+                        Nombre = usuario.Nombre,
+                        NombreUsuario = usuario.NombreUsuario,
+                        IsPolicia = ciudadano.IsPoli,
+                        Contrasena = usuario.Contrasena
+                    };
+                    return usuarioDTO;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al obtener el usaurio con nombre: {nombre}.");
+                throw;
+            }
+        }
+
+
         public void Add(UsuarioPostDTO usuarioDTO)
         {
             try
             {
                 _logger.LogInformation($"Intentando agregar un nuevo usuario: {JsonSerializer.Serialize(usuarioDTO)}");
-                CiudadanoDTO ciudadano = _ciudadanoRepository.Get(usuarioDTO.IdCiudadano);
+                CiudadanoDTO ciudadano = _ciudadanoRepository.GetByName(usuarioDTO.Nombre);
                 if (ciudadano == null)
                 {
                     _logger.LogError($"No se encontró ningún ciudadano con el ID: {usuarioDTO.IdCiudadano}");
@@ -88,7 +134,7 @@ namespace RuleStreet.Business
                 var usuario = new Usuario
                 {
                     IdUsuario = usuarioDTO.IdUsuario,
-                    IdCiudadano = usuarioDTO.IdCiudadano,
+                    IdCiudadano = ciudadano.IdCiudadano,
                     Nombre = ciudadano.Nombre,
                     NombreUsuario = usuarioDTO.NombreUsuario,
                     Contrasena = usuarioDTO.Contrasena

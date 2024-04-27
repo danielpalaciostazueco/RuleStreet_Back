@@ -44,11 +44,25 @@ namespace RuleStreet.Business
 
         }
 
+        public CiudadanoDTO? GetByName(string name)
+        {
+            try
+            {
+                return _ciudadanoRepository.GetByName(name);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo la ciudadano por nombre");
+                throw;
+            }
+
+        }
+
         public void Update(CiudadanoPostDTO ciudadanoPostDTO)
         {
             try
             {
-               var ciudadano = new Ciudadano
+                var ciudadano = new Ciudadano
                 {
                     IdCiudadano = ciudadanoPostDTO.IdCiudadano,
                     Nombre = ciudadanoPostDTO.Nombre,
@@ -64,7 +78,7 @@ namespace RuleStreet.Business
                     IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
                     IsPeligroso = ciudadanoPostDTO.IsPeligroso,
                 };
-                
+
                 _ciudadanoRepository.Update(ciudadano);
             }
             catch (Exception ex)
@@ -102,7 +116,7 @@ namespace RuleStreet.Business
                 throw;
             }
         }
-        
+
         public void Delete(int id)
         {
             try

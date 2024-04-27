@@ -5,9 +5,10 @@ namespace RuleStreet.Models;
 
 public class UsuarioDTO
 {
-    public int IdUsuario{ get; set; }
-    public string? Nombre {get; set;}
-    public string? NombreUsuario {get; set;}
-    public bool? IsPolicia {get; set;}
-    public string? Contrasena {get; set;} 
+    public int IdUsuario { get; set; }
+    public int? IdCiudadano { get; set; }
+    public string? Nombre { get; set; }
+    public string? NombreUsuario { get; set; }
+    public bool? IsPolicia { get; set; }
+    public string? Contrasena { get; set; }
 }

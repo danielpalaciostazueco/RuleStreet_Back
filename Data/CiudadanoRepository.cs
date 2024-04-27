@@ -126,12 +126,68 @@ namespace RuleStreet.Data
             }
         }
 
+        public CiudadanoDTO GetByName(string name)
+        {
+            try
+            {
+                var ciudadano = _context.Ciudadano
+                    .Where(c => c.Nombre == name)
+                    .Include(c => c.Multas)
+                    .Include(c => c.Vehiculos)
+                    .Select(c => new CiudadanoDTO
+                    {
+                        IdCiudadano = c.IdCiudadano,
+                        Nombre = c.Nombre,
+                        Apellidos = c.Apellidos,
+                        Dni = c.Dni,
+                        Genero = c.Genero,
+                        Nacionalidad = c.Nacionalidad,
+                        FechaNacimiento = c.FechaNacimiento,
+                        Direccion = c.Direccion,
+                        NumeroTelefono = c.NumeroTelefono,
+                        NumeroCuentaBancaria = c.NumeroCuentaBancaria,
+                        IsPoli = c.IsPoli,
+                        IsBusquedaYCaptura = c.IsBusquedaYCaptura,
+                        IsPeligroso = c.IsPeligroso,
+                        Multas = c.Multas.Select(m => new MultaDTO
+                        {
+                            IdMulta = m.IdMulta,
+                            IdPolicia = m.IdPolicia,
+                            Fecha = m.Fecha,
+                            Precio = m.Precio,
+                            ArticuloPenal = m.ArticuloPenal,
+                            Descripcion = m.Descripcion,
+                            Pagada = m.Pagada,
+                            IdCiudadano = m.IdCiudadano
+                        }).ToList(),
+                        Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
+                        {
+                            IdVehiculo = v.IdVehiculo,
+                            IdCiudadano = v.IdCiudadano,
+                            Matricula = v.Matricula,
+                            Marca = v.Marca,
+                            Modelo = v.Modelo,
+                            Color = v.Color
+                        }).ToList()
+                    })
+                    .AsNoTracking()
+                    .FirstOrDefault();
+
+                return ciudadano;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo Ciudadano por nombre.");
+                throw;
+            }
+        }
+
 
         public void Add(Ciudadano ciudadano)
         {
             try
             {
-                
+
 
                 _context.Ciudadano.Add(ciudadano);
                 _context.SaveChanges();
@@ -147,9 +203,9 @@ namespace RuleStreet.Data
         {
             try
             {
-                    _context.Ciudadano.Update(ciudadanoPostDTO);
-                    _context.SaveChanges();
-                
+                _context.Ciudadano.Update(ciudadanoPostDTO);
+                _context.SaveChanges();
+
             }
             catch (Exception ex)
             {
