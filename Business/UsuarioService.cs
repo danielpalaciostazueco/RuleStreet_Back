@@ -124,19 +124,14 @@ namespace RuleStreet.Business
             try
             {
                 _logger.LogInformation($"Intentando agregar un nuevo usuario: {JsonSerializer.Serialize(usuarioDTO)}");
-                CiudadanoDTO ciudadano = _ciudadanoRepository.GetByName(usuarioDTO.Nombre);
-                if (ciudadano == null)
-                {
-                    _logger.LogError($"No se encontró ningún ciudadano con el ID: {usuarioDTO.IdCiudadano}");
-                    throw new Exception("Ciudadano no encontrado.");
-                }
-
+                
+                var ciudadano = _ciudadanoRepository.GetByName(usuarioDTO.Nombre);
                 var usuario = new Usuario
                 {
                     IdUsuario = usuarioDTO.IdUsuario,
-                    IdCiudadano = ciudadano.IdCiudadano,
-                    Nombre = ciudadano.Nombre,
+                    Nombre = usuarioDTO.Nombre,
                     NombreUsuario = usuarioDTO.NombreUsuario,
+                    IdCiudadano = ciudadano.IdCiudadano,
                     Contrasena = usuarioDTO.Contrasena
                 };
                 _usuarioRepository.Add(usuario);

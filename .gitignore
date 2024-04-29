@@ -2,6 +2,7 @@
 # Ignorar directorios de compilación
 bin/
 obj/
+./Api/logs
 
 # Ignorar archivos de configuración específicos del entorno
 #appsettings.json

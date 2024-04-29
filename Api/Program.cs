@@ -5,8 +5,28 @@ using RuleStreet.Data;
 using Serilog;
 using Serilog.Events;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt =>
+    {
+        opt.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+            ValidAudience = builder.Configuration["JWT:ValidAudience"],
+            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
+        };
+    });
+
+
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
@@ -35,6 +55,35 @@ builder.Services.AddDbContext<RuleStreetAppContext>(options =>
             errorNumbersToAdd: null);
     }));
 
+
+builder.Services.AddSwaggerGen(opt =>
+{
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "RuleStreet.Api", Version = "v1" });
+    opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+
+    opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+});
 
 builder.Services.AddScoped<CiudadanoService>();
 builder.Services.AddScoped<ICiudadanoRepository, CiudadanoRepository>();
@@ -67,6 +116,9 @@ builder.Services.AddScoped<INotaRepository, NotaRepository>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+
 
 builder.Services.AddCors(options =>
 {
@@ -90,7 +142,7 @@ app.UseRouting();
 app.UseCors("MyCorsPolicy");
 
 app.UseAuthorization();
-
+app.UseAuthentication();
 // Mapeo de los controladores
 app.MapControllers();
 

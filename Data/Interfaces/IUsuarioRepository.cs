@@ -11,5 +11,6 @@ namespace RuleStreet.Data
         void Delete(int id);
         void Update(Usuario usuario);
         Usuario? GetByName(string nombre, string nombreUsuario, string contrasena);
+
     }
 }
