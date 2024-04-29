@@ -4,11 +4,15 @@ using RuleStreet.Business;
 using System.Collections.Generic;
 using Serilog;
 using Azure.Messaging;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 namespace RuleStreet.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UsuarioController : ControllerBase
     {
         private readonly UsuarioService _usuarioService;
