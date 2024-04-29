@@ -45,11 +45,22 @@ namespace RuleStreet.Business
         }
 
 
-        public void Update(Multa multa)
+        public void Update(MultaDTO multa)
         {
             try
             {
-                _multaRepository.Update(multa);
+                  var Multa = new Multa
+                {
+                    IdMulta = multa.IdMulta,
+                    IdPolicia = (int)multa.IdPolicia,
+                    Fecha = multa.Fecha,
+                    Precio = multa.Precio,
+                    ArticuloPenal = multa.ArticuloPenal,
+                    Descripcion = multa.Descripcion,
+                    Pagada = multa.Pagada,
+                    IdCiudadano = multa.IdCiudadano
+                };
+                _multaRepository.Update(Multa);
             }
             catch (Exception ex)
             {

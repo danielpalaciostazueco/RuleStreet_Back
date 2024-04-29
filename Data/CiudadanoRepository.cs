@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using RuleStreet.Data;
-using RuleStreet.Business;
+
 
 namespace RuleStreet.Data
 {
@@ -126,26 +126,68 @@ namespace RuleStreet.Data
             }
         }
 
-
-        public void Add(CiudadanoPostDTO ciudadanoPostDTO)
+        public CiudadanoDTO GetByName(string name)
         {
             try
             {
-                var ciudadano = new Ciudadano
-                {
-                    Nombre = ciudadanoPostDTO.Nombre,
-                    Apellidos = ciudadanoPostDTO.Apellidos,
-                    Dni = ciudadanoPostDTO.Dni,
-                    Genero = ciudadanoPostDTO.Genero,
-                    Nacionalidad = ciudadanoPostDTO.Nacionalidad,
-                    FechaNacimiento = ciudadanoPostDTO.FechaNacimiento,
-                    Direccion = ciudadanoPostDTO.Direccion,
-                    NumeroTelefono = ciudadanoPostDTO.NumeroTelefono,
-                    NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria,
-                    IsPoli = ciudadanoPostDTO.IsPoli,
-                    IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
-                    IsPeligroso = ciudadanoPostDTO.IsPeligroso,
-                };
+                var ciudadano = _context.Ciudadano
+                    .Where(c => c.Nombre == name)
+                    .Include(c => c.Multas)
+                    .Include(c => c.Vehiculos)
+                    .Select(c => new CiudadanoDTO
+                    {
+                        IdCiudadano = c.IdCiudadano,
+                        Nombre = c.Nombre,
+                        Apellidos = c.Apellidos,
+                        Dni = c.Dni,
+                        Genero = c.Genero,
+                        Nacionalidad = c.Nacionalidad,
+                        FechaNacimiento = c.FechaNacimiento,
+                        Direccion = c.Direccion,
+                        NumeroTelefono = c.NumeroTelefono,
+                        NumeroCuentaBancaria = c.NumeroCuentaBancaria,
+                        IsPoli = c.IsPoli,
+                        IsBusquedaYCaptura = c.IsBusquedaYCaptura,
+                        IsPeligroso = c.IsPeligroso,
+                        Multas = c.Multas.Select(m => new MultaDTO
+                        {
+                            IdMulta = m.IdMulta,
+                            IdPolicia = m.IdPolicia,
+                            Fecha = m.Fecha,
+                            Precio = m.Precio,
+                            ArticuloPenal = m.ArticuloPenal,
+                            Descripcion = m.Descripcion,
+                            Pagada = m.Pagada,
+                            IdCiudadano = m.IdCiudadano
+                        }).ToList(),
+                        Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
+                        {
+                            IdVehiculo = v.IdVehiculo,
+                            IdCiudadano = v.IdCiudadano,
+                            Matricula = v.Matricula,
+                            Marca = v.Marca,
+                            Modelo = v.Modelo,
+                            Color = v.Color
+                        }).ToList()
+                    })
+                    .AsNoTracking()
+                    .FirstOrDefault();
+
+                return ciudadano;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo Ciudadano por nombre.");
+                throw;
+            }
+        }
+
+
+        public void Add(Ciudadano ciudadano)
+        {
+            try
+            {
+
 
                 _context.Ciudadano.Add(ciudadano);
                 _context.SaveChanges();
@@ -157,27 +199,13 @@ namespace RuleStreet.Data
             }
         }
 
-        public void Update(CiudadanoPostDTO ciudadanoPostDTO)
+        public void Update(Ciudadano ciudadanoPostDTO)
         {
             try
             {
-                var ciudadano = _context.Ciudadano.FirstOrDefault(c => c.IdCiudadano == ciudadanoPostDTO.IdCiudadano);
-                if (ciudadano != null)
-                {
-                    ciudadano.Nombre = ciudadanoPostDTO.Nombre;
-                    ciudadano.Apellidos = ciudadanoPostDTO.Apellidos;
-                    ciudadano.Dni = ciudadanoPostDTO.Dni;
-                    ciudadano.Genero = ciudadanoPostDTO.Genero;
-                    ciudadano.Nacionalidad = ciudadanoPostDTO.Nacionalidad;
-                    ciudadano.FechaNacimiento = ciudadanoPostDTO.FechaNacimiento;
-                    ciudadano.Direccion = ciudadanoPostDTO.Direccion;
-                    ciudadano.NumeroTelefono = ciudadanoPostDTO.NumeroTelefono;
-                    ciudadano.NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria;
-                    ciudadano.IsPoli = ciudadanoPostDTO.IsPoli;
-                    ciudadano.IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura;
-                    ciudadano.IsPeligroso = ciudadanoPostDTO.IsPeligroso;
-                    _context.SaveChanges();
-                }
+                _context.Ciudadano.Update(ciudadanoPostDTO);
+                _context.SaveChanges();
+
             }
             catch (Exception ex)
             {

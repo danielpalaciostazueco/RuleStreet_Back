@@ -66,7 +66,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Multa multa)
+        public IActionResult Update(int id, MultaDTO multa)
         {
             try
             {

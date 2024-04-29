@@ -7,7 +7,7 @@ namespace RuleStreet.Business
     {
         List<VehiculoDTO> GetAll();
         VehiculoDTO? Get(int id);
-        void Update(Vehiculo vehiculo);
+        void Update(VehiculoPostDTO vehiculo);
         void Delete(int id);
         void Add(VehiculoPostDTO vehiculoPostDTO);
     }

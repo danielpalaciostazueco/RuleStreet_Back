@@ -13,6 +13,6 @@ public class Auditoria
     
     [ForeignKey("Policia")]
     public int? IdPolicia { get; set; }
-    public virtual Policia? policia { get; set; }
+    public  Policia? Policia { get; set; }
 }
 

@@ -7,7 +7,7 @@ namespace RuleStreet.Business
     {
         List<Multa> GetAll();
         Multa? Get(int id);
-        void Update(Multa multa);
+        void Update(MultaDTO multa);
         void Delete(int id);
         void Add(MultaDTO multa);
     }

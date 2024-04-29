@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using RuleStreet.Models;
 
-namespace RuleStreet.Business
+namespace RuleStreet.Data
 {
     public interface ICodigoPenalRepository
     {
