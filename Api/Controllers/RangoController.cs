@@ -4,11 +4,14 @@ using RuleStreet.Business;
 using System.Collections.Generic;
 using Serilog;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace RuleStreet.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class RangoController : ControllerBase
     {
         private readonly RangoService _RangoService;
