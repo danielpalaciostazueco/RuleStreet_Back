@@ -136,11 +136,11 @@ namespace RuleStreet.Api.Controllers
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(usuarioRequest.Nombre) || string.IsNullOrWhiteSpace(usuarioRequest.NombreUsuario) || string.IsNullOrWhiteSpace(usuarioRequest.Contrasena))
+                if (string.IsNullOrWhiteSpace(usuarioRequest.Dni) || string.IsNullOrWhiteSpace(usuarioRequest.NombreUsuario) || string.IsNullOrWhiteSpace(usuarioRequest.Contrasena))
                 {
                     return BadRequest("El nombre de usuario y la contraseña son obligatorios.");
                 }
-                var usuario = _usuarioService.GetByName(usuarioRequest.Nombre, usuarioRequest.NombreUsuario, usuarioRequest.Contrasena);
+                var usuario = _usuarioService.GetUserWithParameters(usuarioRequest.Dni, usuarioRequest.NombreUsuario, usuarioRequest.Contrasena);
                 if (usuario == null)
                 {
 

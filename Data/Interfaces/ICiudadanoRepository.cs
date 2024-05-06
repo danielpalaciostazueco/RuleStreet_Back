@@ -11,6 +11,7 @@ namespace RuleStreet.Data
         void Delete(int id);
         void Update(Ciudadano ciudadano);
 
-        CiudadanoDTO? GetByName(string name);
+        CiudadanoDTO? GetByDni(string dni);
+
     }
 }

@@ -126,12 +126,12 @@ namespace RuleStreet.Data
             }
         }
 
-        public CiudadanoDTO GetByName(string name)
+        public CiudadanoDTO GetByDni(string dni)
         {
             try
             {
                 var ciudadano = _context.Ciudadano
-                    .Where(c => c.Nombre == name)
+                    .Where(c => c.Nombre == dni)
                     .Include(c => c.Multas)
                     .Include(c => c.Vehiculos)
                     .Select(c => new CiudadanoDTO

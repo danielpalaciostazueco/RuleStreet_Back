@@ -10,7 +10,7 @@ namespace RuleStreet.Business
         void Add(CiudadanoPostDTO ciudadanoDTO);
         void Update(CiudadanoPostDTO ciudadanoPostDTO);
         void Delete(int id);
-        CiudadanoDTO? GetByName(string name);
+        CiudadanoDTO? GetByDni(string dni);
 
     }
 }

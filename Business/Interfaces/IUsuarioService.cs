@@ -10,6 +10,6 @@ namespace RuleStreet.Business
         void Add(UsuarioPostDTO usuarioDTO);
         void Delete(int id);
         void Update(Usuario usuario);
-        UsuarioDTO? GetByName(string nombre, string nombreUsuario, string contrasena);
+        UsuarioDTO? GetUserWithParameters(string dni, string nombreUsuario, string contrasena);
     }
 }

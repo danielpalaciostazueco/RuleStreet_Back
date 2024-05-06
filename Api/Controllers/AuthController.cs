@@ -11,7 +11,7 @@ namespace RuleStreet.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-  
+
     public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;
@@ -29,14 +29,14 @@ namespace RuleStreet.Api.Controllers
             _ciudadanoService = ciudadanoService;
         }
 
-      
+
 
         [HttpPost("Register")]
         public IActionResult Create(UsuarioPostDTO usuarioPostDTO)
         {
             try
             {
-                 _usuarioService.Add(usuarioPostDTO);
+                _usuarioService.Add(usuarioPostDTO);
                 return Ok();
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace RuleStreet.Api.Controllers
             }
         }
 
-       
+
 
 
         [HttpPost("Login")]
@@ -54,18 +54,7 @@ namespace RuleStreet.Api.Controllers
         {
             try
             {
-                /*if (string.IsNullOrWhiteSpace(usuarioRequest.Nombre) || string.IsNullOrWhiteSpace(usuarioRequest.NombreUsuario) || string.IsNullOrWhiteSpace(usuarioRequest.Contrasena))
-                {
-                    return BadRequest("El nombre de usuario y la contraseña son obligatorios.");
-                }
-                var usuario = _usuarioService.GetByName(usuarioRequest.Nombre, usuarioRequest.NombreUsuario, usuarioRequest.Contrasena);
-                if (usuario == null)
-                {
 
-                    return null;
-                }*/
-            
-               
                 var token = _authService.Login(usuarioRequest);
 
                 return Ok(token);
@@ -74,6 +63,22 @@ namespace RuleStreet.Api.Controllers
             {
                 Log.Error(ex, "Error al añadir el usuario.");
                 return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
+        [HttpPost("Login/Policia")]
+        public IActionResult AddUsuarioPolicia([FromBody] PoliciaPostRegisterDTO policiaRequest)
+        {
+            try
+            {
+                var token = _authService.LoginPolicia(policiaRequest);
+
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error al añadir el policia.");
+                return StatusCode(ex.HResult, "Error interno del servidor.");
             }
         }
 

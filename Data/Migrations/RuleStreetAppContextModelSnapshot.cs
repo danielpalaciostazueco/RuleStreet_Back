@@ -995,6 +995,9 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPolicia"));
 
+                    b.Property<string>("Contrasena")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
 
@@ -1050,6 +1053,9 @@ namespace RuleStreet.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuario"));
 
                     b.Property<string>("Contrasena")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dni")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IdCiudadano")

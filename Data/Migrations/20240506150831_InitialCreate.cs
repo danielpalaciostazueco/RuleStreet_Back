@@ -76,6 +76,7 @@ namespace RuleStreet.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true),
                     Rango = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -247,6 +248,7 @@ namespace RuleStreet.Data.Migrations
                     policiaIdPolicia = table.Column<int>(type: "int", nullable: true),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Dni = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsPolicia = table.Column<bool>(type: "bit", nullable: true)

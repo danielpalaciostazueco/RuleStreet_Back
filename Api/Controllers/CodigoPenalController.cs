@@ -22,6 +22,7 @@ namespace RuleStreet.Api.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<List<CodigoPenalDTO>> GetAll()
         {
@@ -37,6 +38,7 @@ namespace RuleStreet.Api.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<CodigoPenal> Get(int id)
         {

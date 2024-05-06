@@ -12,6 +12,7 @@ public class Policia
     public int? IdCiudadano { get; set; }
 
     public string? Rango { get; set; }
+    public string? Contrasena { get; set; }
     public string? NumeroPlaca { get; set; }
     public virtual Ciudadano? Ciudadano { get; set; }
 }

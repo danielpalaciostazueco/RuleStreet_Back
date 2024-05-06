@@ -44,15 +44,15 @@ namespace RuleStreet.Business
 
         }
 
-        public CiudadanoDTO? GetByName(string name)
+        public CiudadanoDTO? GetByDni(string dni)
         {
             try
             {
-                return _ciudadanoRepository.GetByName(name);
+                return _ciudadanoRepository.GetByDni(dni);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error obteniendo la ciudadano por nombre");
+                _logger.LogError(ex, "Error obteniendo la ciudadano por dni");
                 throw;
             }
 

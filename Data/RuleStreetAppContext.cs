@@ -31,8 +31,9 @@ namespace RuleStreet.Data
 
             modelBuilder.Entity<Multa>()
                 .HasOne(v => v.Ciudadano)
-                .WithMany(c => c.Multas)
-                .HasForeignKey(v => v.IdCiudadano);
+                .WithMany(c => c.Multas);
+
+
 
             modelBuilder.Entity<Auditoria>()
                 .HasOne(a => a.Policia)
