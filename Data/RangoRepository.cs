@@ -23,18 +23,20 @@ namespace RuleStreet.Data
         public List<Rango> GetAll()
         {
             return _context.Rango
-                .ToList();
+                           .Include(r => r.RangosPermisos)
+                           .ThenInclude(rp => rp.Permiso)
+                           .ToList();
         }
-
 
         public Rango Get(int id)
         {
             try
             {
                 return _context.Rango
-
-                    .AsNoTracking()
-                    .FirstOrDefault(Rango => Rango.IdRango == id);
+                               .AsNoTracking()
+                               .Include(r => r.RangosPermisos)
+                               .ThenInclude(rp => rp.Permiso)
+                               .FirstOrDefault(r => r.IdRango == id);
             }
             catch (Exception ex)
             {

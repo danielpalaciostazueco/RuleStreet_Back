@@ -976,15 +976,79 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPermiso"));
 
-                    b.Property<int?>("IdRango")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdPermiso");
 
                     b.ToTable("Permiso");
+
+                    b.HasData(
+                        new
+                        {
+                            IdPermiso = 1,
+                            Nombre = "Añadir policia"
+                        },
+                        new
+                        {
+                            IdPermiso = 2,
+                            Nombre = "Quitar policia"
+                        },
+                        new
+                        {
+                            IdPermiso = 3,
+                            Nombre = "Modificar policia"
+                        },
+                        new
+                        {
+                            IdPermiso = 4,
+                            Nombre = "Borrar multa"
+                        },
+                        new
+                        {
+                            IdPermiso = 5,
+                            Nombre = "Crear multa"
+                        },
+                        new
+                        {
+                            IdPermiso = 6,
+                            Nombre = "Borrar denuncia"
+                        },
+                        new
+                        {
+                            IdPermiso = 7,
+                            Nombre = "Crear denuncia"
+                        },
+                        new
+                        {
+                            IdPermiso = 8,
+                            Nombre = "Modificar denuncia"
+                        },
+                        new
+                        {
+                            IdPermiso = 9,
+                            Nombre = "Eliminar nota"
+                        },
+                        new
+                        {
+                            IdPermiso = 10,
+                            Nombre = "Crear nota"
+                        },
+                        new
+                        {
+                            IdPermiso = 11,
+                            Nombre = "Modificar nota"
+                        },
+                        new
+                        {
+                            IdPermiso = 12,
+                            Nombre = "Crear evento"
+                        },
+                        new
+                        {
+                            IdPermiso = 13,
+                            Nombre = "Eliminar evento"
+                        });
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Policia", b =>
@@ -1004,9 +1068,14 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Rango")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("RangoIdRango")
+                        .HasColumnType("int");
+
                     b.HasKey("IdPolicia");
 
                     b.HasIndex("IdCiudadano");
+
+                    b.HasIndex("RangoIdRango");
 
                     b.ToTable("Policia");
                 });
@@ -1019,9 +1088,6 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRango"));
 
-                    b.Property<int?>("IdPolicia")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
@@ -1031,14 +1097,388 @@ namespace RuleStreet.Data.Migrations
                     b.Property<bool?>("isLocal")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("policiaIdPolicia")
-                        .HasColumnType("int");
-
                     b.HasKey("IdRango");
 
-                    b.HasIndex("policiaIdPolicia");
-
                     b.ToTable("Rango");
+
+                    b.HasData(
+                        new
+                        {
+                            IdRango = 1,
+                            Nombre = "Practicas",
+                            Salario = 1071,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 2,
+                            Nombre = "Agente",
+                            Salario = 1330,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 3,
+                            Nombre = "Oficial I",
+                            Salario = 1412,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 4,
+                            Nombre = "Oficial II",
+                            Salario = 1483,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 5,
+                            Nombre = "Oficial III",
+                            Salario = 1555,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 6,
+                            Nombre = "Subinspector",
+                            Salario = 1674,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 7,
+                            Nombre = "Inspector",
+                            Salario = 1765,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            Nombre = "Inspector Jefe",
+                            Salario = 1881,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            Nombre = "Intendente",
+                            Salario = 2028,
+                            isLocal = true
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            Nombre = "Superintendente",
+                            Salario = 2142,
+                            isLocal = true
+                        });
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.RangoPermiso", b =>
+                {
+                    b.Property<int>("IdRango")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPermiso")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdRango", "IdPermiso");
+
+                    b.HasIndex("IdPermiso");
+
+                    b.ToTable("RangoPermiso");
+
+                    b.HasData(
+                        new
+                        {
+                            IdRango = 1,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 1,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 2,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 2,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 2,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 3,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 3,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 3,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 3,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 4,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 4,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 4,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 4,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 5,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 5,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 5,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 5,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 6,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 6,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 6,
+                            IdPermiso = 8
+                        },
+                        new
+                        {
+                            IdRango = 6,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 6,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 7,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 7,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 7,
+                            IdPermiso = 8
+                        },
+                        new
+                        {
+                            IdRango = 7,
+                            IdPermiso = 9
+                        },
+                        new
+                        {
+                            IdRango = 7,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 7,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            IdPermiso = 3
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            IdPermiso = 8
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            IdPermiso = 9
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 8,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 1
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 3
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 4
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 6
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 8
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 9
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 9,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 1
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 2
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 3
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 4
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 5
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 6
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 7
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 8
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 9
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 10
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 11
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 12
+                        },
+                        new
+                        {
+                            IdRango = 10,
+                            IdPermiso = 13
+                        });
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Usuario", b =>
@@ -1173,16 +1613,30 @@ namespace RuleStreet.Data.Migrations
                         .WithMany()
                         .HasForeignKey("IdCiudadano");
 
+                    b.HasOne("RuleStreet.Models.Rango", null)
+                        .WithMany("Policias")
+                        .HasForeignKey("RangoIdRango");
+
                     b.Navigation("Ciudadano");
                 });
 
-            modelBuilder.Entity("RuleStreet.Models.Rango", b =>
+            modelBuilder.Entity("RuleStreet.Models.RangoPermiso", b =>
                 {
-                    b.HasOne("RuleStreet.Models.Policia", "policia")
-                        .WithMany()
-                        .HasForeignKey("policiaIdPolicia");
+                    b.HasOne("RuleStreet.Models.Permiso", "Permiso")
+                        .WithMany("RangosPermisos")
+                        .HasForeignKey("IdPermiso")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("policia");
+                    b.HasOne("RuleStreet.Models.Rango", "Rango")
+                        .WithMany("RangosPermisos")
+                        .HasForeignKey("IdRango")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permiso");
+
+                    b.Navigation("Rango");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Usuario", b =>
@@ -1216,6 +1670,18 @@ namespace RuleStreet.Data.Migrations
                     b.Navigation("Usuario");
 
                     b.Navigation("Vehiculos");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Permiso", b =>
+                {
+                    b.Navigation("RangosPermisos");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Rango", b =>
+                {
+                    b.Navigation("Policias");
+
+                    b.Navigation("RangosPermisos");
                 });
 #pragma warning restore 612, 618
         }

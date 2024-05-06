@@ -60,8 +60,7 @@ namespace RuleStreet.Data.Migrations
                 {
                     IdPermiso = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdRango = table.Column<int>(type: "int", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,23 +68,18 @@ namespace RuleStreet.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Policia",
+                name: "Rango",
                 columns: table => new
                 {
-                    IdPolicia = table.Column<int>(type: "int", nullable: false)
+                    IdRango = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
-                    Rango = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Salario = table.Column<int>(type: "int", nullable: true),
+                    isLocal = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Policia", x => x.IdPolicia);
-                    table.ForeignKey(
-                        name: "FK_Policia_Ciudadano_IdCiudadano",
-                        column: x => x.IdCiudadano,
-                        principalTable: "Ciudadano",
-                        principalColumn: "IdCiudadano");
+                    table.PrimaryKey("PK_Rango", x => x.IdRango);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,6 +102,56 @@ namespace RuleStreet.Data.Migrations
                         column: x => x.IdCiudadano,
                         principalTable: "Ciudadano",
                         principalColumn: "IdCiudadano");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Policia",
+                columns: table => new
+                {
+                    IdPolicia = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
+                    Rango = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RangoIdRango = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Policia", x => x.IdPolicia);
+                    table.ForeignKey(
+                        name: "FK_Policia_Ciudadano_IdCiudadano",
+                        column: x => x.IdCiudadano,
+                        principalTable: "Ciudadano",
+                        principalColumn: "IdCiudadano");
+                    table.ForeignKey(
+                        name: "FK_Policia_Rango_RangoIdRango",
+                        column: x => x.RangoIdRango,
+                        principalTable: "Rango",
+                        principalColumn: "IdRango");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RangoPermiso",
+                columns: table => new
+                {
+                    IdRango = table.Column<int>(type: "int", nullable: false),
+                    IdPermiso = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RangoPermiso", x => new { x.IdRango, x.IdPermiso });
+                    table.ForeignKey(
+                        name: "FK_RangoPermiso_Permiso_IdPermiso",
+                        column: x => x.IdPermiso,
+                        principalTable: "Permiso",
+                        principalColumn: "IdPermiso",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RangoPermiso_Rango_IdRango",
+                        column: x => x.IdRango,
+                        principalTable: "Rango",
+                        principalColumn: "IdRango",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,28 +255,6 @@ namespace RuleStreet.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Nota_Policia_IdPolicia",
                         column: x => x.IdPolicia,
-                        principalTable: "Policia",
-                        principalColumn: "IdPolicia");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Rango",
-                columns: table => new
-                {
-                    IdRango = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdPolicia = table.Column<int>(type: "int", nullable: true),
-                    policiaIdPolicia = table.Column<int>(type: "int", nullable: true),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Salario = table.Column<int>(type: "int", nullable: true),
-                    isLocal = table.Column<bool>(type: "bit", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rango", x => x.IdRango);
-                    table.ForeignKey(
-                        name: "FK_Rango_Policia_policiaIdPolicia",
-                        column: x => x.policiaIdPolicia,
                         principalTable: "Policia",
                         principalColumn: "IdPolicia");
                 });
@@ -370,6 +392,108 @@ namespace RuleStreet.Data.Migrations
                     { 88, "Art. 8.13", "Negarse a la identificacion ante un funcionario publico", 1500m, "0 meses" }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Permiso",
+                columns: new[] { "IdPermiso", "Nombre" },
+                values: new object[,]
+                {
+                    { 1, "Añadir policia" },
+                    { 2, "Quitar policia" },
+                    { 3, "Modificar policia" },
+                    { 4, "Borrar multa" },
+                    { 5, "Crear multa" },
+                    { 6, "Borrar denuncia" },
+                    { 7, "Crear denuncia" },
+                    { 8, "Modificar denuncia" },
+                    { 9, "Eliminar nota" },
+                    { 10, "Crear nota" },
+                    { 11, "Modificar nota" },
+                    { 12, "Crear evento" },
+                    { 13, "Eliminar evento" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rango",
+                columns: new[] { "IdRango", "Nombre", "Salario", "isLocal" },
+                values: new object[,]
+                {
+                    { 1, "Practicas", 1071, true },
+                    { 2, "Agente", 1330, true },
+                    { 3, "Oficial I", 1412, true },
+                    { 4, "Oficial II", 1483, true },
+                    { 5, "Oficial III", 1555, true },
+                    { 6, "Subinspector", 1674, true },
+                    { 7, "Inspector", 1765, true },
+                    { 8, "Inspector Jefe", 1881, true },
+                    { 9, "Intendente", 2028, true },
+                    { 10, "Superintendente", 2142, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RangoPermiso",
+                columns: new[] { "IdPermiso", "IdRango" },
+                values: new object[,]
+                {
+                    { 5, 1 },
+                    { 7, 1 },
+                    { 5, 2 },
+                    { 7, 2 },
+                    { 10, 2 },
+                    { 5, 3 },
+                    { 7, 3 },
+                    { 10, 3 },
+                    { 11, 3 },
+                    { 5, 4 },
+                    { 7, 4 },
+                    { 10, 4 },
+                    { 11, 4 },
+                    { 5, 5 },
+                    { 7, 5 },
+                    { 10, 5 },
+                    { 11, 5 },
+                    { 5, 6 },
+                    { 7, 6 },
+                    { 8, 6 },
+                    { 10, 6 },
+                    { 11, 6 },
+                    { 5, 7 },
+                    { 7, 7 },
+                    { 8, 7 },
+                    { 9, 7 },
+                    { 10, 7 },
+                    { 11, 7 },
+                    { 3, 8 },
+                    { 5, 8 },
+                    { 7, 8 },
+                    { 8, 8 },
+                    { 9, 8 },
+                    { 10, 8 },
+                    { 11, 8 },
+                    { 1, 9 },
+                    { 3, 9 },
+                    { 4, 9 },
+                    { 5, 9 },
+                    { 6, 9 },
+                    { 7, 9 },
+                    { 8, 9 },
+                    { 9, 9 },
+                    { 10, 9 },
+                    { 11, 9 },
+                    { 1, 10 },
+                    { 2, 10 },
+                    { 3, 10 },
+                    { 4, 10 },
+                    { 5, 10 },
+                    { 6, 10 },
+                    { 7, 10 },
+                    { 8, 10 },
+                    { 9, 10 },
+                    { 10, 10 },
+                    { 11, 10 },
+                    { 12, 10 },
+                    { 13, 10 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Auditoria_IdPolicia",
                 table: "Auditoria",
@@ -411,9 +535,14 @@ namespace RuleStreet.Data.Migrations
                 column: "IdCiudadano");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rango_policiaIdPolicia",
-                table: "Rango",
-                column: "policiaIdPolicia");
+                name: "IX_Policia_RangoIdRango",
+                table: "Policia",
+                column: "RangoIdRango");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RangoPermiso_IdPermiso",
+                table: "RangoPermiso",
+                column: "IdPermiso");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Usuario_IdCiudadano",
@@ -452,10 +581,7 @@ namespace RuleStreet.Data.Migrations
                 name: "Nota");
 
             migrationBuilder.DropTable(
-                name: "Permiso");
-
-            migrationBuilder.DropTable(
-                name: "Rango");
+                name: "RangoPermiso");
 
             migrationBuilder.DropTable(
                 name: "Usuario");
@@ -464,10 +590,16 @@ namespace RuleStreet.Data.Migrations
                 name: "Vehiculo");
 
             migrationBuilder.DropTable(
+                name: "Permiso");
+
+            migrationBuilder.DropTable(
                 name: "Policia");
 
             migrationBuilder.DropTable(
                 name: "Ciudadano");
+
+            migrationBuilder.DropTable(
+                name: "Rango");
         }
     }
 }

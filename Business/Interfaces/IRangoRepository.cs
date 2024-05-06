@@ -5,8 +5,8 @@ namespace RuleStreet.Business
 {
     public interface IRangoService
     {
-        List<Rango> GetAll();
-        Rango? Get(int id);
+        List<RangoDto> GetAll();
+        RangoDto? Get(int id);
         void Update(Rango rango);
     }
 }

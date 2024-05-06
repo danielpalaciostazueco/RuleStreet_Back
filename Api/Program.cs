@@ -119,6 +119,8 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
+builder.Services.AddScoped<RangoService>();
+builder.Services.AddScoped<IRangoRepository, RangoRepository>();
 
 builder.Services.AddCors(options =>
 {

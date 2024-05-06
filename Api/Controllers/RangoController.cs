@@ -14,41 +14,53 @@ namespace RuleStreet.Api.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class RangoController : ControllerBase
     {
-        private readonly RangoService _RangoService;
+        private readonly RangoService _rangoService;
+        private readonly ILogger<RangoController> _logger;
 
-
-        public RangoController(RangoService RangoService)
+        public RangoController(RangoService rangoService, ILogger<RangoController> logger)
         {
-            _RangoService = RangoService;
+            _rangoService = rangoService;
+            _logger = logger;
         }
 
         [HttpGet]
-        public ActionResult<List<Rango>> GetAll()
-        {
-            return _RangoService.GetAll();
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<Rango> Get(int id)
+        public ActionResult<List<RangoDto>> GetAll()
         {
             try
             {
-                var Rango = _RangoService.Get(id);
-                if (Rango == null)
-                {
-                    return NotFound();
-                }
-
-                return Rango;
+                _logger.LogInformation("Solicitando la lista de todos los rangos.");
+                var rangos = _rangoService.GetAll();
+                return Ok(rangos);
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al hacer el get por id ");
-                return StatusCode(500, "Error interno del servidor");
+                _logger.LogError(ex, "Error obteniendo todos los rangos.");
+                return StatusCode(500, "Un error ocurrió al obtener la lista de rangos.");
             }
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<RangoDto> Get(int id)
+        {
+            try
+            {
+                _logger.LogInformation($"Buscando rango con ID: {id}");
+                var rango = _rangoService.Get(id);
 
+                if (rango == null)
+                {
+                    _logger.LogWarning($"Rango con ID: {id} no encontrado.");
+                    return NotFound($"Rango con ID: {id} no encontrado.");
+                }
+
+                return Ok(rango);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error obteniendo el rango con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al obtener el rango.");
+            }
+        }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, Rango rango)
@@ -60,13 +72,13 @@ namespace RuleStreet.Api.Controllers
                     return BadRequest();
                 }
 
-                var existingRango = _RangoService.Get(id);
+                var existingRango = _rangoService.Get(id);
                 if (existingRango == null)
                 {
                     return NotFound();
                 }
 
-                _RangoService.Update(rango);
+                _rangoService.Update(rango);
                 return NoContent();
             }
             catch (Exception ex)
