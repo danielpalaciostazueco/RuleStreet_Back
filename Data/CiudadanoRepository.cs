@@ -131,7 +131,7 @@ namespace RuleStreet.Data
             try
             {
                 var ciudadano = _context.Ciudadano
-                    .Where(c => c.Nombre == dni)
+                    .Where(c => c.Dni == dni)
                     .Include(c => c.Multas)
                     .Include(c => c.Vehiculos)
                     .Select(c => new CiudadanoDTO
