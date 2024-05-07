@@ -8,7 +8,7 @@ public class MultaDTO
     public int? IdPolicia { get; set; }
     public DateTime? Fecha { get; set; }
     public decimal? Precio { get; set; }
-    public string? ArticuloPenal { get; set; }
+    public int? IdArticuloPenal { get; set; }
     public string? Descripcion { get; set; }
     public bool? Pagada { get; set; }
 
