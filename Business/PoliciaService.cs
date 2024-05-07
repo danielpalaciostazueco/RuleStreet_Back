@@ -51,13 +51,14 @@ namespace RuleStreet.Business
         {
             try
             {
-                   var Policia = new Policia()
-            {
-                IdPolicia = (int)policia.IdPolicia,
-                IdCiudadano = (int)policia.IdCiudadano,
-                Rango = policia.Rango,
-                NumeroPlaca = policia.NumeroPlaca
-            };
+                var Policia = new Policia()
+                {
+                    IdPolicia = (int)policia.IdPolicia,
+                    IdCiudadano = (int)policia.IdCiudadano,
+                    Contrasena = policia.Contrasena,
+                    Rango = policia.Rango,
+                    NumeroPlaca = policia.NumeroPlaca
+                };
                 _policiaRepository.Update(Policia);
             }
             catch (Exception ex)
@@ -72,28 +73,29 @@ namespace RuleStreet.Business
         {
             var ciudadano = _ciudadanoRepository.Get((int)policia.IdCiudadano);
             ciudadano.IsPoli = true;
-            
+
             var ciudadanoUpdate = new Ciudadano
-                {
-                    IdCiudadano = ciudadano.IdCiudadano,
-                    Nombre = ciudadano.Nombre,
-                    Apellidos = ciudadano.Apellidos,
-                    Dni = ciudadano.Dni,
-                    Genero = ciudadano.Genero,
-                    Nacionalidad = ciudadano.Nacionalidad,
-                    FechaNacimiento = ciudadano.FechaNacimiento,
-                    Direccion = ciudadano.Direccion,
-                    NumeroTelefono = ciudadano.NumeroTelefono,
-                    NumeroCuentaBancaria = ciudadano.NumeroCuentaBancaria,
-                    IsPoli = ciudadano.IsPoli,
-                    IsBusquedaYCaptura = ciudadano.IsBusquedaYCaptura,
-                    IsPeligroso = ciudadano.IsPeligroso,
-                };
+            {
+                IdCiudadano = ciudadano.IdCiudadano,
+                Nombre = ciudadano.Nombre,
+                Apellidos = ciudadano.Apellidos,
+                Dni = ciudadano.Dni,
+                Genero = ciudadano.Genero,
+                Nacionalidad = ciudadano.Nacionalidad,
+                FechaNacimiento = ciudadano.FechaNacimiento,
+                Direccion = ciudadano.Direccion,
+                NumeroTelefono = ciudadano.NumeroTelefono,
+                NumeroCuentaBancaria = ciudadano.NumeroCuentaBancaria,
+                IsPoli = ciudadano.IsPoli,
+                IsBusquedaYCaptura = ciudadano.IsBusquedaYCaptura,
+                IsPeligroso = ciudadano.IsPeligroso,
+            };
             _ciudadanoRepository.Update(ciudadanoUpdate);
             var Policia = new Policia()
             {
                 IdPolicia = (int)policia.IdPolicia,
                 IdCiudadano = (int)policia.IdCiudadano,
+                Contrasena = policia.Contrasena,
                 Rango = policia.Rango,
                 NumeroPlaca = policia.NumeroPlaca
             };

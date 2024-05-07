@@ -31,8 +31,9 @@ namespace RuleStreet.Data
 
             modelBuilder.Entity<Multa>()
                 .HasOne(v => v.Ciudadano)
-                .WithMany(c => c.Multas)
-                .HasForeignKey(v => v.IdCiudadano);
+                .WithMany(c => c.Multas);
+
+
 
             modelBuilder.Entity<Auditoria>()
                 .HasOne(a => a.Policia)
@@ -97,7 +98,7 @@ namespace RuleStreet.Data
                     NumeroTelefono = 987654321,
                     NumeroCuentaBancaria = "ES987654321",
                     IsPoli = false,
-                    IsBusquedaYCaptura = false,
+                    IsBusquedaYCaptura = true,
                     IsPeligroso = false
                 }
            );

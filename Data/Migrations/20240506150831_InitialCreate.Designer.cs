@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240429090157_InitialCreate")]
+    [Migration("20240506150831_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -998,6 +998,9 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPolicia"));
 
+                    b.Property<string>("Contrasena")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
 
@@ -1053,6 +1056,9 @@ namespace RuleStreet.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuario"));
 
                     b.Property<string>("Contrasena")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dni")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IdCiudadano")

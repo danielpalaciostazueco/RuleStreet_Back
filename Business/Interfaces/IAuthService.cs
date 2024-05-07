@@ -8,6 +8,7 @@ namespace RuleStreet.Business
     {
         string Login(UsuarioRegisterPostDTO loginDtoIn);
         string GenerateToken(UsuarioDTO userDTOOut);
-      
+        string LoginPolicia(PoliciaPostRegisterDTO policiaPostDTO);
+
     }
 }

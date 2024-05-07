@@ -5,7 +5,8 @@ namespace RuleStreet.Data
 {
     public interface IAuthRepository
     {
-      
+
         UsuarioDTO GetUserFromCredentials(UsuarioRegisterPostDTO loginDtoIn);
+        PoliciaDTO GetUserFromCredentialsPolicia(PoliciaPostRegisterDTO loginDtoIn);
     }
 }
