@@ -98,7 +98,7 @@ namespace RuleStreet.Data
                     NumeroTelefono = 987654321,
                     NumeroCuentaBancaria = "ES987654321",
                     IsPoli = false,
-                    IsBusquedaYCaptura = false,
+                    IsBusquedaYCaptura = true,
                     IsPeligroso = false
                 }
            );

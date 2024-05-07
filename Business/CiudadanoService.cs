@@ -30,6 +30,22 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+
+        public List<CiudadanoDTO> GetAllBusquedaCaptura()
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo todas las ciudadanos");
+                return _ciudadanoRepository.GetAll().Where(x => x.IsBusquedaYCaptura == true).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas las ciudadanos");
+                throw;
+            }
+        }
+
         public CiudadanoDTO? Get(int id)
         {
             try

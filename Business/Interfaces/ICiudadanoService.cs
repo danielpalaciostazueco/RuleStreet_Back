@@ -6,6 +6,7 @@ namespace RuleStreet.Business
     public interface ICiudadanoService
     {
         List<CiudadanoDTO> GetAll();
+        List<CiudadanoDTO> GetAllBusquedaCaptura();
         CiudadanoDTO? Get(int id);
         void Add(CiudadanoPostDTO ciudadanoDTO);
         void Update(CiudadanoPostDTO ciudadanoPostDTO);
