@@ -47,7 +47,7 @@ namespace RuleStreet.Data
                         IdPolicia = m.Policia.IdPolicia,
                         Fecha = m.Fecha,
                         Precio = m.Precio,
-                        ArticuloPenal = m.ArticuloPenal,
+                        IdArticuloPenal = m.IdArticuloPenal,
                         Descripcion = m.Descripcion,
                         Pagada = m.Pagada,
                         IdCiudadano = m.IdCiudadano
@@ -99,7 +99,7 @@ namespace RuleStreet.Data
                             IdPolicia = m.IdPolicia,
                             Fecha = m.Fecha,
                             Precio = m.Precio,
-                            ArticuloPenal = m.ArticuloPenal,
+                           IdArticuloPenal = m.IdArticuloPenal,
                             Descripcion = m.Descripcion,
                             Pagada = m.Pagada,
                             IdCiudadano = m.IdCiudadano
@@ -155,7 +155,7 @@ namespace RuleStreet.Data
                             IdPolicia = m.IdPolicia,
                             Fecha = m.Fecha,
                             Precio = m.Precio,
-                            ArticuloPenal = m.ArticuloPenal,
+                            IdArticuloPenal = m.IdArticuloPenal,
                             Descripcion = m.Descripcion,
                             Pagada = m.Pagada,
                             IdCiudadano = m.IdCiudadano

@@ -7,6 +7,7 @@ namespace RuleStreet.Business
     {
         List<CiudadanoDTO> GetAll();
         List<CiudadanoDTO> GetAllBusquedaCaptura();
+        List<DeudoresDTO> GetAllDeudores();
         CiudadanoDTO? Get(int id);
         void Add(CiudadanoPostDTO ciudadanoDTO);
         void Update(CiudadanoPostDTO ciudadanoPostDTO);
