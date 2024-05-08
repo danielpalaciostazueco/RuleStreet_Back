@@ -20,6 +20,7 @@ namespace RuleStreet.Data
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<Nota> Nota { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Evento> Evento { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

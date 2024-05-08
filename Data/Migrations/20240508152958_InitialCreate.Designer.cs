@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240506150831_InitialCreate")]
+    [Migration("20240508152958_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -128,7 +128,7 @@ namespace RuleStreet.Data.Migrations
                             Dni = "87654321",
                             FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Genero = "Mujer",
-                            IsBusquedaYCaptura = false,
+                            IsBusquedaYCaptura = true,
                             IsPeligroso = false,
                             IsPoli = false,
                             Nacionalidad = "Española",
@@ -901,6 +901,28 @@ namespace RuleStreet.Data.Migrations
                     b.ToTable("Denuncia");
                 });
 
+            modelBuilder.Entity("RuleStreet.Models.Evento", b =>
+                {
+                    b.Property<int>("IdEventos")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdEventos"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Imagen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdEventos");
+
+                    b.ToTable("Evento");
+                });
+
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>
                 {
                     b.Property<int>("IdMulta")
@@ -909,14 +931,14 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMulta"));
 
-                    b.Property<string>("ArticuloPenal")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("IdArticuloPenal")
+                        .HasColumnType("int");
 
                     b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
