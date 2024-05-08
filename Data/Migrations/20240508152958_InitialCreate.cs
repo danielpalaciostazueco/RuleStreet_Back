@@ -55,6 +55,21 @@ namespace RuleStreet.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Evento",
+                columns: table => new
+                {
+                    IdEventos = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Evento", x => x.IdEventos);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Permiso",
                 columns: table => new
                 {
@@ -168,7 +183,7 @@ namespace RuleStreet.Data.Migrations
                     IdPolicia = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    ArticuloPenal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdArticuloPenal = table.Column<int>(type: "int", nullable: true),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pagada = table.Column<bool>(type: "bit", nullable: true),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true)
@@ -274,7 +289,7 @@ namespace RuleStreet.Data.Migrations
                 values: new object[,]
                 {
                     { 1, "Perez", "Calle Falsa 123", "12345678", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, false, false, false, "Español", "Juan", "ES123456789", 123456789 },
-                    { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, false, false, false, "Española", "Maria", "ES987654321", 987654321 }
+                    { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, true, false, false, "Española", "Maria", "ES987654321", 987654321 }
                 });
 
             migrationBuilder.InsertData(
@@ -446,6 +461,9 @@ namespace RuleStreet.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Denuncia");
+
+            migrationBuilder.DropTable(
+                name: "Evento");
 
             migrationBuilder.DropTable(
                 name: "Multa");
