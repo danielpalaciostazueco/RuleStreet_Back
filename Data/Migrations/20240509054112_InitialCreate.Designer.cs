@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RuleStreet.Data;
 
@@ -11,9 +12,11 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    partial class RuleStreetAppContextModelSnapshot : ModelSnapshot
+    [Migration("20240509054112_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -929,28 +932,6 @@ namespace RuleStreet.Data.Migrations
                     b.HasIndex("IdPolicia");
 
                     b.ToTable("Denuncia");
-                });
-
-            modelBuilder.Entity("RuleStreet.Models.Evento", b =>
-                {
-                    b.Property<int>("IdEventos")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdEventos"));
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Imagen")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdEventos");
-
-                    b.ToTable("Evento");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Multa", b =>

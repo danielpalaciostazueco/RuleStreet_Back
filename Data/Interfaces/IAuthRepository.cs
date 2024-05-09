@@ -8,5 +8,6 @@ namespace RuleStreet.Data
 
         UsuarioDTO GetUserFromCredentials(UsuarioRegisterPostDTO loginDtoIn);
         PoliciaDTO GetUserFromCredentialsPolicia(PoliciaPostRegisterDTO loginDtoIn);
+        Ayuntamiento GetUserFromCredentialsAyuntamiento(AyuntamientoPostRegisterDTO loginDtoIn);
     }
 }
