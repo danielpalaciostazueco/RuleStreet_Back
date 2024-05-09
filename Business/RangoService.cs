@@ -19,14 +19,14 @@ namespace RuleStreet.Business
             _logger = logger;
         }
 
-        public List<RangoDto> GetAll()
+        public List<RangoDTO> GetAll()
         {
             _logger.LogInformation("Obteniendo todos los rangos.");
             try
             {
                 var rangos = _rangoRepository.GetAll();
 
-                var rangoDtos = rangos.Select(r => new RangoDto
+                var rangoDtos = rangos.Select(r => new RangoDTO
                 {
                     IdRango = r.IdRango,
                     Nombre = r.Nombre,
@@ -48,7 +48,7 @@ namespace RuleStreet.Business
             }
         }
 
-        public RangoDto? Get(int id)
+        public RangoDTO? Get(int id)
         {
             _logger.LogInformation($"Buscando rango con ID: {id}");
             try
@@ -60,7 +60,7 @@ namespace RuleStreet.Business
                     return null;
                 }
 
-                var rangoDto = new RangoDto
+                var rangoDto = new RangoDTO
                 {
                     IdRango = rango.IdRango,
                     Nombre = rango.Nombre,
@@ -82,7 +82,7 @@ namespace RuleStreet.Business
             }
         }
 
-        public void Update(RangoDto rangoDto, int id)
+        public void Update(RangoDTO rangoDto, int id)
         {
             try
             {

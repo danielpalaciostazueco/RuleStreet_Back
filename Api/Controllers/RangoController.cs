@@ -24,7 +24,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<RangoDto>> GetAll()
+        public ActionResult<List<RangoDTO>> GetAll()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<RangoDto> Get(int id)
+        public ActionResult<RangoDTO> Get(int id)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, RangoDto rango)
+        public IActionResult Update(int id, RangoDTO rango)
         {
             try
             {

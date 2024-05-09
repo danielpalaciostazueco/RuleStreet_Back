@@ -10,13 +10,15 @@ namespace RuleStreet.Business
         private readonly IPoliciaRepository _policiaRepository;
         private readonly ICiudadanoRepository _ciudadanoRepository;
         private readonly ILogger<PoliciaService> _logger;
+        private readonly IRangoRepository _rangoRepository;
 
 
-        public PoliciaService(IPoliciaRepository policiaRepository, ILogger<PoliciaService> logger, ICiudadanoRepository ciudadanoRepository)
+        public PoliciaService(IPoliciaRepository policiaRepository, ILogger<PoliciaService> logger, ICiudadanoRepository ciudadanoRepository, IRangoRepository rangoRepository)
         {
             _policiaRepository = policiaRepository;
             _logger = logger;
             _ciudadanoRepository = ciudadanoRepository;
+            _rangoRepository = rangoRepository;
         }
 
         public List<PoliciaDTO> GetAll()
@@ -46,23 +48,26 @@ namespace RuleStreet.Business
 
         }
 
-
         public void Update(PoliciaPostDTO policia)
         {
             try
             {
-                   var Policia = new Policia()
-            {
-                IdPolicia = (int)policia.IdPolicia,
-                IdCiudadano = (int)policia.IdCiudadano,
-                Rango = policia.Rango,
-                NumeroPlaca = policia.NumeroPlaca
-            };
-                _policiaRepository.Update(Policia);
+                var Policia = _policiaRepository.Get((int)policia.IdPolicia);
+                if (Policia != null)
+                {
+                    Policia.IdCiudadano = (int)policia.IdCiudadano;
+                    Policia.RangoId = policia.Rango?.IdRango;
+                    Policia.NumeroPlaca = policia.NumeroPlaca;
+
+                    _policiaRepository.Update(Policia);
+                }
+                else
+                {
+                    _logger.LogError("No se encontró el Policía con ID: {0}", policia.IdPolicia);
+                }
             }
             catch (Exception ex)
             {
-
                 _logger.LogError(ex, "Error actualizando al ciudadano por id");
                 throw;
             }
@@ -72,41 +77,42 @@ namespace RuleStreet.Business
         {
             var ciudadano = _ciudadanoRepository.Get((int)policia.IdCiudadano);
             ciudadano.IsPoli = true;
-            
+
             var ciudadanoUpdate = new Ciudadano
-                {
-                    IdCiudadano = ciudadano.IdCiudadano,
-                    Nombre = ciudadano.Nombre,
-                    Apellidos = ciudadano.Apellidos,
-                    Dni = ciudadano.Dni,
-                    Genero = ciudadano.Genero,
-                    Nacionalidad = ciudadano.Nacionalidad,
-                    FechaNacimiento = ciudadano.FechaNacimiento,
-                    Direccion = ciudadano.Direccion,
-                    NumeroTelefono = ciudadano.NumeroTelefono,
-                    NumeroCuentaBancaria = ciudadano.NumeroCuentaBancaria,
-                    IsPoli = ciudadano.IsPoli,
-                    IsBusquedaYCaptura = ciudadano.IsBusquedaYCaptura,
-                    IsPeligroso = ciudadano.IsPeligroso,
-                };
+            {
+                IdCiudadano = ciudadano.IdCiudadano,
+                Nombre = ciudadano.Nombre,
+                Apellidos = ciudadano.Apellidos,
+                Dni = ciudadano.Dni,
+                Genero = ciudadano.Genero,
+                Nacionalidad = ciudadano.Nacionalidad,
+                FechaNacimiento = ciudadano.FechaNacimiento,
+                Direccion = ciudadano.Direccion,
+                NumeroTelefono = ciudadano.NumeroTelefono,
+                NumeroCuentaBancaria = ciudadano.NumeroCuentaBancaria,
+                IsPoli = ciudadano.IsPoli,
+                IsBusquedaYCaptura = ciudadano.IsBusquedaYCaptura,
+                IsPeligroso = ciudadano.IsPeligroso,
+            };
             _ciudadanoRepository.Update(ciudadanoUpdate);
+
             var Policia = new Policia()
             {
                 IdPolicia = (int)policia.IdPolicia,
                 IdCiudadano = (int)policia.IdCiudadano,
-                Rango = policia.Rango,
+                IdRango = policia.Rango?.IdRango,
                 NumeroPlaca = policia.NumeroPlaca
             };
+
             try
             {
                 _policiaRepository.Add(Policia);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error añadiendo la ciudadano");
+                _logger.LogError(ex, "Error añadiendo el policía");
                 throw;
             }
-
         }
         public void Delete(int id)
         {

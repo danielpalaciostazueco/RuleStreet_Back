@@ -2,7 +2,7 @@ using RuleStreet.Models;
 using System;
 using System.Collections.Generic;
 
-public class RangoDto
+public class RangoDTO
 {
     public int IdRango { get; set; }
     public string? Nombre { get; set; }

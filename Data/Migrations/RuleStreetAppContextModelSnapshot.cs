@@ -1062,20 +1062,17 @@ namespace RuleStreet.Data.Migrations
                     b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
 
+                    b.Property<int?>("IdRango")
+                        .HasColumnType("int");
+
                     b.Property<string>("NumeroPlaca")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Rango")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RangoIdRango")
-                        .HasColumnType("int");
 
                     b.HasKey("IdPolicia");
 
                     b.HasIndex("IdCiudadano");
 
-                    b.HasIndex("RangoIdRango");
+                    b.HasIndex("IdRango");
 
                     b.ToTable("Policia");
                 });
@@ -1613,11 +1610,13 @@ namespace RuleStreet.Data.Migrations
                         .WithMany()
                         .HasForeignKey("IdCiudadano");
 
-                    b.HasOne("RuleStreet.Models.Rango", null)
+                    b.HasOne("RuleStreet.Models.Rango", "Rango")
                         .WithMany("Policias")
-                        .HasForeignKey("RangoIdRango");
+                        .HasForeignKey("IdRango");
 
                     b.Navigation("Ciudadano");
+
+                    b.Navigation("Rango");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.RangoPermiso", b =>

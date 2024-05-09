@@ -111,9 +111,8 @@ namespace RuleStreet.Data.Migrations
                     IdPolicia = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true),
-                    Rango = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RangoIdRango = table.Column<int>(type: "int", nullable: true)
+                    IdRango = table.Column<int>(type: "int", nullable: true),
+                    NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -124,8 +123,8 @@ namespace RuleStreet.Data.Migrations
                         principalTable: "Ciudadano",
                         principalColumn: "IdCiudadano");
                     table.ForeignKey(
-                        name: "FK_Policia_Rango_RangoIdRango",
-                        column: x => x.RangoIdRango,
+                        name: "FK_Policia_Rango_IdRango",
+                        column: x => x.IdRango,
                         principalTable: "Rango",
                         principalColumn: "IdRango");
                 });
@@ -535,9 +534,9 @@ namespace RuleStreet.Data.Migrations
                 column: "IdCiudadano");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Policia_RangoIdRango",
+                name: "IX_Policia_IdRango",
                 table: "Policia",
-                column: "RangoIdRango");
+                column: "IdRango");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RangoPermiso_IdPermiso",

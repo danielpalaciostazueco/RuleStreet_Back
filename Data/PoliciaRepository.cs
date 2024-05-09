@@ -24,17 +24,24 @@ namespace RuleStreet.Data
         {
             var policiaList = _context.Policia
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Multas)
-                        .ThenInclude(m => m.Policia)
+                .ThenInclude(c => c.Multas)
+                .ThenInclude(m => m.Policia)
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Vehiculos)
+                .ThenInclude(c => c.Vehiculos)
+                .Include(p => p.Rango)
                 .ToList();
 
             var policiaDTOList = policiaList.Select(p => new PoliciaDTO
             {
                 IdPolicia = p.IdPolicia,
                 IdCiudadano = p.IdCiudadano.Value,
-                Rango = p.Rango,
+                Rango = p.Rango != null ? new RangoDTO
+                {
+                    IdRango = p.Rango.IdRango,
+                    Nombre = p.Rango.Nombre,
+                    Salario = p.Rango.Salario ?? 0,
+                    isLocal = p.Rango.isLocal ?? true
+                } : null,
                 NumeroPlaca = p.NumeroPlaca,
                 Ciudadano = new CiudadanoDTO
                 {
@@ -85,10 +92,11 @@ namespace RuleStreet.Data
         {
             var policia = _context.Policia
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Multas)
-                        .ThenInclude(m => m.Policia)
+                .ThenInclude(c => c.Multas)
+                .ThenInclude(m => m.Policia)
+                .Include(p => p.Rango)
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Vehiculos)
+                .ThenInclude(c => c.Vehiculos)
                 .AsNoTracking()
                 .FirstOrDefault(p => p.IdPolicia == id);
 
@@ -102,7 +110,13 @@ namespace RuleStreet.Data
             {
                 IdPolicia = policia.IdPolicia,
                 IdCiudadano = policia.IdCiudadano.Value,
-                Rango = policia.Rango,
+                Rango = policia.Rango != null ? new RangoDTO
+                {
+                    IdRango = policia.Rango.IdRango,
+                    Nombre = policia.Rango.Nombre,
+                    Salario = policia.Rango.Salario ?? 0,
+                    isLocal = policia.Rango.isLocal ?? true
+                } : null,
                 NumeroPlaca = policia.NumeroPlaca,
                 Ciudadano = new CiudadanoDTO
                 {
