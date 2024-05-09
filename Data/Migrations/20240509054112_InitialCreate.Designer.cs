@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240506150831_InitialCreate")]
+    [Migration("20240509054112_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -50,6 +50,39 @@ namespace RuleStreet.Data.Migrations
                     b.HasIndex("IdPolicia");
 
                     b.ToTable("Auditoria");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Ayuntamiento", b =>
+                {
+                    b.Property<int>("IdUsuarioAyuntamiento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuarioAyuntamiento"));
+
+                    b.Property<string>("Contrasena")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dni")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdUsuarioAyuntamiento");
+
+                    b.ToTable("Ayuntamiento");
+
+                    b.HasData(
+                        new
+                        {
+                            IdUsuarioAyuntamiento = 1,
+                            Contrasena = "1234",
+                            Dni = "12345678"
+                        },
+                        new
+                        {
+                            IdUsuarioAyuntamiento = 2,
+                            Contrasena = "1234",
+                            Dni = "87654321"
+                        });
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
@@ -128,7 +161,7 @@ namespace RuleStreet.Data.Migrations
                             Dni = "87654321",
                             FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Genero = "Mujer",
-                            IsBusquedaYCaptura = false,
+                            IsBusquedaYCaptura = true,
                             IsPeligroso = false,
                             IsPoli = false,
                             Nacionalidad = "Española",
@@ -909,14 +942,14 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMulta"));
 
-                    b.Property<string>("ArticuloPenal")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("IdArticuloPenal")
+                        .HasColumnType("int");
 
                     b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");

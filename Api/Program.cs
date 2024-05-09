@@ -120,6 +120,8 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy",

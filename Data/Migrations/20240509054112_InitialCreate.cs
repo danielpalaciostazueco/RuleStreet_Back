@@ -14,6 +14,20 @@ namespace RuleStreet.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Ayuntamiento",
+                columns: table => new
+                {
+                    IdUsuarioAyuntamiento = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Dni = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ayuntamiento", x => x.IdUsuarioAyuntamiento);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ciudadano",
                 columns: table => new
                 {
@@ -168,7 +182,7 @@ namespace RuleStreet.Data.Migrations
                     IdPolicia = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    ArticuloPenal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdArticuloPenal = table.Column<int>(type: "int", nullable: true),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pagada = table.Column<bool>(type: "bit", nullable: true),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true)
@@ -269,12 +283,21 @@ namespace RuleStreet.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Ayuntamiento",
+                columns: new[] { "IdUsuarioAyuntamiento", "Contrasena", "Dni" },
+                values: new object[,]
+                {
+                    { 1, "1234", "12345678" },
+                    { 2, "1234", "87654321" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Ciudadano",
                 columns: new[] { "IdCiudadano", "Apellidos", "Direccion", "Dni", "FechaNacimiento", "Genero", "IdUsuario", "IsBusquedaYCaptura", "IsPeligroso", "IsPoli", "Nacionalidad", "Nombre", "NumeroCuentaBancaria", "NumeroTelefono" },
                 values: new object[,]
                 {
                     { 1, "Perez", "Calle Falsa 123", "12345678", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, false, false, false, "Español", "Juan", "ES123456789", 123456789 },
-                    { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, false, false, false, "Española", "Maria", "ES987654321", 987654321 }
+                    { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, true, false, false, "Española", "Maria", "ES987654321", 987654321 }
                 });
 
             migrationBuilder.InsertData(
@@ -440,6 +463,9 @@ namespace RuleStreet.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Auditoria");
+
+            migrationBuilder.DropTable(
+                name: "Ayuntamiento");
 
             migrationBuilder.DropTable(
                 name: "CodigoPenal");

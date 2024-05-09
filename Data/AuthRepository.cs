@@ -52,6 +52,24 @@ namespace RuleStreet.Data
                 return user;
             }
         }
+
+
+         public Ayuntamiento GetUserFromCredentialsAyuntamiento(AyuntamientoPostRegisterDTO loginDtoIn)
+        {
+            var usuario = _context.Ayuntamiento.FirstOrDefault(u => u.Dni == loginDtoIn.Dni && u.Contrasena == loginDtoIn.Contrasena);
+           
+            if (usuario == null)
+            {
+
+                throw new KeyNotFoundException("User not found.");
+            }
+            else
+            {
+                var user = new Ayuntamiento { IdUsuarioAyuntamiento = usuario.IdUsuarioAyuntamiento, Dni = usuario.Dni, Contrasena = usuario.Contrasena};
+                return user;
+            }
+        }
     }
-}
+    }
+
 

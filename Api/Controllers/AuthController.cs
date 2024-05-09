@@ -82,5 +82,24 @@ namespace RuleStreet.Api.Controllers
             }
         }
 
+        
+        [HttpPost("Login/Ayuntamiento")]
+        public IActionResult AddUsuarioAyuntamiento([FromBody] AyuntamientoPostRegisterDTO ayuntamientoRequest)
+        {
+            try
+            {
+                var token = _authService.LoginAyuntamiento(ayuntamientoRequest);
+
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error al añadir el ayuntamiento.");
+                return StatusCode(ex.HResult, "Error interno del servidor.");
+            }
+        }
+     
+
+
     }
 }

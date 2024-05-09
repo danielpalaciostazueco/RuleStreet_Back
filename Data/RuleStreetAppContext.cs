@@ -20,6 +20,7 @@ namespace RuleStreet.Data
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<Nota> Nota { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Ayuntamiento> Ayuntamiento { get; set; }   
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -194,6 +195,22 @@ namespace RuleStreet.Data
                 new CodigoPenal { IdCodigoPenal = 88, Articulo = "Art. 8.13", Descripcion = "Negarse a la identificacion ante un funcionario publico", Precio = 1500, Sentencia = "0 meses" }
              );
 
-        }
+             modelBuilder.Entity<Ayuntamiento>().HasData(
+
+                new Ayuntamiento
+                {
+                    IdUsuarioAyuntamiento = 1,
+                    Dni = "12345678",
+                    Contrasena = "1234"
+                },
+                new Ayuntamiento
+                {
+                    IdUsuarioAyuntamiento = 2,
+                    Dni = "87654321",
+                    Contrasena = "1234"
+                }
+             );
+                
     }
+}
 }
