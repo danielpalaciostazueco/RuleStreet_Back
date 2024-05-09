@@ -121,6 +121,10 @@ builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 
 
+builder.Services.AddScoped<EventoService>();
+builder.Services.AddScoped<IEventoRepository, EventoRepository>();
+
+
 
 builder.Services.AddCors(options =>
 {

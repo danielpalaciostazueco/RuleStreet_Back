@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RuleStreet.Data;
 
@@ -11,9 +12,11 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    partial class RuleStreetAppContextModelSnapshot : ModelSnapshot
+    [Migration("20240508152958_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,39 +50,6 @@ namespace RuleStreet.Data.Migrations
                     b.HasIndex("IdPolicia");
 
                     b.ToTable("Auditoria");
-                });
-
-            modelBuilder.Entity("RuleStreet.Models.Ayuntamiento", b =>
-                {
-                    b.Property<int>("IdUsuarioAyuntamiento")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuarioAyuntamiento"));
-
-                    b.Property<string>("Contrasena")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Dni")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdUsuarioAyuntamiento");
-
-                    b.ToTable("Ayuntamiento");
-
-                    b.HasData(
-                        new
-                        {
-                            IdUsuarioAyuntamiento = 1,
-                            Contrasena = "1234",
-                            Dni = "12345678"
-                        },
-                        new
-                        {
-                            IdUsuarioAyuntamiento = 2,
-                            Contrasena = "1234",
-                            Dni = "87654321"
-                        });
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
