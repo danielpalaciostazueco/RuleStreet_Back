@@ -63,28 +63,32 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Rango rango)
+        public IActionResult Update(int id, RangoDto rango)
         {
             try
             {
+                _logger.LogInformation($"Actualizando rango con ID: {id}");
                 if (id != rango.IdRango)
                 {
-                    return BadRequest();
+                    _logger.LogWarning($"Mala solicitud: El ID proporcionado ({id}) no coincide con el ID del rango ({rango.IdRango}).");
+                    return BadRequest("El ID proporcionado no coincide con el ID del rango.");
                 }
 
                 var existingRango = _rangoService.Get(id);
                 if (existingRango == null)
                 {
+                    _logger.LogWarning($"No se puede actualizar: Rango con ID: {id} no encontrado.");
                     return NotFound();
                 }
 
-                _rangoService.Update(rango);
+                _rangoService.Update(rango, id);
+                _logger.LogInformation($"Rango con ID: {id} actualizado correctamente.");
                 return NoContent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al modificar el rango por id");
-                return StatusCode(500, "Error interno del servidor");
+                _logger.LogError(ex, $"Error al modificar el rango con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al modificar el rango.");
             }
         }
     }

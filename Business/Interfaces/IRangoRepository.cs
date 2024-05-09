@@ -7,6 +7,6 @@ namespace RuleStreet.Business
     {
         List<RangoDto> GetAll();
         RangoDto? Get(int id);
-        void Update(Rango rango);
+        void Update(RangoDto rangoDto, int id);
     }
 }

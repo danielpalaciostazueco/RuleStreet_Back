@@ -8,12 +8,14 @@ namespace RuleStreet.Business
     public class RangoService : IRangoService
     {
         private readonly IRangoRepository _rangoRepository;
+        private readonly IPermisoRepository _permisoRepository;
         private readonly ILogger<RangoService> _logger;
 
 
-        public RangoService(IRangoRepository rangoRepository, ILogger<RangoService> logger)
+        public RangoService(IRangoRepository rangoRepository, IPermisoRepository permisoRepository, ILogger<RangoService> logger)
         {
             _rangoRepository = rangoRepository;
+            _permisoRepository = permisoRepository;
             _logger = logger;
         }
 
@@ -80,16 +82,47 @@ namespace RuleStreet.Business
             }
         }
 
-        public void Update(Rango Rango)
+        public void Update(RangoDto rangoDto, int id)
         {
             try
             {
-                _rangoRepository.Update(Rango);
+                _logger.LogInformation($"Intentando actualizar el rango con ID: {id}");
+                var rango = _rangoRepository.Get(id);
+                if (rango == null)
+                {
+                    _logger.LogWarning($"No se encontró el rango con ID: {id} para actualizar.");
+                    return;
+                }
+
+                rango.Nombre = rangoDto.Nombre;
+                _logger.LogInformation($"Cambiando Nombre de '{rango.Nombre}' a '{rangoDto.Nombre}'.");
+                rango.Salario = rangoDto.Salario;
+                _logger.LogInformation($"Cambiando Salario de '{rango.Salario}' a '{rangoDto.Salario}'.");
+                rango.isLocal = rangoDto.isLocal;
+                _logger.LogInformation($"Cambiando Localidad de '{rango.isLocal}' a '{rangoDto.isLocal}'.");
+
+                var permisosActualizados = new List<RangoPermiso>();
+                foreach (var permisoDto in rangoDto.Permisos)
+                {
+                    var permiso = _permisoRepository.Get(permisoDto.IdPermiso);
+                    if (permiso != null)
+                    {
+                        permisosActualizados.Add(new RangoPermiso { IdRango = id, IdPermiso = permiso.IdPermiso });
+                        _logger.LogInformation($"Permiso con ID: {permiso.IdPermiso} añadido al rango con ID: {id}.");
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"Permiso con ID: {permisoDto.IdPermiso} no encontrado y no se añadirá al rango con ID: {id}.");
+                    }
+                }
+
+                rango.RangosPermisos = permisosActualizados;
+                _rangoRepository.Update(rango);
+                _logger.LogInformation($"Rango con ID: {id} actualizado correctamente.");
             }
             catch (Exception ex)
             {
-
-                _logger.LogError(ex, "Error actualizando el rango por id");
+                _logger.LogError(ex, $"Error al actualizar el rango con ID: {id}");
                 throw;
             }
         }

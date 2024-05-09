@@ -17,6 +17,7 @@ namespace RuleStreet.Data
         public DbSet<Auditoria> Auditoria { get; set; }
         public DbSet<Permiso> Permiso { get; set; }
         public DbSet<Rango> Rango { get; set; }
+        public DbSet<RangoPermiso> RangoPermiso { get; set; }
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<Nota> Nota { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
