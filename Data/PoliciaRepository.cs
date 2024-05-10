@@ -29,6 +29,8 @@ namespace RuleStreet.Data
                 .Include(p => p.Ciudadano)
                 .ThenInclude(c => c.Vehiculos)
                 .Include(p => p.Rango)
+                .ThenInclude(r => r.RangosPermisos)
+                .ThenInclude(rp => rp.Permiso)
                 .ToList();
 
             var policiaDTOList = policiaList.Select(p => new PoliciaDTO
@@ -40,7 +42,13 @@ namespace RuleStreet.Data
                     IdRango = p.Rango.IdRango,
                     Nombre = p.Rango.Nombre,
                     Salario = p.Rango.Salario ?? 0,
-                    isLocal = p.Rango.isLocal ?? true
+                    isLocal = p.Rango.isLocal ?? true,
+                    Permisos = p.Rango.RangosPermisos.Select(rp => new PermisoDto
+                    {
+                        IdPermiso = rp.Permiso.IdPermiso,
+                        Nombre = rp.Permiso.Nombre
+                    }).ToList()
+
                 } : null,
                 NumeroPlaca = p.NumeroPlaca,
                 Ciudadano = new CiudadanoDTO
@@ -94,12 +102,14 @@ namespace RuleStreet.Data
                 .Include(p => p.Ciudadano)
                 .ThenInclude(c => c.Multas)
                 .ThenInclude(m => m.Policia)
-                .Include(p => p.Rango)
                 .Include(p => p.Ciudadano)
                 .ThenInclude(c => c.Vehiculos)
+                .Include(p => p.Rango)
+                .ThenInclude(r => r.RangosPermisos)
+                .ThenInclude(rp => rp.Permiso)
                 .AsNoTracking()
                 .FirstOrDefault(p => p.IdPolicia == id);
-
+            ;
             if (policia == null)
             {
                 _logger.LogError("No Policía found with ID: {Id}", id);
@@ -115,7 +125,13 @@ namespace RuleStreet.Data
                     IdRango = policia.Rango.IdRango,
                     Nombre = policia.Rango.Nombre,
                     Salario = policia.Rango.Salario ?? 0,
-                    isLocal = policia.Rango.isLocal ?? true
+                    isLocal = policia.Rango.isLocal ?? true,
+                    Permisos = policia.Rango.RangosPermisos.Select(rp => new PermisoDto
+                    {
+                        IdPermiso = rp.Permiso.IdPermiso,
+                        Nombre = rp.Permiso.Nombre
+                    }).ToList()
+
                 } : null,
                 NumeroPlaca = policia.NumeroPlaca,
                 Ciudadano = new CiudadanoDTO
