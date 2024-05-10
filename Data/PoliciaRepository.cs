@@ -29,7 +29,7 @@ namespace RuleStreet.Data
                 .Include(p => p.Ciudadano)
                 .ThenInclude(c => c.Vehiculos)
                 .Include(p => p.Rango)
-                .ThenInclude(r => r.RangosPermisos)
+                .ThenInclude(r => ((Rango)r).RangosPermisos)
                 .ThenInclude(rp => rp.Permiso)
                 .ToList();
 
