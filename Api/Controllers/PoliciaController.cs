@@ -85,7 +85,7 @@ namespace RuleStreet.Api.Controllers
                     return NotFound();
                 }
 
-                _PoliciaService.Update(Policia);
+                _PoliciaService.Update(Policia, id);
                 return NoContent();
             }
             catch (Exception ex)

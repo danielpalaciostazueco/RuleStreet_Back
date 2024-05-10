@@ -10,13 +10,15 @@ namespace RuleStreet.Business
         private readonly IPoliciaRepository _policiaRepository;
         private readonly ICiudadanoRepository _ciudadanoRepository;
         private readonly ILogger<PoliciaService> _logger;
+        private readonly IRangoRepository _rangoRepository;
 
 
-        public PoliciaService(IPoliciaRepository policiaRepository, ILogger<PoliciaService> logger, ICiudadanoRepository ciudadanoRepository)
+        public PoliciaService(IPoliciaRepository policiaRepository, ILogger<PoliciaService> logger, ICiudadanoRepository ciudadanoRepository, IRangoRepository rangoRepository)
         {
             _policiaRepository = policiaRepository;
             _logger = logger;
             _ciudadanoRepository = ciudadanoRepository;
+            _rangoRepository = rangoRepository;
         }
 
         public List<PoliciaDTO> GetAll()
@@ -46,25 +48,23 @@ namespace RuleStreet.Business
 
         }
 
-
-        public void Update(PoliciaPostDTO policia)
+        public void Update(PoliciaPostDTO policiaPostDto, int id)
         {
             try
             {
-                var Policia = new Policia()
+                var policia = new Policia
                 {
-                    IdPolicia = (int)policia.IdPolicia,
-                    IdCiudadano = (int)policia.IdCiudadano,
-                    Contrasena = policia.Contrasena,
-                    Rango = policia.Rango,
-                    NumeroPlaca = policia.NumeroPlaca
+                    IdPolicia = id,
+                    IdCiudadano = policiaPostDto.IdCiudadano,
+                    IdRango = policiaPostDto.RangoId,
+                    NumeroPlaca = policiaPostDto.NumeroPlaca
                 };
-                _policiaRepository.Update(Policia);
+
+                _policiaRepository.Update(policia, id);
             }
             catch (Exception ex)
             {
-
-                _logger.LogError(ex, "Error actualizando al ciudadano por id");
+                _logger.LogError(ex, "Error al actualizar el Policía.");
                 throw;
             }
         }
@@ -72,6 +72,11 @@ namespace RuleStreet.Business
         public void Add(PoliciaPostDTO policia)
         {
             var ciudadano = _ciudadanoRepository.Get((int)policia.IdCiudadano);
+            if (ciudadano == null)
+            {
+                _logger.LogError("No se encontró el ciudadano con el ID proporcionado.");
+                throw new InvalidOperationException("No se puede añadir un policía para un ciudadano no existente.");
+            }
             ciudadano.IsPoli = true;
 
             var ciudadanoUpdate = new Ciudadano
@@ -91,25 +96,26 @@ namespace RuleStreet.Business
                 IsPeligroso = ciudadano.IsPeligroso,
             };
             _ciudadanoRepository.Update(ciudadanoUpdate);
-            var Policia = new Policia()
+
+            var policiaEntity = new Policia()
             {
-                IdPolicia = (int)policia.IdPolicia,
                 IdCiudadano = (int)policia.IdCiudadano,
-                Contrasena = policia.Contrasena,
-                Rango = policia.Rango,
+                IdRango = policia.RangoId,
                 NumeroPlaca = policia.NumeroPlaca
             };
+
             try
             {
-                _policiaRepository.Add(Policia);
+                _policiaRepository.Add(policiaEntity);
+                _logger.LogInformation("Policía añadido correctamente.");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error añadiendo la ciudadano");
+                _logger.LogError(ex, "Error añadiendo el policía");
                 throw;
             }
-
         }
+
         public void Delete(int id)
         {
             try
@@ -123,7 +129,5 @@ namespace RuleStreet.Business
             }
 
         }
-
-
     }
 }

@@ -14,65 +14,81 @@ namespace RuleStreet.Api.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class RangoController : ControllerBase
     {
-        private readonly RangoService _RangoService;
+        private readonly RangoService _rangoService;
+        private readonly ILogger<RangoController> _logger;
 
-
-        public RangoController(RangoService RangoService)
+        public RangoController(RangoService rangoService, ILogger<RangoController> logger)
         {
-            _RangoService = RangoService;
+            _rangoService = rangoService;
+            _logger = logger;
         }
 
         [HttpGet]
-        public ActionResult<List<Rango>> GetAll()
-        {
-            return _RangoService.GetAll();
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<Rango> Get(int id)
+        public ActionResult<List<RangoDTO>> GetAll()
         {
             try
             {
-                var Rango = _RangoService.Get(id);
-                if (Rango == null)
-                {
-                    return NotFound();
-                }
-
-                return Rango;
+                _logger.LogInformation("Solicitando la lista de todos los rangos.");
+                var rangos = _rangoService.GetAll();
+                return Ok(rangos);
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al hacer el get por id ");
-                return StatusCode(500, "Error interno del servidor");
+                _logger.LogError(ex, "Error obteniendo todos los rangos.");
+                return StatusCode(500, "Un error ocurrió al obtener la lista de rangos.");
             }
         }
 
-
-
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, Rango rango)
+        [HttpGet("{id}")]
+        public ActionResult<RangoDTO> Get(int id)
         {
             try
             {
-                if (id != rango.IdRango)
+                _logger.LogInformation($"Buscando rango con ID: {id}");
+                var rango = _rangoService.Get(id);
+
+                if (rango == null)
                 {
-                    return BadRequest();
+                    _logger.LogWarning($"Rango con ID: {id} no encontrado.");
+                    return NotFound($"Rango con ID: {id} no encontrado.");
                 }
 
-                var existingRango = _RangoService.Get(id);
+                return Ok(rango);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error obteniendo el rango con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al obtener el rango.");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, RangoDTO rango)
+        {
+            try
+            {
+                _logger.LogInformation($"Actualizando rango con ID: {id}");
+                if (id != rango.IdRango)
+                {
+                    _logger.LogWarning($"Mala solicitud: El ID proporcionado ({id}) no coincide con el ID del rango ({rango.IdRango}).");
+                    return BadRequest("El ID proporcionado no coincide con el ID del rango.");
+                }
+
+                var existingRango = _rangoService.Get(id);
                 if (existingRango == null)
                 {
+                    _logger.LogWarning($"No se puede actualizar: Rango con ID: {id} no encontrado.");
                     return NotFound();
                 }
 
-                _RangoService.Update(rango);
+                _rangoService.Update(rango, id);
+                _logger.LogInformation($"Rango con ID: {id} actualizado correctamente.");
                 return NoContent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error al modificar el rango por id");
-                return StatusCode(500, "Error interno del servidor");
+                _logger.LogError(ex, $"Error al modificar el rango con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al modificar el rango.");
             }
         }
     }

@@ -23,18 +23,20 @@ namespace RuleStreet.Data
         public List<Rango> GetAll()
         {
             return _context.Rango
-                .ToList();
+                           .Include(r => r.RangosPermisos)
+                           .ThenInclude(rp => rp.Permiso)
+                           .ToList();
         }
-
 
         public Rango Get(int id)
         {
             try
             {
                 return _context.Rango
-
-                    .AsNoTracking()
-                    .FirstOrDefault(Rango => Rango.IdRango == id);
+                               .AsNoTracking()
+                               .Include(r => r.RangosPermisos)
+                               .ThenInclude(rp => rp.Permiso)
+                               .FirstOrDefault(r => r.IdRango == id);
             }
             catch (Exception ex)
             {
@@ -43,16 +45,44 @@ namespace RuleStreet.Data
             }
         }
 
-        public void Update(Rango Rango)
+        public void Update(Rango rango)
         {
             try
             {
-                _context.Entry(Rango).State = EntityState.Modified;
-                _context.SaveChanges();
+                var rangoExistente = _context.Rango.Include(r => r.RangosPermisos).FirstOrDefault(r => r.IdRango == rango.IdRango);
+                if (rangoExistente != null)
+                {
+                    _context.Entry(rangoExistente).CurrentValues.SetValues(rango);
+
+                    foreach (var existingRangoPermiso in rangoExistente.RangosPermisos.ToList())
+                    {
+                        if (!rango.RangosPermisos.Any(rp => rp.IdPermiso == existingRangoPermiso.IdPermiso))
+                        {
+                            _context.RangoPermiso.Remove(existingRangoPermiso);
+                        }
+                    }
+
+                    foreach (var rangoPermiso in rango.RangosPermisos)
+                    {
+                        var existingPermiso = rangoExistente.RangosPermisos
+                            .FirstOrDefault(rp => rp.IdPermiso == rangoPermiso.IdPermiso);
+
+                        if (existingPermiso == null)
+                        {
+                            rangoExistente.RangosPermisos.Add(new RangoPermiso
+                            {
+                                IdRango = rango.IdRango,
+                                IdPermiso = rangoPermiso.IdPermiso
+                            });
+                        }
+                    }
+
+                    _context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al añadir el Rango.");
+                _logger.LogError(ex, "Error al actualizar el Rango.");
                 throw;
             }
         }

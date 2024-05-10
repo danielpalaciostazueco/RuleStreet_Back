@@ -24,18 +24,32 @@ namespace RuleStreet.Data
         {
             var policiaList = _context.Policia
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Multas)
-                        .ThenInclude(m => m.Policia)
+                .ThenInclude(c => c.Multas)
+                .ThenInclude(m => m.Policia)
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Vehiculos)
+                .ThenInclude(c => c.Vehiculos)
+                .Include(p => p.Rango)
+                .ThenInclude(r => r.RangosPermisos)
+                .ThenInclude(rp => rp.Permiso)
                 .ToList();
 
             var policiaDTOList = policiaList.Select(p => new PoliciaDTO
             {
                 IdPolicia = p.IdPolicia,
                 IdCiudadano = p.IdCiudadano.Value,
-                Rango = p.Rango,
-                Contrasena = p.Contrasena,
+                Rango = p.Rango != null ? new RangoDTO
+                {
+                    IdRango = p.Rango.IdRango,
+                    Nombre = p.Rango.Nombre,
+                    Salario = p.Rango.Salario ?? 0,
+                    isLocal = p.Rango.isLocal ?? true,
+                    Permisos = p.Rango.RangosPermisos.Select(rp => new PermisoDto
+                    {
+                        IdPermiso = rp.Permiso.IdPermiso,
+                        Nombre = rp.Permiso.Nombre
+                    }).ToList()
+
+                } : null,
                 NumeroPlaca = p.NumeroPlaca,
                 Ciudadano = new CiudadanoDTO
                 {
@@ -86,13 +100,16 @@ namespace RuleStreet.Data
         {
             var policia = _context.Policia
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Multas)
-                        .ThenInclude(m => m.Policia)
+                .ThenInclude(c => c.Multas)
+                .ThenInclude(m => m.Policia)
                 .Include(p => p.Ciudadano)
-                    .ThenInclude(c => c.Vehiculos)
+                .ThenInclude(c => c.Vehiculos)
+                .Include(p => p.Rango)
+                .ThenInclude(r => r.RangosPermisos)
+                .ThenInclude(rp => rp.Permiso)
                 .AsNoTracking()
                 .FirstOrDefault(p => p.IdPolicia == id);
-
+            ;
             if (policia == null)
             {
                 _logger.LogError("No Policía found with ID: {Id}", id);
@@ -103,7 +120,19 @@ namespace RuleStreet.Data
             {
                 IdPolicia = policia.IdPolicia,
                 IdCiudadano = policia.IdCiudadano.Value,
-                Rango = policia.Rango,
+                Rango = policia.Rango != null ? new RangoDTO
+                {
+                    IdRango = policia.Rango.IdRango,
+                    Nombre = policia.Rango.Nombre,
+                    Salario = policia.Rango.Salario ?? 0,
+                    isLocal = policia.Rango.isLocal ?? true,
+                    Permisos = policia.Rango.RangosPermisos.Select(rp => new PermisoDto
+                    {
+                        IdPermiso = rp.Permiso.IdPermiso,
+                        Nombre = rp.Permiso.Nombre
+                    }).ToList()
+
+                } : null,
                 NumeroPlaca = policia.NumeroPlaca,
                 Contrasena = policia.Contrasena,
                 Ciudadano = new CiudadanoDTO
@@ -166,7 +195,7 @@ namespace RuleStreet.Data
             }
         }
 
-        public void Update(Policia policia)
+        public void Update(Policia policia, int id)
         {
             try
             {
@@ -175,7 +204,7 @@ namespace RuleStreet.Data
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al añadir la Ciudadano.");
+                _logger.LogError(ex, "Error al actualizar el Policía.");
                 throw;
             }
         }

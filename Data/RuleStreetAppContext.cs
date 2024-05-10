@@ -17,6 +17,7 @@ namespace RuleStreet.Data
         public DbSet<Auditoria> Auditoria { get; set; }
         public DbSet<Permiso> Permiso { get; set; }
         public DbSet<Rango> Rango { get; set; }
+        public DbSet<RangoPermiso> RangoPermiso { get; set; }
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<Nota> Nota { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
@@ -29,6 +30,19 @@ namespace RuleStreet.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<RangoPermiso>()
+                   .HasKey(rp => new { rp.IdRango, rp.IdPermiso });
+
+            modelBuilder.Entity<RangoPermiso>()
+                .HasOne(rp => rp.Rango)
+                .WithMany(r => r.RangosPermisos)
+                .HasForeignKey(rp => rp.IdRango);
+
+            modelBuilder.Entity<RangoPermiso>()
+                .HasOne(rp => rp.Permiso)
+                .WithMany(p => p.RangosPermisos)
+                .HasForeignKey(rp => rp.IdPermiso);
+
             modelBuilder.Entity<Vehiculo>()
                 .HasOne(v => v.Ciudadano)
                 .WithMany(c => c.Vehiculos)
@@ -199,8 +213,97 @@ namespace RuleStreet.Data
                 new CodigoPenal { IdCodigoPenal = 88, Articulo = "Art. 8.13", Descripcion = "Negarse a la identificacion ante un funcionario publico", Precio = 1500, Sentencia = "0 meses" }
              );
 
-             modelBuilder.Entity<Ayuntamiento>().HasData(
+            modelBuilder.Entity<Rango>().HasData(
+               new Rango { IdRango = 1, Nombre = "Practicas", Salario = 1071, isLocal = true },
+               new Rango { IdRango = 2, Nombre = "Agente", Salario = 1330, isLocal = true },
+               new Rango { IdRango = 3, Nombre = "Oficial I", Salario = 1412, isLocal = true },
+               new Rango { IdRango = 4, Nombre = "Oficial II", Salario = 1483, isLocal = true },
+               new Rango { IdRango = 5, Nombre = "Oficial III", Salario = 1555, isLocal = true },
+               new Rango { IdRango = 6, Nombre = "Subinspector", Salario = 1674, isLocal = true },
+               new Rango { IdRango = 7, Nombre = "Inspector", Salario = 1765, isLocal = true },
+               new Rango { IdRango = 8, Nombre = "Inspector Jefe", Salario = 1881, isLocal = true },
+               new Rango { IdRango = 9, Nombre = "Intendente", Salario = 2028, isLocal = true },
+               new Rango { IdRango = 10, Nombre = "Superintendente", Salario = 2142, isLocal = true }
+           );
 
+            modelBuilder.Entity<Permiso>().HasData(
+                new Permiso { IdPermiso = 1, Nombre = "Añadir policia" },
+                new Permiso { IdPermiso = 2, Nombre = "Quitar policia" },
+                new Permiso { IdPermiso = 3, Nombre = "Modificar policia" },
+                new Permiso { IdPermiso = 4, Nombre = "Borrar multa" },
+                new Permiso { IdPermiso = 5, Nombre = "Crear multa" },
+                new Permiso { IdPermiso = 6, Nombre = "Borrar denuncia" },
+                new Permiso { IdPermiso = 7, Nombre = "Crear denuncia" },
+                new Permiso { IdPermiso = 8, Nombre = "Modificar denuncia" },
+                new Permiso { IdPermiso = 9, Nombre = "Eliminar nota" },
+                new Permiso { IdPermiso = 10, Nombre = "Crear nota" },
+                new Permiso { IdPermiso = 11, Nombre = "Modificar nota" },
+                new Permiso { IdPermiso = 12, Nombre = "Crear evento" },
+                new Permiso { IdPermiso = 13, Nombre = "Eliminar evento" }
+            );
+
+            modelBuilder.Entity<RangoPermiso>().HasData(
+                new RangoPermiso { IdPermiso = 5, IdRango = 1 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 1 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 2 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 2 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 2 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 3 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 3 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 3 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 3 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 4 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 4 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 4 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 4 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 5 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 5 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 5 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 5 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 6 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 6 },
+                new RangoPermiso { IdPermiso = 8, IdRango = 6 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 6 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 6 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 7 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 7 },
+                new RangoPermiso { IdPermiso = 8, IdRango = 7 },
+                new RangoPermiso { IdPermiso = 9, IdRango = 7 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 7 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 7 },
+                new RangoPermiso { IdPermiso = 3, IdRango = 8 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 8 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 8 },
+                new RangoPermiso { IdPermiso = 8, IdRango = 8 },
+                new RangoPermiso { IdPermiso = 9, IdRango = 8 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 8 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 8 },
+                new RangoPermiso { IdPermiso = 1, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 3, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 4, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 6, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 8, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 9, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 9 },
+                new RangoPermiso { IdPermiso = 1, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 2, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 3, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 4, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 5, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 6, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 7, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 8, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 9, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 10, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 11, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 12, IdRango = 10 },
+                new RangoPermiso { IdPermiso = 13, IdRango = 10 }
+                );
+                
+                modelBuilder.Entity<Ayuntamiento>().HasData(
                 new Ayuntamiento
                 {
                     IdUsuarioAyuntamiento = 1,
@@ -213,8 +316,7 @@ namespace RuleStreet.Data
                     Dni = "87654321",
                     Contrasena = "1234"
                 }
-             );
-                
+             );                
+        }    
     }
-}
 }

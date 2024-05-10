@@ -9,6 +9,6 @@ namespace RuleStreet.Data
         PoliciaDTO? Get(int id);
         void Add(Policia policia);
         void Delete(int id);
-        void Update(Policia policia);
+        void Update(Policia policia, int id);
     }
 }
