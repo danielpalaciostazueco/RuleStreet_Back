@@ -43,12 +43,12 @@ namespace RuleStreet.Data
             var ciudadano = _context.Ciudadano.FirstOrDefault(c => c.IdCiudadano == usuario.IdCiudadano);
             if (usuario == null)
             {
-
                 throw new KeyNotFoundException("User not found.");
             }
             else
             {
-                var user = new PoliciaDTO { IdPolicia = usuario.IdPolicia, NumeroPlaca = usuario.NumeroPlaca, Contrasena = usuario.Contrasena, IdCiudadano = usuario.IdCiudadano.Value, IsPolicia = (bool)ciudadano.IsPoli, Rango = usuario.Rango };
+                var rangoDto = new RangoDTO { IdRango = usuario.Rango.IdRango, Nombre = usuario.Rango.Nombre }; 
+                var user = new PoliciaDTO { IdPolicia = usuario.IdPolicia, NumeroPlaca = usuario.NumeroPlaca, Contrasena = usuario.Contrasena, IdCiudadano = usuario.IdCiudadano.Value, IsPolicia = (bool)ciudadano.IsPoli, Rango = rangoDto };
                 return user;
             }
         }

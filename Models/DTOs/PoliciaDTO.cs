@@ -7,4 +7,9 @@ public class PoliciaDTO
     public RangoDTO Rango { get; set; }
     public string NumeroPlaca { get; set; }
     public CiudadanoDTO Ciudadano { get; set; }
+
+    public string Contrasena { get; set; }
+      public bool IsPolicia { get; set; }
+
+  
 }
