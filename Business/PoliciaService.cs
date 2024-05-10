@@ -48,27 +48,23 @@ namespace RuleStreet.Business
 
         }
 
-        public void Update(PoliciaPostDTO policia)
+        public void Update(PoliciaPostDTO policiaPostDto, int id)
         {
             try
             {
-                var Policia = _policiaRepository.Get((int)policia.IdPolicia);
-                if (Policia != null)
+                var policia = new Policia
                 {
-                    Policia.IdCiudadano = (int)policia.IdCiudadano;
-                    Policia.RangoId = policia.Rango?.IdRango;
-                    Policia.NumeroPlaca = policia.NumeroPlaca;
+                    IdPolicia = id,
+                    IdCiudadano = policiaPostDto.IdCiudadano,
+                    IdRango = policiaPostDto.RangoId,
+                    NumeroPlaca = policiaPostDto.NumeroPlaca
+                };
 
-                    _policiaRepository.Update(Policia);
-                }
-                else
-                {
-                    _logger.LogError("No se encontró el Policía con ID: {0}", policia.IdPolicia);
-                }
+                _policiaRepository.Update(policia, id);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error actualizando al ciudadano por id");
+                _logger.LogError(ex, "Error al actualizar el Policía.");
                 throw;
             }
         }
@@ -76,6 +72,11 @@ namespace RuleStreet.Business
         public void Add(PoliciaPostDTO policia)
         {
             var ciudadano = _ciudadanoRepository.Get((int)policia.IdCiudadano);
+            if (ciudadano == null)
+            {
+                _logger.LogError("No se encontró el ciudadano con el ID proporcionado.");
+                throw new InvalidOperationException("No se puede añadir un policía para un ciudadano no existente.");
+            }
             ciudadano.IsPoli = true;
 
             var ciudadanoUpdate = new Ciudadano
@@ -96,17 +97,17 @@ namespace RuleStreet.Business
             };
             _ciudadanoRepository.Update(ciudadanoUpdate);
 
-            var Policia = new Policia()
+            var policiaEntity = new Policia()
             {
-                IdPolicia = (int)policia.IdPolicia,
                 IdCiudadano = (int)policia.IdCiudadano,
-                IdRango = policia.Rango?.IdRango,
+                IdRango = policia.RangoId,
                 NumeroPlaca = policia.NumeroPlaca
             };
 
             try
             {
-                _policiaRepository.Add(Policia);
+                _policiaRepository.Add(policiaEntity);
+                _logger.LogInformation("Policía añadido correctamente.");
             }
             catch (Exception ex)
             {
@@ -114,6 +115,7 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
         public void Delete(int id)
         {
             try
@@ -127,7 +129,5 @@ namespace RuleStreet.Business
             }
 
         }
-
-
     }
 }

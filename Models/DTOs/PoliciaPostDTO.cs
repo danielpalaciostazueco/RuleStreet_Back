@@ -6,6 +6,6 @@ public class PoliciaPostDTO
 {
     public int? IdPolicia { get; set; }
     public int? IdCiudadano { get; set; }
-    public RangoPostDTO? Rango { get; set; }
+    public int? RangoId { get; set; }
     public string? NumeroPlaca { get; set; }
 }

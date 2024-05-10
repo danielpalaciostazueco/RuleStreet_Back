@@ -178,7 +178,7 @@ namespace RuleStreet.Data
             }
         }
 
-        public void Update(Policia policia)
+        public void Update(Policia policia, int id)
         {
             try
             {
@@ -187,7 +187,7 @@ namespace RuleStreet.Data
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al añadir la Ciudadano.");
+                _logger.LogError(ex, "Error al actualizar el Policía.");
                 throw;
             }
         }
