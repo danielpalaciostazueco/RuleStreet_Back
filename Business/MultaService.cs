@@ -49,16 +49,16 @@ namespace RuleStreet.Business
         {
             try
             {
-                  var Multa = new Multa
+                var Multa = new Multa
                 {
                     IdMulta = multa.IdMulta,
                     IdPolicia = (int)multa.IdPolicia,
                     Fecha = multa.Fecha,
                     Precio = multa.Precio,
-                    ArticuloPenal = multa.ArticuloPenal,
+                    IdArticuloPenal = multa.IdArticuloPenal,
                     Descripcion = multa.Descripcion,
                     Pagada = multa.Pagada,
-                    IdCiudadano = multa.IdCiudadano
+                    IdCiudadano = multa.IdCiudadano,
                 };
                 _multaRepository.Update(Multa);
             }
@@ -82,10 +82,10 @@ namespace RuleStreet.Business
                     IdPolicia = (int)multa.IdPolicia,
                     Fecha = multa.Fecha,
                     Precio = multa.Precio,
-                    ArticuloPenal = multa.ArticuloPenal,
+                    IdArticuloPenal = multa.IdArticuloPenal,
                     Descripcion = multa.Descripcion,
                     Pagada = multa.Pagada,
-                    IdCiudadano = multa.IdCiudadano
+                    IdCiudadano = multa.IdCiudadano,
                 };
                 _multaRepository.Add(Multa);
             }

@@ -20,19 +20,56 @@ namespace RuleStreet.Data
             _logger = logger;
         }
 
-        
-        public UsuarioDTO GetUserFromCredentials(UsuarioRegisterPostDTO loginDtoIn) {
-            var usuario = _context.Usuario.FirstOrDefault(u => u.NombreUsuario == loginDtoIn.NombreUsuario && u.Contrasena == loginDtoIn.Contrasena);
+
+        public UsuarioDTO GetUserFromCredentials(UsuarioRegisterPostDTO loginDtoIn)
+        {
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Dni == loginDtoIn.Dni && u.NombreUsuario == loginDtoIn.NombreUsuario && u.Contrasena == loginDtoIn.Contrasena);
             var ciudadano = _context.Ciudadano.FirstOrDefault(c => c.IdCiudadano == usuario.IdCiudadano);
-            if ( usuario == null)
+            if (usuario == null)
             {
-        
+
                 throw new KeyNotFoundException("User not found.");
-            } else {
-                var user = new UsuarioDTO { IdUsuario = usuario.IdUsuario, NombreUsuario = usuario.NombreUsuario, Nombre = usuario.Nombre, Contrasena = usuario.Contrasena, IdCiudadano = usuario.IdCiudadano, IsPolicia = ciudadano.IsPoli};
+            }
+            else
+            {
+                var user = new UsuarioDTO { IdUsuario = usuario.IdUsuario, NombreUsuario = usuario.NombreUsuario, Nombre = usuario.Nombre, Contrasena = usuario.Contrasena, IdCiudadano = usuario.IdCiudadano, IsPolicia = ciudadano.IsPoli };
                 return user;
+            }
+        }
+
+        public PoliciaDTO GetUserFromCredentialsPolicia(PoliciaPostRegisterDTO loginDtoIn)
+        {
+            var usuario = _context.Policia.FirstOrDefault(u => u.NumeroPlaca == loginDtoIn.NumeroPlaca && u.Contrasena == loginDtoIn.Contrasena);
+            var ciudadano = _context.Ciudadano.FirstOrDefault(c => c.IdCiudadano == usuario.IdCiudadano);
+            if (usuario == null)
+            {
+
+                throw new KeyNotFoundException("User not found.");
+            }
+            else
+            {
+                var user = new PoliciaDTO { IdPolicia = usuario.IdPolicia, NumeroPlaca = usuario.NumeroPlaca, Contrasena = usuario.Contrasena, IdCiudadano = usuario.IdCiudadano.Value, IsPolicia = (bool)ciudadano.IsPoli, Rango = usuario.Rango };
+                return user;
+            }
+        }
+
+
+         public Ayuntamiento GetUserFromCredentialsAyuntamiento(AyuntamientoPostRegisterDTO loginDtoIn)
+        {
+            var usuario = _context.Ayuntamiento.FirstOrDefault(u => u.Dni == loginDtoIn.Dni && u.Contrasena == loginDtoIn.Contrasena);
+           
+            if (usuario == null)
+            {
+
+                throw new KeyNotFoundException("User not found.");
+            }
+            else
+            {
+                var user = new Ayuntamiento { IdUsuarioAyuntamiento = usuario.IdUsuarioAyuntamiento, Dni = usuario.Dni, Contrasena = usuario.Contrasena};
+                return user;
+            }
         }
     }
-}
-}
+    }
+
 

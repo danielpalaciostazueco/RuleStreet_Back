@@ -8,13 +8,17 @@ namespace RuleStreet.Business
     public class CiudadanoService : ICiudadanoService
     {
         private readonly ICiudadanoRepository _ciudadanoRepository;
+        private readonly IMultaRepository _multaRepository;
+        private readonly ICodigoPenalRepository _codigoPenalRepository;
         private readonly ILogger<CiudadanoService> _logger;
 
 
-        public CiudadanoService(ICiudadanoRepository ciudadanoRepository, ILogger<CiudadanoService> logger)
+        public CiudadanoService(ICiudadanoRepository ciudadanoRepository, ILogger<CiudadanoService> logger, IMultaRepository multaRepository, ICodigoPenalRepository codigoPenalRepository)
         {
             _ciudadanoRepository = ciudadanoRepository;
             _logger = logger;
+            _multaRepository = multaRepository;
+            _codigoPenalRepository = codigoPenalRepository;
         }
 
         public List<CiudadanoDTO> GetAll()
@@ -30,6 +34,62 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+
+        public List<CiudadanoDTO> GetAllBusquedaCaptura()
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo todas las ciudadanos que están en busqueda y captura");
+                return _ciudadanoRepository.GetAll().Where(x => x.IsBusquedaYCaptura == true).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas los ciudadanos que están en busqueda y captura");
+                throw;
+            }
+        }
+
+         public List<DeudoresDTO> GetAllDeudores()
+        {
+            try
+            {
+                var multas = _multaRepository.GetAll();
+                var ciudadanos = _ciudadanoRepository.GetAll();
+                var deudores = new List<DeudoresDTO>();
+                var codigoPenal = _codigoPenalRepository.GetAll();
+                List<Multa> multasPendientes = new List<Multa>();
+                
+
+                foreach (var ciudadano in ciudadanos)
+                {
+                    multasPendientes = multas.Where(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false).ToList();
+                    var deudor = new DeudoresDTO
+                    {
+                        
+                        IdCiudadano = ciudadano.IdCiudadano,
+                        Nombre = ciudadano.Nombre,
+                        Apellidos = ciudadano.Apellidos,
+                        FechaNacimiento = (DateTime)ciudadano.FechaNacimiento,
+                        Dni = ciudadano.Dni,
+                        Genero = ciudadano.Genero,
+                        Nacionalidad = ciudadano.Nacionalidad, 
+                        Pagada= multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
+                        Cantidad =  codigoPenal.Where(x => multasPendientes.Any(y => y.IdArticuloPenal == x.IdCodigoPenal)).Sum(x => x.Precio)
+                    };
+                    deudores.Add(deudor);
+                    multasPendientes.Clear();
+                }
+
+                return deudores;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas las personas con multas pendientes");
+                throw;
+            }
+        }
+
         public CiudadanoDTO? Get(int id)
         {
             try
@@ -44,15 +104,15 @@ namespace RuleStreet.Business
 
         }
 
-        public CiudadanoDTO? GetByName(string name)
+        public CiudadanoDTO? GetByDni(string dni)
         {
             try
             {
-                return _ciudadanoRepository.GetByName(name);
+                return _ciudadanoRepository.GetByDni(dni);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error obteniendo la ciudadano por nombre");
+                _logger.LogError(ex, "Error obteniendo la ciudadano por dni");
                 throw;
             }
 

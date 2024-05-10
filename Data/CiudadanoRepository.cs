@@ -47,7 +47,7 @@ namespace RuleStreet.Data
                         IdPolicia = m.Policia.IdPolicia,
                         Fecha = m.Fecha,
                         Precio = m.Precio,
-                        ArticuloPenal = m.ArticuloPenal,
+                        IdArticuloPenal = m.IdArticuloPenal,
                         Descripcion = m.Descripcion,
                         Pagada = m.Pagada,
                         IdCiudadano = m.IdCiudadano
@@ -99,7 +99,7 @@ namespace RuleStreet.Data
                             IdPolicia = m.IdPolicia,
                             Fecha = m.Fecha,
                             Precio = m.Precio,
-                            ArticuloPenal = m.ArticuloPenal,
+                           IdArticuloPenal = m.IdArticuloPenal,
                             Descripcion = m.Descripcion,
                             Pagada = m.Pagada,
                             IdCiudadano = m.IdCiudadano
@@ -126,12 +126,12 @@ namespace RuleStreet.Data
             }
         }
 
-        public CiudadanoDTO GetByName(string name)
+        public CiudadanoDTO GetByDni(string dni)
         {
             try
             {
                 var ciudadano = _context.Ciudadano
-                    .Where(c => c.Nombre == name)
+                    .Where(c => c.Dni == dni)
                     .Include(c => c.Multas)
                     .Include(c => c.Vehiculos)
                     .Select(c => new CiudadanoDTO
@@ -155,7 +155,7 @@ namespace RuleStreet.Data
                             IdPolicia = m.IdPolicia,
                             Fecha = m.Fecha,
                             Precio = m.Precio,
-                            ArticuloPenal = m.ArticuloPenal,
+                            IdArticuloPenal = m.IdArticuloPenal,
                             Descripcion = m.Descripcion,
                             Pagada = m.Pagada,
                             IdCiudadano = m.IdCiudadano

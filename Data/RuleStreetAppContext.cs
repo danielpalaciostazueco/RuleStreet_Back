@@ -22,6 +22,11 @@ namespace RuleStreet.Data
         public DbSet<Nota> Nota { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
 
+        public DbSet<Ayuntamiento> Ayuntamiento { get; set; }   
+
+        public DbSet<Evento> Evento { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,8 +50,9 @@ namespace RuleStreet.Data
 
             modelBuilder.Entity<Multa>()
                 .HasOne(v => v.Ciudadano)
-                .WithMany(c => c.Multas)
-                .HasForeignKey(v => v.IdCiudadano);
+                .WithMany(c => c.Multas);
+
+
 
             modelBuilder.Entity<Auditoria>()
                 .HasOne(a => a.Policia)
@@ -111,7 +117,7 @@ namespace RuleStreet.Data
                     NumeroTelefono = 987654321,
                     NumeroCuentaBancaria = "ES987654321",
                     IsPoli = false,
-                    IsBusquedaYCaptura = false,
+                    IsBusquedaYCaptura = true,
                     IsPeligroso = false
                 }
            );
@@ -296,6 +302,21 @@ namespace RuleStreet.Data
                 new RangoPermiso { IdPermiso = 12, IdRango = 10 },
                 new RangoPermiso { IdPermiso = 13, IdRango = 10 }
                 );
-        }
+                
+                modelBuilder.Entity<Ayuntamiento>().HasData(
+                new Ayuntamiento
+                {
+                    IdUsuarioAyuntamiento = 1,
+                    Dni = "12345678",
+                    Contrasena = "1234"
+                },
+                new Ayuntamiento
+                {
+                    IdUsuarioAyuntamiento = 2,
+                    Dni = "87654321",
+                    Contrasena = "1234"
+                }
+             );                
+        }    
     }
 }

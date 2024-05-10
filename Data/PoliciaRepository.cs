@@ -72,10 +72,10 @@ namespace RuleStreet.Data
                         IdPolicia = m.IdPolicia,
                         Fecha = m.Fecha,
                         Precio = m.Precio,
-                        ArticuloPenal = m.ArticuloPenal,
+                        IdArticuloPenal = m.IdArticuloPenal,
                         Descripcion = m.Descripcion,
                         Pagada = m.Pagada,
-                        IdCiudadano = m.IdCiudadano,
+                        IdCiudadano = m.IdCiudadano
 
                     }).ToList(),
                     Vehiculos = p.Ciudadano.Vehiculos.Select(v => new VehiculoDTO
@@ -134,6 +134,7 @@ namespace RuleStreet.Data
 
                 } : null,
                 NumeroPlaca = policia.NumeroPlaca,
+                Contrasena = policia.Contrasena,
                 Ciudadano = new CiudadanoDTO
                 {
                     IdCiudadano = policia.Ciudadano.IdCiudadano,
@@ -155,10 +156,10 @@ namespace RuleStreet.Data
                         IdPolicia = m.IdPolicia,
                         Fecha = m.Fecha.Value,
                         Precio = m.Precio,
-                        ArticuloPenal = m.ArticuloPenal,
+                        IdArticuloPenal = m.IdArticuloPenal,
                         Descripcion = m.Descripcion,
                         Pagada = m.Pagada,
-                        IdCiudadano = m.IdCiudadano,
+                        IdCiudadano = m.IdCiudadano
                     }).ToList(),
                     Vehiculos = policia.Ciudadano.Vehiculos.Select(v => new VehiculoDTO
                     {
