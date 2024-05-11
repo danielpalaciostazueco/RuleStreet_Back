@@ -57,7 +57,8 @@ namespace RuleStreet.Business
                     IdPolicia = id,
                     IdCiudadano = policiaPostDto.IdCiudadano,
                     IdRango = policiaPostDto.RangoId,
-                    NumeroPlaca = policiaPostDto.NumeroPlaca
+                    NumeroPlaca = policiaPostDto.NumeroPlaca,
+                    Contrasena = policiaPostDto.Contrasena,
                 };
 
                 _policiaRepository.Update(policia, id);
@@ -101,7 +102,8 @@ namespace RuleStreet.Business
             {
                 IdCiudadano = (int)policia.IdCiudadano,
                 IdRango = policia.RangoId,
-                NumeroPlaca = policia.NumeroPlaca
+                NumeroPlaca = policia.NumeroPlaca,
+                Contrasena = policia.Contrasena,
             };
 
             try

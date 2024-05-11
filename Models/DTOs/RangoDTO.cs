@@ -8,5 +8,5 @@ public class RangoDTO
     public string? Nombre { get; set; }
     public int Salario { get; set; }
     public bool isLocal { get; set; }
-    public List<PermisoDto>? Permisos { get; set; }
+    public List<PermisoDTO>? Permisos { get; set; }
 }

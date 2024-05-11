@@ -20,21 +20,35 @@ namespace RuleStreet.Data
             _context = context;
             _logger = logger;
         }
-        public List<Permiso> GetAll()
+        public List<PermisoDTO> GetAll()
         {
-            return _context.Permiso
+            var permisos = _context.Permiso
+                .Select(p => new PermisoDTO
+                {
+                    IdPermiso = p.IdPermiso,
+                    Nombre = p.Nombre
+                })
                 .ToList();
+
+            return permisos;
         }
 
 
-        public Permiso Get(int id)
+
+        public PermisoDTO Get(int id)
         {
             try
             {
-                return _context.Permiso
-
+                var permisos = _context.Permiso
+                    .Where(permiso => permiso.IdPermiso == id)
+                    .Select(permiso => new PermisoDTO
+                    {
+                        IdPermiso = permiso.IdPermiso,
+                        Nombre = permiso.Nombre
+                    })
                     .AsNoTracking()
-                    .FirstOrDefault(Permiso => Permiso.IdPermiso == id);
+                    .FirstOrDefault();
+                return permisos;
             }
             catch (Exception ex)
             {
@@ -42,6 +56,7 @@ namespace RuleStreet.Data
                 throw;
             }
         }
+
 
         public void Update(Permiso permiso)
         {

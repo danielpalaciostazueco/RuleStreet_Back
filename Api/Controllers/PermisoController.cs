@@ -23,13 +23,13 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Permiso>> GetAll()
+        public ActionResult<List<PermisoDTO>> GetAll()
         {
             return _PermisoService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Permiso> Get(int id)
+        public ActionResult<PermisoDTO> Get(int id)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Permiso permiso)
+        public IActionResult Update(int id, PermisoDTO permiso)
         {
             try
             {

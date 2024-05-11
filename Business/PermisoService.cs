@@ -17,7 +17,7 @@ namespace RuleStreet.Business
             _logger = logger;
         }
 
-        public List<Permiso> GetAll()
+        public List<PermisoDTO> GetAll()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace RuleStreet.Business
                 throw;
             }
         }
-        public Permiso? Get(int id)
+        public PermisoDTO? Get(int id)
         {
             try
             {
@@ -45,19 +45,25 @@ namespace RuleStreet.Business
         }
 
 
-        public void Update(Permiso permiso)
+        public void Update(PermisoDTO permisoDto)
         {
             try
             {
+                Permiso permiso = new Permiso
+                {
+                    IdPermiso = permisoDto.IdPermiso,
+                    Nombre = permisoDto.Nombre
+                };
+
                 _permisoRepository.Update(permiso);
             }
             catch (Exception ex)
             {
-
-                _logger.LogError(ex, "Error actualizando el perimso por id");
+                _logger.LogError(ex, "Error actualizando el permiso por id");
                 throw;
             }
         }
+
 
         public void Delete(int id)
         {

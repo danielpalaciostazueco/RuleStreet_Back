@@ -5,8 +5,8 @@ namespace RuleStreet.Data
 {
     public interface IPermisoRepository
     {
-        List<Permiso> GetAll();
-        Permiso? Get(int id);
+        List<PermisoDTO> GetAll();
+        PermisoDTO? Get(int id);
         void Update(Permiso permiso);
 
         void Add(Permiso permiso);
