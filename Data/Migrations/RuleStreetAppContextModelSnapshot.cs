@@ -961,9 +961,6 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMulta"));
 
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
 

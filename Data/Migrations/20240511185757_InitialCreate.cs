@@ -240,7 +240,6 @@ namespace RuleStreet.Data.Migrations
                     IdPolicia = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdCodigoPenal = table.Column<int>(type: "int", nullable: false),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pagada = table.Column<bool>(type: "bit", nullable: true),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true)
                 },

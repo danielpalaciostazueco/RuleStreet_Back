@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240511113110_InitialCreate")]
+    [Migration("20240511185757_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -963,9 +963,6 @@ namespace RuleStreet.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMulta"));
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
