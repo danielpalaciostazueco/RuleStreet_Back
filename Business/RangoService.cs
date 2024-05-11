@@ -32,7 +32,7 @@ namespace RuleStreet.Business
                     Nombre = r.Nombre,
                     Salario = r.Salario ?? 0,
                     isLocal = r.isLocal ?? false,
-                    Permisos = r.RangosPermisos.Select(rp => new PermisoDto
+                    Permisos = r.RangosPermisos.Select(rp => new PermisoDTO
                     {
                         IdPermiso = rp.Permiso.IdPermiso,
                         Nombre = rp.Permiso.Nombre
@@ -66,7 +66,7 @@ namespace RuleStreet.Business
                     Nombre = rango.Nombre,
                     Salario = rango.Salario ?? 0,
                     isLocal = rango.isLocal ?? false,
-                    Permisos = rango.RangosPermisos.Select(rp => new PermisoDto
+                    Permisos = rango.RangosPermisos.Select(rp => new PermisoDTO
                     {
                         IdPermiso = rp.Permiso.IdPermiso,
                         Nombre = rp.Permiso.Nombre

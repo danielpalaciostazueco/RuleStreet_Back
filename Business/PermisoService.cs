@@ -17,7 +17,7 @@ namespace RuleStreet.Business
             _logger = logger;
         }
 
-        public List<Permiso> GetAll()
+        public List<PermisoDTO> GetAll()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace RuleStreet.Business
                 throw;
             }
         }
-        public Permiso? Get(int id)
+        public PermisoDTO? Get(int id)
         {
             try
             {

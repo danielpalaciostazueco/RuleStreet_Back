@@ -5,8 +5,8 @@ namespace RuleStreet.Business
 {
     public interface IPermisoService
     {
-        List<Permiso> GetAll();
-        Permiso? Get(int id);
+        List<PermisoDTO> GetAll();
+        PermisoDTO? Get(int id);
         void Update(Permiso permiso);
 
         void Add(Permiso permiso);
