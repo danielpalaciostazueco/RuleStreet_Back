@@ -239,8 +239,7 @@ namespace RuleStreet.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdPolicia = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Precio = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    IdArticuloPenal = table.Column<int>(type: "int", nullable: true),
+                    IdCodigoPenal = table.Column<int>(type: "int", nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pagada = table.Column<bool>(type: "bit", nullable: true),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true)
@@ -253,6 +252,12 @@ namespace RuleStreet.Data.Migrations
                         column: x => x.IdCiudadano,
                         principalTable: "Ciudadano",
                         principalColumn: "IdCiudadano");
+                    table.ForeignKey(
+                        name: "FK_Multa_CodigoPenal_IdCodigoPenal",
+                        column: x => x.IdCodigoPenal,
+                        principalTable: "CodigoPenal",
+                        principalColumn: "IdCodigoPenal",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Multa_Policia_IdPolicia",
                         column: x => x.IdPolicia,
@@ -554,6 +559,11 @@ namespace RuleStreet.Data.Migrations
                 column: "IdCiudadano");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Multa_IdCodigoPenal",
+                table: "Multa",
+                column: "IdCodigoPenal");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Multa_IdPolicia",
                 table: "Multa",
                 column: "IdPolicia");
@@ -611,9 +621,6 @@ namespace RuleStreet.Data.Migrations
                 name: "Ayuntamiento");
 
             migrationBuilder.DropTable(
-                name: "CodigoPenal");
-
-            migrationBuilder.DropTable(
                 name: "Denuncia");
 
             migrationBuilder.DropTable(
@@ -633,6 +640,9 @@ namespace RuleStreet.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vehiculo");
+
+            migrationBuilder.DropTable(
+                name: "CodigoPenal");
 
             migrationBuilder.DropTable(
                 name: "Permiso");

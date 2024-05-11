@@ -23,15 +23,16 @@ namespace RuleStreet.Data
         public List<PoliciaDTO> GetAll()
         {
             var policiaList = _context.Policia
-                .Include(p => p.Ciudadano)
-                .ThenInclude(c => c.Multas)
-                .ThenInclude(m => m.Policia)
-                .Include(p => p.Ciudadano)
-                .ThenInclude(c => c.Vehiculos)
-                .Include(p => p.Rango)
-                .ThenInclude(r => ((Rango)r).RangosPermisos)
-                .ThenInclude(rp => rp.Permiso)
-                .ToList();
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Multas)
+            .ThenInclude(m => m.CodigoPenal)
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Vehiculos)
+            .Include(p => p.Rango)
+            .ThenInclude(r => r.RangosPermisos)
+            .ThenInclude(rp => rp.Permiso)
+            .ToList();
+
 
             var policiaDTOList = policiaList.Select(p => new PoliciaDTO
             {
@@ -71,13 +72,18 @@ namespace RuleStreet.Data
                         IdMulta = m.IdMulta,
                         IdPolicia = m.IdPolicia,
                         Fecha = m.Fecha,
-                        Precio = m.Precio,
-                        IdArticuloPenal = m.IdArticuloPenal,
-                        Descripcion = m.Descripcion,
+                        CodigoPenal = m.CodigoPenal == null ? null : new CodigoPenalDTO
+                        {
+                            IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
+                            Articulo = m.CodigoPenal.Articulo,
+                            Descripcion = m.CodigoPenal.Descripcion,
+                            Precio = m.CodigoPenal.Precio,
+                            Sentencia = m.CodigoPenal.Sentencia
+                        },
                         Pagada = m.Pagada,
                         IdCiudadano = m.IdCiudadano
-
                     }).ToList(),
+
                     Vehiculos = p.Ciudadano.Vehiculos.Select(v => new VehiculoDTO
                     {
                         IdVehiculo = v.IdVehiculo,
@@ -99,17 +105,17 @@ namespace RuleStreet.Data
         public PoliciaDTO Get(int id)
         {
             var policia = _context.Policia
-                .Include(p => p.Ciudadano)
-                .ThenInclude(c => c.Multas)
-                .ThenInclude(m => m.Policia)
-                .Include(p => p.Ciudadano)
-                .ThenInclude(c => c.Vehiculos)
-                .Include(p => p.Rango)
-                .ThenInclude(r => r.RangosPermisos)
-                .ThenInclude(rp => rp.Permiso)
-                .AsNoTracking()
-                .FirstOrDefault(p => p.IdPolicia == id);
-            ;
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Multas)
+            .ThenInclude(m => m.CodigoPenal)
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Vehiculos)
+            .Include(p => p.Rango)
+            .ThenInclude(r => r.RangosPermisos)
+            .ThenInclude(rp => rp.Permiso)
+            .AsNoTracking()
+            .FirstOrDefault(p => p.IdPolicia == id);
+
             if (policia == null)
             {
                 _logger.LogError("No Policía found with ID: {Id}", id);
@@ -155,9 +161,14 @@ namespace RuleStreet.Data
                         IdMulta = m.IdMulta,
                         IdPolicia = m.IdPolicia,
                         Fecha = m.Fecha.Value,
-                        Precio = m.Precio,
-                        IdArticuloPenal = m.IdArticuloPenal,
-                        Descripcion = m.Descripcion,
+                        CodigoPenal = m.CodigoPenal != null ? new CodigoPenalDTO
+                        {
+                            IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
+                            Articulo = m.CodigoPenal.Articulo,
+                            Descripcion = m.CodigoPenal.Descripcion,
+                            Precio = m.CodigoPenal.Precio,
+                            Sentencia = m.CodigoPenal.Sentencia
+                        } : null,
                         Pagada = m.Pagada,
                         IdCiudadano = m.IdCiudadano
                     }).ToList(),

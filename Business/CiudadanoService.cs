@@ -75,7 +75,7 @@ namespace RuleStreet.Business
                         Genero = ciudadano.Genero,
                         Nacionalidad = ciudadano.Nacionalidad, 
                         Pagada= multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
-                        Cantidad =  codigoPenal.Where(x => multasPendientes.Any(y => y.IdArticuloPenal == x.IdCodigoPenal)).Sum(x => x.Precio)
+                        Cantidad =  codigoPenal.Where(x => multasPendientes.Any(y => y.IdCodigoPenal == x.IdCodigoPenal)).Sum(x => x.Precio)
                     };
                     deudores.Add(deudor);
                     multasPendientes.Clear();

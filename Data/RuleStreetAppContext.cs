@@ -21,9 +21,7 @@ namespace RuleStreet.Data
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<Nota> Nota { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
-
-        public DbSet<Ayuntamiento> Ayuntamiento { get; set; }   
-
+        public DbSet<Ayuntamiento> Ayuntamiento { get; set; }
         public DbSet<Evento> Evento { get; set; }
 
 
@@ -49,37 +47,41 @@ namespace RuleStreet.Data
                 .HasForeignKey(v => v.IdCiudadano);
 
             modelBuilder.Entity<Multa>()
-                .HasOne(v => v.Ciudadano)
-                .WithMany(c => c.Multas);
+                .HasOne(m => m.CodigoPenal)
+                .WithMany(c => c.Multas)
+                .HasForeignKey(m => m.IdCodigoPenal);
 
-
+            modelBuilder.Entity<CodigoPenal>()
+                .HasMany(c => c.Multas)
+                .WithOne(m => m.CodigoPenal)
+                .HasForeignKey(m => m.IdCodigoPenal);
 
             modelBuilder.Entity<Auditoria>()
-                .HasOne(a => a.Policia)
-                .WithMany()
-                .HasForeignKey(a => a.IdPolicia);
+                    .HasOne(a => a.Policia)
+                    .WithMany()
+                    .HasForeignKey(a => a.IdPolicia);
 
             modelBuilder.Entity<Denuncia>(entity =>
-            {
-                entity.HasKey(d => d.IdDenuncia);
-                entity.HasOne(d => d.Policia)
+                {
+                    entity.HasKey(d => d.IdDenuncia);
+                    entity.HasOne(d => d.Policia)
                     .WithMany()
                     .HasForeignKey(d => d.IdPolicia);
-                entity.HasOne(d => d.Ciudadano)
+                    entity.HasOne(d => d.Ciudadano)
                     .WithMany()
                     .HasForeignKey(d => d.IdCiudadano);
 
-            });
+                });
 
             modelBuilder.Entity<Nota>(entity =>
             {
                 entity.HasKey(d => d.IdNota);
                 entity.HasOne(d => d.policia)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdPolicia);
+                .WithMany()
+                .HasForeignKey(d => d.IdPolicia);
                 entity.HasOne(d => d.ciudadano)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdCiudadano);
+                .WithMany()
+                .HasForeignKey(d => d.IdCiudadano);
             });
 
             modelBuilder.Entity<Usuario>()
@@ -120,7 +122,7 @@ namespace RuleStreet.Data
                     IsBusquedaYCaptura = true,
                     IsPeligroso = false
                 }
-           );
+            );
 
             modelBuilder.Entity<CodigoPenal>().HasData(
                 new CodigoPenal { IdCodigoPenal = 1, Articulo = "Art. 1.1", Descripcion = "Uso excesivo del claxón", Precio = 500, Sentencia = "0 meses" },
@@ -224,7 +226,7 @@ namespace RuleStreet.Data
                new Rango { IdRango = 8, Nombre = "Inspector Jefe", Salario = 1881, isLocal = true },
                new Rango { IdRango = 9, Nombre = "Intendente", Salario = 2028, isLocal = true },
                new Rango { IdRango = 10, Nombre = "Superintendente", Salario = 2142, isLocal = true }
-           );
+            );
 
             modelBuilder.Entity<Permiso>().HasData(
                 new Permiso { IdPermiso = 1, Nombre = "Añadir policia" },
@@ -302,21 +304,21 @@ namespace RuleStreet.Data
                 new RangoPermiso { IdPermiso = 12, IdRango = 10 },
                 new RangoPermiso { IdPermiso = 13, IdRango = 10 }
                 );
-                
-                modelBuilder.Entity<Ayuntamiento>().HasData(
-                new Ayuntamiento
-                {
-                    IdUsuarioAyuntamiento = 1,
-                    Dni = "12345678",
-                    Contrasena = "1234"
-                },
-                new Ayuntamiento
-                {
-                    IdUsuarioAyuntamiento = 2,
-                    Dni = "87654321",
-                    Contrasena = "1234"
-                }
-             );                
-        }    
+
+            modelBuilder.Entity<Ayuntamiento>().HasData(
+            new Ayuntamiento
+            {
+                IdUsuarioAyuntamiento = 1,
+                Dni = "12345678",
+                Contrasena = "1234"
+            },
+            new Ayuntamiento
+            {
+                IdUsuarioAyuntamiento = 2,
+                Dni = "87654321",
+                Contrasena = "1234"
+            }
+            );
+        }
     }
 }
