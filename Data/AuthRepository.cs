@@ -47,17 +47,24 @@ namespace RuleStreet.Data
             }
             else
             {
-                var rangoDto = new RangoDTO { IdRango = usuario.Rango.IdRango, Nombre = usuario.Rango.Nombre }; 
-                var user = new PoliciaDTO { IdPolicia = usuario.IdPolicia, NumeroPlaca = usuario.NumeroPlaca, Contrasena = usuario.Contrasena, IdCiudadano = usuario.IdCiudadano.Value, IsPolicia = (bool)ciudadano.IsPoli, Rango = rangoDto };
+                var user = new PoliciaDTO
+                {
+                    IdPolicia = usuario.IdPolicia,
+                    NumeroPlaca = usuario.NumeroPlaca,
+                    Contrasena = usuario.Contrasena,
+                    IdCiudadano = usuario.IdCiudadano.Value,
+                    IsPolicia = (bool)ciudadano.IsPoli,
+                    Rango = usuario.Rango != null ? new RangoDTO { IdRango = usuario.Rango.IdRango, Nombre = usuario.Rango.Nombre } : null
+                };
                 return user;
             }
         }
 
 
-         public Ayuntamiento GetUserFromCredentialsAyuntamiento(AyuntamientoPostRegisterDTO loginDtoIn)
+        public Ayuntamiento GetUserFromCredentialsAyuntamiento(AyuntamientoPostRegisterDTO loginDtoIn)
         {
             var usuario = _context.Ayuntamiento.FirstOrDefault(u => u.Dni == loginDtoIn.Dni && u.Contrasena == loginDtoIn.Contrasena);
-           
+
             if (usuario == null)
             {
 
@@ -65,11 +72,11 @@ namespace RuleStreet.Data
             }
             else
             {
-                var user = new Ayuntamiento { IdUsuarioAyuntamiento = usuario.IdUsuarioAyuntamiento, Dni = usuario.Dni, Contrasena = usuario.Contrasena};
+                var user = new Ayuntamiento { IdUsuarioAyuntamiento = usuario.IdUsuarioAyuntamiento, Dni = usuario.Dni, Contrasena = usuario.Contrasena };
                 return user;
             }
         }
     }
-    }
+}
 
 
