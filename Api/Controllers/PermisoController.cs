@@ -51,7 +51,7 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Permiso permiso)
+        public IActionResult Update(int id, PermisoDTO permiso)
         {
             try
             {

@@ -7,7 +7,7 @@ namespace RuleStreet.Business
     {
         List<PermisoDTO> GetAll();
         PermisoDTO? Get(int id);
-        void Update(Permiso permiso);
+        void Update(PermisoDTO permisoDto);
 
         void Add(Permiso permiso);
 
