@@ -10,4 +10,5 @@ public class CodigoPenal
     public string? Descripcion { get; set; }
     public decimal? Precio { get; set; }
     public string? Sentencia { get; set; }
+    public List<Multa> Multas { get; set; } = new List<Multa>();
 }

@@ -9,20 +9,17 @@ public class Multa
     [Key]
     public int IdMulta { get; set; }
 
-
     [ForeignKey("Policia")]
     public int IdPolicia { get; set; }
     public Policia? Policia { get; set; }
 
     public DateTime? Fecha { get; set; }
 
-    public decimal? Precio { get; set; }
-    public int? IdArticuloPenal { get; set; }
-    public string? Descripcion { get; set; }
+    [ForeignKey("CodigoPenal")]
+    public int IdCodigoPenal { get; set; }
+    public CodigoPenal? CodigoPenal { get; set; }
     public bool? Pagada { get; set; }
-
     [ForeignKey("Ciudadano")]
     public int? IdCiudadano { get; set; }
     public Ciudadano? Ciudadano { get; set; }
-
 }

@@ -23,8 +23,9 @@ namespace RuleStreet.Data
         {
             return _context.Multa
                 .Include(m => m.Policia)
-                    .ThenInclude(p => p.Ciudadano)
+                .ThenInclude(p => p.Ciudadano)
                 .Include(m => m.Ciudadano)
+                .Include(m => m.CodigoPenal)
                 .ToList();
         }
 
@@ -35,6 +36,7 @@ namespace RuleStreet.Data
                 return _context.Multa
                     .Include(m => m.Policia)
                     .Include(m => m.Ciudadano)
+                    .Include(m => m.CodigoPenal) 
                     .AsNoTracking()
                     .FirstOrDefault(Multa => Multa.IdMulta == id);
             }

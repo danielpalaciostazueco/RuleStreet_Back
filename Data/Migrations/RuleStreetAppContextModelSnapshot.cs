@@ -961,16 +961,13 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMulta"));
 
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("IdArticuloPenal")
+                    b.Property<int?>("IdCiudadano")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdCiudadano")
+                    b.Property<int>("IdCodigoPenal")
                         .HasColumnType("int");
 
                     b.Property<int>("IdPolicia")
@@ -979,12 +976,11 @@ namespace RuleStreet.Data.Migrations
                     b.Property<bool?>("Pagada")
                         .HasColumnType("bit");
 
-                    b.Property<decimal?>("Precio")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("IdMulta");
 
                     b.HasIndex("IdCiudadano");
+
+                    b.HasIndex("IdCodigoPenal");
 
                     b.HasIndex("IdPolicia");
 
@@ -1640,6 +1636,12 @@ namespace RuleStreet.Data.Migrations
                         .WithMany("Multas")
                         .HasForeignKey("IdCiudadano");
 
+                    b.HasOne("RuleStreet.Models.CodigoPenal", "CodigoPenal")
+                        .WithMany("Multas")
+                        .HasForeignKey("IdCodigoPenal")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RuleStreet.Models.Policia", "Policia")
                         .WithMany()
                         .HasForeignKey("IdPolicia")
@@ -1647,6 +1649,8 @@ namespace RuleStreet.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Ciudadano");
+
+                    b.Navigation("CodigoPenal");
 
                     b.Navigation("Policia");
                 });
@@ -1731,6 +1735,11 @@ namespace RuleStreet.Data.Migrations
                     b.Navigation("Usuario");
 
                     b.Navigation("Vehiculos");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.CodigoPenal", b =>
+                {
+                    b.Navigation("Multas");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Permiso", b =>

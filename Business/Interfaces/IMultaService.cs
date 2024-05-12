@@ -5,10 +5,10 @@ namespace RuleStreet.Business
 {
     public interface IMultaService
     {
-        List<Multa> GetAll();
-        Multa? Get(int id);
-        void Update(MultaDTO multa);
+        List<MultaDTO> GetAll();
+        MultaDTO? Get(int id);
+        void Update(MultaPostDTO multa, int id);
         void Delete(int id);
-        void Add(MultaDTO multa);
+        void Add(MultaPostDTO multa);
     }
 }

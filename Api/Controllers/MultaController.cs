@@ -22,13 +22,13 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Multa>> GetAll()
+        public ActionResult<List<MultaDTO>> GetAll()
         {
             return _MultaService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Multa> Get(int id)
+        public ActionResult<MultaDTO> Get(int id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace RuleStreet.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult<MultaDTO> Create(MultaDTO multa)
+        public ActionResult<MultaDTO> Create(MultaPostDTO multa)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, MultaDTO multa)
+        public IActionResult Update(int id, MultaPostDTO multa)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace RuleStreet.Api.Controllers
                     return NotFound();
                 }
 
-                _MultaService.Update(multa);
+                _MultaService.Update(multa, id);
                 return NoContent();
             }
             catch (Exception ex)
