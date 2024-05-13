@@ -19,4 +19,5 @@ public class CiudadanoDTO
     public bool? IsPeligroso { get; set; }
     public List<MultaDTO>? Multas { get; set; }
     public List<VehiculoDTO>? Vehiculos { get; set; }
+    public string ImagenUrl { get; set; }
 }

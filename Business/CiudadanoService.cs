@@ -50,7 +50,7 @@ namespace RuleStreet.Business
             }
         }
 
-         public List<DeudoresDTO> GetAllDeudores()
+        public List<DeudoresDTO> GetAllDeudores()
         {
             try
             {
@@ -59,23 +59,24 @@ namespace RuleStreet.Business
                 var deudores = new List<DeudoresDTO>();
                 var codigoPenal = _codigoPenalRepository.GetAll();
                 List<Multa> multasPendientes = new List<Multa>();
-                
+
 
                 foreach (var ciudadano in ciudadanos)
                 {
                     multasPendientes = multas.Where(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false).ToList();
                     var deudor = new DeudoresDTO
                     {
-                        
+
                         IdCiudadano = ciudadano.IdCiudadano,
                         Nombre = ciudadano.Nombre,
                         Apellidos = ciudadano.Apellidos,
                         FechaNacimiento = (DateTime)ciudadano.FechaNacimiento,
                         Dni = ciudadano.Dni,
                         Genero = ciudadano.Genero,
-                        Nacionalidad = ciudadano.Nacionalidad, 
-                        Pagada= multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
-                        Cantidad =  codigoPenal.Where(x => multasPendientes.Any(y => y.IdCodigoPenal == x.IdCodigoPenal)).Sum(x => x.Precio)
+                        Nacionalidad = ciudadano.Nacionalidad,
+                        Pagada = multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
+                        Cantidad = codigoPenal.Where(x => multasPendientes.Any(y => y.IdCodigoPenal == x.IdCodigoPenal)).Sum(x => x.Precio),
+                        ImagenUrl = ciudadano.ImagenUrl
                     };
                     deudores.Add(deudor);
                     multasPendientes.Clear();

@@ -14,6 +14,6 @@ public class DeudoresDTO
     public decimal? Cantidad { get; set; }
     public DateTime FechaNacimiento { get; set; }
     public bool? Pagada { get; set; }
-
+    public string? ImagenUrl { get; set; }
 }
 
