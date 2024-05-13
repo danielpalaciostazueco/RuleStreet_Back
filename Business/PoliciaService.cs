@@ -95,6 +95,7 @@ namespace RuleStreet.Business
                 IsPoli = ciudadano.IsPoli,
                 IsBusquedaYCaptura = ciudadano.IsBusquedaYCaptura,
                 IsPeligroso = ciudadano.IsPeligroso,
+                ImagenUrl = ciudadano.ImagenUrl,
             };
             _ciudadanoRepository.Update(ciudadanoUpdate);
 
