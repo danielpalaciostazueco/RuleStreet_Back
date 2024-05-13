@@ -52,6 +52,7 @@ namespace RuleStreet.Data
 
                 } : null,
                 NumeroPlaca = p.NumeroPlaca,
+                Contrasena = p.Contrasena,
                 Ciudadano = new CiudadanoDTO
                 {
                     IdCiudadano = p.Ciudadano.IdCiudadano,
