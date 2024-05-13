@@ -108,6 +108,10 @@ namespace RuleStreet.Data.Migrations
                     b.Property<int?>("IdUsuario")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImagenUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool?>("IsBusquedaYCaptura")
                         .HasColumnType("bit");
 
@@ -137,32 +141,136 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdCiudadano = 1,
-                            Apellidos = "Perez",
+                            Apellidos = "Gimenez Garulo",
                             Direccion = "Calle Falsa 123",
-                            Dni = "12345678",
+                            Dni = "12345678A",
                             FechaNacimiento = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Genero = "Hombre",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW8BqiphgAP2RarwrIgqXMdH0Y4XWQgicOFG6g5lTSoqlharjkl=s75-c",
                             IsBusquedaYCaptura = false,
                             IsPeligroso = false,
                             IsPoli = false,
-                            Nacionalidad = "Español",
-                            Nombre = "Juan",
+                            Nacionalidad = "Española",
+                            Nombre = "Alejadro",
                             NumeroCuentaBancaria = "ES123456789",
                             NumeroTelefono = 123456789
                         },
                         new
                         {
                             IdCiudadano = 2,
-                            Apellidos = "Gonzalez",
+                            Apellidos = "Llorente Pinzon",
                             Direccion = "Calle Falsa 123",
-                            Dni = "87654321",
+                            Dni = "12345678B",
                             FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Genero = "Mujer",
-                            IsBusquedaYCaptura = true,
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjXq4SaB_ODyUUzUulLF9MsBbfp2kyQ8dJQ6-k96AxVcHx8PtnV2=s75-c",
+                            IsBusquedaYCaptura = false,
+                            IsPeligroso = false,
+                            IsPoli = false,
+                            Nacionalidad = "Española",
+                            Nombre = "Vanessa",
+                            NumeroCuentaBancaria = "ES987654321",
+                            NumeroTelefono = 987654321
+                        },
+                        new
+                        {
+                            IdCiudadano = 3,
+                            Apellidos = "Crespo",
+                            Direccion = "Calle Falsa 123",
+                            Dni = "12345678C",
+                            FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "Mujer",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjXNudiq8hrsLIIP4y9gHaPvdatUtONrCGpmKvYBTePbSFleNrs=s75-c",
+                            IsBusquedaYCaptura = false,
                             IsPeligroso = false,
                             IsPoli = false,
                             Nacionalidad = "Española",
                             Nombre = "Maria",
+                            NumeroCuentaBancaria = "ES987654321",
+                            NumeroTelefono = 987654321
+                        },
+                        new
+                        {
+                            IdCiudadano = 4,
+                            Apellidos = "Hierro Amon",
+                            Direccion = "Calle Falsa 123",
+                            Dni = "12345678D",
+                            FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "Hombre",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a/ACg8ocL5B2wDSyuywLri2wQOKXk9DuqWrYHjH0iShHT3uwZUSfnIqA=s32-c-mo",
+                            IsBusquedaYCaptura = false,
+                            IsPeligroso = false,
+                            IsPoli = false,
+                            Nacionalidad = "Española",
+                            Nombre = "Oliver",
+                            NumeroCuentaBancaria = "ES987654321",
+                            NumeroTelefono = 987654321
+                        },
+                        new
+                        {
+                            IdCiudadano = 5,
+                            Apellidos = "Pardos Gotor",
+                            Direccion = "Calle Falsa 123",
+                            Dni = "12345678E",
+                            FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "Hombre",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjXzV-jm0U5kV0lccfpkdR_NeIDpJRa3av9cA6fBJySmh8B-nsfU=s75-c",
+                            IsBusquedaYCaptura = false,
+                            IsPeligroso = false,
+                            IsPoli = false,
+                            Nacionalidad = "Española",
+                            Nombre = "Santos",
+                            NumeroCuentaBancaria = "ES987654321",
+                            NumeroTelefono = 987654321
+                        },
+                        new
+                        {
+                            IdCiudadano = 6,
+                            Apellidos = "Higelmo Martinez",
+                            Direccion = "Calle Falsa 123",
+                            Dni = "12345678F",
+                            FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "Mujer",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjWbaN_SMJT8GbltNzC69AJquU6hlO2JoVkXGBjpptldvZNclstX=s75-c",
+                            IsBusquedaYCaptura = false,
+                            IsPeligroso = false,
+                            IsPoli = false,
+                            Nacionalidad = "Española",
+                            Nombre = "Eva Maria",
+                            NumeroCuentaBancaria = "ES987654321",
+                            NumeroTelefono = 987654321
+                        },
+                        new
+                        {
+                            IdCiudadano = 7,
+                            Apellidos = "Guardingo De La Riva",
+                            Direccion = "Calle Falsa 123",
+                            Dni = "12345678G",
+                            FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "Mujer",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c",
+                            IsBusquedaYCaptura = false,
+                            IsPeligroso = false,
+                            IsPoli = false,
+                            Nacionalidad = "Española",
+                            Nombre = "Silvia",
+                            NumeroCuentaBancaria = "ES987654321",
+                            NumeroTelefono = 987654321
+                        },
+                        new
+                        {
+                            IdCiudadano = 8,
+                            Apellidos = "Ruiz Lite",
+                            Direccion = "Calle Falsa 123",
+                            Dni = "12345678H",
+                            FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "Hombre",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c",
+                            IsBusquedaYCaptura = false,
+                            IsPeligroso = false,
+                            IsPoli = false,
+                            Nacionalidad = "Española",
+                            Nombre = "Joaquin",
                             NumeroCuentaBancaria = "ES987654321",
                             NumeroTelefono = 987654321
                         });

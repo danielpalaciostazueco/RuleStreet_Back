@@ -43,6 +43,7 @@ namespace RuleStreet.Data
                     IsPoli = c.IsPoli,
                     IsBusquedaYCaptura = c.IsBusquedaYCaptura,
                     IsPeligroso = c.IsPeligroso,
+                    ImagenUrl = c.ImagenUrl,
                     Multas = c.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
@@ -101,6 +102,7 @@ namespace RuleStreet.Data
                         IsPoli = c.IsPoli,
                         IsBusquedaYCaptura = c.IsBusquedaYCaptura,
                         IsPeligroso = c.IsPeligroso,
+                        ImagenUrl = c.ImagenUrl,
                         Multas = c.Multas.Select(m => new MultaDTO
                         {
                             IdMulta = m.IdMulta,

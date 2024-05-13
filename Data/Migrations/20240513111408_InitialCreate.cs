@@ -45,7 +45,8 @@ namespace RuleStreet.Data.Migrations
                     IsPoli = table.Column<bool>(type: "bit", nullable: true),
                     IsBusquedaYCaptura = table.Column<bool>(type: "bit", nullable: true),
                     IsPeligroso = table.Column<bool>(type: "bit", nullable: true),
-                    IdUsuario = table.Column<int>(type: "int", nullable: true)
+                    IdUsuario = table.Column<int>(type: "int", nullable: true),
+                    ImagenUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -333,11 +334,17 @@ namespace RuleStreet.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Ciudadano",
-                columns: new[] { "IdCiudadano", "Apellidos", "Direccion", "Dni", "FechaNacimiento", "Genero", "IdUsuario", "IsBusquedaYCaptura", "IsPeligroso", "IsPoli", "Nacionalidad", "Nombre", "NumeroCuentaBancaria", "NumeroTelefono" },
+                columns: new[] { "IdCiudadano", "Apellidos", "Direccion", "Dni", "FechaNacimiento", "Genero", "IdUsuario", "ImagenUrl", "IsBusquedaYCaptura", "IsPeligroso", "IsPoli", "Nacionalidad", "Nombre", "NumeroCuentaBancaria", "NumeroTelefono" },
                 values: new object[,]
                 {
-                    { 1, "Perez", "Calle Falsa 123", "12345678", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, false, false, false, "Español", "Juan", "ES123456789", 123456789 },
-                    { 2, "Gonzalez", "Calle Falsa 123", "87654321", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, true, false, false, "Española", "Maria", "ES987654321", 987654321 }
+                    { 1, "Gimenez Garulo", "Calle Falsa 123", "12345678A", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, "https://lh3.googleusercontent.com/a-/ALV-UjW8BqiphgAP2RarwrIgqXMdH0Y4XWQgicOFG6g5lTSoqlharjkl=s75-c", false, false, false, "Española", "Alejadro", "ES123456789", 123456789 },
+                    { 2, "Llorente Pinzon", "Calle Falsa 123", "12345678B", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, "https://lh3.googleusercontent.com/a-/ALV-UjXq4SaB_ODyUUzUulLF9MsBbfp2kyQ8dJQ6-k96AxVcHx8PtnV2=s75-c", false, false, false, "Española", "Vanessa", "ES987654321", 987654321 },
+                    { 3, "Crespo", "Calle Falsa 123", "12345678C", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, "https://lh3.googleusercontent.com/a-/ALV-UjXNudiq8hrsLIIP4y9gHaPvdatUtONrCGpmKvYBTePbSFleNrs=s75-c", false, false, false, "Española", "Maria", "ES987654321", 987654321 },
+                    { 4, "Hierro Amon", "Calle Falsa 123", "12345678D", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, "https://lh3.googleusercontent.com/a/ACg8ocL5B2wDSyuywLri2wQOKXk9DuqWrYHjH0iShHT3uwZUSfnIqA=s32-c-mo", false, false, false, "Española", "Oliver", "ES987654321", 987654321 },
+                    { 5, "Pardos Gotor", "Calle Falsa 123", "12345678E", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, "https://lh3.googleusercontent.com/a-/ALV-UjXzV-jm0U5kV0lccfpkdR_NeIDpJRa3av9cA6fBJySmh8B-nsfU=s75-c", false, false, false, "Española", "Santos", "ES987654321", 987654321 },
+                    { 6, "Higelmo Martinez", "Calle Falsa 123", "12345678F", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, "https://lh3.googleusercontent.com/a-/ALV-UjWbaN_SMJT8GbltNzC69AJquU6hlO2JoVkXGBjpptldvZNclstX=s75-c", false, false, false, "Española", "Eva Maria", "ES987654321", 987654321 },
+                    { 7, "Guardingo De La Riva", "Calle Falsa 123", "12345678G", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c", false, false, false, "Española", "Silvia", "ES987654321", 987654321 },
+                    { 8, "Ruiz Lite", "Calle Falsa 123", "12345678H", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c", false, false, false, "Española", "Joaquin", "ES987654321", 987654321 }
                 });
 
             migrationBuilder.InsertData(

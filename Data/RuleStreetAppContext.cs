@@ -93,25 +93,26 @@ namespace RuleStreet.Data
                 new Ciudadano
                 {
                     IdCiudadano = 1,
-                    Nombre = "Juan",
-                    Apellidos = "Perez",
-                    Dni = "12345678",
+                    Nombre = "Alejadro",
+                    Apellidos = "Gimenez Garulo",
+                    Dni = "12345678A",
                     Genero = "Hombre",
-                    Nacionalidad = "Español",
+                    Nacionalidad = "Española",
                     FechaNacimiento = new DateTime(1990, 1, 1),
                     Direccion = "Calle Falsa 123",
                     NumeroTelefono = 123456789,
                     NumeroCuentaBancaria = "ES123456789",
                     IsPoli = false,
                     IsBusquedaYCaptura = false,
-                    IsPeligroso = false
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW8BqiphgAP2RarwrIgqXMdH0Y4XWQgicOFG6g5lTSoqlharjkl=s75-c"
                 },
                 new Ciudadano
                 {
                     IdCiudadano = 2,
-                    Nombre = "Maria",
-                    Apellidos = "Gonzalez",
-                    Dni = "87654321",
+                    Nombre = "Vanessa",
+                    Apellidos = "Llorente Pinzon",
+                    Dni = "12345678B",
                     Genero = "Mujer",
                     Nacionalidad = "Española",
                     FechaNacimiento = new DateTime(1995, 1, 1),
@@ -119,9 +120,113 @@ namespace RuleStreet.Data
                     NumeroTelefono = 987654321,
                     NumeroCuentaBancaria = "ES987654321",
                     IsPoli = false,
-                    IsBusquedaYCaptura = true,
-                    IsPeligroso = false
-                }
+                    IsBusquedaYCaptura = false,
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjXq4SaB_ODyUUzUulLF9MsBbfp2kyQ8dJQ6-k96AxVcHx8PtnV2=s75-c"
+            
+                },
+                new Ciudadano
+                {
+                    IdCiudadano = 3,
+                    Nombre = "Maria",
+                    Apellidos = "Crespo",
+                    Dni = "12345678C",
+                    Genero = "Mujer",
+                    Nacionalidad = "Española",
+                    FechaNacimiento = new DateTime(1995, 1, 1),
+                    Direccion = "Calle Falsa 123",
+                    NumeroTelefono = 987654321,
+                    NumeroCuentaBancaria = "ES987654321",
+                    IsPoli = false,
+                    IsBusquedaYCaptura = false,
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjXNudiq8hrsLIIP4y9gHaPvdatUtONrCGpmKvYBTePbSFleNrs=s75-c"
+                },
+                new Ciudadano
+                {
+                    IdCiudadano = 4,
+                    Nombre = "Oliver",
+                    Apellidos = "Hierro Amon",
+                    Dni = "12345678D",
+                    Genero = "Hombre",
+                    Nacionalidad = "Española",
+                    FechaNacimiento = new DateTime(1995, 1, 1),
+                    Direccion = "Calle Falsa 123",
+                    NumeroTelefono = 987654321,
+                    NumeroCuentaBancaria = "ES987654321",
+                    IsPoli = false,
+                    IsBusquedaYCaptura = false,
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a/ACg8ocL5B2wDSyuywLri2wQOKXk9DuqWrYHjH0iShHT3uwZUSfnIqA=s32-c-mo"
+                },
+                   new Ciudadano
+                {
+                    IdCiudadano = 5,
+                    Nombre = "Santos",
+                    Apellidos = "Pardos Gotor",
+                    Dni = "12345678E",
+                    Genero = "Hombre",
+                    Nacionalidad = "Española",
+                    FechaNacimiento = new DateTime(1995, 1, 1),
+                    Direccion = "Calle Falsa 123",
+                    NumeroTelefono = 987654321,
+                    NumeroCuentaBancaria = "ES987654321",
+                    IsPoli = false,
+                    IsBusquedaYCaptura = false,
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjXzV-jm0U5kV0lccfpkdR_NeIDpJRa3av9cA6fBJySmh8B-nsfU=s75-c"
+                },
+                   new Ciudadano
+                {
+                    IdCiudadano = 6,
+                    Nombre = "Eva Maria",
+                    Apellidos = "Higelmo Martinez",
+                    Dni = "12345678F",
+                    Genero = "Mujer",
+                    Nacionalidad = "Española",
+                    FechaNacimiento = new DateTime(1995, 1, 1),
+                    Direccion = "Calle Falsa 123",
+                    NumeroTelefono = 987654321,
+                    NumeroCuentaBancaria = "ES987654321",
+                    IsPoli = false,
+                    IsBusquedaYCaptura = false,
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjWbaN_SMJT8GbltNzC69AJquU6hlO2JoVkXGBjpptldvZNclstX=s75-c"
+                },
+                  new Ciudadano
+                {
+                    IdCiudadano = 7,
+                    Nombre = "Silvia",
+                    Apellidos = "Guardingo De La Riva",
+                    Dni = "12345678G",
+                    Genero = "Mujer",
+                    Nacionalidad = "Española",
+                    FechaNacimiento = new DateTime(1995, 1, 1),
+                    Direccion = "Calle Falsa 123",
+                    NumeroTelefono = 987654321,
+                    NumeroCuentaBancaria = "ES987654321",
+                    IsPoli = false,
+                    IsBusquedaYCaptura = false,
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c"
+                },
+                   new Ciudadano
+                {
+                    IdCiudadano = 8,
+                    Nombre = "Joaquin",
+                    Apellidos = "Ruiz Lite",
+                    Dni = "12345678H",
+                    Genero = "Hombre",
+                    Nacionalidad = "Española",
+                    FechaNacimiento = new DateTime(1995, 1, 1),
+                    Direccion = "Calle Falsa 123",
+                    NumeroTelefono = 987654321,
+                    NumeroCuentaBancaria = "ES987654321",
+                    IsPoli = false,
+                    IsBusquedaYCaptura = false,
+                    IsPeligroso = false,
+                    ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c"
+                }            
             );
 
             modelBuilder.Entity<CodigoPenal>().HasData(
