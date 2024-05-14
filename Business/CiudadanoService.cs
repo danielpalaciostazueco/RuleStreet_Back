@@ -54,7 +54,7 @@ namespace RuleStreet.Business
         {
             try
             {
-                var multas = _multaRepository.GetAll();
+                var multas = _multaRepository.GetAll(0);
                 var ciudadanos = _ciudadanoRepository.GetAll();
                 var deudores = new List<DeudoresDTO>();
                 var codigoPenal = _codigoPenalRepository.GetAll();

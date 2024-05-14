@@ -19,14 +19,20 @@ namespace RuleStreet.Data
             _context = context;
             _logger = logger;
         }
-        public List<Multa> GetAll()
+        public List<Multa> GetAll(int idPolicia = 0)
         {
-            return _context.Multa
+            IQueryable<Multa> query = _context.Multa
                 .Include(m => m.Policia)
                 .ThenInclude(p => p.Ciudadano)
                 .Include(m => m.Ciudadano)
-                .Include(m => m.CodigoPenal)
-                .ToList();
+                .Include(m => m.CodigoPenal);
+
+            if (idPolicia > 0)
+            {
+                query = query.Where(m => m.IdPolicia == idPolicia);
+            }
+
+            return query.ToList();
         }
 
         public Multa Get(int id)
@@ -36,7 +42,7 @@ namespace RuleStreet.Data
                 return _context.Multa
                     .Include(m => m.Policia)
                     .Include(m => m.Ciudadano)
-                    .Include(m => m.CodigoPenal) 
+                    .Include(m => m.CodigoPenal)
                     .AsNoTracking()
                     .FirstOrDefault(Multa => Multa.IdMulta == id);
             }

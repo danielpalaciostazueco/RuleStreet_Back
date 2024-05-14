@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240513111408_InitialCreate")]
+    [Migration("20240514165147_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -268,7 +268,7 @@ namespace RuleStreet.Data.Migrations
                             Dni = "12345678H",
                             FechaNacimiento = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Genero = "Hombre",
-                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c",
+                            ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjV2lVzVGBSS8cX-TisA7tu5Guwo9KVK9aAalgSJzmqRZw629sc=s32-c",
                             IsBusquedaYCaptura = false,
                             IsPeligroso = false,
                             IsPoli = false,

@@ -5,7 +5,7 @@ namespace RuleStreet.Data
 {
     public interface IMultaRepository
     {
-        List<Multa> GetAll();
+        List<Multa> GetAll(int idPolicia);
         Multa? Get(int id);
         void Add(Multa multa);
         void Update(Multa multa);

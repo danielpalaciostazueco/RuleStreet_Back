@@ -24,12 +24,12 @@ namespace RuleStreet.Business
             _logger = logger;
         }
 
-        public List<MultaDTO> GetAll()
+        public List<MultaDTO> GetAll(int idPolicia = 0)
         {
             _logger.LogInformation("Obteniendo todas las multas");
             try
             {
-                var multas = _multaRepository.GetAll();
+                var multas = _multaRepository.GetAll(idPolicia);
 
                 var multasDto = multas.Select(m => new MultaDTO
                 {
