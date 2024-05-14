@@ -344,7 +344,7 @@ namespace RuleStreet.Data.Migrations
                     { 5, "Pardos Gotor", "Calle Falsa 123", "12345678E", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, "https://lh3.googleusercontent.com/a-/ALV-UjXzV-jm0U5kV0lccfpkdR_NeIDpJRa3av9cA6fBJySmh8B-nsfU=s75-c", false, false, false, "Española", "Santos", "ES987654321", 987654321 },
                     { 6, "Higelmo Martinez", "Calle Falsa 123", "12345678F", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, "https://lh3.googleusercontent.com/a-/ALV-UjWbaN_SMJT8GbltNzC69AJquU6hlO2JoVkXGBjpptldvZNclstX=s75-c", false, false, false, "Española", "Eva Maria", "ES987654321", 987654321 },
                     { 7, "Guardingo De La Riva", "Calle Falsa 123", "12345678G", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mujer", null, "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c", false, false, false, "Española", "Silvia", "ES987654321", 987654321 },
-                    { 8, "Ruiz Lite", "Calle Falsa 123", "12345678H", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, "https://lh3.googleusercontent.com/a-/ALV-UjW6IGDJ5YeNx1nJ1XnWsYBo15QF_E8JrIA9mMZ2uq9xQTI0XoY=s75-c", false, false, false, "Española", "Joaquin", "ES987654321", 987654321 }
+                    { 8, "Ruiz Lite", "Calle Falsa 123", "12345678H", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hombre", null, "https://lh3.googleusercontent.com/a-/ALV-UjV2lVzVGBSS8cX-TisA7tu5Guwo9KVK9aAalgSJzmqRZw629sc=s32-c", false, false, false, "Española", "Joaquin", "ES987654321", 987654321 }
                 });
 
             migrationBuilder.InsertData(

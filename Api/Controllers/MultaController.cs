@@ -22,9 +22,9 @@ namespace RuleStreet.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<MultaDTO>> GetAll()
+        public ActionResult<List<MultaDTO>> GetAll(int idPolicia = 0)
         {
-            return _MultaService.GetAll();
+            return _MultaService.GetAll(idPolicia);
         }
 
         [HttpGet("{id}")]
