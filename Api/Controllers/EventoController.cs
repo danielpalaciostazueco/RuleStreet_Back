@@ -20,13 +20,13 @@ namespace RuleStreet.Api.Controllers
         {
             _EventoService = EventoService;
         }
-
+    [AllowAnonymous]
         [HttpGet]
         public ActionResult<List<Evento>> GetAll()
         {
             return _EventoService.GetAll();
         }
-
+    [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<Evento> Get(int id)
         {
