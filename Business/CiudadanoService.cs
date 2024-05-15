@@ -138,6 +138,7 @@ namespace RuleStreet.Business
                     IsPoli = ciudadanoPostDTO.IsPoli,
                     IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
                     IsPeligroso = ciudadanoPostDTO.IsPeligroso,
+                    
                 };
 
                 _ciudadanoRepository.Update(ciudadano);

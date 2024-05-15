@@ -109,7 +109,6 @@ namespace RuleStreet.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ImagenUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsBusquedaYCaptura")

@@ -46,7 +46,7 @@ namespace RuleStreet.Data.Migrations
                     IsBusquedaYCaptura = table.Column<bool>(type: "bit", nullable: true),
                     IsPeligroso = table.Column<bool>(type: "bit", nullable: true),
                     IdUsuario = table.Column<int>(type: "int", nullable: true),
-                    ImagenUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ImagenUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
