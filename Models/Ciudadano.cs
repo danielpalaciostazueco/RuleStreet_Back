@@ -23,6 +23,6 @@ public class Ciudadano
     public virtual List<Vehiculo>? Vehiculos { get; set; }
     public int? IdUsuario { get; set; }
     public virtual Usuario? Usuario { get; set; }
-    public string ImagenUrl { get; set; }
+    public string? ImagenUrl { get; set; }
 
 }

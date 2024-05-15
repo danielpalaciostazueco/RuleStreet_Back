@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240514165147_InitialCreate")]
+    [Migration("20240515104013_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -112,7 +112,6 @@ namespace RuleStreet.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ImagenUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsBusquedaYCaptura")
