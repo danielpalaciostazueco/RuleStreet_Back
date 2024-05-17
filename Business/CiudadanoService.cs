@@ -2,6 +2,8 @@
 using RuleStreet.Models;
 using RuleStreet.Data;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.IO.Compression;
 
 namespace RuleStreet.Business
 {
@@ -55,7 +57,7 @@ namespace RuleStreet.Business
             try
             {
                 var multas = _multaRepository.GetAll(0);
-                var ciudadanos = _ciudadanoRepository.GetAll();
+                var ciudadanos = _ciudadanoRepository.GetAll().Where(x => x.Multas?.Any(m => (bool)!m.Pagada) == true).ToList();
                 var deudores = new List<DeudoresDTO>();
                 var codigoPenal = _codigoPenalRepository.GetAll();
                 List<Multa> multasPendientes = new List<Multa>();
@@ -64,6 +66,12 @@ namespace RuleStreet.Business
                 foreach (var ciudadano in ciudadanos)
                 {
                     multasPendientes = multas.Where(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false).ToList();
+                    decimal cantidad = 0;
+
+                    foreach(var multa in multasPendientes)
+                    {
+                        cantidad += (decimal)multa.CodigoPenal.Precio;
+                    }
                     var deudor = new DeudoresDTO
                     {
 
@@ -75,7 +83,7 @@ namespace RuleStreet.Business
                         Genero = ciudadano.Genero,
                         Nacionalidad = ciudadano.Nacionalidad,
                         Pagada = multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
-                        Cantidad = codigoPenal.Where(x => multasPendientes.Any(y => y.IdCodigoPenal == x.IdCodigoPenal)).Sum(x => x.Precio),
+                        Cantidad = cantidad,
                         ImagenUrl = ciudadano.ImagenUrl
                     };
                     deudores.Add(deudor);

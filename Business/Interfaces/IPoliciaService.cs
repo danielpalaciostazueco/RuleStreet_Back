@@ -10,5 +10,6 @@ namespace RuleStreet.Business
         void Update(PoliciaPostDTO policia, int id);
         void Delete(int id);
         void Add(PoliciaPostDTO policia);
+        bool policiaDuplicado(PoliciaPostDTO policia);
     }
 }

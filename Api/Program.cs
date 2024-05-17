@@ -128,6 +128,7 @@ builder.Services.AddScoped<IEventoRepository, EventoRepository>();
 
 
 
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy",

@@ -53,14 +53,19 @@ namespace RuleStreet.Api.Controllers
         {
             try
             {
-
                 if (_PoliciaService.Get((int)Policia.IdPolicia) != null)
                 {
                     return BadRequest($"Policia con ID {Policia.IdPolicia} ya existe.");
                 }
 
-                _PoliciaService.Add(Policia);
-                return CreatedAtAction(nameof(Create), new { id = Policia.IdPolicia }, Policia);
+                if(_PoliciaService.policiaDuplicado(Policia) == true){
+                    return BadRequest("El ciudadano ya es policía");
+                }
+                else{
+                    _PoliciaService.Add(Policia);
+                    return CreatedAtAction(nameof(Create), new { id = Policia.IdPolicia }, Policia);
+            
+                }
             }
             catch (Exception ex)
             {
