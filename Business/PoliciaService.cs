@@ -119,6 +119,20 @@ namespace RuleStreet.Business
             }
         }
 
+        public bool policiaDuplicado(PoliciaPostDTO policia){
+            var policias = _policiaRepository.GetAll();
+            bool repetido = false;
+            foreach(var p in policias){
+                if(p.IdCiudadano == policia.IdCiudadano){
+                    repetido = true;
+                }
+            }
+            return repetido;
+        }
+
+
+
+
         public void Delete(int id)
         {
             try
