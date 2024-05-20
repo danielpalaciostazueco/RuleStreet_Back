@@ -126,6 +126,9 @@ namespace RuleStreet.Business
                 if(p.IdCiudadano == policia.IdCiudadano){
                     repetido = true;
                 }
+                if(p.NumeroPlaca == policia.NumeroPlaca){
+                    repetido = true;
+                }
             }
             return repetido;
         }

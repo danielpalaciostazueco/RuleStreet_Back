@@ -1227,8 +1227,8 @@ namespace RuleStreet.Data.Migrations
                     b.Property<int?>("IdRango")
                         .HasColumnType("int");
 
-                    b.Property<string>("NumeroPlaca")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("NumeroPlaca")
+                        .HasColumnType("int");
 
                     b.HasKey("IdPolicia");
 

@@ -142,7 +142,7 @@ namespace RuleStreet.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdCiudadano = table.Column<int>(type: "int", nullable: true),
                     IdRango = table.Column<int>(type: "int", nullable: true),
-                    NumeroPlaca = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumeroPlaca = table.Column<int>(type: "int", nullable: true),
                     Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

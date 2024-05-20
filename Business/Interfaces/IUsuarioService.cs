@@ -11,5 +11,6 @@ namespace RuleStreet.Business
         void Delete(int id);
         void Update(Usuario usuario);
         UsuarioDTO? GetUserWithParameters(string dni, string nombreUsuario, string contrasena);
+        bool UsuarioDuplicado(UsuarioPostDTO usuario);
     }
 }

@@ -51,7 +51,7 @@ namespace RuleStreet.Data
                     }).ToList()
 
                 } : null,
-                NumeroPlaca = p.NumeroPlaca,
+                NumeroPlaca = (int)p.NumeroPlaca,
                 Contrasena = p.Contrasena,
                 Ciudadano = new CiudadanoDTO
                 {
@@ -140,7 +140,7 @@ namespace RuleStreet.Data
                     }).ToList()
 
                 } : null,
-                NumeroPlaca = policia.NumeroPlaca,
+                NumeroPlaca = policia.NumeroPlaca.Value,
                 Contrasena = policia.Contrasena,
                 Ciudadano = new CiudadanoDTO
                 {

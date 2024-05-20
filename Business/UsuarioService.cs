@@ -173,5 +173,21 @@ namespace RuleStreet.Business
             }
         }
 
+
+        public bool UsuarioDuplicado(UsuarioPostDTO usuario)
+        {
+            var usuarios = _usuarioRepository.GetAll();
+            bool repetido = false;
+            foreach (var u in usuarios)
+            {
+                if (u.Dni == usuario.Dni)
+                {
+                    repetido = true;
+                }
+              
+            }
+            return repetido;
+        }
+
     }
 }
