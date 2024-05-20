@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240515104013_InitialCreate")]
+    [Migration("20240520050933_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -1230,8 +1230,8 @@ namespace RuleStreet.Data.Migrations
                     b.Property<int?>("IdRango")
                         .HasColumnType("int");
 
-                    b.Property<string>("NumeroPlaca")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("NumeroPlaca")
+                        .HasColumnType("int");
 
                     b.HasKey("IdPolicia");
 

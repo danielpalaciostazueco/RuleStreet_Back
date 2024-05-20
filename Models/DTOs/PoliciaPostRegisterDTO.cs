@@ -4,6 +4,6 @@ using System.Collections.Generic;
 
 public class PoliciaPostRegisterDTO
 {
-    public string? NumeroPlaca { get; set; }
+    public int? NumeroPlaca { get; set; }
     public string? Contrasena { get; set; }
 }

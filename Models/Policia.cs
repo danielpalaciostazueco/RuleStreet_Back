@@ -14,7 +14,7 @@ public class Policia
     [ForeignKey("Rango")]
     public int? IdRango { get; set; }
     public virtual Rango? Rango { get; set; }
-    public string? NumeroPlaca { get; set; }
+    public int? NumeroPlaca { get; set; }
     public virtual Ciudadano? Ciudadano { get; set; }
 
     public string Contrasena { get; set; }

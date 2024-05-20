@@ -50,7 +50,7 @@ namespace RuleStreet.Data
                 var user = new PoliciaDTO
                 {
                     IdPolicia = usuario.IdPolicia,
-                    NumeroPlaca = usuario.NumeroPlaca,
+                    NumeroPlaca = usuario.NumeroPlaca.Value,
                     Contrasena = usuario.Contrasena,
                     IdCiudadano = usuario.IdCiudadano.Value,
                     IsPolicia = (bool)ciudadano.IsPoli,

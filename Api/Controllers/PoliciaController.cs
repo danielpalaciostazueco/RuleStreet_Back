@@ -59,7 +59,7 @@ namespace RuleStreet.Api.Controllers
                 }
 
                 if(_PoliciaService.policiaDuplicado(Policia) == true){
-                    return BadRequest("El ciudadano ya es policía");
+                    return BadRequest("No se puede crear el policia porque uno de sus campos esta repetido.");
                 }
                 else{
                     _PoliciaService.Add(Policia);

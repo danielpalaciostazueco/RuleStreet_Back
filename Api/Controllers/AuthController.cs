@@ -35,6 +35,10 @@ namespace RuleStreet.Api.Controllers
         {
             try
             {
+                if(_usuarioService.UsuarioDuplicado(usuarioPostDTO))
+                {
+                    return BadRequest("Usuario duplicado");
+                }
                 _usuarioService.Add(usuarioPostDTO);
                 return Ok();
             }
