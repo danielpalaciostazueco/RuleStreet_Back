@@ -45,7 +45,7 @@ namespace RuleStreet.Api.Controllers
             try
             {
                 _logger.LogInformation("Solicitando la lista de todo el codigo penal.");
-                return _codigoPenalService.GetAll();
+                return _codigoPenalService.GetAllIdioma();
             }
             catch (Exception ex)
             {
@@ -57,6 +57,30 @@ namespace RuleStreet.Api.Controllers
         [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<CodigoPenal> Get(int id)
+        {
+            try
+            {
+                _logger.LogInformation($"Buscando articulo con ID: {id}");
+                var codigoPenal = _codigoPenalService.Get(id);
+
+                if (codigoPenal == null)
+                {
+                    _logger.LogWarning($"Codigo con ID: {id} no encontrada.");
+                    return NotFound();
+                }
+
+                return codigoPenal;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error obteniendo el codigo con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al obtener el codigo.");
+            }
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("Enlish/{id}")]
+        public ActionResult<CodigoPenal> GetIdioma(int id)
         {
             try
             {
@@ -77,6 +101,7 @@ namespace RuleStreet.Api.Controllers
                 return StatusCode(500, "Un error ocurrió al obtener el codigo.");
             }
         }
+
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
