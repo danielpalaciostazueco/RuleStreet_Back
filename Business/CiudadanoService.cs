@@ -36,6 +36,19 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+        public List<CiudadanoDTO> GetAllIdioma()
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo todas las ciudadanos");
+                return _ciudadanoRepository.GetAllIdioma();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas las ciudadanos");
+                throw;
+            }
+        }
 
 
         public List<CiudadanoDTO> GetAllBusquedaCaptura()
@@ -99,6 +112,55 @@ namespace RuleStreet.Business
             }
         }
 
+        
+        public List<DeudoresDTO> GetAllDeudoresIdioma()
+        {
+            try
+            {
+                var multas = _multaRepository.GetAll(0);
+                var ciudadanos = _ciudadanoRepository.GetAll().Where(x => x.Multas?.Any(m => (bool)!m.Pagada) == true).ToList();
+                var deudores = new List<DeudoresDTO>();
+                var codigoPenal = _codigoPenalRepository.GetAll();
+                List<Multa> multasPendientes = new List<Multa>();
+
+
+                foreach (var ciudadano in ciudadanos)
+                {
+                    multasPendientes = multas.Where(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false).ToList();
+                    decimal cantidad = 0;
+
+                    foreach(var multa in multasPendientes)
+                    {
+                        cantidad += (decimal)multa.CodigoPenal.Precio;
+                    }
+                    var deudor = new DeudoresDTO
+                    {
+
+                        IdCiudadano = ciudadano.IdCiudadano,
+                        Nombre = ciudadano.Nombre,
+                        Apellidos = ciudadano.Apellidos,
+                        FechaNacimiento = (DateTime)ciudadano.FechaNacimiento,
+                        Dni = ciudadano.Dni,
+                        Gender = ciudadano.Gender,
+                        Nationality = ciudadano.Nationality,
+                        Pagada = multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
+                        Cantidad = cantidad,
+                        ImagenUrl = ciudadano.ImagenUrl
+                    };
+                    deudores.Add(deudor);
+                    multasPendientes.Clear();
+                }
+
+                return deudores;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas las personas con multas pendientes");
+                throw;
+            }
+        }
+
+
         public CiudadanoDTO? Get(int id)
         {
             try
@@ -112,6 +174,21 @@ namespace RuleStreet.Business
             }
 
         }
+
+          public CiudadanoDTO? GetIdioma(int id)
+        {
+            try
+            {
+                return _ciudadanoRepository.GetIdioma(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo la ciudadano por id");
+                throw;
+            }
+
+        }
+
 
         public CiudadanoDTO? GetByDni(string dni)
         {

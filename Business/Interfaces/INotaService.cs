@@ -10,5 +10,7 @@ namespace RuleStreet.Business
         void Update(NotaPostDTO nota);
         void Delete(int id);
         void Add(NotaPostDTO nota);
+        List<Nota> GetAllIdioma();
+        Nota? GetIdioma(int id);
     }
 }

@@ -30,11 +30,40 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+         public List<Nota> GetAllIdioma()
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo todas las notas");
+                return _notaRepository.GetAllIdioma();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas las notas");
+                throw;
+            }
+        }
         public Nota? Get(int id)
         {
             try
             {
                 return _notaRepository.Get(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo las notas por id");
+                throw;
+            }
+
+        }
+
+        
+        public Nota? GetIdioma(int id)
+        {
+            try
+            {
+                return _notaRepository.GetIdioma(id);
             }
             catch (Exception ex)
             {

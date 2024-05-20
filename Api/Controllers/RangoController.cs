@@ -38,6 +38,45 @@ namespace RuleStreet.Api.Controllers
                 return StatusCode(500, "Un error ocurrió al obtener la lista de rangos.");
             }
         }
+        
+        [HttpGet("English")]
+        public ActionResult<List<RangoDTO>> GetAllidioma()
+        {
+            try
+            {
+                _logger.LogInformation("Solicitando la lista de todos los rangos.");
+                var rangos = _rangoService.GetAllIdioma();
+                return Ok(rangos);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todos los rangos.");
+                return StatusCode(500, "Un error ocurrió al obtener la lista de rangos.");
+            }
+        }
+
+        [HttpGet("English/{id}")]
+        public ActionResult<RangoDTO> GetIdioma(int id)
+        {
+            try
+            {
+                _logger.LogInformation($"Buscando rango con ID: {id}");
+                var rango = _rangoService.GetIdioma(id);
+
+                if (rango == null)
+                {
+                    _logger.LogWarning($"Rango con ID: {id} no encontrado.");
+                    return NotFound($"Rango con ID: {id} no encontrado.");
+                }
+
+                return Ok(rango);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error obteniendo el rango con ID: {id}.");
+                return StatusCode(500, "Un error ocurrió al obtener el rango.");
+            }
+        }
 
         [HttpGet("{id}")]
         public ActionResult<RangoDTO> Get(int id)

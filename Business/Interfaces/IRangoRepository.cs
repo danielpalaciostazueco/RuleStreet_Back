@@ -8,5 +8,8 @@ namespace RuleStreet.Business
         List<RangoDTO> GetAll();
         RangoDTO? Get(int id);
         void Update(RangoDTO rangoDto, int id);
+        List<RangoDTO> GetAllIdioma();
+        RangoDTO? GetIdioma(int id);
+
     }
 }

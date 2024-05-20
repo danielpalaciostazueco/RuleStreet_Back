@@ -71,11 +71,128 @@ namespace RuleStreet.Data
                     }).ToList()
                 })
                 .ToList();
-
+                
             return ciudadanos;
         }
 
 
+        public List<CiudadanoDTO> GetAllIdioma()
+        {
+            var ciudadanos = _context.Ciudadano
+                .Include(c => c.Multas)
+                .ThenInclude(m => m.Policia)
+                .Include(c => c.Multas)
+                .ThenInclude(m => m.CodigoPenal)
+                .Include(c => c.Vehiculos)
+                .Select(c => new CiudadanoDTO
+                {
+                    IdCiudadano = c.IdCiudadano,
+                    Nombre = c.Nombre,
+                    Apellidos = c.Apellidos,
+                    Dni = c.Dni,
+                    Gender = c.Gender,
+                    Nationality = c.Nationality,
+                    FechaNacimiento = c.FechaNacimiento,
+                    Address = c.Address,
+                    NumeroTelefono = c.NumeroTelefono,
+                    NumeroCuentaBancaria = c.NumeroCuentaBancaria,
+                    IsPoli = c.IsPoli,
+                    IsBusquedaYCaptura = c.IsBusquedaYCaptura,
+                    IsPeligroso = c.IsPeligroso,
+                    ImagenUrl = c.ImagenUrl,
+                    Multas = c.Multas.Select(m => new MultaDTO
+                    {
+                        IdMulta = m.IdMulta,
+                        IdPolicia = m.IdPolicia,
+                        Fecha = m.Fecha,
+                        CodigoPenal = m.CodigoPenal == null ? null : new CodigoPenalDTO
+                        {
+                            IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
+                            Article = m.CodigoPenal.Article,
+                            Description = m.CodigoPenal.Description,
+                            Precio = m.CodigoPenal.Precio,
+                            Sentencia = m.CodigoPenal.Sentencia
+                        },
+                        Pagada = m.Pagada,
+                        IdCiudadano = m.IdCiudadano
+                    }).ToList(),
+                    Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
+                    {
+                        IdVehiculo = v.IdVehiculo,
+                        Matricula = v.Matricula,
+                        Marca = v.Marca,
+                        Modelo = v.Modelo,
+                        EnColor = v.EnColor,
+                        IdCiudadano = v.IdCiudadano
+                    }).ToList()
+                })
+                .ToList();
+                
+            return ciudadanos;
+        }
+
+         public CiudadanoDTO GetIdioma(int id)
+        {
+            try
+            {
+                var ciudadano = _context.Ciudadano
+                    .Where(c => c.IdCiudadano == id)
+                    .Include(c => c.Multas)
+                    .ThenInclude(m => m.CodigoPenal)
+                    .Include(c => c.Vehiculos)
+                    .Select(c => new CiudadanoDTO
+                    {
+                        IdCiudadano = c.IdCiudadano,
+                        Nombre = c.Nombre,
+                        Apellidos = c.Apellidos,
+                        Dni = c.Dni,
+                        Gender = c.Gender,
+                        Nationality = c.Nationality,
+                        FechaNacimiento = c.FechaNacimiento,
+                        Address = c.Address,
+                        NumeroTelefono = c.NumeroTelefono,
+                        NumeroCuentaBancaria = c.NumeroCuentaBancaria,
+                        IsPoli = c.IsPoli,
+                        IsBusquedaYCaptura = c.IsBusquedaYCaptura,
+                        IsPeligroso = c.IsPeligroso,
+                        ImagenUrl = c.ImagenUrl,
+                        Multas = c.Multas.Select(m => new MultaDTO
+                        {
+                            IdMulta = m.IdMulta,
+                            IdPolicia = m.IdPolicia,
+                            Fecha = m.Fecha,
+                            CodigoPenal = m.CodigoPenal == null ? null : new CodigoPenalDTO
+                            {
+                                IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
+                                Article = m.CodigoPenal.Article,
+                                Description = m.CodigoPenal.Description,
+                                Precio = m.CodigoPenal.Precio,
+                                Sentencia = m.CodigoPenal.Sentencia
+                            },
+                            Pagada = m.Pagada,
+                            IdCiudadano = m.IdCiudadano
+                        }).ToList(),
+                        Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
+                        {
+                            IdVehiculo = v.IdVehiculo,
+                            IdCiudadano = v.IdCiudadano,
+                            Matricula = v.Matricula,
+                            Marca = v.Marca,
+                            Modelo = v.Modelo,
+                            EnColor = v.EnColor
+                        }).ToList()
+                    })
+                    .AsNoTracking()
+                    .FirstOrDefault();
+
+                return ciudadano;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo Ciudadano por id.");
+                throw;
+            }
+        }
 
 
         public CiudadanoDTO Get(int id)

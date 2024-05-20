@@ -13,6 +13,8 @@ namespace RuleStreet.Business
         void Update(CiudadanoPostDTO ciudadanoPostDTO);
         void Delete(int id);
         CiudadanoDTO? GetByDni(string dni);
+        CiudadanoDTO? GetIdioma(int id);
+        List<CiudadanoDTO> GetAllIdioma();
 
     }
 }

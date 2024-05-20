@@ -20,19 +20,52 @@ namespace RuleStreet.Api.Controllers
         {
             _EventoService = EventoService;
         }
-    [AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<List<Evento>> GetAll()
         {
             return _EventoService.GetAll();
         }
-    [AllowAnonymous]
-        [HttpGet("{id}")]
+
+        [AllowAnonymous]
+        [HttpGet("English")]
+        public ActionResult<List<Evento>> GetAllIdioma()
+        {
+            return _EventoService.GetAllIdioma();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("English/{id}")]
         public ActionResult<Evento> Get(int id)
         {
             try
             {
-                var Evento = _EventoService.Get(id);
+                var Evento = _EventoService.GetIdioma(id);
+                if (Evento == null)
+                {
+                    return NotFound();
+                }
+
+                return Evento;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error al hacer el get por id ");
+                return StatusCode(500, "Error interno del servidor");
+            }
+        }
+
+
+
+
+
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public ActionResult<Evento> GetIdioma(int id)
+        {
+            try
+            {
+                var Evento = _EventoService.GetIdioma(id);
                 if (Evento == null)
                 {
                     return NotFound();

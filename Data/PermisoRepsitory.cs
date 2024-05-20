@@ -32,7 +32,40 @@ namespace RuleStreet.Data
 
             return permisos;
         }
+         public List<PermisoDTO> GetAllIdioma()
+        {
+            var permisos = _context.Permiso
+                .Select(p => new PermisoDTO
+                {
+                    IdPermiso = p.IdPermiso,
+                    Name = p.Name
+                })
+                .ToList();
 
+            return permisos;
+        }
+
+           public PermisoDTO GetIdioma(int id)
+        {
+            try
+            {
+                var permisos = _context.Permiso
+                    .Where(permiso => permiso.IdPermiso == id)
+                    .Select(permiso => new PermisoDTO
+                    {
+                        IdPermiso = permiso.IdPermiso,
+                        Name = permiso.Name
+                    })
+                    .AsNoTracking()
+                    .FirstOrDefault();
+                return permisos;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo el permiso por id.");
+                throw;
+            }
+        }
 
 
         public PermisoDTO Get(int id)

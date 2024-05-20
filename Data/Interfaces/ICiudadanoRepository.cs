@@ -13,5 +13,8 @@ namespace RuleStreet.Data
 
         CiudadanoDTO? GetByDni(string dni);
 
+        CiudadanoDTO? GetIdioma(int id);
+        List<CiudadanoDTO> GetAllIdioma();
+
     }
 }

@@ -31,11 +31,42 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+        
+        public List<Evento> GetAllIdioma()
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo todas las eventos");
+                return _eventoRepository.GetAllIdioma();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas las eventos");
+                throw;
+            }
+        }
+        
+
         public Evento? Get(int id)
         {
             try
             {
                 return _eventoRepository.Get(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo la eventos por id");
+                throw;
+            }
+
+        }
+        
+        public Evento? GetIdioma(int id)
+        {
+            try
+            {
+                return _eventoRepository.GetIdioma(id);
             }
             catch (Exception ex)
             {

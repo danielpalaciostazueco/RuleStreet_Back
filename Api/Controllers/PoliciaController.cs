@@ -26,6 +26,33 @@ namespace RuleStreet.Api.Controllers
         {
             return _PoliciaService.GetAll();
         }
+        
+        [HttpGet("English")]
+        public ActionResult<List<PoliciaDTO>> GetAllIdioma()
+        {
+            return _PoliciaService.GetAllIdioma();
+        }
+
+         [HttpGet("English/{id}")]
+        public ActionResult<PoliciaDTO> GetIdioma(int id)
+        {
+            try
+            {
+                var Policia = _PoliciaService.GetIdioma(id);
+                if (Policia == null)
+                {
+                    return NotFound();
+                }
+
+                return Policia;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error al hacer el get por id ");
+                return StatusCode(500, "Error interno del servidor");
+            }
+        }
+
 
         [HttpGet("{id}")]
         public ActionResult<PoliciaDTO> Get(int id)

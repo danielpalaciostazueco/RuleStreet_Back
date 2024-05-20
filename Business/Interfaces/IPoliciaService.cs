@@ -11,5 +11,8 @@ namespace RuleStreet.Business
         void Delete(int id);
         void Add(PoliciaPostDTO policia);
         bool policiaDuplicado(PoliciaPostDTO policia);
+        List<PoliciaDTO> GetAllIdioma();
+        PoliciaDTO? GetIdioma(int id);
+        
     }
 }

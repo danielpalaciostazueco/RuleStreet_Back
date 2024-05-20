@@ -10,5 +10,7 @@ namespace RuleStreet.Data
         void Add(Vehiculo vehiculo);
         void Update(Vehiculo vehiculo);
         void Delete(int id);
+        List<VehiculoDTO> GetAllIdioma();
+        VehiculoDTO? GetIdioma(int id);
     }
 }

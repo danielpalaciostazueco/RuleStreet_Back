@@ -22,10 +22,57 @@ namespace RuleStreet.Data
         }
         public List<Nota> GetAll()
         {
-            return _context.Nota
+            return _context.Nota.Select(p => new Nota
+            {
+                IdNota = p.IdNota,
+                Titulo = p.Titulo,
+                Descripcion = p.Descripcion,
+                Fecha = p.Fecha,
+                ciudadano = p.ciudadano,
+                policia = p.policia
+            })
             .Include(p => p.ciudadano)
             .Include(p => p.policia)
             .ToList();
+        }
+        public List<Nota> GetAllIdioma()
+        {
+            return _context.Nota.Select(p => new Nota
+            {
+                IdNota = p.IdNota,
+                Title = p.Title,
+                Description = p.Description,
+                Fecha = p.Fecha,
+                ciudadano = p.ciudadano,
+                policia = p.policia
+            })
+            .Include(p => p.ciudadano)
+            .Include(p => p.policia)
+            .ToList();
+        }
+
+        public Nota GetIdioma(int id)
+        {
+            try
+            {
+                return _context.Nota.Select(p => new Nota{
+                    IdNota = p.IdNota,
+                    Title = p.Title,
+                    Description = p.Description,
+                    Fecha = p.Fecha,
+                    ciudadano = p.ciudadano,
+                    policia = p.policia
+                })
+                    .Include(p => p.ciudadano)
+                    .Include(p => p.policia)
+                    .AsNoTracking()
+                    .FirstOrDefault(Nota => Nota.IdNota == id);
+                }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo el Nota por id.");
+                throw;
+            }
         }
 
 
@@ -33,12 +80,19 @@ namespace RuleStreet.Data
         {
             try
             {
-                return _context.Nota
+                return _context.Nota.Select(p => new Nota{
+                    IdNota = p.IdNota,
+                    Titulo = p.Titulo,
+                    Descripcion = p.Descripcion,
+                    Fecha = p.Fecha,
+                    ciudadano = p.ciudadano,
+                    policia = p.policia
+                })
                     .Include(p => p.ciudadano)
                     .Include(p => p.policia)
                     .AsNoTracking()
                     .FirstOrDefault(Nota => Nota.IdNota == id);
-            }
+                }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error obteniendo el Nota por id.");

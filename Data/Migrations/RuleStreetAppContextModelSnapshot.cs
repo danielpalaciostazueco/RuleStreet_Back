@@ -90,6 +90,9 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCiudadano"));
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Apellidos")
                         .HasColumnType("nvarchar(max)");
 
@@ -101,6 +104,9 @@ namespace RuleStreet.Data.Migrations
 
                     b.Property<DateTime?>("FechaNacimiento")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Genero")
                         .HasColumnType("nvarchar(max)");
@@ -123,6 +129,9 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Nacionalidad")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Nationality")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
@@ -140,16 +149,19 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdCiudadano = 1,
+                            Address = "Fake Street 123",
                             Apellidos = "Gimenez Garulo",
                             Direccion = "Calle Falsa 123",
                             Dni = "12345678A",
                             FechaNacimiento = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Gender = "Male",
                             Genero = "Hombre",
                             ImagenUrl = "https://lh3.googleusercontent.com/a-/ALV-UjW8BqiphgAP2RarwrIgqXMdH0Y4XWQgicOFG6g5lTSoqlharjkl=s75-c",
                             IsBusquedaYCaptura = false,
                             IsPeligroso = false,
                             IsPoli = false,
                             Nacionalidad = "Española",
+                            Nationality = "Spanish",
                             Nombre = "Alejadro",
                             NumeroCuentaBancaria = "ES123456789",
                             NumeroTelefono = 123456789
@@ -283,10 +295,16 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCodigoPenal"));
 
+                    b.Property<string>("Article")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Articulo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Precio")
@@ -1049,6 +1067,9 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
 
@@ -1105,6 +1126,9 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime2");
 
@@ -1113,6 +1137,9 @@ namespace RuleStreet.Data.Migrations
 
                     b.Property<int?>("IdPolicia")
                         .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .HasColumnType("nvarchar(max)");
@@ -1133,6 +1160,9 @@ namespace RuleStreet.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPermiso"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -1246,6 +1276,9 @@ namespace RuleStreet.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRango"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -1692,6 +1725,10 @@ namespace RuleStreet.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdVehiculo"));
 
                     b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnColor")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IdCiudadano")

@@ -28,6 +28,14 @@ namespace RuleStreet.Api.Controllers
             return _PermisoService.GetAll();
         }
 
+
+        
+        [HttpGet("English")]
+        public ActionResult<List<PermisoDTO>> GetAllIdioma()
+        {
+            return _PermisoService.GetAllIdioma();
+        }
+
         [HttpGet("{id}")]
         public ActionResult<PermisoDTO> Get(int id)
         {
@@ -47,6 +55,28 @@ namespace RuleStreet.Api.Controllers
                 return StatusCode(500, "Error interno del servidor");
             }
         }
+
+         [HttpGet("English/{id}")]
+        public ActionResult<PermisoDTO> GetIdioma(int id)
+        {
+            try
+            {
+                var Ciudadano = _PermisoService.GetIdioma(id);
+                if (Ciudadano == null)
+                {
+                    return NotFound();
+                }
+
+                return Ciudadano;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error al hacer el get por id ");
+                return StatusCode(500, "Error interno del servidor");
+            }
+        }
+
+
 
 
 

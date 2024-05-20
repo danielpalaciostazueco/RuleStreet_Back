@@ -10,5 +10,8 @@ namespace RuleStreet.Data
         void Add(Policia policia);
         void Delete(int id);
         void Update(Policia policia, int id);
+        List<PoliciaDTO> GetAllIdioma();
+        PoliciaDTO? GetIdioma(int id);
+        
     }
 }

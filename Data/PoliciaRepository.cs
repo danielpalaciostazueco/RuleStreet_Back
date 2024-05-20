@@ -103,6 +103,93 @@ namespace RuleStreet.Data
 
             return policiaDTOList;
         }
+
+          public List<PoliciaDTO> GetAllIdioma()
+        {
+            var policiaList = _context.Policia
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Multas)
+            .ThenInclude(m => m.CodigoPenal)
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Vehiculos)
+            .Include(p => p.Rango)
+            .ThenInclude(r => r.RangosPermisos)
+            .ThenInclude(rp => rp.Permiso)
+            .ToList();
+
+
+            var policiaDTOList = policiaList.Select(p => new PoliciaDTO
+            {
+                IdPolicia = p.IdPolicia,
+                IdCiudadano = p.IdCiudadano.Value,
+                Rango = p.Rango != null ? new RangoDTO
+                {
+                    IdRango = p.Rango.IdRango,
+                    Nombre = p.Rango.Nombre,
+                    Salario = p.Rango.Salario ?? 0,
+                    isLocal = p.Rango.isLocal ?? true,
+                    Permisos = p.Rango.RangosPermisos.Select(rp => new PermisoDTO
+                    {
+                        IdPermiso = rp.Permiso.IdPermiso,
+                        Name = rp.Permiso.Name
+                    }).ToList()
+
+                } : null,
+                NumeroPlaca = p.NumeroPlaca,
+                Contrasena = p.Contrasena,
+                Ciudadano = new CiudadanoDTO
+                {
+                    IdCiudadano = p.Ciudadano.IdCiudadano,
+                    Nombre = p.Ciudadano.Nombre,
+                    Apellidos = p.Ciudadano.Apellidos,
+                    Dni = p.Ciudadano.Dni,
+                    Gender = p.Ciudadano.Gender,
+                    Nationality = p.Ciudadano.Nationality,
+                    FechaNacimiento = p.Ciudadano.FechaNacimiento,
+                    Address = p.Ciudadano.Address,
+                    NumeroTelefono = p.Ciudadano.NumeroTelefono,
+                    NumeroCuentaBancaria = p.Ciudadano.NumeroCuentaBancaria,
+                    IsPoli = p.Ciudadano.IsPoli,
+                    IsBusquedaYCaptura = p.Ciudadano.IsBusquedaYCaptura,
+                    IsPeligroso = p.Ciudadano.IsPeligroso,
+                    Multas = p.Ciudadano.Multas.Select(m => new MultaDTO
+                    {
+                        IdMulta = m.IdMulta,
+                        IdPolicia = m.IdPolicia,
+                        Fecha = m.Fecha,
+                        CodigoPenal = m.CodigoPenal == null ? null : new CodigoPenalDTO
+                        {
+                            IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
+                            Article = m.CodigoPenal.Article,
+                            Description = m.CodigoPenal.Description,
+                            Precio = m.CodigoPenal.Precio,
+                            Sentencia = m.CodigoPenal.Sentencia
+                        },
+                        Pagada = m.Pagada,
+                        IdCiudadano = m.IdCiudadano
+                    }).ToList(),
+
+                    Vehiculos = p.Ciudadano.Vehiculos.Select(v => new VehiculoDTO
+                    {
+                        IdVehiculo = v.IdVehiculo,
+                        Matricula = v.Matricula,
+                        Marca = v.Marca,
+                        Modelo = v.Modelo,
+                        EnColor = v.EnColor,
+                        IdCiudadano = v.IdCiudadano,
+                        Ciudadano = new CiudadanoDTO
+                        {
+                            Nombre = v.Ciudadano.Nombre
+                        }
+                    }).ToList()
+                }
+            }).ToList();
+
+            return policiaDTOList;
+        }
+
+
+
         public PoliciaDTO Get(int id)
         {
             var policia = _context.Policia
@@ -191,6 +278,99 @@ namespace RuleStreet.Data
 
             return policiaDTO;
         }
+
+
+
+
+        public PoliciaDTO GetIdioma(int id)
+        {
+            var policia = _context.Policia
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Multas)
+            .ThenInclude(m => m.CodigoPenal)
+            .Include(p => p.Ciudadano)
+            .ThenInclude(c => c.Vehiculos)
+            .Include(p => p.Rango)
+            .ThenInclude(r => r.RangosPermisos)
+            .ThenInclude(rp => rp.Permiso)
+            .AsNoTracking()
+            .FirstOrDefault(p => p.IdPolicia == id);
+
+            if (policia == null)
+            {
+                _logger.LogError("No Policía found with ID: {Id}", id);
+                return null;
+            }
+
+            var policiaDTO = new PoliciaDTO
+            {
+                IdPolicia = policia.IdPolicia,
+                IdCiudadano = policia.IdCiudadano.Value,
+                Rango = policia.Rango != null ? new RangoDTO
+                {
+                    IdRango = policia.Rango.IdRango,
+                    Nombre = policia.Rango.Nombre,
+                    Salario = policia.Rango.Salario ?? 0,
+                    isLocal = policia.Rango.isLocal ?? true,
+                    Permisos = policia.Rango.RangosPermisos.Select(rp => new PermisoDTO
+                    {
+                        IdPermiso = rp.Permiso.IdPermiso,
+                        Name = rp.Permiso.Name
+                    }).ToList()
+
+                } : null,
+                NumeroPlaca = policia.NumeroPlaca,
+                Contrasena = policia.Contrasena,
+                Ciudadano = new CiudadanoDTO
+                {
+                    IdCiudadano = policia.Ciudadano.IdCiudadano,
+                    Nombre = policia.Ciudadano.Nombre,
+                    Apellidos = policia.Ciudadano.Apellidos,
+                    Dni = policia.Ciudadano.Dni,
+                    Gender = policia.Ciudadano.Gender,
+                    Nationality = policia.Ciudadano.Nationality,
+                    FechaNacimiento = policia.Ciudadano.FechaNacimiento.Value,
+                    Address = policia.Ciudadano.Address,
+                    NumeroTelefono = policia.Ciudadano.NumeroTelefono,
+                    NumeroCuentaBancaria = policia.Ciudadano.NumeroCuentaBancaria,
+                    IsPoli = policia.Ciudadano.IsPoli,
+                    IsBusquedaYCaptura = policia.Ciudadano.IsBusquedaYCaptura,
+                    IsPeligroso = policia.Ciudadano.IsPeligroso,
+                    Multas = policia.Ciudadano.Multas.Select(m => new MultaDTO
+                    {
+                        IdMulta = m.IdMulta,
+                        IdPolicia = m.IdPolicia,
+                        Fecha = m.Fecha.Value,
+                        CodigoPenal = m.CodigoPenal != null ? new CodigoPenalDTO
+                        {
+                            IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
+                            Article = m.CodigoPenal.Article,
+                            Description = m.CodigoPenal.Description,
+                            Precio = m.CodigoPenal.Precio,
+                            Sentencia = m.CodigoPenal.Sentencia
+                        } : null,
+                        Pagada = m.Pagada,
+                        IdCiudadano = m.IdCiudadano
+                    }).ToList(),
+                    Vehiculos = policia.Ciudadano.Vehiculos.Select(v => new VehiculoDTO
+                    {
+                        IdVehiculo = v.IdVehiculo,
+                        Matricula = v.Matricula,
+                        Marca = v.Marca,
+                        Modelo = v.Modelo,
+                        EnColor = v.EnColor,
+                        IdCiudadano = v.IdCiudadano,
+                        Ciudadano = new CiudadanoDTO
+                        {
+                            Nombre = v.Ciudadano.Nombre
+                        }
+                    }).ToList()
+                }
+            };
+
+            return policiaDTO;
+        }
+
 
 
         public void Add(Policia policia)

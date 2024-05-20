@@ -39,13 +39,29 @@ namespace RuleStreet.Api.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet("English")]
+        public ActionResult<List<CodigoPenalDTO>> GetAllIdioma()
+        {
+            try
+            {
+                _logger.LogInformation("Solicitando la lista de todo el codigo penal.");
+                return _codigoPenalService.GetAll();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todo el codigo penal.");
+                return StatusCode(500, "Un error ocurrió al obtener la lista del codigo penal.");
+            }
+        }
+
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<CodigoPenal> Get(int id)
         {
             try
             {
                 _logger.LogInformation($"Buscando articulo con ID: {id}");
-                var codigoPenal = _codigoPenalService.Get(id);
+                var codigoPenal = _codigoPenalService.GetIdioma(id);
 
                 if (codigoPenal == null)
                 {

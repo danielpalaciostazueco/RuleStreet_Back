@@ -21,16 +21,54 @@ namespace RuleStreet.Data
         }
         public List<Evento> GetAll()
         {
-            return _context.Evento
+            return _context.Evento.Select(e => new Evento{
+                IdEventos = e.IdEventos,
+                Descripcion= e.Descripcion,
+                Fecha = e.Fecha,
+                Imagen = e.Imagen
+            })
                 .ToList();
         }
 
+        public List<Evento> GetAllIdioma()
+        {
+            var evento = _context.Evento.Select(e => new Evento{
+                IdEventos = e.IdEventos,
+                Description= e.Description,
+                Fecha = e.Fecha,
+                Imagen = e.Imagen
+            })
+                .ToList();
+            return evento;
+        }
         public Evento Get(int id)
         {
             try
             {
-                return _context.Evento
-                    .FirstOrDefault(Evento => Evento.IdEventos == id);
+                return _context.Evento.Select(e => new Evento{
+                    IdEventos = e.IdEventos,
+                    Descripcion= e.Descripcion,
+                    Fecha = e.Fecha,
+                    Imagen = e.Imagen
+            }).FirstOrDefault(Evento => Evento.IdEventos == id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo la Evento por id.");
+                throw;
+            }
+        }
+
+         public Evento GetIdioma(int id)
+        {
+            try
+            {
+                return _context.Evento.Select(e => new Evento{
+                    IdEventos = e.IdEventos,
+                    Descripcion= e.Descripcion,
+                    Fecha = e.Fecha,
+                    Imagen = e.Imagen
+            }).FirstOrDefault(Evento => Evento.IdEventos == id);
             }
             catch (Exception ex)
             {

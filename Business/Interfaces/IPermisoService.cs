@@ -12,6 +12,8 @@ namespace RuleStreet.Business
         void Add(Permiso permiso);
 
         void Delete(int id);
+        List<PermisoDTO> GetAllIdioma();
+        PermisoDTO? GetIdioma(int id);
 
 
     }

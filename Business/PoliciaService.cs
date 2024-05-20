@@ -34,6 +34,36 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+         public List<PoliciaDTO> GetAllIdioma()
+        {
+            try
+            {
+                _logger.LogInformation("Obteniendo todas las ciudadanos");
+                return _policiaRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo todas las ciudadanos");
+                throw;
+            }
+        }
+
+        
+        public PoliciaDTO? GetIdioma(int id)
+        {
+            try
+            {
+                return _policiaRepository.Get(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error obteniendo la ciudadano por id");
+                throw;
+            }
+
+        }
+
         public PoliciaDTO? Get(int id)
         {
             try
