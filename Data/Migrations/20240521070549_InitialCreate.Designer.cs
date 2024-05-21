@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240520094951_InitialCreate")]
+    [Migration("20240521070549_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -326,6 +326,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 1,
                             Articulo = "Art. 1.1",
                             Descripcion = "Uso excesivo del claxón",
+                            Description = "english",
                             Precio = 500m,
                             Sentencia = "0 meses"
                         },
@@ -1178,6 +1179,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdPermiso = 1,
+                            Name = "Add police",
                             Nombre = "Añadir policia"
                         },
                         new
@@ -1300,6 +1302,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 1,
+                            Name = "Practices ",
                             Nombre = "Practicas",
                             Salario = 1071,
                             isLocal = true

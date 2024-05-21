@@ -9,7 +9,5 @@ namespace RuleStreet.Business
         CodigoPenal? Get(int id);
         void Delete(int id);
         void Update(CodigoPenalDTO codigoPenalDTO);
-        CodigoPenal? GetIdioma(int id);
-        List<CodigoPenalDTO> GetAllIdioma();
     }
 }

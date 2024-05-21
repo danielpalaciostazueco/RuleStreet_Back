@@ -33,6 +33,7 @@ namespace RuleStreet.Data
                     Marca = v.Marca,
                     Modelo = v.Modelo,
                     Color = v.Color,
+                    EnColor = v.EnColor,
                     IdCiudadano = v.IdCiudadano,
                     Ciudadano = new CiudadanoDTO
                     {
@@ -41,9 +42,12 @@ namespace RuleStreet.Data
                         Apellidos = v.Ciudadano.Apellidos,
                         Dni = v.Ciudadano.Dni,
                         Genero = v.Ciudadano.Genero,
+                        Gender = v.Ciudadano.Gender,
                         Nacionalidad = v.Ciudadano.Nacionalidad,
+                        Nationality = v.Ciudadano.Nationality,
                         FechaNacimiento = v.Ciudadano.FechaNacimiento,
                         Direccion = v.Ciudadano.Direccion,
+                        Address = v.Ciudadano.Address,
                         NumeroTelefono = v.Ciudadano.NumeroTelefono,
                         NumeroCuentaBancaria = v.Ciudadano.NumeroCuentaBancaria,
                         IsPoli = v.Ciudadano.IsPoli,
@@ -58,40 +62,6 @@ namespace RuleStreet.Data
 
 
         
-        public List<VehiculoDTO> GetAllIdioma()
-        {
-            var vehiculos = _context.Vehiculo
-                .Include(v => v.Ciudadano)
-                .Select(v => new VehiculoDTO
-                {
-                    IdVehiculo = v.IdVehiculo,
-                    Matricula = v.Matricula,
-                    Marca = v.Marca,
-                    Modelo = v.Modelo,
-                    EnColor = v.EnColor,
-                    IdCiudadano = v.IdCiudadano,
-                    Ciudadano = new CiudadanoDTO
-                    {
-                        IdCiudadano = v.Ciudadano.IdCiudadano,
-                        Nombre = v.Ciudadano.Nombre,
-                        Apellidos = v.Ciudadano.Apellidos,
-                        Dni = v.Ciudadano.Dni,
-                        Gender = v.Ciudadano.Gender,
-                        Nationality = v.Ciudadano.Nationality,
-                        FechaNacimiento = v.Ciudadano.FechaNacimiento,
-                        Address = v.Ciudadano.Address,
-                        NumeroTelefono = v.Ciudadano.NumeroTelefono,
-                        NumeroCuentaBancaria = v.Ciudadano.NumeroCuentaBancaria,
-                        IsPoli = v.Ciudadano.IsPoli,
-                        IsBusquedaYCaptura = v.Ciudadano.IsBusquedaYCaptura,
-                        IsPeligroso = v.Ciudadano.IsPeligroso
-                    }
-                })
-                .ToList();
-
-            return vehiculos;
-        }
-
 
         public VehiculoDTO Get(int id)
         {
@@ -108,49 +78,6 @@ namespace RuleStreet.Data
                         Marca = v.Marca,
                         Modelo = v.Modelo,
                         Color = v.Color,
-                        IdCiudadano = v.IdCiudadano,
-                        Ciudadano = new CiudadanoDTO
-                        {
-                            IdCiudadano = v.Ciudadano.IdCiudadano,
-                            Nombre = v.Ciudadano.Nombre,
-                            Apellidos = v.Ciudadano.Apellidos,
-                            Dni = v.Ciudadano.Dni,
-                            Genero = v.Ciudadano.Genero,
-                            Nacionalidad = v.Ciudadano.Nacionalidad,
-                            FechaNacimiento = v.Ciudadano.FechaNacimiento,
-                            Direccion = v.Ciudadano.Direccion,
-                            NumeroTelefono = v.Ciudadano.NumeroTelefono,
-                            NumeroCuentaBancaria = v.Ciudadano.NumeroCuentaBancaria,
-                            IsPoli = v.Ciudadano.IsPoli,
-                            IsBusquedaYCaptura = v.Ciudadano.IsBusquedaYCaptura,
-                            IsPeligroso = v.Ciudadano.IsPeligroso
-                        }
-                    })
-                    .FirstOrDefault();
-
-                return vehiculo;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error al obtener el vehiculo.");
-                throw;
-            }
-        }
-
-        public VehiculoDTO GetIdioma(int id)
-        {
-            try
-            {
-                var vehiculo = _context.Vehiculo
-                    .AsNoTracking()
-                    .Where(v => v.IdVehiculo == id)
-                    .Include(v => v.Ciudadano)
-                    .Select(v => new VehiculoDTO
-                    {
-                        IdVehiculo = v.IdVehiculo,
-                        Matricula = v.Matricula,
-                        Marca = v.Marca,
-                        Modelo = v.Modelo,
                         EnColor = v.EnColor,
                         IdCiudadano = v.IdCiudadano,
                         Ciudadano = new CiudadanoDTO
@@ -159,9 +86,12 @@ namespace RuleStreet.Data
                             Nombre = v.Ciudadano.Nombre,
                             Apellidos = v.Ciudadano.Apellidos,
                             Dni = v.Ciudadano.Dni,
+                            Genero = v.Ciudadano.Genero,
                             Gender = v.Ciudadano.Gender,
+                            Nacionalidad = v.Ciudadano.Nacionalidad,
                             Nationality = v.Ciudadano.Nationality,
                             FechaNacimiento = v.Ciudadano.FechaNacimiento,
+                            Direccion = v.Ciudadano.Direccion,
                             Address = v.Ciudadano.Address,
                             NumeroTelefono = v.Ciudadano.NumeroTelefono,
                             NumeroCuentaBancaria = v.Ciudadano.NumeroCuentaBancaria,
@@ -180,7 +110,6 @@ namespace RuleStreet.Data
                 throw;
             }
         }
-
         public void Add(Vehiculo vehiculo)
         {
             try

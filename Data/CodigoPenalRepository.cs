@@ -26,19 +26,6 @@ namespace RuleStreet.Data
                 IdCodigoPenal = c.IdCodigoPenal,
                 Articulo = c.Articulo,
                 Descripcion = c.Descripcion,
-                Precio = c.Precio,
-                Sentencia = c.Sentencia
-            }).ToList();
-
-            return codigoPenal;
-        }
-          public List<CodigoPenalDTO> GetAllIdioma()
-        {
-            var codigoPenal = _context.CodigoPenal
-            .Select(c => new CodigoPenalDTO
-            {
-                IdCodigoPenal = c.IdCodigoPenal,
-                Article = c.Article,
                 Description = c.Description,
                 Precio = c.Precio,
                 Sentencia = c.Sentencia
@@ -46,7 +33,7 @@ namespace RuleStreet.Data
 
             return codigoPenal;
         }
-
+       
         public CodigoPenal? Get(int id)
         {
             try
@@ -62,30 +49,6 @@ namespace RuleStreet.Data
             }
         }
 
-           public CodigoPenal? GetIdioma(int id)
-        {
-            try
-            {
-                var codigoPenal = _context.CodigoPenal
-                .AsNoTracking()
-                .FirstOrDefault(CodigoPenal => CodigoPenal.IdCodigoPenal == id);
-                
-                return new CodigoPenal
-                {
-                    IdCodigoPenal = codigoPenal.IdCodigoPenal,
-                    Article = codigoPenal.Article,
-                    Description = codigoPenal.Description,
-                    Precio = codigoPenal.Precio,
-                    Sentencia = codigoPenal.Sentencia
-                };
-
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo Ciudadano por id.");
-                throw;
-            }
-        }
 
         public void Add(CodigoPenalDTO codigoPenalDTO)
         {

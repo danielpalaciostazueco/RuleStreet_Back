@@ -10,7 +10,5 @@ namespace RuleStreet.Data
         void Update(Nota nota);
         void Add(Nota nota);
         void Delete(int id);
-        List<Nota> GetAllIdioma();
-        Nota? GetIdioma(int id);
     }
 }

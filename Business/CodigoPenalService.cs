@@ -29,20 +29,7 @@ namespace RuleStreet.Business
             }
         }
 
-        public List<CodigoPenalDTO> GetAllIdioma()
-        {
-            try
-            {
-                _logger.LogInformation("Obteniendo todas los articulos del codigo penal");
-                return _codigoPenalRepository.GetAllIdioma();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo todas los articulos del codigo penal");
-                throw;
-            }
-        }
-
+     
         public CodigoPenal? Get(int id)
         {
             try
@@ -57,18 +44,6 @@ namespace RuleStreet.Business
         }
 
 
-        public CodigoPenal? GetIdioma(int id)
-        {
-            try
-            {
-                return _codigoPenalRepository.GetIdioma(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo la ciudadano por id");
-                throw;
-            }
-        }
 
 
         public void Delete(int id)

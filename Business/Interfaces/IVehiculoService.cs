@@ -11,8 +11,5 @@ namespace RuleStreet.Business
         void Delete(int id);
         void Add(VehiculoPostDTO vehiculoPostDTO);
     
-        List<VehiculoDTO> GetAllIdioma();
-        VehiculoDTO? GetIdioma(int id);
-
     }
 }

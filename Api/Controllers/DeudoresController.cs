@@ -26,11 +26,6 @@ namespace RuleStreet.Api.Controllers
         {
             return _CiudadanoService.GetAllDeudores();
         }
-        
-        [HttpGet("English")]
-        public ActionResult<List<DeudoresDTO>> GetAllDeudoresIdioma()
-        {
-            return _CiudadanoService.GetAllDeudores();
-        }
+      
     }
 }

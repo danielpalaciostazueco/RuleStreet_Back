@@ -31,33 +31,6 @@ namespace RuleStreet.Business
             }
         }
 
-        public List<VehiculoDTO> GetAllIdioma()
-        {
-            try
-            {
-                _logger.LogInformation("Obteniendo todas los vehiculos");
-                return _vehiculoRepository.GetAllIdioma();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo todas las multas");
-                throw;
-            }
-        }
-        public VehiculoDTO? GetIdioma(int id)
-        {
-            try
-            {
-                return _vehiculoRepository.GetIdioma(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo los vehiculos por id");
-                throw;
-            }
-
-        }
-
          public VehiculoDTO? Get(int id)
         {
             try

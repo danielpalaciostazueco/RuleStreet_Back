@@ -21,36 +21,17 @@ namespace RuleStreet.Data
         }
         public List<Evento> GetAll()
         {
-            return _context.Evento.Select(e => new Evento{
-                IdEventos = e.IdEventos,
-                Descripcion= e.Descripcion,
-                Fecha = e.Fecha,
-                Imagen = e.Imagen
-            })
+            return _context.Evento
                 .ToList();
         }
 
-        public List<Evento> GetAllIdioma()
-        {
-            var evento = _context.Evento.Select(e => new Evento{
-                IdEventos = e.IdEventos,
-                Description= e.Description,
-                Fecha = e.Fecha,
-                Imagen = e.Imagen
-            })
-                .ToList();
-            return evento;
-        }
+      
         public Evento Get(int id)
         {
             try
             {
-                return _context.Evento.Select(e => new Evento{
-                    IdEventos = e.IdEventos,
-                    Descripcion= e.Descripcion,
-                    Fecha = e.Fecha,
-                    Imagen = e.Imagen
-            }).FirstOrDefault(Evento => Evento.IdEventos == id);
+                return _context.Evento
+            .FirstOrDefault(Evento => Evento.IdEventos == id);
             }
             catch (Exception ex)
             {
@@ -59,23 +40,6 @@ namespace RuleStreet.Data
             }
         }
 
-         public Evento GetIdioma(int id)
-        {
-            try
-            {
-                return _context.Evento.Select(e => new Evento{
-                    IdEventos = e.IdEventos,
-                    Descripcion= e.Descripcion,
-                    Fecha = e.Fecha,
-                    Imagen = e.Imagen
-            }).FirstOrDefault(Evento => Evento.IdEventos == id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo la Evento por id.");
-                throw;
-            }
-        }
 
         public void Add(Evento Evento)
         {
@@ -101,6 +65,7 @@ namespace RuleStreet.Data
                     // Actualiza directamente las propiedades del objeto existente
                     existingEvento.Imagen = evento.Imagen;
                     existingEvento.Descripcion = evento.Descripcion;
+                    existingEvento.Description = evento.Description;
                     existingEvento.Fecha = evento.Fecha;
 
                     _context.SaveChanges();

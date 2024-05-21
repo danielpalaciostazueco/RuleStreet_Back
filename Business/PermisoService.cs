@@ -31,32 +31,7 @@ namespace RuleStreet.Business
             }
         }
 
-          public List<PermisoDTO> GetAllIdioma()
-        {
-            try
-            {
-                _logger.LogInformation("Obteniendo todas los permisos");
-                return _permisoRepository.GetAllIdioma();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo todas los permisos");
-                throw;
-            }
-        }
-         public PermisoDTO? GetIdioma(int id)
-        {
-            try
-            {
-                return _permisoRepository.GetIdioma(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error obteniendo los permisos por id");
-                throw;
-            }
-
-        }
+        
         public PermisoDTO? Get(int id)
         {
             try

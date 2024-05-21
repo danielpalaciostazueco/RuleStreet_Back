@@ -10,7 +10,5 @@ namespace RuleStreet.Data
         void Add(CodigoPenalDTO codigoPenalDTO);
         void Delete(int id);
         void Update(CodigoPenalDTO codigoPenalDTO);
-        CodigoPenal? GetIdioma(int id);
-        List<CodigoPenalDTO> GetAllIdioma();
     }
 }

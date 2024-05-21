@@ -363,7 +363,7 @@ namespace RuleStreet.Data.Migrations
                 columns: new[] { "IdCodigoPenal", "Article", "Articulo", "Descripcion", "Description", "Precio", "Sentencia" },
                 values: new object[,]
                 {
-                    { 1, null, "Art. 1.1", "Uso excesivo del claxón", null, 500m, "0 meses" },
+                    { 1, null, "Art. 1.1", "Uso excesivo del claxón", "english", 500m, "0 meses" },
                     { 2, null, "Art. 1.2", "Giro indebido", null, 300m, "0 meses" },
                     { 3, null, "Art. 1.3", "Circular en sentido contrario", null, 700m, "0 meses" },
                     { 4, null, "Art. 1.4", "Estacionar en zonas no habitadas y obstruir la circulación", null, 500m, "0 meses" },
@@ -458,7 +458,7 @@ namespace RuleStreet.Data.Migrations
                 columns: new[] { "IdPermiso", "Name", "Nombre" },
                 values: new object[,]
                 {
-                    { 1, null, "Añadir policia" },
+                    { 1, "Add police", "Añadir policia" },
                     { 2, null, "Quitar policia" },
                     { 3, null, "Modificar policia" },
                     { 4, null, "Borrar multa" },
@@ -478,7 +478,7 @@ namespace RuleStreet.Data.Migrations
                 columns: new[] { "IdRango", "Name", "Nombre", "Salario", "isLocal" },
                 values: new object[,]
                 {
-                    { 1, null, "Practicas", 1071, true },
+                    { 1, "Practices ", "Practicas", 1071, true },
                     { 2, null, "Agente", 1330, true },
                     { 3, null, "Oficial I", 1412, true },
                     { 4, null, "Oficial II", 1483, true },

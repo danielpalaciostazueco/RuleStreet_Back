@@ -27,13 +27,7 @@ namespace RuleStreet.Api.Controllers
             return _NotaService.GetAll();
         }
         
-        [HttpGet("English")]
-        public ActionResult<List<Nota>> GetAllIdioma()
-        {
-            return _NotaService.GetAllIdioma();
-        }
-
-
+      
         [HttpGet("{id}")]
         public ActionResult<Nota> Get(int id)
         {
@@ -55,28 +49,6 @@ namespace RuleStreet.Api.Controllers
         }
 
         
-
-        [HttpGet("English/{id}")]
-        public ActionResult<Nota> GetIdioma(int id)
-        {
-            try
-            {
-                var Nota = _NotaService.GetIdioma(id);
-                if (Nota == null)
-                {
-                    return NotFound();
-                }
-
-                return Nota;
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, "Error al hacer el get por id ");
-                return StatusCode(500, "Error interno del servidor");
-            }
-        }
-
-
 
         [HttpPost]
         public ActionResult<NotaPostDTO> Create(NotaPostDTO Nota)

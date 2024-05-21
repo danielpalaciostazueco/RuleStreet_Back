@@ -10,9 +10,5 @@ namespace RuleStreet.Data
         void Add(Evento evento);
         void Update(Evento evento);
         void Delete(int id);
-        List<Evento> GetAllIdioma();
-        Evento? GetIdioma(int id);
-    
-    
     }
 }
