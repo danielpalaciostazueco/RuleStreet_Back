@@ -323,7 +323,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 1,
                             Articulo = "Art. 1.1",
                             Descripcion = "Uso excesivo del claxón",
-                            Description = "english",
+                            Description = "Excessive use of the horn",
                             Precio = 500m,
                             Sentencia = "0 meses"
                         },
@@ -332,6 +332,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 2,
                             Articulo = "Art. 1.2",
                             Descripcion = "Giro indebido",
+                            Description = "Improper turn",
                             Precio = 300m,
                             Sentencia = "0 meses"
                         },
@@ -340,6 +341,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 3,
                             Articulo = "Art. 1.3",
                             Descripcion = "Circular en sentido contrario",
+                            Description = "Driving against traffic",
                             Precio = 700m,
                             Sentencia = "0 meses"
                         },
@@ -348,6 +350,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 4,
                             Articulo = "Art. 1.4",
                             Descripcion = "Estacionar en zonas no habitadas y obstruir la circulación",
+                            Description = "Parking in non-habitable areas and obstructing traffic",
                             Precio = 500m,
                             Sentencia = "0 meses"
                         },
@@ -356,6 +359,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 5,
                             Articulo = "Art. 1.5",
                             Descripcion = "Ignorar señales de tránsito",
+                            Description = "Ignoring traffic signs",
                             Precio = 500m,
                             Sentencia = "0 meses"
                         },
@@ -364,6 +368,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 6,
                             Articulo = "Art. 1.6",
                             Descripcion = "Saltarse un semáforo",
+                            Description = "Running a red light",
                             Precio = 450m,
                             Sentencia = "0 meses"
                         },
@@ -372,6 +377,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 7,
                             Articulo = "Art. 1.7",
                             Descripcion = "No ceder el paso a vehículos de emergencia",
+                            Description = "Not yielding to emergency vehicles",
                             Precio = 550m,
                             Sentencia = "0 meses"
                         },
@@ -380,6 +386,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 8,
                             Articulo = "Art. 1.8",
                             Descripcion = "Realizar adelantamiento indebido",
+                            Description = "Improper overtaking",
                             Precio = 350m,
                             Sentencia = "0 meses"
                         },
@@ -388,6 +395,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 9,
                             Articulo = "Art. 1.9",
                             Descripcion = "Circular marcha atrás",
+                            Description = "Driving in reverse",
                             Precio = 800m,
                             Sentencia = "0 meses"
                         },
@@ -396,6 +404,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 10,
                             Articulo = "Art. 1.10",
                             Descripcion = "Ignorar señales de los agentes que regulan la circulacion",
+                            Description = "Ignoring signals from traffic regulators",
                             Precio = 500m,
                             Sentencia = "0 meses"
                         },
@@ -404,6 +413,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 11,
                             Articulo = "Art. 1.11",
                             Descripcion = "Saltarse / omitir un control de trafico",
+                            Description = "Skipping/omitting a traffic control",
                             Precio = 500m,
                             Sentencia = "0 meses"
                         },
@@ -412,6 +422,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 12,
                             Articulo = "Art. 1.12",
                             Descripcion = "Conducir un vehiculo en malas condiciones",
+                            Description = "Driving a vehicle in poor condition",
                             Precio = 1000m,
                             Sentencia = "0 meses"
                         },
@@ -420,6 +431,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 13,
                             Articulo = "Art. 1.13",
                             Descripcion = "Exceso de velocidad en vias urbanas",
+                            Description = "Speeding in urban areas",
                             Precio = 800m,
                             Sentencia = "5 meses"
                         },
@@ -428,6 +440,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 14,
                             Articulo = "Art. 1.14",
                             Descripcion = "Condución temeraria",
+                            Description = "Reckless driving",
                             Precio = 1500m,
                             Sentencia = "10 meses"
                         },
@@ -436,6 +449,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 15,
                             Articulo = "Art. 1.15",
                             Descripcion = "Exceso de velocidad en vias secundarias",
+                            Description = "Speeding in secondary roads",
                             Precio = 1000m,
                             Sentencia = "10 meses"
                         },
@@ -444,6 +458,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 16,
                             Articulo = "Art. 1.16",
                             Descripcion = "Conducir bajo los efectos de drogas/alcohol",
+                            Description = "Driving under the influence of drugs/alcohol",
                             Precio = 1500m,
                             Sentencia = "10 meses"
                         },
@@ -452,6 +467,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 17,
                             Articulo = "Art. 1.17",
                             Descripcion = "Circular por zonas no habilitadas para ello",
+                            Description = "Driving in non-authorized areas",
                             Precio = 1000m,
                             Sentencia = "0 meses"
                         },
@@ -460,6 +476,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 18,
                             Articulo = "Art. 1.18",
                             Descripcion = "Circular sin casco para motocicleta",
+                            Description = "Riding without a helmet for motorcycles",
                             Precio = 500m,
                             Sentencia = "0 meses"
                         },
@@ -468,6 +485,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 19,
                             Articulo = "Art. 1.18.1",
                             Descripcion = "Circular sin licencia de conducir",
+                            Description = "Driving without a license",
                             Precio = 550m,
                             Sentencia = "0 meses"
                         },
@@ -476,6 +494,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 20,
                             Articulo = "Art. 2.1",
                             Descripcion = "Alteración del orden público",
+                            Description = "Disturbing public order",
                             Precio = 3500m,
                             Sentencia = "0 meses"
                         },
@@ -484,6 +503,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 21,
                             Articulo = "Art. 2.2",
                             Descripcion = "Racismo",
+                            Description = "Racism",
                             Precio = 5000m,
                             Sentencia = "0 meses"
                         },
@@ -492,6 +512,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 22,
                             Articulo = "Art. 2.3",
                             Descripcion = "Faltas de respeto a otro civil",
+                            Description = "Disrespecting another civilian",
                             Precio = 2500m,
                             Sentencia = "0 meses"
                         },
@@ -500,6 +521,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 23,
                             Articulo = "Art. 2.4",
                             Descripcion = "Dañar mobiliario urbano",
+                            Description = "Damaging urban furniture",
                             Precio = 1700m,
                             Sentencia = "0 meses"
                         },
@@ -508,6 +530,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 24,
                             Articulo = "Art. 2.5",
                             Descripcion = "Acoso psicológico",
+                            Description = "Psychological harassment",
                             Precio = 6000m,
                             Sentencia = "5 meses"
                         },
@@ -516,6 +539,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 25,
                             Articulo = "Art. 2.6",
                             Descripcion = "Amenaza de muerte a un civil",
+                            Description = "Threatening to kill a civilian",
                             Precio = 2000m,
                             Sentencia = "5 meses"
                         },
@@ -524,6 +548,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 26,
                             Articulo = "Art. 2.7",
                             Descripcion = "Suplantación de identidad",
+                            Description = "Identity theft",
                             Precio = 6000m,
                             Sentencia = "0 meses"
                         },
@@ -532,6 +557,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 27,
                             Articulo = "Art. 2.8",
                             Descripcion = "Circular por la via pública con el rostro oculto",
+                            Description = "Concealing face in public",
                             Precio = 1000m,
                             Sentencia = "5 meses"
                         },
@@ -540,6 +566,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 28,
                             Articulo = "Art. 2.9",
                             Descripcion = "Circular en la via pública desnudo o semi-desnudo",
+                            Description = "Being naked or semi-naked in public",
                             Precio = 1200m,
                             Sentencia = "0 meses"
                         },
@@ -548,6 +575,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 29,
                             Articulo = "Art. 2.10",
                             Descripcion = "Circular en la via pública sin camiseta",
+                            Description = "Being shirtless in public",
                             Precio = 120m,
                             Sentencia = "0 meses"
                         },
@@ -556,6 +584,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 30,
                             Articulo = "Art. 2.11",
                             Descripcion = "Acoso sexual",
+                            Description = "Sexual harassment",
                             Precio = 30000m,
                             Sentencia = "100 meses"
                         },
@@ -564,6 +593,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 31,
                             Articulo = "Art. 2.12",
                             Descripcion = "Violar una orden de alejamiento con sentencia firme",
+                            Description = "Violating a restraining order with a firm sentence",
                             Precio = 25000m,
                             Sentencia = "80 meses"
                         },
@@ -572,6 +602,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 32,
                             Articulo = "Art. 2.13",
                             Descripcion = "Negativa a identificarse",
+                            Description = "Refusing to identify oneself",
                             Precio = 1000m,
                             Sentencia = "7 meses"
                         },
@@ -580,6 +611,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 33,
                             Articulo = "Art. 2.14",
                             Descripcion = "Obstrucción a la justicia",
+                            Description = "Obstruction of justice",
                             Precio = 2500m,
                             Sentencia = "10 meses"
                         },
@@ -588,6 +620,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 34,
                             Articulo = "Art. 3.1",
                             Descripcion = "Posesion de estupefacientes (marihuana) 210/unidad (a partir de 2 unidades)",
+                            Description = "Possession of narcotics (marijuana) 210/unit (from 2 units)",
                             Precio = 210m,
                             Sentencia = "7 meses"
                         },
@@ -596,6 +629,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 35,
                             Articulo = "Art. 3.2",
                             Descripcion = "Consumo de marihuana en vía pública",
+                            Description = "Consumption of marijuana in public",
                             Precio = 350m,
                             Sentencia = "10 meses"
                         },
@@ -604,6 +638,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 36,
                             Articulo = "Art. 3.3",
                             Descripcion = "Posesion de estupefacientes (Cocaína/Mentafetamina) 650/unidad (a partir de 2 unidades)",
+                            Description = "Possession of narcotics (cocaine/methamphetamine) 650/unit (from 2 units)",
                             Precio = 650m,
                             Sentencia = "7 meses"
                         },
@@ -612,6 +647,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 37,
                             Articulo = "Art. 3.4",
                             Descripcion = "Se considera trafico de drogas a cualquier individuo o grupo de personas que se vean vendiendo estupefacientes en flagante delito. Multa de 450 por cada delito flagante de venta de cocaina. Se requisara todo el dinero que lleve el sujeto.",
+                            Description = "Drug trafficking: Any individual or group caught selling narcotics flagrantly. Fine of 450 for each flagrant sale of cocaine. All money on the subject will be confiscated.",
                             Precio = 450m,
                             Sentencia = "10 meses"
                         },
@@ -620,6 +656,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 38,
                             Articulo = "Art. 3.5",
                             Descripcion = "Se considera trafico de drogas a cualquier individuo o grupo de personas que se vean vendiendo estupefacientes en flagante delito. Multa de 650 por cada delito flagante de venta de meta. Se requisara todo el dinero que lleve el sujeto.",
+                            Description = "Drug trafficking: Any individual or group caught selling narcotics flagrantly. Fine of 650 for each flagrant sale of meth. All money on the subject will be confiscated.",
                             Precio = 650m,
                             Sentencia = "10 meses"
                         },
@@ -628,6 +665,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 39,
                             Articulo = "Art. 4.1",
                             Descripcion = "Queda totalmente prohibida por parte de los civiles portar una pistolera como atuendo de modo decorativo",
+                            Description = "It is completely prohibited for civilians to wear a gun holster as a decorative outfit.",
                             Precio = 1500m,
                             Sentencia = "0 meses"
                         },
@@ -636,6 +674,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 40,
                             Articulo = "Art. 4.2",
                             Descripcion = "Posesion de arma blanca: son considerados como tal, aquellas armas de filo cortante. Armas blancas susceptibles de ser usadas como arma ilegal: Cuchillo, Bate de beisbol, Palo de golf, Botella rota, Navaja, Machete",
+                            Description = "Possession of a blade weapon: considered as such, those cutting edge weapons. Bladed weapons susceptible to be used as an illegal weapon: Knife, Baseball bat, Golf club, Broken bottle, Razor, Machete",
                             Precio = 2500m,
                             Sentencia = "0 meses"
                         },
@@ -644,6 +683,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 41,
                             Articulo = "Art. 4.3",
                             Descripcion = "Portar pistola de baja calibre (arma de fuego)",
+                            Description = "Carrying a small caliber pistol (firearm)",
                             Precio = 10000m,
                             Sentencia = "10 meses"
                         },
@@ -652,6 +692,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 42,
                             Articulo = "Art. 4.4",
                             Descripcion = "Portar armas automaticas de baja calibre/medio",
+                            Description = "Carrying low/medium caliber automatic weapons",
                             Precio = 24000m,
                             Sentencia = "10 meses"
                         },
@@ -660,6 +701,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 43,
                             Articulo = "Art. 4.5",
                             Descripcion = "Portar armas automaticas de alto calibre",
+                            Description = "Carrying high caliber automatic weapons",
                             Precio = 40000m,
                             Sentencia = "15 meses"
                         },
@@ -668,6 +710,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 44,
                             Articulo = "Art. 4.6",
                             Descripcion = "Trafico de armas",
+                            Description = "Arms trafficking",
                             Precio = 30000m,
                             Sentencia = "25 meses"
                         },
@@ -676,6 +719,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 45,
                             Articulo = "Art. 4.7",
                             Descripcion = "Atentado terrorista",
+                            Description = "Terrorist attack",
                             Precio = 100000m,
                             Sentencia = "250 meses"
                         },
@@ -684,6 +728,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 46,
                             Articulo = "Art. 4.8",
                             Descripcion = "Atentar contra la vida o integridad fisica de varios personas y/o funcionarios publicos mediante la organizacion armada de varios individuos",
+                            Description = "Attempting against the life or physical integrity of several people and/or public officials through the armed organization of several individuals",
                             Precio = 100000m,
                             Sentencia = "350 meses"
                         },
@@ -692,6 +737,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 47,
                             Articulo = "Art. 5.1",
                             Descripcion = "Agresion a otro individuo",
+                            Description = "Assaulting another individual",
                             Precio = 3000m,
                             Sentencia = "10 meses"
                         },
@@ -700,6 +746,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 48,
                             Articulo = "Art. 5.2",
                             Descripcion = "Intento de agresion a civil",
+                            Description = "Attempted assault on a civilian",
                             Precio = 1500m,
                             Sentencia = "5 meses"
                         },
@@ -708,6 +755,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 49,
                             Articulo = "Art. 5.3",
                             Descripcion = "Intento de secuestro",
+                            Description = "Attempted kidnapping",
                             Precio = 2400m,
                             Sentencia = "15 meses"
                         },
@@ -716,6 +764,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 50,
                             Articulo = "Art. 5.4",
                             Descripcion = "Secuestro a un individuo",
+                            Description = "Kidnapping an individual",
                             Precio = 3500m,
                             Sentencia = "15 meses"
                         },
@@ -724,6 +773,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 51,
                             Articulo = "Art. 5.5",
                             Descripcion = "Intento de homicidio a un civil sin el uso de armas",
+                            Description = "Attempted homicide on a civilian without the use of weapons",
                             Precio = 4000m,
                             Sentencia = "10 meses"
                         },
@@ -732,6 +782,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 52,
                             Articulo = "Art. 5.6",
                             Descripcion = "Intento de homicidio a un civil con uso de armas de cualquier indole",
+                            Description = "Attempted homicide on a civilian with the use of any kind of weapon",
                             Precio = 6000m,
                             Sentencia = "20 meses"
                         },
@@ -740,6 +791,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 53,
                             Articulo = "Art. 5.7",
                             Descripcion = "Intento de homicidio a multiples sin el uso de armas",
+                            Description = "Attempted homicide on multiple civilians without the use of weapons",
                             Precio = 5000m,
                             Sentencia = "15 meses"
                         },
@@ -748,6 +800,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 54,
                             Articulo = "Art. 5.8",
                             Descripcion = "Intento de homicidio a multiples civiles con uso de armas de cualquier indole",
+                            Description = "Attempted homicide on multiple civilians with the use of any kind of weapon",
                             Precio = 7500m,
                             Sentencia = "15 meses"
                         },
@@ -756,6 +809,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 55,
                             Articulo = "Art. 6.1",
                             Descripcion = "Amenazas, desobedencia e insultos: Tras la primera amision de la orden de un funcionario de policia, se le podra acumular al reo el monta econonico despues del primer aviso por cada falta de respeto o desacato.",
+                            Description = "Threats, disobedience, and insults: After the first omission of a police officer's order, the economic amount may be accumulated for each disrespect or disobedience after the first warning.",
                             Precio = 300m,
                             Sentencia = "0 meses"
                         },
@@ -764,6 +818,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 56,
                             Articulo = "Art. 6.2",
                             Descripcion = "Insultar a un funcionario publico.",
+                            Description = "Insulting a public official.",
                             Precio = 1700m,
                             Sentencia = "5 meses"
                         },
@@ -772,6 +827,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 57,
                             Articulo = "Art. 6.3",
                             Descripcion = "Agresión o amenaza de muerte a un funcionario.",
+                            Description = "Assault or death threat to an official.",
                             Precio = 3400m,
                             Sentencia = "5 meses"
                         },
@@ -780,6 +836,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 58,
                             Articulo = "Art. 6.4",
                             Descripcion = "Desacato",
+                            Description = "Contempt",
                             Precio = 2000m,
                             Sentencia = "10 meses"
                         },
@@ -788,6 +845,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 59,
                             Articulo = "Art. 6.5",
                             Descripcion = "Huir de la justicia",
+                            Description = "Fleeing from justice",
                             Precio = 1500m,
                             Sentencia = "10 meses"
                         },
@@ -796,6 +854,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 60,
                             Articulo = "Art. 6.6",
                             Descripcion = "Usurpacion de funciones publicas",
+                            Description = "Usurpation of public functions",
                             Precio = 10000m,
                             Sentencia = "15 meses"
                         },
@@ -804,6 +863,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 61,
                             Articulo = "Art. 6.7",
                             Descripcion = "Falso testimonio",
+                            Description = "False testimony",
                             Precio = 2000m,
                             Sentencia = "5 meses"
                         },
@@ -811,7 +871,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 62,
                             Articulo = "Art. 6.8",
-                            Descripcion = "Usurpacion de funcionarios publicos",
+                            Descripcion = "Usurpación de funcionarios públicos",
+                            Description = "Usurpation of public officials",
                             Precio = 10000m,
                             Sentencia = "15 meses"
                         },
@@ -820,6 +881,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 63,
                             Articulo = "Art. 6.9",
                             Descripcion = "Secuestro a un funcionario",
+                            Description = "Kidnapping of an official",
                             Precio = 8000m,
                             Sentencia = "10 meses"
                         },
@@ -827,7 +889,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 64,
                             Articulo = "Art. 6.10",
-                            Descripcion = "Amenazar a un funcionario publico a mano armada",
+                            Descripcion = "Amenazar a un funcionario público a mano armada",
+                            Description = "Threatening a public official at gunpoint",
                             Precio = 3500m,
                             Sentencia = "10 meses"
                         },
@@ -835,7 +898,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 65,
                             Articulo = "Art. 6.11",
-                            Descripcion = "Intento de homicidio a un funcionario publico",
+                            Descripcion = "Intento de homicidio a un funcionario público",
+                            Description = "Attempted homicide of a public official",
                             Precio = 5500m,
                             Sentencia = "15 meses"
                         },
@@ -844,6 +908,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 66,
                             Articulo = "Art. 6.12",
                             Descripcion = "Homicidio a un funcionario",
+                            Description = "Homicide of an official",
                             Precio = 9000m,
                             Sentencia = "20 meses"
                         },
@@ -852,6 +917,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 67,
                             Articulo = "Art. 6.13",
                             Descripcion = "Homicidio a diferentes funcionarios",
+                            Description = "Homicide of different officials",
                             Precio = 12500m,
                             Sentencia = "50 meses"
                         },
@@ -860,6 +926,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 68,
                             Articulo = "Art. 6.14",
                             Descripcion = "Robo de secretos del estado",
+                            Description = "Theft of state secrets",
                             Precio = 0m,
                             Sentencia = "5000 meses"
                         },
@@ -868,6 +935,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 69,
                             Articulo = "Art. 6.15",
                             Descripcion = "Sera acusado de denuncia falsa aquel que registre una denucia ante el cuerpo policial a sabiendas de su falsedad",
+                            Description = "Those who file a false complaint with the police knowing its falsehood will be accused",
                             Precio = 2500m,
                             Sentencia = "10 meses"
                         },
@@ -875,7 +943,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 70,
                             Articulo = "Art. 6.16",
-                            Descripcion = "Actos de corrupcion por parte de un agente",
+                            Descripcion = "Actos de corrupción por parte de un agente",
+                            Description = "Acts of corruption by an agent",
                             Precio = 0m,
                             Sentencia = "5000 meses"
                         },
@@ -883,7 +952,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 71,
                             Articulo = "Art. 7.1",
-                            Descripcion = "Robo de vehiculo",
+                            Descripcion = "Robo de vehículo",
+                            Description = "Vehicle theft",
                             Precio = 2000m,
                             Sentencia = "6 meses"
                         },
@@ -891,7 +961,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 72,
                             Articulo = "Art. 7.2",
-                            Descripcion = "Robo con intimidacion a un civil",
+                            Descripcion = "Robo con intimidación a un civil",
+                            Description = "Robbery with intimidation to a civilian",
                             Precio = 3400m,
                             Sentencia = "8 meses"
                         },
@@ -900,6 +971,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 73,
                             Articulo = "Art. 7.3",
                             Descripcion = "Robo con violencia a un civil",
+                            Description = "Robbery with violence to a civilian",
                             Precio = 2600m,
                             Sentencia = "10 meses"
                         },
@@ -908,6 +980,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 74,
                             Articulo = "Art. 7.4",
                             Descripcion = "Hurto menor",
+                            Description = "Petty theft",
                             Precio = 1500m,
                             Sentencia = "5 meses"
                         },
@@ -915,7 +988,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 75,
                             Articulo = "Art. 7.5",
-                            Descripcion = "Robar pertenencias que se hallen en el interior de un vehiculo de via urbana o propiedad privada",
+                            Descripcion = "Robar pertenencias que se hallen en el interior de un vehículo de vía urbana o propiedad privada",
+                            Description = "Stealing belongings inside a vehicle in an urban area or private property",
                             Precio = 2150m,
                             Sentencia = "7 meses"
                         },
@@ -923,7 +997,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 76,
                             Articulo = "Art. 8.1",
-                            Descripcion = "Celebracion de manifestaciones en lugares de transito publico sin haber sido autorizados",
+                            Descripcion = "Celebración de manifestaciones en lugares de tránsito público sin haber sido autorizados",
+                            Description = "Holding demonstrations in public transit places without authorization",
                             Precio = 1000m,
                             Sentencia = "0 meses"
                         },
@@ -932,6 +1007,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 77,
                             Articulo = "Art. 8.2",
                             Descripcion = "Cometer actos de vandalismo",
+                            Description = "Commit acts of vandalism",
                             Precio = 1500m,
                             Sentencia = "0 meses"
                         },
@@ -940,6 +1016,7 @@ namespace RuleStreet.Data.Migrations
                             IdCodigoPenal = 78,
                             Articulo = "Art. 8.3",
                             Descripcion = "Hurto de un civil sin importar las posesiones robadas",
+                            Description = "Theft from a civilian regardless of stolen possessions",
                             Precio = 3500m,
                             Sentencia = "10 meses"
                         },
@@ -947,7 +1024,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 79,
                             Articulo = "Art. 8.4",
-                            Descripcion = "Obstaculizar el desempeño y desarrollo de las funciones publicas y servicios de emergencia",
+                            Descripcion = "Obstaculizar el desempeño y desarrollo de las funciones públicas y servicios de emergencia",
+                            Description = "Obstructing the performance and development of public functions and emergency services",
                             Precio = 2300m,
                             Sentencia = "0 meses"
                         },
@@ -955,7 +1033,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 80,
                             Articulo = "Art. 8.5",
-                            Descripcion = "Negarse a disolver una reunion o manifestacion tras haber sido previamente advertido por un funcionario publico",
+                            Descripcion = "Negarse a disolver una reunión o manifestación tras haber sido previamente advertido por un funcionario público",
+                            Description = "Refusing to disband a meeting or demonstration after being previously warned by a public official",
                             Precio = 1600m,
                             Sentencia = "5 meses"
                         },
@@ -963,7 +1042,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 81,
                             Articulo = "Art. 8.6",
-                            Descripcion = "Negarse a identificarse o aportar datos falsos que dificulten la accion policial",
+                            Descripcion = "Negarse a identificarse o aportar datos falsos que dificulten la acción policial",
+                            Description = "Refusing to identify oneself or provide false information that hinders police action",
                             Precio = 1500m,
                             Sentencia = "5 meses"
                         },
@@ -971,7 +1051,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 82,
                             Articulo = "Art. 8.7",
-                            Descripcion = "Amenazar a un funcionario publico a mano armada",
+                            Descripcion = "Amenazar a un funcionario público a mano armada",
+                            Description = "Threatening an official with a firearm",
                             Precio = 3500m,
                             Sentencia = "10 meses"
                         },
@@ -979,7 +1060,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 83,
                             Articulo = "Art. 8.8",
-                            Descripcion = "Exhibicionismo: El que realice actos de exhibicionismo delante de personas causandoles un perjuicio",
+                            Descripcion = "Exhibicionismo: El que realice actos de exhibicionismo delante de personas causándoles un perjuicio",
+                            Description = "Exhibitionism: Anyone who engages in exhibitionism in front of people causing them harm",
                             Precio = 5500m,
                             Sentencia = "10 meses"
                         },
@@ -987,7 +1069,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 84,
                             Articulo = "Art. 8.9",
-                            Descripcion = "Sera acusado de extorsion aquel que, con intencion de beneficiarse, obligue a otro con violencia o intimidacion a realizar un acto que le perjudique economicamente",
+                            Descripcion = "Será acusado de extorsión aquel que, con intención de beneficiarse, obligue a otro con violencia o intimidación a realizar un acto que le perjudique económicamente",
+                            Description = "Anyone who, with the intention of benefiting, forces another person with violence or intimidation to perform an act that harms them economically, will be accused of extortion",
                             Precio = 3000m,
                             Sentencia = "15 meses"
                         },
@@ -995,7 +1078,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 85,
                             Articulo = "Art. 8.10",
-                            Descripcion = "Sera acusado de injuria aquel que diga de manera publica hechos falsos que humillen a otra persona",
+                            Descripcion = "Será acusado de injuria aquel que diga de manera pública hechos falsos que humillen a otra persona",
+                            Description = "Anyone who publicly states false facts that humiliate another person will be accused of defamation",
                             Precio = 1200m,
                             Sentencia = "7 meses"
                         },
@@ -1003,7 +1087,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 86,
                             Articulo = "Art. 8.11",
-                            Descripcion = "Violacion de la intimidad aquel que acceda a cualquier tipo de propiedad o dispositivo de otro, sea digital o analogico. El articulo excluye a los funcionarios publicos por desempeño de sus labores de investigacion",
+                            Descripcion = "Violación de la intimidad aquel que acceda a cualquier tipo de propiedad o dispositivo de otro, sea digital o analógico. El artículo excluye a los funcionarios públicos por desempeño de sus labores de investigación",
+                            Description = "Violation of privacy: Anyone who accesses any type of property or device of another, whether digital or analog. The article excludes public officials in the performance of their investigative duties",
                             Precio = 2400m,
                             Sentencia = "7 meses"
                         },
@@ -1011,7 +1096,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 87,
                             Articulo = "Art. 8.12",
-                            Descripcion = "Sera acusado de tortura aquel que realice actos degradantes, ofensivos, dañinos o de similar a una persona",
+                            Descripcion = "Será acusado de tortura aquel que realice actos degradantes, ofensivos, dañinos o de similar a una persona",
+                            Description = "Anyone who performs degrading, offensive, harmful, or similar acts to a person will be accused of torture",
                             Precio = 5600m,
                             Sentencia = "15 meses"
                         },
@@ -1019,7 +1105,8 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdCodigoPenal = 88,
                             Articulo = "Art. 8.13",
-                            Descripcion = "Negarse a la identificacion ante un funcionario publico",
+                            Descripcion = "Negarse a la identificación ante un funcionario público",
+                            Description = "Refusing to identify oneself to a public official",
                             Precio = 1500m,
                             Sentencia = "0 meses"
                         });
@@ -1182,61 +1269,73 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdPermiso = 2,
+                            Name = "Remove police",
                             Nombre = "Quitar policia"
                         },
                         new
                         {
                             IdPermiso = 3,
+                            Name = "Modify police",
                             Nombre = "Modificar policia"
                         },
                         new
                         {
                             IdPermiso = 4,
+                            Name = "Delete fine",
                             Nombre = "Borrar multa"
                         },
                         new
                         {
                             IdPermiso = 5,
+                            Name = "Create fine",
                             Nombre = "Crear multa"
                         },
                         new
                         {
                             IdPermiso = 6,
+                            Name = "Delete complaint",
                             Nombre = "Borrar denuncia"
                         },
                         new
                         {
                             IdPermiso = 7,
+                            Name = "Create complaint",
                             Nombre = "Crear denuncia"
                         },
                         new
                         {
                             IdPermiso = 8,
+                            Name = "Modify complaint",
                             Nombre = "Modificar denuncia"
                         },
                         new
                         {
                             IdPermiso = 9,
+                            Name = "Delete note",
                             Nombre = "Eliminar nota"
                         },
                         new
                         {
                             IdPermiso = 10,
+                            Name = "Create note",
                             Nombre = "Crear nota"
                         },
                         new
                         {
                             IdPermiso = 11,
+                            Name = "Modify note",
                             Nombre = "Modificar nota"
                         },
                         new
                         {
                             IdPermiso = 12,
+                            Name = "Create event",
                             Nombre = "Crear evento"
                         },
                         new
                         {
                             IdPermiso = 13,
+                            Name = "Delete event",
                             Nombre = "Eliminar evento"
                         });
                 });
@@ -1307,6 +1406,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 2,
+                            Name = "Agent",
                             Nombre = "Agente",
                             Salario = 1330,
                             isLocal = true
@@ -1314,6 +1414,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 3,
+                            Name = "Official I",
                             Nombre = "Oficial I",
                             Salario = 1412,
                             isLocal = true
@@ -1321,6 +1422,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 4,
+                            Name = "Official II",
                             Nombre = "Oficial II",
                             Salario = 1483,
                             isLocal = true
@@ -1328,6 +1430,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 5,
+                            Name = "Official III",
                             Nombre = "Oficial III",
                             Salario = 1555,
                             isLocal = true
@@ -1335,6 +1438,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 6,
+                            Name = "Sub-inspector",
                             Nombre = "Subinspector",
                             Salario = 1674,
                             isLocal = true
@@ -1342,6 +1446,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 7,
+                            Name = "Inspector",
                             Nombre = "Inspector",
                             Salario = 1765,
                             isLocal = true
@@ -1349,6 +1454,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 8,
+                            Name = "Chief inspector",
                             Nombre = "Inspector Jefe",
                             Salario = 1881,
                             isLocal = true
@@ -1356,6 +1462,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 9,
+                            Name = "Mayor",
                             Nombre = "Intendente",
                             Salario = 2028,
                             isLocal = true
@@ -1363,6 +1470,7 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 10,
+                            Name = "Super mayor",
                             Nombre = "Superintendente",
                             Salario = 2142,
                             isLocal = true

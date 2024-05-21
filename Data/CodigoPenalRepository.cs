@@ -20,20 +20,20 @@ namespace RuleStreet.Data
         }
         public List<CodigoPenalDTO> GetAll()
         {
-            var codigoPenal = _context.CodigoPenal
-            .Select(c => new CodigoPenalDTO
+            var codigoPenal = _context.CodigoPenal.Select(m => new CodigoPenalDTO
             {
-                IdCodigoPenal = c.IdCodigoPenal,
-                Articulo = c.Articulo,
-                Descripcion = c.Descripcion,
-                Description = c.Description,
-                Precio = c.Precio,
-                Sentencia = c.Sentencia
+                IdCodigoPenal = m.IdCodigoPenal,
+                Articulo = m.Articulo,
+                Article = m.Article,
+                Descripcion = m.Descripcion,
+                Description = m.Description,
+                Precio = m.Precio,
+                Sentencia = m.Sentencia
             }).ToList();
 
             return codigoPenal;
         }
-       
+
         public CodigoPenal? Get(int id)
         {
             try

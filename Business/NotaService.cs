@@ -31,7 +31,7 @@ namespace RuleStreet.Business
             }
         }
 
-     
+
         public Nota? Get(int id)
         {
             try
@@ -46,16 +46,17 @@ namespace RuleStreet.Business
 
         }
 
-    
+
 
         public void Update(NotaPostDTO nota)
         {
             try
             {
-                 var Nota = new Nota
+                var Nota = new Nota
                 {
                     Titulo = nota.Titulo,
                     Descripcion = nota.Descripcion,
+                    Description = nota.Description,
                     Fecha = nota.Fecha,
                     IdPolicia = nota.IdPolicia,
                     IdCiudadano = nota.IdCiudadano
@@ -92,6 +93,7 @@ namespace RuleStreet.Business
                 {
                     Titulo = nota.Titulo,
                     Descripcion = nota.Descripcion,
+                    Description = nota.Description,
                     Fecha = nota.Fecha,
                     IdPolicia = nota.IdPolicia,
                     IdCiudadano = nota.IdCiudadano

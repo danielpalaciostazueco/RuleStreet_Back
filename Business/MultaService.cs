@@ -163,7 +163,7 @@ namespace RuleStreet.Business
                     IdPolicia = multaDto.IdPolicia ?? 0,
                     Fecha = multaDto.Fecha,
                     IdCodigoPenal = multaDto.IdCodigoPenal ?? 0,
-                    Pagada = multaDto.Pagada,
+                    Pagada = false,
                     IdCiudadano = multaDto.IdCiudadano,
                 };
 

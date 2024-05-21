@@ -28,13 +28,13 @@ namespace RuleStreet.Data
                     IdPermiso = p.IdPermiso,
                     Nombre = p.Nombre,
                     Name = p.Name
-                    
+
                 })
                 .ToList();
 
             return permisos;
         }
-        
+
 
 
         public PermisoDTO Get(int id)
@@ -46,7 +46,8 @@ namespace RuleStreet.Data
                     .Select(permiso => new PermisoDTO
                     {
                         IdPermiso = permiso.IdPermiso,
-                        Nombre = permiso.Nombre
+                        Nombre = permiso.Nombre,
+                        Name = permiso.Name
                     })
                     .AsNoTracking()
                     .FirstOrDefault();

@@ -88,9 +88,12 @@ namespace RuleStreet.Business
                 Apellidos = ciudadano.Apellidos,
                 Dni = ciudadano.Dni,
                 Genero = ciudadano.Genero,
+                Gender = ciudadano.Gender,
                 Nacionalidad = ciudadano.Nacionalidad,
+                Nationality = ciudadano.Nationality,
                 FechaNacimiento = ciudadano.FechaNacimiento,
                 Direccion = ciudadano.Direccion,
+                Address = ciudadano.Address,
                 NumeroTelefono = ciudadano.NumeroTelefono,
                 NumeroCuentaBancaria = ciudadano.NumeroCuentaBancaria,
                 IsPoli = ciudadano.IsPoli,
@@ -120,11 +123,14 @@ namespace RuleStreet.Business
             }
         }
 
-        public bool policiaDuplicado(PoliciaPostDTO policia){
+        public bool policiaDuplicado(PoliciaPostDTO policia)
+        {
             var policias = _policiaRepository.GetAll();
             bool repetido = false;
-            foreach(var p in policias){
-                if(p.IdCiudadano == policia.IdCiudadano){
+            foreach (var p in policias)
+            {
+                if (p.IdCiudadano == policia.IdCiudadano)
+                {
                     repetido = true;
                 }
             }
