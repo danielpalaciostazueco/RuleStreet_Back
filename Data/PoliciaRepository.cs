@@ -62,7 +62,7 @@ namespace RuleStreet.Data
                     Apellidos = p.Ciudadano.Apellidos,
                     Dni = p.Ciudadano.Dni,
                     Genero = p.Ciudadano.Genero,
-                    Gender =  p.Ciudadano.Gender,
+                    Gender = p.Ciudadano.Gender,
                     Nacionalidad = p.Ciudadano.Nacionalidad,
                     Nationality = p.Ciudadano.Nationality,
                     FechaNacimiento = p.Ciudadano.FechaNacimiento,
@@ -73,6 +73,7 @@ namespace RuleStreet.Data
                     IsPoli = p.Ciudadano.IsPoli,
                     IsBusquedaYCaptura = p.Ciudadano.IsBusquedaYCaptura,
                     IsPeligroso = p.Ciudadano.IsPeligroso,
+                    ImagenUrl = p.Ciudadano.ImagenUrl,
                     Multas = p.Ciudadano.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
@@ -111,7 +112,7 @@ namespace RuleStreet.Data
             return policiaDTOList;
         }
 
-    
+
 
         public PoliciaDTO Get(int id)
         {
@@ -163,6 +164,7 @@ namespace RuleStreet.Data
                     Genero = policia.Ciudadano.Genero,
                     Gender = policia.Ciudadano.Gender,
                     Nacionalidad = policia.Ciudadano.Nacionalidad,
+                    Nationality = policia.Ciudadano.Nationality,
                     FechaNacimiento = policia.Ciudadano.FechaNacimiento.Value,
                     Direccion = policia.Ciudadano.Direccion,
                     Address = policia.Ciudadano.Address,
@@ -171,6 +173,7 @@ namespace RuleStreet.Data
                     IsPoli = policia.Ciudadano.IsPoli,
                     IsBusquedaYCaptura = policia.Ciudadano.IsBusquedaYCaptura,
                     IsPeligroso = policia.Ciudadano.IsPeligroso,
+                    ImagenUrl = policia.Ciudadano.ImagenUrl,
                     Multas = policia.Ciudadano.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
