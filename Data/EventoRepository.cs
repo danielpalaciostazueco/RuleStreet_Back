@@ -25,12 +25,13 @@ namespace RuleStreet.Data
                 .ToList();
         }
 
+      
         public Evento Get(int id)
         {
             try
             {
                 return _context.Evento
-                    .FirstOrDefault(Evento => Evento.IdEventos == id);
+            .FirstOrDefault(Evento => Evento.IdEventos == id);
             }
             catch (Exception ex)
             {
@@ -38,6 +39,7 @@ namespace RuleStreet.Data
                 throw;
             }
         }
+
 
         public void Add(Evento Evento)
         {
@@ -63,6 +65,7 @@ namespace RuleStreet.Data
                     // Actualiza directamente las propiedades del objeto existente
                     existingEvento.Imagen = evento.Imagen;
                     existingEvento.Descripcion = evento.Descripcion;
+                    existingEvento.Description = evento.Description;
                     existingEvento.Fecha = evento.Fecha;
 
                     _context.SaveChanges();

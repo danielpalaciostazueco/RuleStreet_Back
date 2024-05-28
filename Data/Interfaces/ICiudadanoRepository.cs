@@ -13,5 +13,7 @@ namespace RuleStreet.Data
 
         CiudadanoDTO? GetByDni(string dni);
 
+      
+
     }
 }

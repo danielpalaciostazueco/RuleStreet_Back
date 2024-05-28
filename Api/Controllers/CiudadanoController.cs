@@ -26,6 +26,9 @@ namespace RuleStreet.Api.Controllers
         {
             return _CiudadanoService.GetAll();
         }
+
+   
+        
         
         
         [HttpGet("{id}")]

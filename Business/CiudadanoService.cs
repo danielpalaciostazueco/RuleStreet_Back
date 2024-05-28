@@ -68,7 +68,7 @@ namespace RuleStreet.Business
                     multasPendientes = multas.Where(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false).ToList();
                     decimal cantidad = 0;
 
-                    foreach(var multa in multasPendientes)
+                    foreach (var multa in multasPendientes)
                     {
                         cantidad += (decimal)multa.CodigoPenal.Precio;
                     }
@@ -81,7 +81,9 @@ namespace RuleStreet.Business
                         FechaNacimiento = (DateTime)ciudadano.FechaNacimiento,
                         Dni = ciudadano.Dni,
                         Genero = ciudadano.Genero,
+                        Gender = ciudadano.Gender,
                         Nacionalidad = ciudadano.Nacionalidad,
+                        Nationality = ciudadano.Nationality,
                         Pagada = multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
                         Cantidad = cantidad,
                         ImagenUrl = ciudadano.ImagenUrl
@@ -99,6 +101,8 @@ namespace RuleStreet.Business
             }
         }
 
+
+
         public CiudadanoDTO? Get(int id)
         {
             try
@@ -112,6 +116,7 @@ namespace RuleStreet.Business
             }
 
         }
+
 
         public CiudadanoDTO? GetByDni(string dni)
         {
@@ -138,15 +143,18 @@ namespace RuleStreet.Business
                     Apellidos = ciudadanoPostDTO.Apellidos,
                     Dni = ciudadanoPostDTO.Dni,
                     Genero = ciudadanoPostDTO.Genero,
+                    Gender = ciudadanoPostDTO.Gender,
                     Nacionalidad = ciudadanoPostDTO.Nacionalidad,
+                    Nationality = ciudadanoPostDTO.Nationality,
                     FechaNacimiento = ciudadanoPostDTO.FechaNacimiento,
                     Direccion = ciudadanoPostDTO.Direccion,
+                    Address = ciudadanoPostDTO.Address,
                     NumeroTelefono = ciudadanoPostDTO.NumeroTelefono,
                     NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria,
                     IsPoli = ciudadanoPostDTO.IsPoli,
                     IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
                     IsPeligroso = ciudadanoPostDTO.IsPeligroso,
-                    
+
                 };
 
                 _ciudadanoRepository.Update(ciudadano);
@@ -169,9 +177,12 @@ namespace RuleStreet.Business
                     Apellidos = ciudadanoPostDTO.Apellidos,
                     Dni = ciudadanoPostDTO.Dni,
                     Genero = ciudadanoPostDTO.Genero,
+                    Gender = ciudadanoPostDTO.Gender,
                     Nacionalidad = ciudadanoPostDTO.Nacionalidad,
+                    Nationality = ciudadanoPostDTO.Nationality,
                     FechaNacimiento = ciudadanoPostDTO.FechaNacimiento,
                     Direccion = ciudadanoPostDTO.Direccion,
+                    Address = ciudadanoPostDTO.Address,
                     NumeroTelefono = ciudadanoPostDTO.NumeroTelefono,
                     NumeroCuentaBancaria = ciudadanoPostDTO.NumeroCuentaBancaria,
                     IsPoli = ciudadanoPostDTO.IsPoli,

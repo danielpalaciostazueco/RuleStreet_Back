@@ -35,9 +35,12 @@ namespace RuleStreet.Data
                     Apellidos = c.Apellidos,
                     Dni = c.Dni,
                     Genero = c.Genero,
+                    Gender = c.Gender,
                     Nacionalidad = c.Nacionalidad,
+                    Nationality = c.Nationality,
                     FechaNacimiento = c.FechaNacimiento,
                     Direccion = c.Direccion,
+                    Address = c.Address,
                     NumeroTelefono = c.NumeroTelefono,
                     NumeroCuentaBancaria = c.NumeroCuentaBancaria,
                     IsPoli = c.IsPoli,
@@ -54,6 +57,7 @@ namespace RuleStreet.Data
                             IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
                             Articulo = m.CodigoPenal.Articulo,
                             Descripcion = m.CodigoPenal.Descripcion,
+                            Description = m.CodigoPenal.Description,
                             Precio = m.CodigoPenal.Precio,
                             Sentencia = m.CodigoPenal.Sentencia
                         },
@@ -67,16 +71,14 @@ namespace RuleStreet.Data
                         Marca = v.Marca,
                         Modelo = v.Modelo,
                         Color = v.Color,
+                        EnColor = v.EnColor,
                         IdCiudadano = v.IdCiudadano
                     }).ToList()
                 })
                 .ToList();
-
+                
             return ciudadanos;
         }
-
-
-
 
         public CiudadanoDTO Get(int id)
         {
@@ -94,9 +96,12 @@ namespace RuleStreet.Data
                         Apellidos = c.Apellidos,
                         Dni = c.Dni,
                         Genero = c.Genero,
+                        Gender = c.Gender,
                         Nacionalidad = c.Nacionalidad,
+                        Nationality = c.Nationality,
                         FechaNacimiento = c.FechaNacimiento,
                         Direccion = c.Direccion,
+                        Address = c.Address,
                         NumeroTelefono = c.NumeroTelefono,
                         NumeroCuentaBancaria = c.NumeroCuentaBancaria,
                         IsPoli = c.IsPoli,
@@ -113,6 +118,7 @@ namespace RuleStreet.Data
                                 IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
                                 Articulo = m.CodigoPenal.Articulo,
                                 Descripcion = m.CodigoPenal.Descripcion,
+                                Description = m.CodigoPenal.Description,
                                 Precio = m.CodigoPenal.Precio,
                                 Sentencia = m.CodigoPenal.Sentencia
                             },
@@ -126,6 +132,7 @@ namespace RuleStreet.Data
                             Matricula = v.Matricula,
                             Marca = v.Marca,
                             Modelo = v.Modelo,
+                            EnColor = v.EnColor,
                             Color = v.Color
                         }).ToList()
                     })
@@ -157,9 +164,12 @@ namespace RuleStreet.Data
                         Apellidos = c.Apellidos,
                         Dni = c.Dni,
                         Genero = c.Genero,
+                        Gender = c.Gender,
                         Nacionalidad = c.Nacionalidad,
+                        Nationality = c.Nationality,
                         FechaNacimiento = c.FechaNacimiento,
                         Direccion = c.Direccion,
+                        Address = c.Address,
                         NumeroTelefono = c.NumeroTelefono,
                         NumeroCuentaBancaria = c.NumeroCuentaBancaria,
                         IsPoli = c.IsPoli,
@@ -175,6 +185,7 @@ namespace RuleStreet.Data
                                 IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
                                 Articulo = m.CodigoPenal.Articulo,
                                 Descripcion = m.CodigoPenal.Descripcion,
+                                Description = m.CodigoPenal.Description,
                                 Precio = m.CodigoPenal.Precio,
                                 Sentencia = m.CodigoPenal.Sentencia
                             },
@@ -188,6 +199,7 @@ namespace RuleStreet.Data
                             Matricula = v.Matricula,
                             Marca = v.Marca,
                             Modelo = v.Modelo,
+                            EnColor = v.EnColor,
                             Color = v.Color
                         }).ToList()
                     })

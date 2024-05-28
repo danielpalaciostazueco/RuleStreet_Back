@@ -42,12 +42,14 @@ namespace RuleStreet.Data
                 {
                     IdRango = p.Rango.IdRango,
                     Nombre = p.Rango.Nombre,
+                    Name = p.Rango.Name,
                     Salario = p.Rango.Salario ?? 0,
                     isLocal = p.Rango.isLocal ?? true,
                     Permisos = p.Rango.RangosPermisos.Select(rp => new PermisoDTO
                     {
                         IdPermiso = rp.Permiso.IdPermiso,
-                        Nombre = rp.Permiso.Nombre
+                        Nombre = rp.Permiso.Nombre,
+                        Name = rp.Permiso.Name
                     }).ToList()
 
                 } : null,
@@ -60,14 +62,18 @@ namespace RuleStreet.Data
                     Apellidos = p.Ciudadano.Apellidos,
                     Dni = p.Ciudadano.Dni,
                     Genero = p.Ciudadano.Genero,
+                    Gender = p.Ciudadano.Gender,
                     Nacionalidad = p.Ciudadano.Nacionalidad,
+                    Nationality = p.Ciudadano.Nationality,
                     FechaNacimiento = p.Ciudadano.FechaNacimiento,
                     Direccion = p.Ciudadano.Direccion,
+                    Address = p.Ciudadano.Address,
                     NumeroTelefono = p.Ciudadano.NumeroTelefono,
                     NumeroCuentaBancaria = p.Ciudadano.NumeroCuentaBancaria,
                     IsPoli = p.Ciudadano.IsPoli,
                     IsBusquedaYCaptura = p.Ciudadano.IsBusquedaYCaptura,
                     IsPeligroso = p.Ciudadano.IsPeligroso,
+                    ImagenUrl = p.Ciudadano.ImagenUrl,
                     Multas = p.Ciudadano.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
@@ -78,6 +84,7 @@ namespace RuleStreet.Data
                             IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
                             Articulo = m.CodigoPenal.Articulo,
                             Descripcion = m.CodigoPenal.Descripcion,
+                            Description = m.CodigoPenal.Description,
                             Precio = m.CodigoPenal.Precio,
                             Sentencia = m.CodigoPenal.Sentencia
                         },
@@ -92,6 +99,7 @@ namespace RuleStreet.Data
                         Marca = v.Marca,
                         Modelo = v.Modelo,
                         Color = v.Color,
+                        EnColor = v.EnColor,
                         IdCiudadano = v.IdCiudadano,
                         Ciudadano = new CiudadanoDTO
                         {
@@ -103,6 +111,9 @@ namespace RuleStreet.Data
 
             return policiaDTOList;
         }
+
+
+
         public PoliciaDTO Get(int id)
         {
             var policia = _context.Policia
@@ -131,12 +142,14 @@ namespace RuleStreet.Data
                 {
                     IdRango = policia.Rango.IdRango,
                     Nombre = policia.Rango.Nombre,
+                    Name = policia.Rango.Name,
                     Salario = policia.Rango.Salario ?? 0,
                     isLocal = policia.Rango.isLocal ?? true,
                     Permisos = policia.Rango.RangosPermisos.Select(rp => new PermisoDTO
                     {
                         IdPermiso = rp.Permiso.IdPermiso,
-                        Nombre = rp.Permiso.Nombre
+                        Nombre = rp.Permiso.Nombre,
+                        Name = rp.Permiso.Name
                     }).ToList()
 
                 } : null,
@@ -149,14 +162,18 @@ namespace RuleStreet.Data
                     Apellidos = policia.Ciudadano.Apellidos,
                     Dni = policia.Ciudadano.Dni,
                     Genero = policia.Ciudadano.Genero,
+                    Gender = policia.Ciudadano.Gender,
                     Nacionalidad = policia.Ciudadano.Nacionalidad,
+                    Nationality = policia.Ciudadano.Nationality,
                     FechaNacimiento = policia.Ciudadano.FechaNacimiento.Value,
                     Direccion = policia.Ciudadano.Direccion,
+                    Address = policia.Ciudadano.Address,
                     NumeroTelefono = policia.Ciudadano.NumeroTelefono,
                     NumeroCuentaBancaria = policia.Ciudadano.NumeroCuentaBancaria,
                     IsPoli = policia.Ciudadano.IsPoli,
                     IsBusquedaYCaptura = policia.Ciudadano.IsBusquedaYCaptura,
                     IsPeligroso = policia.Ciudadano.IsPeligroso,
+                    ImagenUrl = policia.Ciudadano.ImagenUrl,
                     Multas = policia.Ciudadano.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
@@ -167,6 +184,7 @@ namespace RuleStreet.Data
                             IdCodigoPenal = m.CodigoPenal.IdCodigoPenal,
                             Articulo = m.CodigoPenal.Articulo,
                             Descripcion = m.CodigoPenal.Descripcion,
+                            Description = m.CodigoPenal.Description,
                             Precio = m.CodigoPenal.Precio,
                             Sentencia = m.CodigoPenal.Sentencia
                         } : null,
@@ -180,6 +198,7 @@ namespace RuleStreet.Data
                         Marca = v.Marca,
                         Modelo = v.Modelo,
                         Color = v.Color,
+                        EnColor = v.EnColor,
                         IdCiudadano = v.IdCiudadano,
                         Ciudadano = new CiudadanoDTO
                         {
@@ -191,7 +210,6 @@ namespace RuleStreet.Data
 
             return policiaDTO;
         }
-
 
         public void Add(Policia policia)
         {

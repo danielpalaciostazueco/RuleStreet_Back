@@ -13,6 +13,5 @@ namespace RuleStreet.Business
 
         void Delete(int id);
 
-
     }
 }

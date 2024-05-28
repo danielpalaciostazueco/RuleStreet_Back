@@ -27,6 +27,7 @@ namespace RuleStreet.Api.Controllers
             return _VehiculoService.GetAll();
         }
 
+
         [HttpGet("{id}")]
         public ActionResult<VehiculoDTO> Get(int id)
         {

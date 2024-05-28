@@ -26,6 +26,7 @@ namespace RuleStreet.Api.Controllers
         {
             return _PoliciaService.GetAll();
         }
+      
 
         [HttpGet("{id}")]
         public ActionResult<PoliciaDTO> Get(int id)

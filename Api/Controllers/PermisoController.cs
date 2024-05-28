@@ -28,6 +28,9 @@ namespace RuleStreet.Api.Controllers
             return _PermisoService.GetAll();
         }
 
+
+      
+
         [HttpGet("{id}")]
         public ActionResult<PermisoDTO> Get(int id)
         {
@@ -47,7 +50,6 @@ namespace RuleStreet.Api.Controllers
                 return StatusCode(500, "Error interno del servidor");
             }
         }
-
 
 
         [HttpPut("{id}")]

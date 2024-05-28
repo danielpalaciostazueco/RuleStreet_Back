@@ -22,7 +22,7 @@ namespace RuleStreet.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("")]
+        [HttpGet]
         public ActionResult<List<CiudadanoDTO>> GetAllBusquedaCaptura()
         {
             return _CiudadanoService.GetAllBusquedaCaptura();

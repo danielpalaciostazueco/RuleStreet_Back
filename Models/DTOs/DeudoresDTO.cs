@@ -10,7 +10,9 @@ public class DeudoresDTO
     public string? Apellidos { get; set; }
     public string? Dni { get; set; }
     public string? Genero { get; set; }
+    public string? Gender { get; set; }
     public string? Nacionalidad { get; set; }
+    public string? Nationality { get; set; }
     public decimal? Cantidad { get; set; }
     public DateTime FechaNacimiento { get; set; }
     public bool? Pagada { get; set; }

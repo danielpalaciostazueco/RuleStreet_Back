@@ -10,5 +10,6 @@ namespace RuleStreet.Business
         void Update(VehiculoPostDTO vehiculo);
         void Delete(int id);
         void Add(VehiculoPostDTO vehiculoPostDTO);
+    
     }
 }

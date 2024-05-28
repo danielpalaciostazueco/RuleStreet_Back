@@ -11,9 +11,12 @@ public class Ciudadano
     public string? Apellidos { get; set; }
     public string? Dni { get; set; }
     public string? Genero { get; set; }
+    public string? Gender { get; set; }
     public string? Nacionalidad { get; set; }
+    public string? Nationality { get; set; }
     public DateTime? FechaNacimiento { get; set; }
     public string? Direccion { get; set; }
+    public string? Address { get; set; }
     public int? NumeroTelefono { get; set; }
     public string? NumeroCuentaBancaria { get; set; }
     public bool? IsPoli { get; set; }

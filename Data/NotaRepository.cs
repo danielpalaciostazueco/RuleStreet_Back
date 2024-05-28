@@ -22,11 +22,13 @@ namespace RuleStreet.Data
         }
         public List<Nota> GetAll()
         {
-            return _context.Nota
+            var nota =  _context.Nota
             .Include(p => p.ciudadano)
             .Include(p => p.policia)
             .ToList();
+            return nota;
         }
+       
 
 
         public Nota Get(int id)

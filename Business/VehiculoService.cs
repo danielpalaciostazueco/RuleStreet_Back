@@ -30,7 +30,8 @@ namespace RuleStreet.Business
                 throw;
             }
         }
-        public VehiculoDTO? Get(int id)
+
+         public VehiculoDTO? Get(int id)
         {
             try
             {
@@ -57,6 +58,7 @@ namespace RuleStreet.Business
                     Marca = vehiculo.Marca,
                     Modelo = vehiculo.Modelo,
                     Color = vehiculo.Color,
+                    EnColor = vehiculo.EnColor,
                 };
                 _vehiculoRepository.Update(Vehiculo);
             }
@@ -83,6 +85,7 @@ namespace RuleStreet.Business
                     Marca = vehiculo.Marca,
                     Modelo = vehiculo.Modelo,
                     Color = vehiculo.Color,
+                    EnColor = vehiculo.EnColor,
                 };
 
                 _vehiculoRepository.Add(Vehiculo);

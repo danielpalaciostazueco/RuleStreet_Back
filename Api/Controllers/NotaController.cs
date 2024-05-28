@@ -26,7 +26,8 @@ namespace RuleStreet.Api.Controllers
         {
             return _NotaService.GetAll();
         }
-
+        
+      
         [HttpGet("{id}")]
         public ActionResult<Nota> Get(int id)
         {
@@ -47,6 +48,7 @@ namespace RuleStreet.Api.Controllers
             }
         }
 
+        
 
         [HttpPost]
         public ActionResult<NotaPostDTO> Create(NotaPostDTO Nota)

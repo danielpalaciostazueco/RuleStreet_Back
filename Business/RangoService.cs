@@ -30,12 +30,14 @@ namespace RuleStreet.Business
                 {
                     IdRango = r.IdRango,
                     Nombre = r.Nombre,
+                    Name = r.Name,
                     Salario = r.Salario ?? 0,
                     isLocal = r.isLocal ?? false,
                     Permisos = r.RangosPermisos.Select(rp => new PermisoDTO
                     {
                         IdPermiso = rp.Permiso.IdPermiso,
-                        Nombre = rp.Permiso.Nombre
+                        Nombre = rp.Permiso.Nombre,
+                        Name = rp.Permiso.Name
                     }).ToList()
                 }).ToList();
                 _logger.LogInformation($"Retornados {rangos.Count} rangos.");
@@ -64,12 +66,14 @@ namespace RuleStreet.Business
                 {
                     IdRango = rango.IdRango,
                     Nombre = rango.Nombre,
+                    Name = rango.Name,
                     Salario = rango.Salario ?? 0,
                     isLocal = rango.isLocal ?? false,
                     Permisos = rango.RangosPermisos.Select(rp => new PermisoDTO
                     {
                         IdPermiso = rp.Permiso.IdPermiso,
-                        Nombre = rp.Permiso.Nombre
+                        Nombre = rp.Permiso.Nombre,
+                        Name = rp.Permiso.Name
                     }).ToList()
                 };
                 _logger.LogInformation($"Rango con ID: {id} encontrado.");

@@ -12,6 +12,7 @@ public class Vehiculo
     public string? Marca { get; set; }
     public string? Modelo { get; set; }
     public string? Color { get; set; }
+    public string EnColor { get; set; }
 
     [ForeignKey("Ciudadano")]
     public int? IdCiudadano { get; set; }

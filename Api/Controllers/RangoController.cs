@@ -38,6 +38,7 @@ namespace RuleStreet.Api.Controllers
                 return StatusCode(500, "Un error ocurrió al obtener la lista de rangos.");
             }
         }
+        
 
         [HttpGet("{id}")]
         public ActionResult<RangoDTO> Get(int id)

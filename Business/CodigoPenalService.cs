@@ -29,6 +29,7 @@ namespace RuleStreet.Business
             }
         }
 
+     
         public CodigoPenal? Get(int id)
         {
             try
@@ -41,6 +42,8 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+
 
 
         public void Delete(int id)

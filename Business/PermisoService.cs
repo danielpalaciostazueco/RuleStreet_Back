@@ -30,6 +30,8 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+
         public PermisoDTO? Get(int id)
         {
             try
@@ -52,7 +54,8 @@ namespace RuleStreet.Business
                 Permiso permiso = new Permiso
                 {
                     IdPermiso = permisoDto.IdPermiso,
-                    Nombre = permisoDto.Nombre
+                    Nombre = permisoDto.Nombre,
+                    Name = permisoDto.Name
                 };
 
                 _permisoRepository.Update(permiso);

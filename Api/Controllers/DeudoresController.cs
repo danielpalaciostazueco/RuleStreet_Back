@@ -21,10 +21,11 @@ namespace RuleStreet.Api.Controllers
             _CiudadanoService = CiudadanoService;
         }
 
-        [HttpGet("")]
+        [HttpGet]
         public ActionResult<List<DeudoresDTO>> GetAllDeudores()
         {
             return _CiudadanoService.GetAllDeudores();
         }
+      
     }
 }

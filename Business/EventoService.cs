@@ -31,6 +31,10 @@ namespace RuleStreet.Business
                 throw;
             }
         }
+
+        
+       
+
         public Evento? Get(int id)
         {
             try
@@ -44,6 +48,7 @@ namespace RuleStreet.Business
             }
 
         }
+        
 
 
         public void Update(Evento evento)

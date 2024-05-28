@@ -38,6 +38,8 @@ namespace RuleStreet.Api.Controllers
             }
         }
 
+      
+
         [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<CodigoPenal> Get(int id)
@@ -61,6 +63,8 @@ namespace RuleStreet.Api.Controllers
                 return StatusCode(500, "Un error ocurrió al obtener el codigo.");
             }
         }
+        
+        
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
