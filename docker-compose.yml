@@ -38,7 +38,7 @@ services:
 
   web:
     container_name: webContainer
-    image:  danielpalacios2003/rulestreetfront13
+    image:  danielpalacios2003/rulestreetfront101
     ports:
       - "9000:80"
     depends_on:
