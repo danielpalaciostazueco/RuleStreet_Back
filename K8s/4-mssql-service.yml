@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: db
+  name: db
+spec:
+<<<<<<< HEAD
+  externalName:  db.c5g86sosm13s.us-east-1.rds.amazonaws.com
+               
+=======
+  externalName: db.c5g86sosm13s.us-east-1.rds.amazonaws.com
+>>>>>>> 749489358abb588cc6a36f20f112274e15a91dd2
+  selector:
+    app: db
+  type: ExternalName
+status:
+  loadBalancer: {}
