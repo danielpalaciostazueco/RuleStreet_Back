@@ -35,3 +35,13 @@ services:
       - DOCKER_CONTAINER=true
     volumes:
       - ./Api/logs:/app/logs
+
+  web:
+    container_name: webContainer
+    image:  danielpalacios2003/rulestreetfront13
+    ports:
+      - "9000:80"
+    depends_on:
+      - api
+    networks:
+      - backend

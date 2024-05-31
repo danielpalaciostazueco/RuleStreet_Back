@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240521142511_InitialCreate")]
+    [Migration("20240531050319_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -328,7 +328,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Uso excesivo del claxón",
                             Description = "Excessive use of the horn",
                             Precio = 500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -337,7 +337,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Giro indebido",
                             Description = "Improper turn",
                             Precio = 300m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -346,7 +346,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular en sentido contrario",
                             Description = "Driving against traffic",
                             Precio = 700m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -355,7 +355,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Estacionar en zonas no habitadas y obstruir la circulación",
                             Description = "Parking in non-habitable areas and obstructing traffic",
                             Precio = 500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -364,7 +364,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Ignorar señales de tránsito",
                             Description = "Ignoring traffic signs",
                             Precio = 500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -373,7 +373,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Saltarse un semáforo",
                             Description = "Running a red light",
                             Precio = 450m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -382,7 +382,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "No ceder el paso a vehículos de emergencia",
                             Description = "Not yielding to emergency vehicles",
                             Precio = 550m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -391,7 +391,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Realizar adelantamiento indebido",
                             Description = "Improper overtaking",
                             Precio = 350m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -400,7 +400,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular marcha atrás",
                             Description = "Driving in reverse",
                             Precio = 800m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -409,7 +409,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Ignorar señales de los agentes que regulan la circulacion",
                             Description = "Ignoring signals from traffic regulators",
                             Precio = 500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -418,7 +418,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Saltarse / omitir un control de trafico",
                             Description = "Skipping/omitting a traffic control",
                             Precio = 500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -427,7 +427,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Conducir un vehiculo en malas condiciones",
                             Description = "Driving a vehicle in poor condition",
                             Precio = 1000m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -436,7 +436,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Exceso de velocidad en vias urbanas",
                             Description = "Speeding in urban areas",
                             Precio = 800m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -445,7 +445,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Condución temeraria",
                             Description = "Reckless driving",
                             Precio = 1500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -454,7 +454,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Exceso de velocidad en vias secundarias",
                             Description = "Speeding in secondary roads",
                             Precio = 1000m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -463,7 +463,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Conducir bajo los efectos de drogas/alcohol",
                             Description = "Driving under the influence of drugs/alcohol",
                             Precio = 1500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -472,7 +472,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular por zonas no habilitadas para ello",
                             Description = "Driving in non-authorized areas",
                             Precio = 1000m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -481,7 +481,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular sin casco para motocicleta",
                             Description = "Riding without a helmet for motorcycles",
                             Precio = 500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -490,7 +490,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular sin licencia de conducir",
                             Description = "Driving without a license",
                             Precio = 550m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -499,7 +499,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Alteración del orden público",
                             Description = "Disturbing public order",
                             Precio = 3500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -508,7 +508,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Racismo",
                             Description = "Racism",
                             Precio = 5000m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -517,7 +517,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Faltas de respeto a otro civil",
                             Description = "Disrespecting another civilian",
                             Precio = 2500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -526,7 +526,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Dañar mobiliario urbano",
                             Description = "Damaging urban furniture",
                             Precio = 1700m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -535,7 +535,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Acoso psicológico",
                             Description = "Psychological harassment",
                             Precio = 6000m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -544,7 +544,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Amenaza de muerte a un civil",
                             Description = "Threatening to kill a civilian",
                             Precio = 2000m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -553,7 +553,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Suplantación de identidad",
                             Description = "Identity theft",
                             Precio = 6000m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -562,7 +562,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular por la via pública con el rostro oculto",
                             Description = "Concealing face in public",
                             Precio = 1000m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -571,7 +571,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular en la via pública desnudo o semi-desnudo",
                             Description = "Being naked or semi-naked in public",
                             Precio = 1200m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -580,7 +580,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Circular en la via pública sin camiseta",
                             Description = "Being shirtless in public",
                             Precio = 120m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -589,7 +589,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Acoso sexual",
                             Description = "Sexual harassment",
                             Precio = 30000m,
-                            Sentencia = "100 meses"
+                            Sentencia = "100 "
                         },
                         new
                         {
@@ -598,7 +598,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Violar una orden de alejamiento con sentencia firme",
                             Description = "Violating a restraining order with a firm sentence",
                             Precio = 25000m,
-                            Sentencia = "80 meses"
+                            Sentencia = "80 "
                         },
                         new
                         {
@@ -607,7 +607,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Negativa a identificarse",
                             Description = "Refusing to identify oneself",
                             Precio = 1000m,
-                            Sentencia = "7 meses"
+                            Sentencia = "7 "
                         },
                         new
                         {
@@ -616,7 +616,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Obstrucción a la justicia",
                             Description = "Obstruction of justice",
                             Precio = 2500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -625,7 +625,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Posesion de estupefacientes (marihuana) 210/unidad (a partir de 2 unidades)",
                             Description = "Possession of narcotics (marijuana) 210/unit (from 2 units)",
                             Precio = 210m,
-                            Sentencia = "7 meses"
+                            Sentencia = "7 "
                         },
                         new
                         {
@@ -634,7 +634,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Consumo de marihuana en vía pública",
                             Description = "Consumption of marijuana in public",
                             Precio = 350m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -643,7 +643,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Posesion de estupefacientes (Cocaína/Mentafetamina) 650/unidad (a partir de 2 unidades)",
                             Description = "Possession of narcotics (cocaine/methamphetamine) 650/unit (from 2 units)",
                             Precio = 650m,
-                            Sentencia = "7 meses"
+                            Sentencia = "7 "
                         },
                         new
                         {
@@ -652,7 +652,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Se considera trafico de drogas a cualquier individuo o grupo de personas que se vean vendiendo estupefacientes en flagante delito. Multa de 450 por cada delito flagante de venta de cocaina. Se requisara todo el dinero que lleve el sujeto.",
                             Description = "Drug trafficking: Any individual or group caught selling narcotics flagrantly. Fine of 450 for each flagrant sale of cocaine. All money on the subject will be confiscated.",
                             Precio = 450m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -661,7 +661,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Se considera trafico de drogas a cualquier individuo o grupo de personas que se vean vendiendo estupefacientes en flagante delito. Multa de 650 por cada delito flagante de venta de meta. Se requisara todo el dinero que lleve el sujeto.",
                             Description = "Drug trafficking: Any individual or group caught selling narcotics flagrantly. Fine of 650 for each flagrant sale of meth. All money on the subject will be confiscated.",
                             Precio = 650m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -670,7 +670,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Queda totalmente prohibida por parte de los civiles portar una pistolera como atuendo de modo decorativo",
                             Description = "It is completely prohibited for civilians to wear a gun holster as a decorative outfit.",
                             Precio = 1500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -679,7 +679,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Posesion de arma blanca: son considerados como tal, aquellas armas de filo cortante. Armas blancas susceptibles de ser usadas como arma ilegal: Cuchillo, Bate de beisbol, Palo de golf, Botella rota, Navaja, Machete",
                             Description = "Possession of a blade weapon: considered as such, those cutting edge weapons. Bladed weapons susceptible to be used as an illegal weapon: Knife, Baseball bat, Golf club, Broken bottle, Razor, Machete",
                             Precio = 2500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -688,7 +688,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Portar pistola de baja calibre (arma de fuego)",
                             Description = "Carrying a small caliber pistol (firearm)",
                             Precio = 10000m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -697,7 +697,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Portar armas automaticas de baja calibre/medio",
                             Description = "Carrying low/medium caliber automatic weapons",
                             Precio = 24000m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -706,7 +706,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Portar armas automaticas de alto calibre",
                             Description = "Carrying high caliber automatic weapons",
                             Precio = 40000m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -715,7 +715,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Trafico de armas",
                             Description = "Arms trafficking",
                             Precio = 30000m,
-                            Sentencia = "25 meses"
+                            Sentencia = "25 "
                         },
                         new
                         {
@@ -724,7 +724,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Atentado terrorista",
                             Description = "Terrorist attack",
                             Precio = 100000m,
-                            Sentencia = "250 meses"
+                            Sentencia = "250 "
                         },
                         new
                         {
@@ -733,7 +733,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Atentar contra la vida o integridad fisica de varios personas y/o funcionarios publicos mediante la organizacion armada de varios individuos",
                             Description = "Attempting against the life or physical integrity of several people and/or public officials through the armed organization of several individuals",
                             Precio = 100000m,
-                            Sentencia = "350 meses"
+                            Sentencia = "350 "
                         },
                         new
                         {
@@ -742,7 +742,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Agresion a otro individuo",
                             Description = "Assaulting another individual",
                             Precio = 3000m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -751,7 +751,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Intento de agresion a civil",
                             Description = "Attempted assault on a civilian",
                             Precio = 1500m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -760,7 +760,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Intento de secuestro",
                             Description = "Attempted kidnapping",
                             Precio = 2400m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -769,7 +769,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Secuestro a un individuo",
                             Description = "Kidnapping an individual",
                             Precio = 3500m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -778,7 +778,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Intento de homicidio a un civil sin el uso de armas",
                             Description = "Attempted homicide on a civilian without the use of weapons",
                             Precio = 4000m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -787,7 +787,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Intento de homicidio a un civil con uso de armas de cualquier indole",
                             Description = "Attempted homicide on a civilian with the use of any kind of weapon",
                             Precio = 6000m,
-                            Sentencia = "20 meses"
+                            Sentencia = "20 "
                         },
                         new
                         {
@@ -796,7 +796,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Intento de homicidio a multiples sin el uso de armas",
                             Description = "Attempted homicide on multiple civilians without the use of weapons",
                             Precio = 5000m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -805,7 +805,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Intento de homicidio a multiples civiles con uso de armas de cualquier indole",
                             Description = "Attempted homicide on multiple civilians with the use of any kind of weapon",
                             Precio = 7500m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -814,7 +814,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Amenazas, desobedencia e insultos: Tras la primera amision de la orden de un funcionario de policia, se le podra acumular al reo el monta econonico despues del primer aviso por cada falta de respeto o desacato.",
                             Description = "Threats, disobedience, and insults: After the first omission of a police officer's order, the economic amount may be accumulated for each disrespect or disobedience after the first warning.",
                             Precio = 300m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -823,7 +823,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Insultar a un funcionario publico.",
                             Description = "Insulting a public official.",
                             Precio = 1700m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -832,7 +832,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Agresión o amenaza de muerte a un funcionario.",
                             Description = "Assault or death threat to an official.",
                             Precio = 3400m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -841,7 +841,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Desacato",
                             Description = "Contempt",
                             Precio = 2000m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -850,7 +850,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Huir de la justicia",
                             Description = "Fleeing from justice",
                             Precio = 1500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -859,7 +859,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Usurpacion de funciones publicas",
                             Description = "Usurpation of public functions",
                             Precio = 10000m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -868,7 +868,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Falso testimonio",
                             Description = "False testimony",
                             Precio = 2000m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -877,7 +877,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Usurpación de funcionarios públicos",
                             Description = "Usurpation of public officials",
                             Precio = 10000m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -886,7 +886,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Secuestro a un funcionario",
                             Description = "Kidnapping of an official",
                             Precio = 8000m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -895,7 +895,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Amenazar a un funcionario público a mano armada",
                             Description = "Threatening a public official at gunpoint",
                             Precio = 3500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -904,7 +904,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Intento de homicidio a un funcionario público",
                             Description = "Attempted homicide of a public official",
                             Precio = 5500m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -913,7 +913,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Homicidio a un funcionario",
                             Description = "Homicide of an official",
                             Precio = 9000m,
-                            Sentencia = "20 meses"
+                            Sentencia = "20 "
                         },
                         new
                         {
@@ -922,7 +922,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Homicidio a diferentes funcionarios",
                             Description = "Homicide of different officials",
                             Precio = 12500m,
-                            Sentencia = "50 meses"
+                            Sentencia = "50 "
                         },
                         new
                         {
@@ -931,7 +931,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Robo de secretos del estado",
                             Description = "Theft of state secrets",
                             Precio = 0m,
-                            Sentencia = "5000 meses"
+                            Sentencia = "5000 "
                         },
                         new
                         {
@@ -940,7 +940,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Sera acusado de denuncia falsa aquel que registre una denucia ante el cuerpo policial a sabiendas de su falsedad",
                             Description = "Those who file a false complaint with the police knowing its falsehood will be accused",
                             Precio = 2500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -949,7 +949,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Actos de corrupción por parte de un agente",
                             Description = "Acts of corruption by an agent",
                             Precio = 0m,
-                            Sentencia = "5000 meses"
+                            Sentencia = "5000  "
                         },
                         new
                         {
@@ -958,7 +958,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Robo de vehículo",
                             Description = "Vehicle theft",
                             Precio = 2000m,
-                            Sentencia = "6 meses"
+                            Sentencia = "6 "
                         },
                         new
                         {
@@ -967,7 +967,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Robo con intimidación a un civil",
                             Description = "Robbery with intimidation to a civilian",
                             Precio = 3400m,
-                            Sentencia = "8 meses"
+                            Sentencia = "8 "
                         },
                         new
                         {
@@ -976,7 +976,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Robo con violencia a un civil",
                             Description = "Robbery with violence to a civilian",
                             Precio = 2600m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -985,7 +985,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Hurto menor",
                             Description = "Petty theft",
                             Precio = 1500m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -994,7 +994,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Robar pertenencias que se hallen en el interior de un vehículo de vía urbana o propiedad privada",
                             Description = "Stealing belongings inside a vehicle in an urban area or private property",
                             Precio = 2150m,
-                            Sentencia = "7 meses"
+                            Sentencia = "7 "
                         },
                         new
                         {
@@ -1003,7 +1003,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Celebración de manifestaciones en lugares de tránsito público sin haber sido autorizados",
                             Description = "Holding demonstrations in public transit places without authorization",
                             Precio = 1000m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -1012,7 +1012,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Cometer actos de vandalismo",
                             Description = "Commit acts of vandalism",
                             Precio = 1500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0  "
                         },
                         new
                         {
@@ -1021,7 +1021,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Hurto de un civil sin importar las posesiones robadas",
                             Description = "Theft from a civilian regardless of stolen possessions",
                             Precio = 3500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10  "
                         },
                         new
                         {
@@ -1030,7 +1030,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Obstaculizar el desempeño y desarrollo de las funciones públicas y servicios de emergencia",
                             Description = "Obstructing the performance and development of public functions and emergency services",
                             Precio = 2300m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         },
                         new
                         {
@@ -1039,7 +1039,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Negarse a disolver una reunión o manifestación tras haber sido previamente advertido por un funcionario público",
                             Description = "Refusing to disband a meeting or demonstration after being previously warned by a public official",
                             Precio = 1600m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -1048,7 +1048,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Negarse a identificarse o aportar datos falsos que dificulten la acción policial",
                             Description = "Refusing to identify oneself or provide false information that hinders police action",
                             Precio = 1500m,
-                            Sentencia = "5 meses"
+                            Sentencia = "5 "
                         },
                         new
                         {
@@ -1057,7 +1057,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Amenazar a un funcionario público a mano armada",
                             Description = "Threatening an official with a firearm",
                             Precio = 3500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10  "
                         },
                         new
                         {
@@ -1066,7 +1066,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Exhibicionismo: El que realice actos de exhibicionismo delante de personas causándoles un perjuicio",
                             Description = "Exhibitionism: Anyone who engages in exhibitionism in front of people causing them harm",
                             Precio = 5500m,
-                            Sentencia = "10 meses"
+                            Sentencia = "10 "
                         },
                         new
                         {
@@ -1075,7 +1075,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Será acusado de extorsión aquel que, con intención de beneficiarse, obligue a otro con violencia o intimidación a realizar un acto que le perjudique económicamente",
                             Description = "Anyone who, with the intention of benefiting, forces another person with violence or intimidation to perform an act that harms them economically, will be accused of extortion",
                             Precio = 3000m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15 "
                         },
                         new
                         {
@@ -1084,7 +1084,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Será acusado de injuria aquel que diga de manera pública hechos falsos que humillen a otra persona",
                             Description = "Anyone who publicly states false facts that humiliate another person will be accused of defamation",
                             Precio = 1200m,
-                            Sentencia = "7 meses"
+                            Sentencia = "7  "
                         },
                         new
                         {
@@ -1093,7 +1093,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Violación de la intimidad aquel que acceda a cualquier tipo de propiedad o dispositivo de otro, sea digital o analógico. El artículo excluye a los funcionarios públicos por desempeño de sus labores de investigación",
                             Description = "Violation of privacy: Anyone who accesses any type of property or device of another, whether digital or analog. The article excludes public officials in the performance of their investigative duties",
                             Precio = 2400m,
-                            Sentencia = "7 meses"
+                            Sentencia = "7 "
                         },
                         new
                         {
@@ -1102,7 +1102,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Será acusado de tortura aquel que realice actos degradantes, ofensivos, dañinos o de similar a una persona",
                             Description = "Anyone who performs degrading, offensive, harmful, or similar acts to a person will be accused of torture",
                             Precio = 5600m,
-                            Sentencia = "15 meses"
+                            Sentencia = "15"
                         },
                         new
                         {
@@ -1111,7 +1111,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Negarse a la identificación ante un funcionario público",
                             Description = "Refusing to identify oneself to a public official",
                             Precio = 1500m,
-                            Sentencia = "0 meses"
+                            Sentencia = "0 "
                         });
                 });
 
@@ -1361,8 +1361,8 @@ namespace RuleStreet.Data.Migrations
                     b.Property<int?>("IdRango")
                         .HasColumnType("int");
 
-                    b.Property<string>("NumeroPlaca")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("NumeroPlaca")
+                        .HasColumnType("int");
 
                     b.HasKey("IdPolicia");
 
