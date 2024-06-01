@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  EKS_CLUSTER_NAME: demo-cluster
+  EKS_CLUSTER_NAME: RuleStreetCluster
   AWS_REGION: us-east-1
 
 jobs:
