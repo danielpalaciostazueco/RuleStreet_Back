@@ -21,7 +21,7 @@ jobs:
       - name: Construir la imagen
         run: |
           docker build -t danielpalacios2003/rulestreetapi:latest .
-          docker tag danielpalacios2003/rulestreetapi:latest  danielpalacios2003/rulestreetapi:${{ github.sha }}
+          docker tag danielpalacios2003/rulestreetapi:latest danielpalacios2003/rulestreetapi:${{ github.sha }}
 
       - name: Iniciar sesión en Docker Hub
         uses: docker/login-action@v2
