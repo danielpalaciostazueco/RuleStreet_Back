@@ -100,6 +100,7 @@ namespace RuleStreet.Business
                 IsBusquedaYCaptura = ciudadano.IsBusquedaYCaptura,
                 IsPeligroso = ciudadano.IsPeligroso,
                 ImagenUrl = ciudadano.ImagenUrl,
+                DiaBusquedaCaptura = ciudadano.DiaBusquedaCaptura,
             };
             _ciudadanoRepository.Update(ciudadanoUpdate);
 
