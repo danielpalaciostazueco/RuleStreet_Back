@@ -17,4 +17,5 @@ public class CiudadanoPostDTO
     public bool? IsPoli { get; set; }
     public bool? IsBusquedaYCaptura { get; set; }
     public bool? IsPeligroso { get; set; }
+    public string ImagenUrl { get; set; }
 }

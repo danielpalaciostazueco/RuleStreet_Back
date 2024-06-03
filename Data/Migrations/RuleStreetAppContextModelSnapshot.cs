@@ -1725,11 +1725,11 @@ namespace RuleStreet.Data.Migrations
             modelBuilder.Entity("RuleStreet.Models.Denuncia", b =>
                 {
                     b.HasOne("RuleStreet.Models.Ciudadano", "Ciudadano")
-                        .WithMany()
+                        .WithMany("Denuncias")
                         .HasForeignKey("IdCiudadano");
 
                     b.HasOne("RuleStreet.Models.Policia", "Policia")
-                        .WithMany()
+                        .WithMany("Denuncias")
                         .HasForeignKey("IdPolicia");
 
                     b.Navigation("Ciudadano");
@@ -1837,6 +1837,8 @@ namespace RuleStreet.Data.Migrations
 
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
                 {
+                    b.Navigation("Denuncias");
+
                     b.Navigation("Multas");
 
                     b.Navigation("Usuario");
@@ -1852,6 +1854,11 @@ namespace RuleStreet.Data.Migrations
             modelBuilder.Entity("RuleStreet.Models.Permiso", b =>
                 {
                     b.Navigation("RangosPermisos");
+                });
+
+            modelBuilder.Entity("RuleStreet.Models.Policia", b =>
+                {
+                    b.Navigation("Denuncias");
                 });
 
             modelBuilder.Entity("RuleStreet.Models.Rango", b =>
