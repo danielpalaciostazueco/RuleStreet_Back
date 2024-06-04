@@ -43,5 +43,3 @@ spec:
         image: danielpalacios2003/pback1 
         ports:
         - containerPort: 80
-
-  type: LoadBalancer
