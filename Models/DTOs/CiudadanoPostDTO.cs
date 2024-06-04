@@ -20,4 +20,8 @@ public class CiudadanoPostDTO
     public bool? IsPoli { get; set; }
     public bool? IsBusquedaYCaptura { get; set; }
     public bool? IsPeligroso { get; set; }
+    public List<Multa>? Multas { get; set; }
+    public List<Vehiculo>? Vehiculos { get; set; }
+    public string ImagenUrl { get; set; }
+    public DateTime? DiaBusquedaCaptura { get; set; }
 }

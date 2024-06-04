@@ -19,3 +19,19 @@ dotnet ef database drop -p ./Data/RuleStreet.Data.csproj -s ./Api/RuleStreet.Api
 
 ## Instalar
 dotnet tool install --global dotnet-ef --version 7.0
+
+## Drop Tables 
+DROP TABLE Ciudadano;
+DROP TABLE Policia;
+DROP TABLE Multa;
+DROP TABLE CodigoPenal;
+DROP TABLE Vehiculo;
+DROP TABLE Auditoria;
+DROP TABLE Permiso;
+DROP TABLE Rango;
+DROP TABLE RangoPermiso;
+DROP TABLE Denuncia;
+DROP TABLE Nota;
+DROP TABLE Usuario;
+DROP TABLE Ayuntamiento;
+DROP TABLE Evento;

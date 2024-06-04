@@ -24,4 +24,7 @@ public class CiudadanoDTO
     public List<MultaDTO>? Multas { get; set; }
     public List<VehiculoDTO>? Vehiculos { get; set; }
     public string ImagenUrl { get; set; }
+    public DateTime? DiaBusquedaCaptura { get; set; }
+    public string? Trabajo { get; set; }
+    public string? Work { get; set; }
 }

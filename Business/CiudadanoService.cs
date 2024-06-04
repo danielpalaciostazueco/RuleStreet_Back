@@ -86,7 +86,8 @@ namespace RuleStreet.Business
                         Nationality = ciudadano.Nationality,
                         Pagada = multas.Any(x => x.IdCiudadano == ciudadano.IdCiudadano && x.Pagada == false),
                         Cantidad = cantidad,
-                        ImagenUrl = ciudadano.ImagenUrl
+                        ImagenUrl = ciudadano.ImagenUrl,
+                        DiaBusquedaCaptura = ciudadano.DiaBusquedaCaptura,
                     };
                     deudores.Add(deudor);
                     multasPendientes.Clear();
@@ -154,6 +155,9 @@ namespace RuleStreet.Business
                     IsPoli = ciudadanoPostDTO.IsPoli,
                     IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
                     IsPeligroso = ciudadanoPostDTO.IsPeligroso,
+                    Multas = ciudadanoPostDTO.Multas,
+                    Vehiculos = ciudadanoPostDTO.Vehiculos,
+                    ImagenUrl = ciudadanoPostDTO.ImagenUrl,
 
                 };
 
@@ -188,6 +192,10 @@ namespace RuleStreet.Business
                     IsPoli = ciudadanoPostDTO.IsPoli,
                     IsBusquedaYCaptura = ciudadanoPostDTO.IsBusquedaYCaptura,
                     IsPeligroso = ciudadanoPostDTO.IsPeligroso,
+                    Multas = ciudadanoPostDTO.Multas,
+                    Vehiculos = ciudadanoPostDTO.Vehiculos,
+                    ImagenUrl = ciudadanoPostDTO.ImagenUrl,
+                    DiaBusquedaCaptura = ciudadanoPostDTO.DiaBusquedaCaptura,
                 };
                 _ciudadanoRepository.Add(ciudadano);
             }
