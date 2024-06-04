@@ -28,5 +28,7 @@ public class Ciudadano
     public virtual Usuario? Usuario { get; set; }
     public string? ImagenUrl { get; set; }
     public DateTime? DiaBusquedaCaptura { get; set; }
+    public string? Trabajo { get; set; }
+    public string? Work { get; set; }
 
 }

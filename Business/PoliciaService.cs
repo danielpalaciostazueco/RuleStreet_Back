@@ -101,6 +101,8 @@ namespace RuleStreet.Business
                 IsPeligroso = ciudadano.IsPeligroso,
                 ImagenUrl = ciudadano.ImagenUrl,
                 DiaBusquedaCaptura = ciudadano.DiaBusquedaCaptura,
+                Trabajo = "Policía",
+                Work = "Police"
             };
             _ciudadanoRepository.Update(ciudadanoUpdate);
 
