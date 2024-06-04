@@ -17,5 +17,6 @@ public class DeudoresDTO
     public DateTime FechaNacimiento { get; set; }
     public bool? Pagada { get; set; }
     public string? ImagenUrl { get; set; }
+    public DateTime? DiaBusquedaCaptura { get; set; }
 }
 
