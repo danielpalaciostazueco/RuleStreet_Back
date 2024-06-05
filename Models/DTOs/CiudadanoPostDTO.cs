@@ -24,4 +24,7 @@ public class CiudadanoPostDTO
     public List<Vehiculo>? Vehiculos { get; set; }
     public string ImagenUrl { get; set; }
     public DateTime? DiaBusquedaCaptura { get; set; }
+
+    public string? Trabajo { get; set; }
+    public string? Work { get; set; }
 }
