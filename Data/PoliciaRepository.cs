@@ -74,6 +74,8 @@ namespace RuleStreet.Data
                     IsBusquedaYCaptura = p.Ciudadano.IsBusquedaYCaptura,
                     IsPeligroso = p.Ciudadano.IsPeligroso,
                     ImagenUrl = p.Ciudadano.ImagenUrl,
+                    Trabajo = p.Ciudadano.Trabajo,
+                    Work = p.Ciudadano.Work,
                     Multas = p.Ciudadano.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
@@ -174,6 +176,8 @@ namespace RuleStreet.Data
                     IsBusquedaYCaptura = policia.Ciudadano.IsBusquedaYCaptura,
                     IsPeligroso = policia.Ciudadano.IsPeligroso,
                     ImagenUrl = policia.Ciudadano.ImagenUrl,
+                    Trabajo = policia.Ciudadano.Trabajo,
+                    Work = policia.Ciudadano.Work,
                     Multas = policia.Ciudadano.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,

@@ -158,6 +158,9 @@ namespace RuleStreet.Business
                     Multas = ciudadanoPostDTO.Multas,
                     Vehiculos = ciudadanoPostDTO.Vehiculos,
                     ImagenUrl = ciudadanoPostDTO.ImagenUrl,
+                    Trabajo = ciudadanoPostDTO.Trabajo,
+                    DiaBusquedaCaptura = ciudadanoPostDTO.DiaBusquedaCaptura,
+                    Work = ciudadanoPostDTO.Work,
 
                 };
 
