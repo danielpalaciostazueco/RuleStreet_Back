@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240604080442_InitialCreate")]
+    [Migration("20240606093526_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -1983,11 +1983,6 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdRango = 4,
                             IdPermiso = 2
-                        },
-                        new
-                        {
-                            IdRango = 4,
-                            IdPermiso = 6
                         },
                         new
                         {

@@ -1984,11 +1984,6 @@ namespace RuleStreet.Data.Migrations
                         new
                         {
                             IdRango = 4,
-                            IdPermiso = 6
-                        },
-                        new
-                        {
-                            IdRango = 4,
                             IdPermiso = 4
                         },
                         new

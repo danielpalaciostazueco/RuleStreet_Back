@@ -879,7 +879,6 @@ namespace RuleStreet.Data
                 new RangoPermiso { IdPermiso = 4, IdRango = 3 },
                 new RangoPermiso { IdPermiso = 1, IdRango = 4 },
                 new RangoPermiso { IdPermiso = 2, IdRango = 4 },
-                new RangoPermiso { IdPermiso = 6, IdRango = 4 },
                 new RangoPermiso { IdPermiso = 4, IdRango = 4 },
                 new RangoPermiso { IdPermiso = 1, IdRango = 5 },
                 new RangoPermiso { IdPermiso = 2, IdRango = 5 },
