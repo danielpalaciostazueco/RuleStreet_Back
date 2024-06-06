@@ -36,8 +36,8 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 builder.Host.UseSerilog();
 
-
-var keyString = "ServerDB";
+var isRunningInDocker = Environment.GetEnvironmentVariable("DOCKER_CONTAINER") == "true";
+var keyString = isRunningInDocker ? "ServerDB_Docker" : "ServerDB";
 var connectionString = builder.Configuration.GetConnectionString(keyString);
 
 // Configuración de los servicios para la aplicación

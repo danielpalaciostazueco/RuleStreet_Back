@@ -1749,6 +1749,9 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdNota"));
 
+                    b.Property<int?>("CiudadanoIdCiudadano")
+                        .HasColumnType("int");
+
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
@@ -1771,6 +1774,8 @@ namespace RuleStreet.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdNota");
+
+                    b.HasIndex("CiudadanoIdCiudadano");
 
                     b.HasIndex("IdCiudadano");
 
@@ -2176,6 +2181,10 @@ namespace RuleStreet.Data.Migrations
 
             modelBuilder.Entity("RuleStreet.Models.Nota", b =>
                 {
+                    b.HasOne("RuleStreet.Models.Ciudadano", null)
+                        .WithMany("Notas")
+                        .HasForeignKey("CiudadanoIdCiudadano");
+
                     b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
                         .WithMany()
                         .HasForeignKey("IdCiudadano");
@@ -2250,6 +2259,8 @@ namespace RuleStreet.Data.Migrations
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
                 {
                     b.Navigation("Multas");
+
+                    b.Navigation("Notas");
 
                     b.Navigation("Usuario");
 

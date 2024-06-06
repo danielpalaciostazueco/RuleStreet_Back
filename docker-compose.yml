@@ -36,12 +36,12 @@ services:
     volumes:
       - ./Api/logs:/app/logs
 
-  web:
-    container_name: webContainer1
-    image:  pruebadaniel1
-    ports:
-      - "9000:80"
-    depends_on:
-      - api
-    networks:
-      - backend
+  # web:
+    # container_name: webContainer1
+    # image:  pruebadaniel1
+    # ports:
+      # - "9000:80"
+    # depends_on:
+      # - api
+    # networks:
+      # - backend

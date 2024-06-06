@@ -28,6 +28,7 @@ namespace RuleStreet.Data
                 .Include(c => c.Multas)
                 .ThenInclude(m => m.CodigoPenal)
                 .Include(c => c.Vehiculos)
+                .Include(c => c.Notas)
                 .Select(c => new CiudadanoDTO
                 {
                     IdCiudadano = c.IdCiudadano,
@@ -65,6 +66,15 @@ namespace RuleStreet.Data
                         Pagada = m.Pagada,
                         IdCiudadano = m.IdCiudadano
                     }).ToList(),
+                    Notas = c.Notas.Select(n => new NotaDTO
+                    {
+                        IdNota = n.IdNota,
+                        Titulo = n.Titulo,
+                        Title = n.Title,
+                        Descripcion = n.Descripcion,
+                        Description = n.Description,
+                        Fecha = n.Fecha,
+                    }).ToList(),
                     Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
                     {
                         IdVehiculo = v.IdVehiculo,
@@ -77,7 +87,7 @@ namespace RuleStreet.Data
                     }).ToList()
                 })
                 .ToList();
-                
+
             return ciudadanos;
         }
 
@@ -90,6 +100,7 @@ namespace RuleStreet.Data
                     .Include(c => c.Multas)
                     .ThenInclude(m => m.CodigoPenal)
                     .Include(c => c.Vehiculos)
+                    .Include(c => c.Notas)
                     .Select(c => new CiudadanoDTO
                     {
                         IdCiudadano = c.IdCiudadano,
@@ -126,6 +137,15 @@ namespace RuleStreet.Data
                             },
                             Pagada = m.Pagada,
                             IdCiudadano = m.IdCiudadano
+                        }).ToList(),
+                        Notas = c.Notas.Select(n => new NotaDTO
+                        {
+                            IdNota = n.IdNota,
+                            Titulo = n.Titulo,
+                            Title = n.Title,
+                            Descripcion = n.Descripcion,
+                            Description = n.Description,
+                            Fecha = n.Fecha,
                         }).ToList(),
                         Vehiculos = c.Vehiculos.Select(v => new VehiculoDTO
                         {

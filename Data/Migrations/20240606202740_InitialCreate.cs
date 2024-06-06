@@ -290,11 +290,17 @@ namespace RuleStreet.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdPolicia = table.Column<int>(type: "int", nullable: true),
-                    IdCiudadano = table.Column<int>(type: "int", nullable: true)
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
+                    CiudadanoIdCiudadano = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Nota", x => x.IdNota);
+                    table.ForeignKey(
+                        name: "FK_Nota_Ciudadano_CiudadanoIdCiudadano",
+                        column: x => x.CiudadanoIdCiudadano,
+                        principalTable: "Ciudadano",
+                        principalColumn: "IdCiudadano");
                     table.ForeignKey(
                         name: "FK_Nota_Ciudadano_IdCiudadano",
                         column: x => x.IdCiudadano,
@@ -558,6 +564,11 @@ namespace RuleStreet.Data.Migrations
                 name: "IX_Multa_IdPolicia",
                 table: "Multa",
                 column: "IdPolicia");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Nota_CiudadanoIdCiudadano",
+                table: "Nota",
+                column: "CiudadanoIdCiudadano");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Nota_IdCiudadano",
