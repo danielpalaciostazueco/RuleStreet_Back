@@ -1749,9 +1749,6 @@ namespace RuleStreet.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdNota"));
 
-                    b.Property<int?>("CiudadanoIdCiudadano")
-                        .HasColumnType("int");
-
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
@@ -1773,13 +1770,14 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdNota");
+                    b.Property<int?>("policiaIdPolicia")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CiudadanoIdCiudadano");
+                    b.HasKey("IdNota");
 
                     b.HasIndex("IdCiudadano");
 
-                    b.HasIndex("IdPolicia");
+                    b.HasIndex("policiaIdPolicia");
 
                     b.ToTable("Nota");
                 });
@@ -2181,17 +2179,13 @@ namespace RuleStreet.Data.Migrations
 
             modelBuilder.Entity("RuleStreet.Models.Nota", b =>
                 {
-                    b.HasOne("RuleStreet.Models.Ciudadano", null)
-                        .WithMany("Notas")
-                        .HasForeignKey("CiudadanoIdCiudadano");
-
                     b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
-                        .WithMany()
+                        .WithMany("Notas")
                         .HasForeignKey("IdCiudadano");
 
                     b.HasOne("RuleStreet.Models.Policia", "policia")
                         .WithMany()
-                        .HasForeignKey("IdPolicia");
+                        .HasForeignKey("policiaIdPolicia");
 
                     b.Navigation("ciudadano");
 

@@ -290,25 +290,20 @@ namespace RuleStreet.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdPolicia = table.Column<int>(type: "int", nullable: true),
-                    IdCiudadano = table.Column<int>(type: "int", nullable: true),
-                    CiudadanoIdCiudadano = table.Column<int>(type: "int", nullable: true)
+                    policiaIdPolicia = table.Column<int>(type: "int", nullable: true),
+                    IdCiudadano = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Nota", x => x.IdNota);
-                    table.ForeignKey(
-                        name: "FK_Nota_Ciudadano_CiudadanoIdCiudadano",
-                        column: x => x.CiudadanoIdCiudadano,
-                        principalTable: "Ciudadano",
-                        principalColumn: "IdCiudadano");
                     table.ForeignKey(
                         name: "FK_Nota_Ciudadano_IdCiudadano",
                         column: x => x.IdCiudadano,
                         principalTable: "Ciudadano",
                         principalColumn: "IdCiudadano");
                     table.ForeignKey(
-                        name: "FK_Nota_Policia_IdPolicia",
-                        column: x => x.IdPolicia,
+                        name: "FK_Nota_Policia_policiaIdPolicia",
+                        column: x => x.policiaIdPolicia,
                         principalTable: "Policia",
                         principalColumn: "IdPolicia");
                 });
@@ -566,19 +561,14 @@ namespace RuleStreet.Data.Migrations
                 column: "IdPolicia");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Nota_CiudadanoIdCiudadano",
-                table: "Nota",
-                column: "CiudadanoIdCiudadano");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Nota_IdCiudadano",
                 table: "Nota",
                 column: "IdCiudadano");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Nota_IdPolicia",
+                name: "IX_Nota_policiaIdPolicia",
                 table: "Nota",
-                column: "IdPolicia");
+                column: "policiaIdPolicia");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Policia_IdCiudadano",
