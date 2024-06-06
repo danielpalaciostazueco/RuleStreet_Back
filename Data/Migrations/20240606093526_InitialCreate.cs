@@ -515,7 +515,6 @@ namespace RuleStreet.Data.Migrations
                     { 1, 4 },
                     { 2, 4 },
                     { 4, 4 },
-                    { 6, 4 },
                     { 1, 5 },
                     { 2, 5 },
                     { 3, 5 },
