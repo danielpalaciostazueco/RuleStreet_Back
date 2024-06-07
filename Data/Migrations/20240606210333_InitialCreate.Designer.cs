@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RuleStreet.Data;
 
@@ -11,9 +12,11 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    partial class RuleStreetAppContextModelSnapshot : ModelSnapshot
+    [Migration("20240606210333_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1983,6 +1986,11 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdRango = 4,
                             IdPermiso = 2
+                        },
+                        new
+                        {
+                            IdRango = 4,
+                            IdPermiso = 6
                         },
                         new
                         {

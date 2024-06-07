@@ -12,7 +12,7 @@ public class CiudadanoDTO
     public string? Genero { get; set; }
     public string? Gender { get; set; }
     public string? Nacionalidad { get; set; }
-    public string? Nationality  { get; set; }
+    public string? Nationality { get; set; }
     public DateTime? FechaNacimiento { get; set; }
     public string? Direccion { get; set; }
     public string? Address { get; set; }
@@ -23,6 +23,8 @@ public class CiudadanoDTO
     public bool? IsPeligroso { get; set; }
     public List<MultaDTO>? Multas { get; set; }
     public List<VehiculoDTO>? Vehiculos { get; set; }
+    public List<NotaDTO>? Notas { get; set; }
+
     public string ImagenUrl { get; set; }
     public DateTime? DiaBusquedaCaptura { get; set; }
     public string? Trabajo { get; set; }

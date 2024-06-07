@@ -24,6 +24,7 @@ public class Ciudadano
     public bool? IsPeligroso { get; set; }
     public virtual List<Multa>? Multas { get; set; }
     public virtual List<Vehiculo>? Vehiculos { get; set; }
+    public virtual List<Nota>? Notas { get; set; }
     public int? IdUsuario { get; set; }
     public virtual Usuario? Usuario { get; set; }
     public string? ImagenUrl { get; set; }
