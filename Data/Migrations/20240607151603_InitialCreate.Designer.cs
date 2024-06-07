@@ -12,7 +12,7 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    [Migration("20240606210333_InitialCreate")]
+    [Migration("20240607151603_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -1262,7 +1262,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Atentado terrorista",
                             Description = "Terrorist attack",
                             Precio = 100000m,
-                            Sentencia = "250 "
+                            Sentencia = "25"
                         },
                         new
                         {
@@ -1271,7 +1271,7 @@ namespace RuleStreet.Data.Migrations
                             Descripcion = "Atentar contra la vida o integridad fisica de varios personas y/o funcionarios publicos mediante la organizacion armada de varios individuos",
                             Description = "Attempting against the life or physical integrity of several people and/or public officials through the armed organization of several individuals",
                             Precio = 100000m,
-                            Sentencia = "350 "
+                            Sentencia = "35 "
                         },
                         new
                         {
@@ -1986,11 +1986,6 @@ namespace RuleStreet.Data.Migrations
                         {
                             IdRango = 4,
                             IdPermiso = 2
-                        },
-                        new
-                        {
-                            IdRango = 4,
-                            IdPermiso = 6
                         },
                         new
                         {
