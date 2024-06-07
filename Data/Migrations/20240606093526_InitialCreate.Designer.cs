@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RuleStreet.Data;
 
@@ -11,9 +12,11 @@ using RuleStreet.Data;
 namespace RuleStreet.Data.Migrations
 {
     [DbContext(typeof(RuleStreetAppContext))]
-    partial class RuleStreetAppContextModelSnapshot : ModelSnapshot
+    [Migration("20240606093526_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1770,14 +1773,11 @@ namespace RuleStreet.Data.Migrations
                     b.Property<string>("Titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("policiaIdPolicia")
-                        .HasColumnType("int");
-
                     b.HasKey("IdNota");
 
                     b.HasIndex("IdCiudadano");
 
-                    b.HasIndex("policiaIdPolicia");
+                    b.HasIndex("IdPolicia");
 
                     b.ToTable("Nota");
                 });
@@ -2175,12 +2175,12 @@ namespace RuleStreet.Data.Migrations
             modelBuilder.Entity("RuleStreet.Models.Nota", b =>
                 {
                     b.HasOne("RuleStreet.Models.Ciudadano", "ciudadano")
-                        .WithMany("Notas")
+                        .WithMany()
                         .HasForeignKey("IdCiudadano");
 
                     b.HasOne("RuleStreet.Models.Policia", "policia")
                         .WithMany()
-                        .HasForeignKey("policiaIdPolicia");
+                        .HasForeignKey("IdPolicia");
 
                     b.Navigation("ciudadano");
 
@@ -2248,8 +2248,6 @@ namespace RuleStreet.Data.Migrations
             modelBuilder.Entity("RuleStreet.Models.Ciudadano", b =>
                 {
                     b.Navigation("Multas");
-
-                    b.Navigation("Notas");
 
                     b.Navigation("Usuario");
 

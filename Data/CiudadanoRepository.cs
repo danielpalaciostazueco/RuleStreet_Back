@@ -49,6 +49,8 @@ namespace RuleStreet.Data
                     IsPeligroso = c.IsPeligroso,
                     ImagenUrl = c.ImagenUrl,
                     DiaBusquedaCaptura = c.DiaBusquedaCaptura,
+                    Trabajo = c.Trabajo,
+                    Work = c.Work,
                     Multas = c.Multas.Select(m => new MultaDTO
                     {
                         IdMulta = m.IdMulta,
@@ -121,6 +123,8 @@ namespace RuleStreet.Data
                         IsPeligroso = c.IsPeligroso,
                         ImagenUrl = c.ImagenUrl,
                         DiaBusquedaCaptura = c.DiaBusquedaCaptura,
+                        Trabajo = c.Trabajo,
+                        Work = c.Work,
                         Multas = c.Multas.Select(m => new MultaDTO
                         {
                             IdMulta = m.IdMulta,
@@ -199,6 +203,8 @@ namespace RuleStreet.Data
                         IsPeligroso = c.IsPeligroso,
                         ImagenUrl = c.ImagenUrl,
                         DiaBusquedaCaptura = c.DiaBusquedaCaptura,
+                        Trabajo = c.Trabajo,
+                        Work = c.Work,
                         Multas = c.Multas.Select(m => new MultaDTO
                         {
                             IdMulta = m.IdMulta,
